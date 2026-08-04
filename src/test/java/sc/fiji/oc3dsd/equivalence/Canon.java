@@ -362,7 +362,7 @@ final class Canon {
 
     private static String overlay(ImagePlus image) {
         StringBuilder sb = new StringBuilder();
-        String skipped = sc.fiji.oc3dsd.engine.ObjectMapBuilder.overlaySkippedReason(image);
+        String skipped = sc.fiji.oc3d.core.map.ObjectMapBuilder.overlaySkippedReason(image);
         sb.append("overlaySkipped=").append(skipped == null ? "no" : skipped).append('\n');
         Overlay ov = image.getOverlay();
         if (ov == null) {

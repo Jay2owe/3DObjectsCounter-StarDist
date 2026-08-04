@@ -53,7 +53,7 @@ final class Harness {
         // a resource policy, not a measurement, and it is covered by its own unit
         // test rather than by an equivalence run.
         System.setProperty(
-                sc.fiji.oc3dsd.engine.ObjectMapBuilder.OPTIONAL_MAP_MEMORY_RESERVE_BYTES_PROPERTY,
+                sc.fiji.oc3d.core.map.ObjectMapBuilder.OPTIONAL_MAP_MEMORY_RESERVE_BYTES_PROPERTY,
                 "0");
     }
 
