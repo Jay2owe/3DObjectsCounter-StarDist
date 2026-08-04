@@ -53,6 +53,13 @@ and dressed in 3D Objects Counter+'s dialog and output surface.
   order. Only the ordering of that one list changed — the same names are
   accepted, a valid macro parses to exactly the same parameters, and the same
   exception is thrown for an invalid one.
+- **Renumbering clears a pixel that is not a valid label**, rather than leaving
+  it in place. A pixel that is non-zero but negative, non-finite or fractional
+  was never counted as an object; it is now also cleared from the renumbered
+  label image, so a saved label image contains nothing but `0` and `1..N`.
+  **No image this plugin produces can contain such a pixel** — detection builds
+  the label image as unsigned 16-bit — so this is reachable only by calling the
+  engine classes directly on a float label image of your own.
 
 ### Fixed — carried over from FLASH, where the pipeline's usage pattern hid them
 

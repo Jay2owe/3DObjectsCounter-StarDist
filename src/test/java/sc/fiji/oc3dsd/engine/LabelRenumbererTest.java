@@ -4,7 +4,9 @@ import ij.ImagePlus;
 import ij.ImageStack;
 import ij.process.FloatProcessor;
 import ij.process.ImageProcessor;
+import ij.process.ShortProcessor;
 import org.junit.Test;
+import sc.fiji.oc3d.core.label.LabelRenumberer;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -125,6 +127,17 @@ public class LabelRenumbererTest {
      * A non-integral pixel value means the image is not a label image. Rounding
      * it would silently hand those pixels to a neighbouring object's identity,
      * so they are treated as background instead.
+     *
+     * <p><b>The pixel is now cleared, where this repository's own copy left the
+     * {@code 2.5} in place.</b> That is the single behavioural difference between
+     * the two implementations, and core's reading is the one that matches the
+     * paragraph above: a pixel declared background should be background in the
+     * renumbered image too. Leaving it produced a saved label image containing a
+     * value that was neither background nor any object — which the next tool to
+     * read that file would have to guess about.
+     *
+     * <p>Not reachable from this plugin: see
+     * {@link #detectionCannotProduceAnInvalidNonZeroPixel()}.
      */
     @Test
     public void nonIntegralPixelsAreBackground() {
@@ -139,9 +152,10 @@ public class LabelRenumbererTest {
 
         LabelRenumberer.Result result = LabelRenumberer.renumber(imp);
 
-        assertEquals(1, result.objectCount());
+        assertEquals("a non-integral pixel is not an object", 1, result.objectCount());
         assertEquals(1f, get(imp, 1, 1, 1), 0f);
-        assertEquals(2.5f, get(imp, 1, 3, 3), 0f);
+        assertEquals("a non-integral pixel is cleared, not carried through",
+                0f, get(imp, 1, 3, 3), 0f);
     }
 
     @Test
@@ -176,5 +190,70 @@ public class LabelRenumbererTest {
         ImageProcessor ip = imp.getStack().getProcessor(1);
         assertEquals(1, ip.get(1, 1));
         assertEquals(2, ip.get(5, 5));
+    }
+
+    /**
+     * The one behavioural difference between this repository's former copy and
+     * {@code oc3d-core}'s, pinned so it is a decision on the record rather than
+     * something discovered later.
+     *
+     * <p>A pixel that is non-zero but is not a valid label — negative, NaN,
+     * infinite, or fractional — was previously <em>left as it was</em>. Core
+     * zeroes it. Core is right: after renumbering, a label image should contain
+     * nothing but {@code 0} and {@code 1..N}, and leaving a NaN in one produces
+     * an image whose own measurement pass will disagree with its label map.
+     *
+     * <p>It is invisible in this plugin, because this plugin cannot produce such
+     * a pixel — see {@link #detectionCannotProduceAnInvalidNonZeroPixel()}. It
+     * will be visible in the future "- Labels" variant, which takes user-supplied
+     * label images and can be handed a float stack containing anything at all.
+     */
+    @Test
+    public void invalidNonZeroPixelsAreClearedRatherThanLeftInPlace() {
+        ImageStack stack = new ImageStack(W, H);
+        for (int z = 0; z < Z; z++) stack.addSlice(new FloatProcessor(W, H));
+        set(stack, 1, 1, 1, 5f);           // a real object
+        set(stack, 1, 3, 3, -4f);          // negative
+        set(stack, 1, 4, 3, Float.NaN);    // not a number
+        set(stack, 1, 5, 3, 2.5f);         // fractional: between two labels
+        set(stack, 1, 6, 3, Float.POSITIVE_INFINITY);
+        ImagePlus imp = new ImagePlus("mixed", stack);
+        imp.setDimensions(1, Z, 1);
+
+        LabelRenumberer.Result result = LabelRenumberer.renumber(imp);
+
+        assertEquals("only the one valid label is an object", 1, result.objectCount());
+        assertEquals("the valid object is renumbered to 1", 1f, get(imp, 1, 1, 1), 0f);
+        assertEquals("a negative pixel is cleared", 0f, get(imp, 1, 3, 3), 0f);
+        assertEquals("a NaN pixel is cleared", 0f, get(imp, 1, 4, 3), 0f);
+        assertEquals("a fractional pixel is cleared", 0f, get(imp, 1, 5, 3), 0f);
+        assertEquals("an infinite pixel is cleared", 0f, get(imp, 1, 6, 3), 0f);
+    }
+
+    /**
+     * Why the difference above cannot reach a user of <em>this</em> plugin.
+     *
+     * <p>The label image reaching {@code LabelRenumberer} in production is built
+     * by {@code StarDistTrackMateRunner} as a {@link ShortProcessor} stack.
+     * Unsigned 16-bit integers cannot be negative, cannot be NaN or infinite, and
+     * cannot be fractional, so the cleared branch is unreachable by construction
+     * rather than by convention.
+     */
+    @Test
+    public void detectionCannotProduceAnInvalidNonZeroPixel() {
+        ShortProcessor sp = new ShortProcessor(W, H);
+        sp.setf(2, 2, -7f);
+        sp.setf(3, 3, Float.NaN);
+        sp.setf(4, 4, 2.5f);
+
+        for (int i = 0; i < sp.getPixelCount(); i++) {
+            float value = sp.getf(i);
+            assertTrue("a ShortProcessor cannot hold a negative label, got " + value,
+                    value >= 0f);
+            assertTrue("a ShortProcessor cannot hold a non-finite label, got " + value,
+                    !Float.isNaN(value) && !Float.isInfinite(value));
+            assertEquals("a ShortProcessor cannot hold a fractional label, got " + value,
+                    value, Math.rint(value), 0f);
+        }
     }
 }

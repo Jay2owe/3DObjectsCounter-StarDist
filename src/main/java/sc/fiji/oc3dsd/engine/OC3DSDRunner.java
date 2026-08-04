@@ -6,6 +6,7 @@ import ij.measure.ResultsTable;
 import sc.fiji.oc3dsd.api.MorphPredicate;
 import sc.fiji.oc3dsd.api.OC3DSDParameters;
 import sc.fiji.oc3dsd.api.OC3DSDResult;
+import sc.fiji.oc3d.core.label.LabelRenumberer;
 import sc.fiji.oc3d.core.map.ObjectMapBuilder;
 import sc.fiji.oc3d.core.measure.LabelFeatureAccumulator;
 import sc.fiji.oc3d.core.progress.StatusBarProgress;
