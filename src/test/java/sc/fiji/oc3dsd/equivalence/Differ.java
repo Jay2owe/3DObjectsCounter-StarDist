@@ -65,6 +65,8 @@ final class Differ {
     static final class Report {
         final List<Difference> differences = new ArrayList<Difference>();
         final Map<String, Deltas> deltasByColumn = new TreeMap<String, Deltas>();
+        /** Differences matched by {@link AcceptedDifferences}, kept so they stay visible. */
+        final List<AcceptedDifferences.Entry> accepted = new ArrayList<AcceptedDifferences.Entry>();
 
         List<Difference> ofTier(Tiers.Tier tier) {
             List<Difference> out = new ArrayList<Difference>();
@@ -161,10 +163,17 @@ final class Differ {
         for (int i = 0; i < max; i++) {
             String a = i < golden.size() ? golden.get(i) : "<absent>";
             String b = i < candidate.size() ? candidate.get(i) : "<absent>";
-            if (!a.equals(b)) {
-                report.differences.add(new Difference(run, section, Tiers.Tier.ONE,
-                        "line " + i + ": golden '" + a + "' candidate '" + b + "'"));
+            if (a.equals(b)) continue;
+            // Only ever consulted here, on exact text. The numeric table
+            // comparison never reaches this, so no measurement column can be
+            // accepted away.
+            AcceptedDifferences.Entry accepted = AcceptedDifferences.find(run, section, a, b);
+            if (accepted != null) {
+                report.accepted.add(accepted);
+                continue;
             }
+            report.differences.add(new Difference(run, section, Tiers.Tier.ONE,
+                    "line " + i + ": golden '" + a + "' candidate '" + b + "'"));
         }
     }
 

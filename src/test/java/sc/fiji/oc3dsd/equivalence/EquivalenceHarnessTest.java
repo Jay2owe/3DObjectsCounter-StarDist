@@ -104,6 +104,30 @@ public class EquivalenceHarnessTest {
         // run so it is never assembled retrospectively to fit a result.
         System.out.println("Tier 2/3 delta table\n" + report.deltaTable());
 
+        // Accepted differences stay visible. Writing one down is not the same as
+        // making it disappear.
+        for (int i = 0; i < report.accepted.size(); i++) {
+            System.out.println("ACCEPTED DIFFERENCE  " + report.accepted.get(i));
+        }
+
+        // A registered entry that no longer fires is stale, and stale entries are
+        // how a narrow exemption widens into a blanket one. Fail rather than let
+        // them accumulate.
+        List<AcceptedDifferences.Entry> unused = new ArrayList<AcceptedDifferences.Entry>();
+        for (AcceptedDifferences.Entry entry : AcceptedDifferences.all()) {
+            if (!report.accepted.contains(entry)) unused.add(entry);
+        }
+        if (!unused.isEmpty()) {
+            StringBuilder sb = new StringBuilder(
+                    "Accepted-difference entries that matched nothing. The behaviour they"
+                            + " describe has changed again, or they were never needed."
+                            + " Remove them or correct them:\n");
+            for (int i = 0; i < unused.size(); i++) {
+                sb.append("  - ").append(unused.get(i)).append('\n');
+            }
+            fail(sb.toString());
+        }
+
         List<Differ.Difference> tier1 = report.ofTier(Tiers.Tier.ONE);
         List<Differ.Difference> tier2 = report.ofTier(Tiers.Tier.TWO);
         List<Differ.Difference> tier3 = report.ofTier(Tiers.Tier.THREE);

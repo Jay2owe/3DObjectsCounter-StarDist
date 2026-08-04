@@ -39,6 +39,21 @@ and dressed in 3D Objects Counter+'s dialog and output surface.
   and a public Java API (`OC3DSD` / `OC3DSDParameters` / `OC3DSDResult`) that
   opens no dialogs, shows no windows and writes no files.
 
+### Changed
+
+- **Shared internals now come from `oc3d-core`** rather than from this
+  repository's own copies. No number a user sees changes: the adoption is gated
+  on an equivalence harness that compares the statistics table, the summary, the
+  label partition, all four maps and their number overlays, and the macro
+  round-trip against goldens captured from the pre-migration build, with zero
+  tolerance on every integer and intensity column. The module is bundled into
+  the jar, so nothing extra needs installing.
+- **The "unknown macro filter feature" message lists the valid feature names
+  alphabetically**, where it previously listed them in an internal declaration
+  order. Only the ordering of that one list changed — the same names are
+  accepted, a valid macro parses to exactly the same parameters, and the same
+  exception is thrown for an invalid one.
+
 ### Fixed — carried over from FLASH, where the pipeline's usage pattern hid them
 
 These are corrections to the extracted source, not to a previous release of this
