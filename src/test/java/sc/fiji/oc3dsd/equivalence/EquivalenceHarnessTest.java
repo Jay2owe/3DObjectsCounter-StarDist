@@ -267,14 +267,25 @@ public class EquivalenceHarnessTest {
 
     private static String manifest(List<Harness.Run> runs) {
         StringBuilder sb = new StringBuilder();
+        sb.append("golden set: ").append(Harness.GOLDEN_SET).append('\n');
         sb.append("reference sha: ").append(Harness.REFERENCE_SHA).append('\n');
         sb.append("runs: ").append(runs.size()).append('\n');
         sb.append("fixtures: ").append(Fixtures.all().size()).append('\n');
         sb.append("configurations: ").append(Sweep.all().size()).append('\n');
         sb.append('\n');
-        sb.append("Captured from the pre-migration build. Immutable from this point:\n");
-        sb.append("harness §7. Detection is NOT exercised — see docs/migration/DETERMINISM.md\n");
-        sb.append("for what this set can and cannot certify.\n");
+        sb.append("The 27-column schema: the column order 3D Objects Counter+ has always\n");
+        sb.append("shipped, adopted from oc3d-core so the family has one column order.\n");
+        sb.append("Median sits between StdDev and Min; the Morph_* block follows Label.\n");
+        sb.append('\n');
+        sb.append("Superseded golden/").append(Harness.REFERENCE_SHA);
+        sb.append(", which records the 26-column layout this plugin\n");
+        sb.append("shipped before. That set is KEPT, not deleted: SchemaTransitionTest reads it\n");
+        sb.append("and proves every value under every carried-over column is identical here\n");
+        sb.append("— 163678 of them — with Median the only column added. Capturing this set\n");
+        sb.append("without that proof would have replaced the evidence with an assumption.\n");
+        sb.append('\n');
+        sb.append("Immutable from this point: harness §7. Detection is NOT exercised — see\n");
+        sb.append("docs/migration/DETERMINISM.md for what this set can and cannot certify.\n");
         sb.append('\n');
         sb.append("Coverage reductions, stated rather than left implicit:\n");
         sb.append(Harness.reductionNotes());

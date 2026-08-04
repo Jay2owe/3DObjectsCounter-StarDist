@@ -48,6 +48,25 @@ and dressed in 3D Objects Counter+'s dialog and output surface.
   round-trip against goldens captured from the pre-migration build, with zero
   tolerance on every integer and intensity column. The module is bundled into
   the jar, so nothing extra needs installing.
+- **The statistics table gains a `Median` column and matches 3D Objects
+  Counter+'s column order.** This is a **schema change** and the one place where
+  the "nothing a user sees moves" rule was deliberately set aside.
+
+  The table now carries 27 columns instead of 26: `Median` sits between `StdDev`
+  and `Min`, and the `Morph_*` block moves from before `BX` to after `Label`.
+  That is the order 3D Objects Counter+ has always shipped, verified against
+  that plugin's own goldens rather than assumed, and adopting it means the family
+  has one column order instead of two.
+
+  **No value changed.** Every column that existed before still exists, and every
+  value under it is bit-identical — 163,678 of them across 557 runs, checked
+  column-by-column by name against the pre-migration goldens, which are kept in
+  the repository for exactly that purpose. The only column added is `Median`.
+
+  What this affects: a script that reads these tables **by column position**
+  needs updating. One that reads **by column name** keeps working, and will
+  simply see one extra column. `Median` is `NaN` unless an intensity image is
+  measured, as the other intensity columns already are.
 - **The "unknown macro filter feature" message lists the valid feature names
   alphabetically**, where it previously listed them in an internal declaration
   order. Only the ordering of that one list changed — the same names are

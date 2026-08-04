@@ -1,0 +1,15 @@
+Batch output goldens.
+
+configurations: 8
+captured at: Stage 04, before any batch class was reconciled
+
+Provenance: src/main/java/sc/fiji/oc3dsd/batch/ is byte-identical to
+the pre-migration import, and the measurement results it consumes are
+pinned unchanged by the Stage 01 goldens. Identical code on identical
+inputs, so this is equivalent to a pre-migration capture.
+
+Normalised: the input and output roots (temporary directories) and the
+manifest's elapsed_ms column. Nothing else - line endings in particular
+are recorded, not normalised away.
+
+Immutable from this point. Do not recapture to silence a diff.

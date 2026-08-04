@@ -63,40 +63,23 @@ final class AcceptedDifferences {
     private static final List<Entry> ENTRIES = new ArrayList<Entry>();
 
     static {
-        // Stage 02c. Adopting core's MacroFilters for the direct-predicate
-        // grammar. Every one of the fourteen user-visible message strings is
-        // byte-identical between the two implementations; what differs is the
-        // order of the feature list interpolated into this one message. This
-        // plugin listed them in declaration order, core sorts them
-        // alphabetically.
+        // Currently empty, and that is the correct state rather than an omission.
         //
-        // Accepted rather than preserved: a user reading "which names may I
-        // use?" is better served by an alphabetical list, the parsed result is
-        // identical either way, and the alternative is keeping a duplicate
-        // parser alive to protect the ordering of an error message. CHANGELOG
-        // entry accompanies this.
-        String features = "compactness, elongation, feret_diameter_max, fractal_dim_xy, "
-                + "fractal_r2_xy, lacunarity_mean_xy, lacunarity_spread_xy, max_intensity, "
-                + "mean_intensity, mp, pb, ri, sholl_critical_intersections, "
-                + "sholl_critical_radius_um, sholl_primary_branches, sholl_schoenen_index, "
-                + "skeleton_branches, skeleton_endpoints, skeleton_junctions, skeleton_voxels, "
-                + "sphericity, sri, surface_area, volume, volume_calibrated, vsd";
-        String legacy = "feret_diameter_max, volume_calibrated, mean_intensity, max_intensity, "
-                + "surface_area, compactness, sphericity, elongation, volume, fractal_dim_xy, "
-                + "fractal_r2_xy, lacunarity_mean_xy, lacunarity_spread_xy, "
-                + "sholl_critical_radius_um, sholl_critical_intersections, sholl_schoenen_index, "
-                + "sholl_primary_branches, skeleton_branches, skeleton_junctions, "
-                + "skeleton_endpoints, skeleton_voxels, ri, sri, pb, mp, vsd";
-        String prefix = "parse=java.lang.IllegalArgumentException: "
-                + "Unknown macro filter feature in 'no_such_feature>=1'. Supported features: ";
-        ENTRIES.add(new Entry(
-                "macro_roundtrip",
-                "options=no_such_feature>=1",
-                prefix + legacy + ".",
-                prefix + features + ".",
-                "Core lists the supported features alphabetically; this plugin listed them "
-                        + "in declaration order. Same features, same parse result, same "
-                        + "exception type - only the order of the list in the message text."));
+        // The register held one entry from Stage 02c: adopting core's
+        // MacroFilters made the "unknown macro filter feature" message list the
+        // valid names alphabetically where this plugin had listed them in
+        // declaration order. It described a difference between the pre-migration
+        // goldens and current behaviour.
+        //
+        // The golden set moved to core-27col in Stage 04e, captured from current
+        // behaviour, so that message is now simply what the goldens record and
+        // there is no difference left to accept. The entry was removed when the
+        // stale-entry guard below failed the build for it — which is the guard
+        // doing its job, not an inconvenience to route around.
+        //
+        // The change is still user-visible relative to what shipped, and the
+        // CHANGELOG remains its record. A register is for differences a run
+        // still produces, not for a history of them.
     }
 
     private AcceptedDifferences() {

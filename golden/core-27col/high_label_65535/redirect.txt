@@ -1,0 +1,100 @@
+# fixture=high_label_65535 config=redirect
+## configuration
+minSize=0
+maxSize=Infinity
+excludeOnEdges=false
+redirect=true
+calibration=NONE
+maps=true,true,true,true
+filters=
+## counts
+objects=2
+droppedByMorphology=0
+droppedByDetectorFilters=0
+droppedShort=0
+singleSlice=0
+## warnings
+count=0
+## statistics
+rows=2 columns=27
+headings	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=3545ebcfee67318f2295756c4495e5f53ef2fa6cecd13f13ddcdfb1084a224b8
+detail=full
+0	64.0	96.0	64.0	56.0	9440.0	147.5	36.383375324452786	147.5	74.0	221.0	4.5	5.5	1.5	4.559322033898305	5.610169491525424	1.7457627118644068	3.0	4.0	0.0	4.0	4.0	4.0	65534.0	1.1663352536115121	1.586610077372494	1.0	5.196152422706632
+1	64.0	96.0	64.0	56.0	11626.0	181.65625	46.183133673858684	186.0	5.0	250.0	10.5	5.5	1.5	10.50498881816618	5.524686048511956	1.6347841045931533	9.0	4.0	0.0	4.0	4.0	4.0	65535.0	1.1663352536115121	1.586610077372494	1.0	5.196152422706633
+## summary
+rows=4 columns=28
+headings	Statistic	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=5345ad93349036a8ea49afd6e7d6b5c9d1ec6a31238e32d81df5e318a35a62bb
+detail=full
+0	s:Mean	64.0	96.0	64.0	56.0	10533.0	164.578125	41.28325449915573	166.75	39.5	235.5	7.5	5.5	1.5	7.532155426032242	5.56742777001869	1.69027340822878	6.0	4.0	0.0	4.0	4.0	4.0	65534.5	1.1663352536115121	1.586610077372494	1.0	5.196152422706632
+1	s:StdDev	0.0	0.0	0.0	0.0	1093.0	17.078125	4.899879174703001	19.25	34.5	14.5	3.0	0.0	0.0	2.9728333921339383	0.04274172150675752	0.05548930363562767	3.0	0.0	0.0	0.0	0.0	0.0	0.5	0.0	0.0	0.0	8.429369702178807E-8
+2	s:Min	64.0	96.0	64.0	56.0	9440.0	147.5	36.383375324452786	147.5	5.0	221.0	4.5	5.5	1.5	4.559322033898305	5.524686048511956	1.6347841045931533	3.0	4.0	0.0	4.0	4.0	4.0	65534.0	1.1663352536115121	1.586610077372494	1.0	5.196152422706632
+3	s:Max	64.0	96.0	64.0	56.0	11626.0	181.65625	46.183133673858684	186.0	74.0	250.0	10.5	5.5	1.5	10.50498881816618	5.610169491525424	1.7457627118644068	9.0	4.0	0.0	4.0	4.0	4.0	65535.0	1.1663352536115121	1.586610077372494	1.0	5.196152422706633
+## labelImage
+dims=16x16x4
+czt=1,4,1
+bitDepth=16
+displayRange=0.0,0.0
+calibration=1.0,1.0,1.0,pixel
+labels=2
+partition_sha256=a038bf740a8f1c1910bb0a50d30c68af488912e6dad963db184d51df2de53bd5
+detail=full
+65534	64	3,4,0	4,4,4	e4d5550463bfdc25b4699fbd7afd4a5d
+65535	64	9,4,0	4,4,4	3fd37452ecab92a5e1043c6730575b0f
+## objectMap
+title=Objects map of high_label_65535
+dims=16x16x4
+czt=1,4,1
+bitDepth=16
+displayRange=0.0,65535.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=aa773bd5113123336c71341b9a20e11bc88610c71ef51df8ae94eb7701d43909
+overlaySkipped=no
+overlay=2
+overlay_sha256=8f6bf7ba1120fd9c7ead68c9dd5ca1c790d62320d7325f2011585cd133d313a1
+detail=full
+65534	3	5	6
+65535	3	11	6
+## surfaceMap
+title=Surfaces map of high_label_65535
+dims=16x16x4
+czt=1,4,1
+bitDepth=16
+displayRange=0.0,65535.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=ccaff031ea16e11d1e2d164e7157b9bc710bcbcba5948c1ed90d0c5bfb0449f0
+overlaySkipped=no
+overlay=2
+overlay_sha256=8f6bf7ba1120fd9c7ead68c9dd5ca1c790d62320d7325f2011585cd133d313a1
+detail=full
+65534	3	5	6
+65535	3	11	6
+## centroidMap
+title=Centroids map of high_label_65535
+dims=16x16x4
+czt=1,4,1
+bitDepth=16
+displayRange=0.0,65535.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=54442c0ff9a7606e21e05428f3c802976710746ecb6e963a98bbf49324395bc2
+overlaySkipped=no
+overlay=2
+overlay_sha256=8f6bf7ba1120fd9c7ead68c9dd5ca1c790d62320d7325f2011585cd133d313a1
+detail=full
+65534	3	5	6
+65535	3	11	6
+## centreOfMassMap
+title=Centers of mass map of high_label_65535
+dims=16x16x4
+czt=1,4,1
+bitDepth=16
+displayRange=0.0,65535.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=54442c0ff9a7606e21e05428f3c802976710746ecb6e963a98bbf49324395bc2
+overlaySkipped=no
+overlay=2
+overlay_sha256=8f6bf7ba1120fd9c7ead68c9dd5ca1c790d62320d7325f2011585cd133d313a1
+detail=full
+65534	3	5	6
+65535	3	11	6

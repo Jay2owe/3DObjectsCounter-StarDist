@@ -1,0 +1,94 @@
+# fixture=single_voxel config=cal_anisotropic
+## configuration
+minSize=0
+maxSize=Infinity
+excludeOnEdges=false
+redirect=false
+calibration=ANISOTROPIC
+maps=true,true,true,true
+filters=
+## counts
+objects=1
+droppedByMorphology=0
+droppedByDetectorFilters=0
+droppedShort=0
+singleSlice=0
+## warnings
+count=0
+## statistics
+rows=1 columns=27
+headings	Volume (micron^3)	Surface (micron^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=6c99aa06c450027646484aad26c8f350de7ea2bfea366980a41503b0b657fe7a
+detail=full
+0	0.04000000000000001	0.8800000000000001	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	1.0	1.0	1.0	1.0	s:NaN	s:NaN	s:NaN	0.0
+## summary
+rows=4 columns=28
+headings	Statistic	Volume (micron^3)	Surface (micron^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=28f0e487b639f5f76141a288685b2c6c0c9ed005a6a4440eb0126cc116c3bb5a
+detail=full
+0	s:Mean	0.04000000000000001	0.8800000000000001	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	1.0	1.0	1.0	1.0	s:NaN	s:NaN	s:NaN	0.0
+1	s:StdDev	0.0	0.0	0.0	0.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	s:NaN	s:NaN	s:NaN	0.0
+2	s:Min	0.04000000000000001	0.8800000000000001	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	1.0	1.0	1.0	1.0	s:NaN	s:NaN	s:NaN	0.0
+3	s:Max	0.04000000000000001	0.8800000000000001	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	1.0	1.0	1.0	1.0	s:NaN	s:NaN	s:NaN	0.0
+## labelImage
+dims=16x16x16
+czt=1,16,1
+bitDepth=16
+displayRange=0.0,0.0
+calibration=0.2,0.2,1.0,micron
+labels=1
+partition_sha256=30db39d03119bfeb21e5cbb25430db0f0702dc05222cb4f995c6544ab2bf2fd0
+detail=full
+1	1	8,8,8	1,1,1	af9a254e3901c577e7b957ea69e54c29
+## objectMap
+title=Objects map of single_voxel
+dims=16x16x16
+czt=1,16,1
+bitDepth=16
+displayRange=0.0,1.0
+calibration=0.2,0.2,1.0,micron
+pixels_sha256=84c7c58009ccf8a7df5c5a8d63723ce249ec5c93e1a6f4515b1d34f27350fecb
+overlaySkipped=no
+overlay=1
+overlay_sha256=54082a0e37ed6d21ce5ed64d5c401926869d31bf61029f0dc60eef931d8ae8b3
+detail=full
+1	9	8	8
+## surfaceMap
+title=Surfaces map of single_voxel
+dims=16x16x16
+czt=1,16,1
+bitDepth=8
+displayRange=0.0,1.0
+calibration=0.2,0.2,1.0,micron
+pixels_sha256=84c7c58009ccf8a7df5c5a8d63723ce249ec5c93e1a6f4515b1d34f27350fecb
+overlaySkipped=no
+overlay=1
+overlay_sha256=54082a0e37ed6d21ce5ed64d5c401926869d31bf61029f0dc60eef931d8ae8b3
+detail=full
+1	9	8	8
+## centroidMap
+title=Centroids map of single_voxel
+dims=16x16x16
+czt=1,16,1
+bitDepth=8
+displayRange=0.0,1.0
+calibration=0.2,0.2,1.0,micron
+pixels_sha256=84c7c58009ccf8a7df5c5a8d63723ce249ec5c93e1a6f4515b1d34f27350fecb
+overlaySkipped=no
+overlay=1
+overlay_sha256=54082a0e37ed6d21ce5ed64d5c401926869d31bf61029f0dc60eef931d8ae8b3
+detail=full
+1	9	8	8
+## centreOfMassMap
+title=Centers of mass map of single_voxel
+dims=16x16x16
+czt=1,16,1
+bitDepth=8
+displayRange=0.0,1.0
+calibration=0.2,0.2,1.0,micron
+pixels_sha256=84c7c58009ccf8a7df5c5a8d63723ce249ec5c93e1a6f4515b1d34f27350fecb
+overlaySkipped=no
+overlay=1
+overlay_sha256=54082a0e37ed6d21ce5ed64d5c401926869d31bf61029f0dc60eef931d8ae8b3
+detail=full
+1	9	8	8

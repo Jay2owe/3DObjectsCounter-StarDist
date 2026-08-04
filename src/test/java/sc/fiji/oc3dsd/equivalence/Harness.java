@@ -34,12 +34,27 @@ final class Harness {
     static final String CAPTURE_PROPERTY = "oc3dsd.harness.capture";
 
     /**
-     * The pre-migration reference commit, from SD stage 01 step 0. Goldens are
-     * named after this and only this: the seam commit that follows it is
-     * behaviour-neutral, and later commits are the migration itself, which is
-     * what the goldens exist to judge.
+     * The pre-migration reference commit, from SD stage 01 step 0.
+     *
+     * <p>No longer the active golden set — see {@link #GOLDEN_SET} — but still
+     * the reference the migration is judged against. {@code golden/d4ef7df} is
+     * kept as the record of what shipped before, and
+     * {@link SchemaTransitionTest} reads it directly to prove that adopting
+     * core's schema moved the columns and no values.
      */
     static final String REFERENCE_SHA = "d4ef7df";
+
+    /**
+     * The golden set currently compared against.
+     *
+     * <p>Named for the schema rather than a commit, because that is what
+     * distinguishes it: the 27-column layout 3D Objects Counter+ has always
+     * shipped, which this plugin adopted from {@code oc3d-core} so the family
+     * has one column order. The values under every column carried over from
+     * {@link #REFERENCE_SHA} are identical — 163 678 of them, checked by
+     * {@link SchemaTransitionTest}, which is what licensed capturing this set.
+     */
+    static final String GOLDEN_SET = "core-27col";
 
     static {
         // ObjectMapBuilder refuses to build an optional map unless a reserve of
@@ -69,7 +84,7 @@ final class Harness {
         File base = configured == null || configured.trim().isEmpty()
                 ? new File(System.getProperty("user.dir"), "golden")
                 : new File(configured.trim());
-        return new File(base, REFERENCE_SHA);
+        return new File(base, GOLDEN_SET);
     }
 
     static boolean captureRequested() {

@@ -1,0 +1,50 @@
+# fixture=single_voxel config=no_maps_redirect
+## configuration
+minSize=0
+maxSize=Infinity
+excludeOnEdges=false
+redirect=true
+calibration=NONE
+maps=false,false,false,false
+filters=
+## counts
+objects=1
+droppedByMorphology=0
+droppedByDetectorFilters=0
+droppedShort=0
+singleSlice=0
+## warnings
+count=0
+## statistics
+rows=1 columns=27
+headings	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=02b91d83e81e64b93a379030c02ba50dc80e74a48fa02b0baed9cbc50370e941
+detail=full
+0	1.0	6.0	1.0	1.0	142.0	142.0	0.0	142.0	142.0	142.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	1.0	1.0	1.0	1.0	s:NaN	s:NaN	s:NaN	0.0
+## summary
+rows=4 columns=28
+headings	Statistic	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=c252811eb67c14a08d78feb0870fcaf7a69b7151d99bc5ad94cc43a8a27ab474
+detail=full
+0	s:Mean	1.0	6.0	1.0	1.0	142.0	142.0	0.0	142.0	142.0	142.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	1.0	1.0	1.0	1.0	s:NaN	s:NaN	s:NaN	0.0
+1	s:StdDev	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	s:NaN	s:NaN	s:NaN	0.0
+2	s:Min	1.0	6.0	1.0	1.0	142.0	142.0	0.0	142.0	142.0	142.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	1.0	1.0	1.0	1.0	s:NaN	s:NaN	s:NaN	0.0
+3	s:Max	1.0	6.0	1.0	1.0	142.0	142.0	0.0	142.0	142.0	142.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	1.0	1.0	1.0	1.0	s:NaN	s:NaN	s:NaN	0.0
+## labelImage
+dims=16x16x16
+czt=1,16,1
+bitDepth=16
+displayRange=0.0,0.0
+calibration=1.0,1.0,1.0,pixel
+labels=1
+partition_sha256=30db39d03119bfeb21e5cbb25430db0f0702dc05222cb4f995c6544ab2bf2fd0
+detail=full
+1	1	8,8,8	1,1,1	af9a254e3901c577e7b957ea69e54c29
+## objectMap
+absent
+## surfaceMap
+absent
+## centroidMap
+absent
+## centreOfMassMap
+absent

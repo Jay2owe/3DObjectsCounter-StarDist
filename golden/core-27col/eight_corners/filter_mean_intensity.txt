@@ -1,0 +1,130 @@
+# fixture=eight_corners config=filter_mean_intensity
+## configuration
+minSize=0
+maxSize=Infinity
+excludeOnEdges=false
+redirect=true
+calibration=NONE
+maps=true,true,true,true
+filters=mean_intensity>=10
+## counts
+objects=7
+droppedByMorphology=1
+droppedByDetectorFilters=0
+droppedShort=0
+singleSlice=0
+## warnings
+count=0
+## statistics
+rows=7 columns=27
+headings	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=6a79350916363929ffcf2a7f9b72cf532a902f0b6f9fccf9b77c6114c0952676
+detail=full
+0	1.0	6.0	1.0	1.0	106.0	106.0	0.0	106.0	106.0	106.0	15.0	0.0	0.0	15.0	0.0	0.0	15.0	0.0	0.0	1.0	1.0	1.0	1.0	s:NaN	s:NaN	s:NaN	0.0
+1	1.0	6.0	1.0	1.0	196.0	196.0	0.0	196.0	196.0	196.0	0.0	15.0	0.0	0.0	15.0	0.0	0.0	15.0	0.0	1.0	1.0	1.0	2.0	s:NaN	s:NaN	s:NaN	0.0
+2	1.0	6.0	1.0	1.0	50.0	50.0	0.0	50.0	50.0	50.0	15.0	15.0	0.0	15.0	15.0	0.0	15.0	15.0	0.0	1.0	1.0	1.0	3.0	s:NaN	s:NaN	s:NaN	0.0
+3	1.0	6.0	1.0	1.0	185.0	185.0	0.0	185.0	185.0	185.0	0.0	0.0	15.0	0.0	0.0	15.0	0.0	0.0	15.0	1.0	1.0	1.0	4.0	s:NaN	s:NaN	s:NaN	0.0
+4	1.0	6.0	1.0	1.0	39.0	39.0	0.0	39.0	39.0	39.0	15.0	0.0	15.0	15.0	0.0	15.0	15.0	0.0	15.0	1.0	1.0	1.0	5.0	s:NaN	s:NaN	s:NaN	0.0
+5	1.0	6.0	1.0	1.0	129.0	129.0	0.0	129.0	129.0	129.0	0.0	15.0	15.0	0.0	15.0	15.0	0.0	15.0	15.0	1.0	1.0	1.0	6.0	s:NaN	s:NaN	s:NaN	0.0
+6	1.0	6.0	1.0	1.0	234.0	234.0	0.0	234.0	234.0	234.0	15.0	15.0	15.0	15.0	15.0	15.0	15.0	15.0	15.0	1.0	1.0	1.0	7.0	s:NaN	s:NaN	s:NaN	0.0
+## summary
+rows=4 columns=28
+headings	Statistic	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=18ff6c57b67788ead4475fff2beedb5b09ee7f3fcff8c3b30dccc7eae81848a6
+detail=full
+0	s:Mean	1.0	6.0	1.0	1.0	134.14285714285714	134.14285714285714	0.0	134.14285714285714	134.14285714285714	134.14285714285714	8.571428571428571	8.571428571428571	8.571428571428571	8.571428571428571	8.571428571428571	8.571428571428571	8.571428571428571	8.571428571428571	8.571428571428571	1.0	1.0	1.0	4.0	s:NaN	s:NaN	s:NaN	0.0
+1	s:StdDev	0.0	0.0	0.0	0.0	69.0081332089167	69.0081332089167	0.0	69.0081332089167	69.0081332089167	69.0081332089167	7.423074889580904	7.423074889580904	7.423074889580904	7.423074889580904	7.423074889580904	7.423074889580904	7.423074889580904	7.423074889580904	7.423074889580904	0.0	0.0	0.0	2.0	s:NaN	s:NaN	s:NaN	0.0
+2	s:Min	1.0	6.0	1.0	1.0	39.0	39.0	0.0	39.0	39.0	39.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	1.0	1.0	1.0	1.0	s:NaN	s:NaN	s:NaN	0.0
+3	s:Max	1.0	6.0	1.0	1.0	234.0	234.0	0.0	234.0	234.0	234.0	15.0	15.0	15.0	15.0	15.0	15.0	15.0	15.0	15.0	1.0	1.0	1.0	7.0	s:NaN	s:NaN	s:NaN	0.0
+## labelImage
+dims=16x16x16
+czt=1,16,1
+bitDepth=16
+displayRange=0.0,7.0
+calibration=1.0,1.0,1.0,pixel
+labels=7
+partition_sha256=b4289d67c93d6a4470b5ef70c11a09772de97fc6bb716247a160ae674cf7a70d
+detail=full
+1	1	15,0,0	1,1,1	af63c24c8601c05e6b8c36c9ec587f29
+2	1	0,15,0	1,1,1	4f63bd4f48e1b7df744f1cc9d4587f29
+3	1	15,15,0	1,1,1	4f63c24f48e1c05eab8f36c9ec587f29
+4	1	0,0,15	1,1,1	af6a894c8601b7dfed75d1a6d4c07f89
+5	1	15,0,15	1,1,1	af6a8e4c8601c05e24b5eba6ecc07f89
+6	1	0,15,15	1,1,1	4f6a894f48e1b7df2d78d1a6d4c07f89
+7	1	15,15,15	1,1,1	4f6a8e4f48e1c05e64b8eba6ecc07f89
+## objectMap
+title=Objects map of eight_corners
+dims=16x16x16
+czt=1,16,1
+bitDepth=16
+displayRange=0.0,7.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=9cfcaee87667df037a0c450a65e8ce5dd53cafb4ed5a1f6a5a71b412ad9aafa2
+overlaySkipped=no
+overlay=7
+overlay_sha256=36fed84bef9f7ad15e8794ef0d7a2a535788ea2c1049033330381ed9f57a0b3d
+detail=full
+1	1	15	0
+2	1	0	15
+3	1	15	15
+4	16	0	0
+5	16	15	0
+6	16	0	15
+7	16	15	15
+## surfaceMap
+title=Surfaces map of eight_corners
+dims=16x16x16
+czt=1,16,1
+bitDepth=8
+displayRange=0.0,7.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=9cfcaee87667df037a0c450a65e8ce5dd53cafb4ed5a1f6a5a71b412ad9aafa2
+overlaySkipped=no
+overlay=7
+overlay_sha256=36fed84bef9f7ad15e8794ef0d7a2a535788ea2c1049033330381ed9f57a0b3d
+detail=full
+1	1	15	0
+2	1	0	15
+3	1	15	15
+4	16	0	0
+5	16	15	0
+6	16	0	15
+7	16	15	15
+## centroidMap
+title=Centroids map of eight_corners
+dims=16x16x16
+czt=1,16,1
+bitDepth=8
+displayRange=0.0,7.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=9cfcaee87667df037a0c450a65e8ce5dd53cafb4ed5a1f6a5a71b412ad9aafa2
+overlaySkipped=no
+overlay=7
+overlay_sha256=36fed84bef9f7ad15e8794ef0d7a2a535788ea2c1049033330381ed9f57a0b3d
+detail=full
+1	1	15	0
+2	1	0	15
+3	1	15	15
+4	16	0	0
+5	16	15	0
+6	16	0	15
+7	16	15	15
+## centreOfMassMap
+title=Centers of mass map of eight_corners
+dims=16x16x16
+czt=1,16,1
+bitDepth=8
+displayRange=0.0,7.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=9cfcaee87667df037a0c450a65e8ce5dd53cafb4ed5a1f6a5a71b412ad9aafa2
+overlaySkipped=no
+overlay=7
+overlay_sha256=36fed84bef9f7ad15e8794ef0d7a2a535788ea2c1049033330381ed9f57a0b3d
+detail=full
+1	1	15	0
+2	1	0	15
+3	1	15	15
+4	16	0	0
+5	16	15	0
+6	16	0	15
+7	16	15	15

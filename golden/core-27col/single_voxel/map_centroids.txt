@@ -1,0 +1,61 @@
+# fixture=single_voxel config=map_centroids
+## configuration
+minSize=0
+maxSize=Infinity
+excludeOnEdges=false
+redirect=false
+calibration=NONE
+maps=false,false,true,false
+filters=
+## counts
+objects=1
+droppedByMorphology=0
+droppedByDetectorFilters=0
+droppedShort=0
+singleSlice=0
+## warnings
+count=0
+## statistics
+rows=1 columns=27
+headings	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=6dcf806ad6a129ee928997220e733bf625f7a76ee6e3aa965c763d4a9afbdf4d
+detail=full
+0	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	1.0	1.0	1.0	1.0	s:NaN	s:NaN	s:NaN	0.0
+## summary
+rows=4 columns=28
+headings	Statistic	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=70310b7b7c213fec49088a483b2ee74cfacaf46873bacf837657379cbfec5a1c
+detail=full
+0	s:Mean	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	1.0	1.0	1.0	1.0	s:NaN	s:NaN	s:NaN	0.0
+1	s:StdDev	0.0	0.0	0.0	0.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	s:NaN	s:NaN	s:NaN	0.0
+2	s:Min	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	1.0	1.0	1.0	1.0	s:NaN	s:NaN	s:NaN	0.0
+3	s:Max	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	8.0	1.0	1.0	1.0	1.0	s:NaN	s:NaN	s:NaN	0.0
+## labelImage
+dims=16x16x16
+czt=1,16,1
+bitDepth=16
+displayRange=0.0,0.0
+calibration=1.0,1.0,1.0,pixel
+labels=1
+partition_sha256=30db39d03119bfeb21e5cbb25430db0f0702dc05222cb4f995c6544ab2bf2fd0
+detail=full
+1	1	8,8,8	1,1,1	af9a254e3901c577e7b957ea69e54c29
+## objectMap
+absent
+## surfaceMap
+absent
+## centroidMap
+title=Centroids map of single_voxel
+dims=16x16x16
+czt=1,16,1
+bitDepth=8
+displayRange=0.0,1.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=84c7c58009ccf8a7df5c5a8d63723ce249ec5c93e1a6f4515b1d34f27350fecb
+overlaySkipped=no
+overlay=1
+overlay_sha256=54082a0e37ed6d21ce5ed64d5c401926869d31bf61029f0dc60eef931d8ae8b3
+detail=full
+1	9	8	8
+## centreOfMassMap
+absent
