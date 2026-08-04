@@ -65,69 +65,118 @@ public final class OC3DSDRunner {
                     params.linking,
                     params.detectorFilters);
 
-            ImagePlus labels = detection.getLabelImage();
-            Calibration cal = params.input.getCalibration() == null
-                    ? null : params.input.getCalibration().copy();
-
-            // 2. Measure from the labels. Not from the detector's spot features:
-            //    those are diagnostics, and presenting them as morphometry would
-            //    be wrong (see StarDistTrackMateRunner's class documentation).
-            progress.step("Measuring objects");
-            LabelMeasurements.Result measured = LabelMeasurements.scan(
-                    labels, params.intensityImage, cal);
-
-            // 3. Filter on what was measured, then renumber so the survivors are
-            //    contiguous and the maps and tables still join on the label.
-            progress.step("Filtering");
-            ResultsTable objects = measured.toStatisticsTable(null);
-            Set<Integer> keep = survivors(objects, measured, params, labels);
-            int droppedByMorphology = measured.labelsSorted().size() - keep.size();
-
-            if (droppedByMorphology > 0) {
-                LabelRenumberer.Result renumbered = LabelRenumberer.renumber(labels, keep);
-                measured = LabelMeasurements.scan(labels, params.intensityImage, cal);
-                objects = measured.toStatisticsTable(null);
-                remapDetectorStats(detection.getDetectorStats(), renumbered);
-            }
-            joinDetectorColumns(objects, detection.getDetectorStats());
-
-            int objectCount = objects.size();
-
-            // 4. Maps.
-            progress.step("Building maps");
-            String title = params.input.getTitle();
-            ImagePlus objectMap = params.buildObjectMap
-                    ? ObjectMapBuilder.objectMap(labels, objects, title) : null;
-            ImagePlus surfaceMap = params.buildSurfaceMap
-                    ? ObjectMapBuilder.surfaceMap(labels, objects, title) : null;
-            ImagePlus centroidMap = params.buildCentroidMap
-                    ? ObjectMapBuilder.centroidMap(labels, objects, title) : null;
-            ImagePlus comMap = params.buildCentreOfMassMap
-                    ? ObjectMapBuilder.centerOfMassMap(labels, objects, title) : null;
-
-            // 5. Summary.
-            progress.step("Summarising");
-            ResultsTable summary = SummaryStatistics.of(objects);
+            OC3DSDResult result = measureFilterAndMap(
+                    detection.getLabelImage(),
+                    detection.getDetectorStats(),
+                    params,
+                    progress,
+                    start,
+                    detection.getSingleSliceObjects(),
+                    detection.getDroppedShortObjects(),
+                    detection.getDroppedByDetectorFilters());
 
             DependencyDoctor.noteRanSuccessfully();
 
-            return new OC3DSDResult(
-                    objects,
-                    summary,
-                    labels,
-                    objectMap,
-                    surfaceMap,
-                    centroidMap,
-                    comMap,
-                    objectCount,
-                    detection.getSingleSliceObjects(),
-                    detection.getDroppedShortObjects(),
-                    detection.getDroppedByDetectorFilters(),
-                    droppedByMorphology,
-                    System.currentTimeMillis() - start);
+            return result;
         } finally {
             progress.finish("Done");
         }
+    }
+
+    /**
+     * Everything after detection: measure, filter, renumber, map, summarise.
+     * <p>
+     * <strong>Internal seam, not public API.</strong> {@code api/} is the
+     * documented surface; this exists so the equivalence harness can drive the
+     * post-detection pipeline over a corpus of label images without paying for
+     * StarDist inference on every fixture. It is the same code {@link
+     * #run(OC3DSDParameters)} executes — not a reimplementation of it — which is
+     * the whole point: a harness that reproduced this logic could not certify it.
+     * <p>
+     * The detection-derived counts on the returned result are zero here, because
+     * no detection ran. {@code params.input} is used only for its title and
+     * calibration; the labels come from {@code labels}, not from it.
+     *
+     * @param labels         label image, <strong>modified in place</strong> when
+     *                       filtering drops objects
+     * @param detectorStats  detector diagnostics joined on {@code Label}, or null
+     */
+    public static OC3DSDResult measureFilterAndMap(ImagePlus labels,
+                                                   ResultsTable detectorStats,
+                                                   OC3DSDParameters params) {
+        if (params == null) {
+            throw new IllegalArgumentException("params must not be null");
+        }
+        ProgressReporter progress = ProgressReporter.none();
+        return measureFilterAndMap(labels, detectorStats, params, progress,
+                System.currentTimeMillis(), 0, 0, 0);
+    }
+
+    private static OC3DSDResult measureFilterAndMap(ImagePlus labels,
+                                                    ResultsTable detectorStats,
+                                                    OC3DSDParameters params,
+                                                    ProgressReporter progress,
+                                                    long start,
+                                                    int singleSliceObjects,
+                                                    int droppedShortObjects,
+                                                    int droppedByDetectorFilters) {
+        Calibration cal = params.input.getCalibration() == null
+                ? null : params.input.getCalibration().copy();
+
+        // 2. Measure from the labels. Not from the detector's spot features:
+        //    those are diagnostics, and presenting them as morphometry would
+        //    be wrong (see StarDistTrackMateRunner's class documentation).
+        progress.step("Measuring objects");
+        LabelMeasurements.Result measured = LabelMeasurements.scan(
+                labels, params.intensityImage, cal);
+
+        // 3. Filter on what was measured, then renumber so the survivors are
+        //    contiguous and the maps and tables still join on the label.
+        progress.step("Filtering");
+        ResultsTable objects = measured.toStatisticsTable(null);
+        Set<Integer> keep = survivors(objects, measured, params, labels);
+        int droppedByMorphology = measured.labelsSorted().size() - keep.size();
+
+        if (droppedByMorphology > 0) {
+            LabelRenumberer.Result renumbered = LabelRenumberer.renumber(labels, keep);
+            measured = LabelMeasurements.scan(labels, params.intensityImage, cal);
+            objects = measured.toStatisticsTable(null);
+            remapDetectorStats(detectorStats, renumbered);
+        }
+        joinDetectorColumns(objects, detectorStats);
+
+        int objectCount = objects.size();
+
+        // 4. Maps.
+        progress.step("Building maps");
+        String title = params.input.getTitle();
+        ImagePlus objectMap = params.buildObjectMap
+                ? ObjectMapBuilder.objectMap(labels, objects, title) : null;
+        ImagePlus surfaceMap = params.buildSurfaceMap
+                ? ObjectMapBuilder.surfaceMap(labels, objects, title) : null;
+        ImagePlus centroidMap = params.buildCentroidMap
+                ? ObjectMapBuilder.centroidMap(labels, objects, title) : null;
+        ImagePlus comMap = params.buildCentreOfMassMap
+                ? ObjectMapBuilder.centerOfMassMap(labels, objects, title) : null;
+
+        // 5. Summary.
+        progress.step("Summarising");
+        ResultsTable summary = SummaryStatistics.of(objects);
+
+        return new OC3DSDResult(
+                objects,
+                summary,
+                labels,
+                objectMap,
+                surfaceMap,
+                centroidMap,
+                comMap,
+                objectCount,
+                singleSliceObjects,
+                droppedShortObjects,
+                droppedByDetectorFilters,
+                droppedByMorphology,
+                System.currentTimeMillis() - start);
     }
 
     // ------------------------------------------------------------------
