@@ -1,0 +1,106 @@
+# fixture=out_of_order_labels config=filter_mean_intensity
+## configuration
+minSize=0
+maxSize=Infinity
+excludeOnEdges=false
+redirect=true
+calibration=NONE
+maps=true,true,true,true
+filters=mean_intensity>=10
+## counts
+objects=3
+droppedByMorphology=0
+droppedByDetectorFilters=0
+droppedShort=0
+singleSlice=0
+## warnings
+count=0
+## statistics
+rows=3 columns=26
+headings	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Min	Max	X	Y	Z	XM	YM	ZM	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um	BX	BY	BZ	B-width	B-height	B-depth	Label
+body_sha256=75f73fab3eeddf099a0595531420c2f8f37aa6ea6c56c66261565df29f706915
+detail=full
+0	36.0	96.0	36.0	36.0	3772.0	104.77777777777777	75.44096702835165	2.0	250.0	12.0	6.5	4.5	12.0	6.396076352067868	4.176033934252386	0.8222774618879523	0.5559748675415127	s:NaN	7.071067811865475	12.0	4.0	2.0	1.0	6.0	6.0	1.0
+1	36.0	96.0	36.0	36.0	4731.0	131.41666666666666	83.8647638231404	3.0	247.0	7.0	6.5	3.5	7.0	6.284506446839991	2.896850560135278	0.8222774618879523	0.5559748675415127	s:NaN	7.0710678118654755	7.0	4.0	1.0	1.0	6.0	6.0	4.0
+2	36.0	96.0	36.0	36.0	5690.0	158.05555555555554	59.19785302246307	13.0	251.0	2.0	6.5	2.5	2.0	6.563444639718805	2.814586994727592	0.8222774618879523	0.5559748675415127	s:NaN	7.0710678118654755	2.0	4.0	0.0	1.0	6.0	6.0	9.0
+## summary
+rows=4 columns=27
+headings	Statistic	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Min	Max	X	Y	Z	XM	YM	ZM	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um	BX	BY	BZ	B-width	B-height	B-depth	Label
+body_sha256=6ad4cc8b63e2c1da251f312e0d7135c5aa9c536e0ba51fe8f51bdb8eed4ad5e4
+detail=full
+0	s:Mean	36.0	96.0	36.0	36.0	4731.0	131.41666666666666	72.83452795798505	6.0	249.33333333333334	7.0	6.5	3.5	7.0	6.414675812875555	3.2958238297050855	0.8222774618879521	0.5559748675415127	s:NaN	7.0710678118654755	7.0	4.0	1.0	1.0	6.0	6.0	4.666666666666667
+1	s:StdDev	0.0	0.0	0.0	0.0	783.02022110969	21.750561697491342	10.237488806108361	4.96655480858378	1.69967317119593	4.08248290463863	0.0	0.8164965809277257	4.08248290463863	0.11463299065094155	0.6233079467158923	1.8250120749944284E-8	0.0	s:NaN	0.0	4.08248290463863	0.0	0.816496580927726	0.0	0.0	0.0	3.2998316455372207
+2	s:Min	36.0	96.0	36.0	36.0	3772.0	104.77777777777777	59.19785302246307	2.0	247.0	2.0	6.5	2.5	2.0	6.284506446839991	2.814586994727592	0.8222774618879523	0.5559748675415127	s:NaN	7.071067811865475	2.0	4.0	0.0	1.0	6.0	6.0	1.0
+3	s:Max	36.0	96.0	36.0	36.0	5690.0	158.05555555555554	83.8647638231404	13.0	251.0	12.0	6.5	4.5	12.0	6.563444639718805	4.176033934252386	0.8222774618879523	0.5559748675415127	s:NaN	7.0710678118654755	12.0	4.0	2.0	1.0	6.0	6.0	9.0
+## labelImage
+dims=16x16x16
+czt=1,16,1
+bitDepth=16
+displayRange=0.0,0.0
+calibration=1.0,1.0,1.0,pixel
+labels=3
+partition_sha256=affae34eb8c30f81162e1a09bf9d5383840b195b20550cf6750d4e65bee687a7
+detail=full
+1	36	12,4,2	1,6,6	8237f6c349ed93650acbfdb016a53a8b
+4	36	7,4,1	1,6,6	e8a3e8013095180147a1bbefab5eae42
+9	36	2,4,0	1,6,6	657ac50235fd1c25c89cc454ed4ea833
+## objectMap
+title=Objects map of out_of_order_labels
+dims=16x16x16
+czt=1,16,1
+bitDepth=16
+displayRange=0.0,9.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=3feee888afd1455e5f44b5f56e30544685c7fbf4429dabaf0995787fc1474f43
+overlaySkipped=no
+overlay=3
+overlay_sha256=3007bf58b93d3748ebd424ac8812212ee582da2908b29e331e2aaf97682f2f58
+detail=full
+1	6	12	7
+4	5	7	7
+9	4	2	7
+## surfaceMap
+title=Surfaces map of out_of_order_labels
+dims=16x16x16
+czt=1,16,1
+bitDepth=8
+displayRange=0.0,9.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=3feee888afd1455e5f44b5f56e30544685c7fbf4429dabaf0995787fc1474f43
+overlaySkipped=no
+overlay=3
+overlay_sha256=3007bf58b93d3748ebd424ac8812212ee582da2908b29e331e2aaf97682f2f58
+detail=full
+1	6	12	7
+4	5	7	7
+9	4	2	7
+## centroidMap
+title=Centroids map of out_of_order_labels
+dims=16x16x16
+czt=1,16,1
+bitDepth=8
+displayRange=0.0,9.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=264fc026171ebfc96dae0f2e0937daa6822207e83c73842d8c13b7a2dae201ce
+overlaySkipped=no
+overlay=3
+overlay_sha256=3007bf58b93d3748ebd424ac8812212ee582da2908b29e331e2aaf97682f2f58
+detail=full
+1	6	12	7
+4	5	7	7
+9	4	2	7
+## centreOfMassMap
+title=Centers of mass map of out_of_order_labels
+dims=16x16x16
+czt=1,16,1
+bitDepth=8
+displayRange=0.0,9.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=08ddfb1c1247b5c7018e565bb858747eb6659bb1ef518fc7c6645db8ddee4d60
+overlaySkipped=no
+overlay=3
+overlay_sha256=fe2c07aa15507fc20fac573f597bd3fc83018b81144c972253dc1f9124148ab7
+detail=full
+1	5	12	6
+4	4	7	6
+9	4	2	7

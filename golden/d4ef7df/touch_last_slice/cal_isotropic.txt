@@ -1,0 +1,100 @@
+# fixture=touch_last_slice config=cal_isotropic
+## configuration
+minSize=0
+maxSize=Infinity
+excludeOnEdges=false
+redirect=false
+calibration=ISOTROPIC
+maps=true,true,true,true
+filters=
+## counts
+objects=2
+droppedByMorphology=0
+droppedByDetectorFilters=0
+droppedShort=0
+singleSlice=0
+## warnings
+count=0
+## statistics
+rows=2 columns=26
+headings	Volume (micron^3)	Surface (micron^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Min	Max	X	Y	Z	XM	YM	ZM	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um	BX	BY	BZ	B-width	B-height	B-depth	Label
+body_sha256=21a039979b76ec8ec8daafda572757b897667da9970cf90f35fc2056ae8930b7
+detail=full
+0	2.0	16.5	16.0	16.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.0	8.0	7.5	7.0	8.0	7.5	0.697875742791823	0.3398868085025772	s:NaN	7.5	7.0	8.0	0.0	1.0	1.0	16.0	1.0
+1	2.0	16.5	16.0	16.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	8.0	8.0	7.5	8.0	8.0	7.5	0.697875742791823	0.3398868085025772	s:NaN	7.5	8.0	8.0	0.0	1.0	1.0	16.0	2.0
+## summary
+rows=4 columns=27
+headings	Statistic	Volume (micron^3)	Surface (micron^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Min	Max	X	Y	Z	XM	YM	ZM	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um	BX	BY	BZ	B-width	B-height	B-depth	Label
+body_sha256=8e32ae606c3306f8865a1439a0d26439ca1357c881614ce9892a4cfd7705bc9d
+detail=full
+0	s:Mean	2.0	16.5	16.0	16.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.5	8.0	7.5	7.5	8.0	7.5	0.697875742791823	0.3398868085025772	s:NaN	7.5	7.5	8.0	0.0	1.0	1.0	16.0	1.5
+1	s:StdDev	0.0	0.0	0.0	0.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	0.5	0.0	0.0	0.5	0.0	0.0	0.0	0.0	s:NaN	0.0	0.5	0.0	0.0	0.0	0.0	0.0	0.5
+2	s:Min	2.0	16.5	16.0	16.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.0	8.0	7.5	7.0	8.0	7.5	0.697875742791823	0.3398868085025772	s:NaN	7.5	7.0	8.0	0.0	1.0	1.0	16.0	1.0
+3	s:Max	2.0	16.5	16.0	16.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	8.0	8.0	7.5	8.0	8.0	7.5	0.697875742791823	0.3398868085025772	s:NaN	7.5	8.0	8.0	0.0	1.0	1.0	16.0	2.0
+## labelImage
+dims=16x16x16
+czt=1,16,1
+bitDepth=16
+displayRange=0.0,0.0
+calibration=0.5,0.5,0.5,micron
+labels=2
+partition_sha256=834f759159536e361cc15e3b7aa7f27af34ef8ad27f85962c82354312a610104
+detail=full
+1	16	7,8,0	1,1,16	6760954d2666ecf5e73164ea23442045
+2	16	8,8,0	1,1,16	abbfe56ad9ea5065b75576366195f645
+## objectMap
+title=Objects map of touch_last_slice
+dims=16x16x16
+czt=1,16,1
+bitDepth=16
+displayRange=0.0,2.0
+calibration=0.5,0.5,0.5,micron
+pixels_sha256=2d42b1833e48112950a97e1e4e9dcc2903637566508b334b5300daa903984766
+overlaySkipped=no
+overlay=2
+overlay_sha256=ed5a440251d7bdd5a08f87370fbafbc37ca1d745d00ee1cf4dca71061dd7cb9b
+detail=full
+1	9	7	8
+2	9	8	8
+## surfaceMap
+title=Surfaces map of touch_last_slice
+dims=16x16x16
+czt=1,16,1
+bitDepth=8
+displayRange=0.0,2.0
+calibration=0.5,0.5,0.5,micron
+pixels_sha256=2d42b1833e48112950a97e1e4e9dcc2903637566508b334b5300daa903984766
+overlaySkipped=no
+overlay=2
+overlay_sha256=ed5a440251d7bdd5a08f87370fbafbc37ca1d745d00ee1cf4dca71061dd7cb9b
+detail=full
+1	9	7	8
+2	9	8	8
+## centroidMap
+title=Centroids map of touch_last_slice
+dims=16x16x16
+czt=1,16,1
+bitDepth=8
+displayRange=0.0,2.0
+calibration=0.5,0.5,0.5,micron
+pixels_sha256=1dd7fc8cb1c620982d113e9276d7acd9beeb731ea95046569e0ed39ab163def2
+overlaySkipped=no
+overlay=2
+overlay_sha256=ed5a440251d7bdd5a08f87370fbafbc37ca1d745d00ee1cf4dca71061dd7cb9b
+detail=full
+1	9	7	8
+2	9	8	8
+## centreOfMassMap
+title=Centers of mass map of touch_last_slice
+dims=16x16x16
+czt=1,16,1
+bitDepth=8
+displayRange=0.0,2.0
+calibration=0.5,0.5,0.5,micron
+pixels_sha256=1dd7fc8cb1c620982d113e9276d7acd9beeb731ea95046569e0ed39ab163def2
+overlaySkipped=no
+overlay=2
+overlay_sha256=ed5a440251d7bdd5a08f87370fbafbc37ca1d745d00ee1cf4dca71061dd7cb9b
+detail=full
+1	9	7	8
+2	9	8	8

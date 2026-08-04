@@ -1,0 +1,100 @@
+# fixture=high_label_65536 config=cal_isotropic
+## configuration
+minSize=0
+maxSize=Infinity
+excludeOnEdges=false
+redirect=false
+calibration=ISOTROPIC
+maps=true,true,true,true
+filters=
+## counts
+objects=2
+droppedByMorphology=0
+droppedByDetectorFilters=0
+droppedShort=0
+singleSlice=0
+## warnings
+count=0
+## statistics
+rows=2 columns=26
+headings	Volume (micron^3)	Surface (micron^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Min	Max	X	Y	Z	XM	YM	ZM	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um	BX	BY	BZ	B-width	B-height	B-depth	Label
+body_sha256=98f144f59bb65a45c4e69d3fc55c4c2831c67a92cadf9bba2869be04c6a53b4b
+detail=full
+0	8.0	24.0	64.0	56.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	4.5	5.5	1.5	4.5	5.5	1.5	1.1663352536115121	1.586610077372494	1.0	2.598076211353316	3.0	4.0	0.0	4.0	4.0	4.0	65535.0
+1	8.0	24.0	64.0	56.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	10.5	5.5	1.5	10.5	5.5	1.5	1.1663352536115121	1.586610077372494	1.0	2.5980762113533165	9.0	4.0	0.0	4.0	4.0	4.0	65536.0
+## summary
+rows=4 columns=27
+headings	Statistic	Volume (micron^3)	Surface (micron^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Min	Max	X	Y	Z	XM	YM	ZM	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um	BX	BY	BZ	B-width	B-height	B-depth	Label
+body_sha256=745d4747914232552ff4a8a9d0a51bef3bb1c22190e6d981c71126cc8b08336c
+detail=full
+0	s:Mean	8.0	24.0	64.0	56.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.5	5.5	1.5	7.5	5.5	1.5	1.1663352536115121	1.586610077372494	1.0	2.598076211353316	6.0	4.0	0.0	4.0	4.0	4.0	65535.5
+1	s:StdDev	0.0	0.0	0.0	0.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	3.0	0.0	0.0	3.0	0.0	0.0	0.0	0.0	0.0	4.2146848510894035E-8	3.0	0.0	0.0	0.0	0.0	0.0	0.5
+2	s:Min	8.0	24.0	64.0	56.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	4.5	5.5	1.5	4.5	5.5	1.5	1.1663352536115121	1.586610077372494	1.0	2.598076211353316	3.0	4.0	0.0	4.0	4.0	4.0	65535.0
+3	s:Max	8.0	24.0	64.0	56.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	10.5	5.5	1.5	10.5	5.5	1.5	1.1663352536115121	1.586610077372494	1.0	2.5980762113533165	9.0	4.0	0.0	4.0	4.0	4.0	65536.0
+## labelImage
+dims=16x16x4
+czt=1,4,1
+bitDepth=32
+displayRange=0.0,0.0
+calibration=0.5,0.5,0.5,micron
+labels=2
+partition_sha256=f43993cf526b7c31f9e9b7a8b90cbc64e24cc24e445f043114092bfa977e0ca1
+detail=full
+65535	64	3,4,0	4,4,4	e4d5550463bfdc25b4699fbd7afd4a5d
+65536	64	9,4,0	4,4,4	3fd37452ecab92a5e1043c6730575b0f
+## objectMap
+title=Objects map of high_label_65536
+dims=16x16x4
+czt=1,4,1
+bitDepth=32
+displayRange=0.0,65536.0
+calibration=0.5,0.5,0.5,micron
+pixels_sha256=e935c1ca1dfd0667773a9281ec7c6773fd39d84fe812f5be6e85fdb3b52d4cb6
+overlaySkipped=no
+overlay=2
+overlay_sha256=889dcc473eede858c641b80b72bdf3d8e0c0b48ad4bafb07911e8b676df2c82a
+detail=full
+65535	3	5	6
+65536	3	11	6
+## surfaceMap
+title=Surfaces map of high_label_65536
+dims=16x16x4
+czt=1,4,1
+bitDepth=32
+displayRange=0.0,65536.0
+calibration=0.5,0.5,0.5,micron
+pixels_sha256=06e4b5b9d16f3535bcf10ea015f0ad343341dcb7367f136a59f627d15a6d3c10
+overlaySkipped=no
+overlay=2
+overlay_sha256=889dcc473eede858c641b80b72bdf3d8e0c0b48ad4bafb07911e8b676df2c82a
+detail=full
+65535	3	5	6
+65536	3	11	6
+## centroidMap
+title=Centroids map of high_label_65536
+dims=16x16x4
+czt=1,4,1
+bitDepth=32
+displayRange=0.0,65536.0
+calibration=0.5,0.5,0.5,micron
+pixels_sha256=03c8fd079291254d4a9ecbd0be27a23139ccdcfccbaf0b05c8b8345182c7bf33
+overlaySkipped=no
+overlay=2
+overlay_sha256=889dcc473eede858c641b80b72bdf3d8e0c0b48ad4bafb07911e8b676df2c82a
+detail=full
+65535	3	5	6
+65536	3	11	6
+## centreOfMassMap
+title=Centers of mass map of high_label_65536
+dims=16x16x4
+czt=1,4,1
+bitDepth=32
+displayRange=0.0,65536.0
+calibration=0.5,0.5,0.5,micron
+pixels_sha256=03c8fd079291254d4a9ecbd0be27a23139ccdcfccbaf0b05c8b8345182c7bf33
+overlaySkipped=no
+overlay=2
+overlay_sha256=889dcc473eede858c641b80b72bdf3d8e0c0b48ad4bafb07911e8b676df2c82a
+detail=full
+65535	3	5	6
+65536	3	11	6

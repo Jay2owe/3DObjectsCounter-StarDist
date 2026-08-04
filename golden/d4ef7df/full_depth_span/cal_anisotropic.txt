@@ -1,0 +1,94 @@
+# fixture=full_depth_span config=cal_anisotropic
+## configuration
+minSize=0
+maxSize=Infinity
+excludeOnEdges=false
+redirect=false
+calibration=ANISOTROPIC
+maps=true,true,true,true
+filters=
+## counts
+objects=1
+droppedByMorphology=0
+droppedByDetectorFilters=0
+droppedShort=0
+singleSlice=0
+## warnings
+count=0
+## statistics
+rows=1 columns=26
+headings	Volume (micron^3)	Surface (micron^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Min	Max	X	Y	Z	XM	YM	ZM	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um	BX	BY	BZ	B-width	B-height	B-depth	Label
+body_sha256=1104b6c16646596f4d2a5a4afd8b0891f03954de158e6471de302ef7be25dd08
+detail=full
+0	2.5600000000000005	25.919999999999987	64.0	64.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.5	7.5	7.5	7.5	7.5	7.5	0.8813354708405909	0.6845792766320961	46.09796545437526	15.0	7.0	7.0	0.0	2.0	2.0	16.0	1.0
+## summary
+rows=4 columns=27
+headings	Statistic	Volume (micron^3)	Surface (micron^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Min	Max	X	Y	Z	XM	YM	ZM	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um	BX	BY	BZ	B-width	B-height	B-depth	Label
+body_sha256=5d008f9de5bd15fddf2768eb5dab2dc5d471b4b6a42423990aa077d0a3b3acc3
+detail=full
+0	s:Mean	2.5600000000000005	25.919999999999987	64.0	64.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.5	7.5	7.5	7.5	7.5	7.5	0.8813354708405909	0.6845792766320961	46.09796545437526	15.0	7.0	7.0	0.0	2.0	2.0	16.0	1.0
+1	s:StdDev	0.0	0.0	0.0	0.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0
+2	s:Min	2.5600000000000005	25.919999999999987	64.0	64.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.5	7.5	7.5	7.5	7.5	7.5	0.8813354708405909	0.6845792766320961	46.09796545437526	15.0	7.0	7.0	0.0	2.0	2.0	16.0	1.0
+3	s:Max	2.5600000000000005	25.919999999999987	64.0	64.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.5	7.5	7.5	7.5	7.5	7.5	0.8813354708405909	0.6845792766320961	46.09796545437526	15.0	7.0	7.0	0.0	2.0	2.0	16.0	1.0
+## labelImage
+dims=16x16x16
+czt=1,16,1
+bitDepth=16
+displayRange=0.0,0.0
+calibration=0.2,0.2,1.0,micron
+labels=1
+partition_sha256=86d83a04f20a53b023442dc3823f72a3f8f4971b595ef7bc2510131839ad662e
+detail=full
+1	64	7,7,0	2,2,16	1dd6200e771fb8a522fb17075d733b36
+## objectMap
+title=Objects map of full_depth_span
+dims=16x16x16
+czt=1,16,1
+bitDepth=16
+displayRange=0.0,1.0
+calibration=0.2,0.2,1.0,micron
+pixels_sha256=9e37e23e5934cead9fe9cc238f37dbf0203a0d0bca0ea194914f10c4ee1e048c
+overlaySkipped=no
+overlay=1
+overlay_sha256=54082a0e37ed6d21ce5ed64d5c401926869d31bf61029f0dc60eef931d8ae8b3
+detail=full
+1	9	8	8
+## surfaceMap
+title=Surfaces map of full_depth_span
+dims=16x16x16
+czt=1,16,1
+bitDepth=8
+displayRange=0.0,1.0
+calibration=0.2,0.2,1.0,micron
+pixels_sha256=9e37e23e5934cead9fe9cc238f37dbf0203a0d0bca0ea194914f10c4ee1e048c
+overlaySkipped=no
+overlay=1
+overlay_sha256=54082a0e37ed6d21ce5ed64d5c401926869d31bf61029f0dc60eef931d8ae8b3
+detail=full
+1	9	8	8
+## centroidMap
+title=Centroids map of full_depth_span
+dims=16x16x16
+czt=1,16,1
+bitDepth=8
+displayRange=0.0,1.0
+calibration=0.2,0.2,1.0,micron
+pixels_sha256=84c7c58009ccf8a7df5c5a8d63723ce249ec5c93e1a6f4515b1d34f27350fecb
+overlaySkipped=no
+overlay=1
+overlay_sha256=54082a0e37ed6d21ce5ed64d5c401926869d31bf61029f0dc60eef931d8ae8b3
+detail=full
+1	9	8	8
+## centreOfMassMap
+title=Centers of mass map of full_depth_span
+dims=16x16x16
+czt=1,16,1
+bitDepth=8
+displayRange=0.0,1.0
+calibration=0.2,0.2,1.0,micron
+pixels_sha256=84c7c58009ccf8a7df5c5a8d63723ce249ec5c93e1a6f4515b1d34f27350fecb
+overlaySkipped=no
+overlay=1
+overlay_sha256=54082a0e37ed6d21ce5ed64d5c401926869d31bf61029f0dc60eef931d8ae8b3
+detail=full
+1	9	8	8

@@ -1,0 +1,50 @@
+# fixture=hollow_shell config=combined_loose
+## configuration
+minSize=0
+maxSize=Infinity
+excludeOnEdges=false
+redirect=true
+calibration=ISOTROPIC
+maps=false,false,false,false
+filters=volume>=2
+## counts
+objects=1
+droppedByMorphology=0
+droppedByDetectorFilters=0
+droppedShort=0
+singleSlice=0
+## warnings
+count=0
+## statistics
+rows=1 columns=26
+headings	Volume (micron^3)	Surface (micron^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Min	Max	X	Y	Z	XM	YM	ZM	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um	BX	BY	BZ	B-width	B-height	B-depth	Label
+body_sha256=75374fdd9c41fa92f8020b64b2ae29c1ba4de6ec80282cfeb248815f4e62704d
+detail=full
+0	136.0	498.0	1088.0	1064.0	141543.0	130.09466911764707	72.74682407334465	1.0	251.0	11.5	11.5	11.5	11.477282521919134	11.429184064206638	11.409684689458327	0.39291807751775065	0.06066050637568197	1.0	7.79422863405995	4.0	4.0	4.0	16.0	16.0	16.0	1.0
+## summary
+rows=4 columns=27
+headings	Statistic	Volume (micron^3)	Surface (micron^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Min	Max	X	Y	Z	XM	YM	ZM	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um	BX	BY	BZ	B-width	B-height	B-depth	Label
+body_sha256=7ff40f7f8606c18c7000a487c8dd18dc7e71eccaed2218c8a6539589dfe1decd
+detail=full
+0	s:Mean	136.0	498.0	1088.0	1064.0	141543.0	130.09466911764707	72.74682407334465	1.0	251.0	11.5	11.5	11.5	11.477282521919134	11.429184064206638	11.409684689458327	0.39291807751775065	0.06066050637568197	1.0	7.79422863405995	4.0	4.0	4.0	16.0	16.0	16.0	1.0
+1	s:StdDev	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0
+2	s:Min	136.0	498.0	1088.0	1064.0	141543.0	130.09466911764707	72.74682407334465	1.0	251.0	11.5	11.5	11.5	11.477282521919134	11.429184064206638	11.409684689458327	0.39291807751775065	0.06066050637568197	1.0	7.79422863405995	4.0	4.0	4.0	16.0	16.0	16.0	1.0
+3	s:Max	136.0	498.0	1088.0	1064.0	141543.0	130.09466911764707	72.74682407334465	1.0	251.0	11.5	11.5	11.5	11.477282521919134	11.429184064206638	11.409684689458327	0.39291807751775065	0.06066050637568197	1.0	7.79422863405995	4.0	4.0	4.0	16.0	16.0	16.0	1.0
+## labelImage
+dims=24x24x24
+czt=1,24,1
+bitDepth=16
+displayRange=0.0,0.0
+calibration=0.5,0.5,0.5,micron
+labels=1
+partition_sha256=6f9a02d8fd3b2d89b99101722fffe674de3400e8d71e7c897a7d5897cd44ed52
+detail=full
+1	1088	4,4,4	16,16,16	989fe129e178be1579c919c830a09909
+## objectMap
+absent
+## surfaceMap
+absent
+## centroidMap
+absent
+## centreOfMassMap
+absent

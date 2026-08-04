@@ -185,6 +185,24 @@
 	<build>
 		<finalName>3D_Objects_Counter_StarDist-${project.version}</finalName>
 		<plugins>
+			<!--
+			  The equivalence harness measures fixtures with 65,536 objects: one
+			  accumulator per object, a results table of the same height, and the
+			  harness's own partition record. That does not fit in the default
+			  fork heap.
+
+			  @{argLine} is late evaluation of the property jacoco:prepare-agent
+			  sets. Writing a bare -Xmx here instead would replace that value and
+			  silently switch coverage off.
+			-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<argLine>@{argLine} -Xmx2g</argLine>
+				</configuration>
+			</plugin>
+
 			<!-- Suppress the inherited Class-Path manifest entry, and set an
 			     explicit Automatic-Module-Name (the artifactId starts with a
 			     digit, so Maven cannot derive a valid module name). -->
