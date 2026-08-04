@@ -7,6 +7,7 @@ import sc.fiji.oc3dsd.api.MorphPredicate;
 import sc.fiji.oc3dsd.api.OC3DSDParameters;
 import sc.fiji.oc3dsd.api.OC3DSDResult;
 import sc.fiji.oc3d.core.map.ObjectMapBuilder;
+import sc.fiji.oc3d.core.measure.LabelFeatureAccumulator;
 import sc.fiji.oc3d.core.progress.StatusBarProgress;
 import sc.fiji.oc3dsd.runtime.DependencyDoctor;
 import sc.fiji.oc3dsd.runtime.ModelResolver;
@@ -129,7 +130,7 @@ public final class OC3DSDRunner {
         //    those are diagnostics, and presenting them as morphometry would
         //    be wrong (see StarDistTrackMateRunner's class documentation).
         progress.step("Measuring objects");
-        LabelMeasurements.Result measured = LabelMeasurements.scan(
+        LabelFeatureAccumulator.Result measured = LabelFeatureAccumulator.scan(
                 labels, params.intensityImage, cal);
 
         // 3. Filter on what was measured, then renumber so the survivors are
@@ -141,7 +142,7 @@ public final class OC3DSDRunner {
 
         if (droppedByMorphology > 0) {
             LabelRenumberer.Result renumbered = LabelRenumberer.renumber(labels, keep);
-            measured = LabelMeasurements.scan(labels, params.intensityImage, cal);
+            measured = LabelFeatureAccumulator.scan(labels, params.intensityImage, cal);
             objects = measured.toStatisticsTable(null);
             remapDetectorStats(detectorStats, renumbered);
         }
@@ -187,7 +188,7 @@ public final class OC3DSDRunner {
 
     /** Labels that pass the size bounds, the edge rule and every morphology predicate. */
     private static Set<Integer> survivors(ResultsTable objects,
-                                          LabelMeasurements.Result measured,
+                                          LabelFeatureAccumulator.Result measured,
                                           OC3DSDParameters params,
                                           ImagePlus labels) {
         Set<Integer> keep = new HashSet<Integer>();
@@ -198,10 +199,10 @@ public final class OC3DSDRunner {
 
         for (int row = 0; row < objects.size() && row < all.size(); row++) {
             int label = all.get(row).intValue();
-            LabelMeasurements.FeatureValues values = measured.valuesForLabel(label);
+            LabelFeatureAccumulator.FeatureValues values = measured.valuesForLabel(label);
             if (values == null) continue;
 
-            long voxels = values.voxelCount;
+            long voxels = values.voxelCount();
             if (voxels < params.minSize) continue;
             if (params.maxSize != Integer.MAX_VALUE && voxels > params.maxSize) continue;
 
@@ -214,16 +215,29 @@ public final class OC3DSDRunner {
         return keep;
     }
 
-    private static boolean touchesEdge(LabelMeasurements.FeatureValues values,
+    /**
+     * Core exposes the bounding box as origin-plus-extent rather than as the
+     * min/max pair this read against directly. {@code boundingX() + boundingWidth()
+     * - 1} is the old {@code maxX} exactly — integer arithmetic, no rounding.
+     * <p>
+     * The accessors substitute {@code 0} for an object with no voxels, where the
+     * raw fields would still hold their {@code Integer.MAX_VALUE} /
+     * {@code MIN_VALUE} sentinels. That case cannot arise here: a
+     * {@code FeatureValues} only exists because {@code scan} found a voxel
+     * carrying its label, and {@code addVoxel} increments the count first.
+     */
+    private static boolean touchesEdge(LabelFeatureAccumulator.FeatureValues values,
                                        int width, int height, int depth) {
-        return values.minX <= 0 || values.minY <= 0 || values.minZ <= 0
-                || values.maxX >= width - 1
-                || values.maxY >= height - 1
-                || values.maxZ >= depth - 1;
+        return values.boundingX() <= 0
+                || values.boundingY() <= 0
+                || values.boundingZ() <= 0
+                || values.boundingX() + values.boundingWidth() - 1 >= width - 1
+                || values.boundingY() + values.boundingHeight() - 1 >= height - 1
+                || values.boundingZ() + values.boundingDepth() - 1 >= depth - 1;
     }
 
     private static boolean passesAll(List<MorphPredicate> predicates,
-                                     LabelMeasurements.FeatureValues values,
+                                     LabelFeatureAccumulator.FeatureValues values,
                                      ResultsTable objects,
                                      int row,
                                      OC3DSDParameters params) {
@@ -246,9 +260,19 @@ public final class OC3DSDRunner {
         return true;
     }
 
-    /** Maps a macro feature name to the measured value, or null when unknown. */
+    /**
+     * Maps a macro feature name to the measured value, or null when unknown.
+     * <p>
+     * Core's {@code FeatureValues.feature(String)} covers the same nine names,
+     * but it is deliberately not used here. It matches case-sensitively where
+     * this lower-cases first, and it returns {@code NaN} for a name it does not
+     * recognise — which this code has to tell apart from a feature that is known
+     * but could not be computed. The first warns and ignores the filter; the
+     * second passes the object through. Collapsing them would silently change
+     * which objects survive.
+     */
     private static Double featureValue(String feature,
-                                       LabelMeasurements.FeatureValues values,
+                                       LabelFeatureAccumulator.FeatureValues values,
                                        ResultsTable objects,
                                        int row) {
         if (feature == null) return null;
@@ -256,9 +280,9 @@ public final class OC3DSDRunner {
         if ("sphericity".equals(name)) return Double.valueOf(values.sphericity());
         if ("compactness".equals(name)) return Double.valueOf(values.compactness());
         if ("elongation".equals(name)) return Double.valueOf(values.elongation());
-        if ("volume".equals(name)) return Double.valueOf(values.voxelCount);
-        if ("volume_calibrated".equals(name)) return Double.valueOf(values.calibratedVolume);
-        if ("surface_area".equals(name)) return Double.valueOf(values.surfaceArea);
+        if ("volume".equals(name)) return Double.valueOf(values.voxelCount());
+        if ("volume_calibrated".equals(name)) return Double.valueOf(values.calibratedVolume());
+        if ("surface_area".equals(name)) return Double.valueOf(values.surfaceArea());
         if ("mean_intensity".equals(name)) return Double.valueOf(values.meanIntensity());
         if ("max_intensity".equals(name)) return Double.valueOf(values.maxIntensity());
         if ("feret_diameter_max".equals(name)) return Double.valueOf(values.feretDiameterMax());
