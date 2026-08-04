@@ -104,6 +104,18 @@ not, and each of these produced a plausible-looking wrong number.
   accumulator. With no native counter in this path they are computed from the
   corrected surface that was already being accumulated, to mcib3d's definition.
 
+  **Verified against mcib3d itself.** Two plugins in the same family filling the
+  same two columns by two different code paths — 3D Objects Counter+ through
+  mcib3d's `MeasureCompactness`, this plugin through its own Lindblad (2005)
+  weighted-configuration surface in `ij` — is exactly the arrangement in which
+  they can quietly drift apart and report different shapes for the same object.
+  The two now agree to within 1e-9 relative across seven shapes chosen to hit
+  every branch of the weight table (ball, cube, one-voxel slab, one-voxel rod,
+  hollow shell with an interior cavity, L-shape), and both decline to report a
+  shape for an isolated voxel. mcib3d is a test-scoped dependency for this check
+  only; it is not linked into the plugin and the measurement path is still
+  `ij`-only.
+
 ### Known limitations
 
 - Detection is 2D per slice. This is not a 3D StarDist model, and no such model

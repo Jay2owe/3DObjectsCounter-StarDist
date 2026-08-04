@@ -172,15 +172,20 @@
 
 		<!--
 		  Neither org.framagit.mcib3d:mcib3d-core nor sc.fiji:3D_Objects_Counter
-		  is a dependency, deliberately.
+		  is a compile or runtime dependency, deliberately.
 
 		  This plugin never thresholds and never runs connected components: it
 		  holds a label image before measurement begins, so the native counter has
-		  nothing to contribute. Measurement is implemented here in `ij` alone -
-		  LabelMeasurements computes the Lindblad (2005) weighted-configuration
-		  corrected surface directly, which is the same definition mcib3d's
-		  Object3DVoxels uses, so Morph_Sphericity and the rest carry the same
-		  meaning as in 3D Objects Counter+ without linking the library.
+		  nothing to contribute. Measurement is implemented in `ij` alone -
+		  oc3d-core's LabelFeatureAccumulator computes the Lindblad (2005)
+		  weighted-configuration corrected surface directly, which is the same
+		  definition mcib3d's Object3DVoxels uses, so Morph_Sphericity and the
+		  rest carry the same meaning as in 3D Objects Counter+ without linking
+		  the library.
+
+		  That "same meaning" was an unverified claim until Stage 03 of the
+		  oc3d-core migration. It is now checked against mcib3d itself - see the
+		  test-scoped dependency below.
 
 		  That keeps measurement dependency-free and removes one GPL library from
 		  the linked set. TrackMate is still GPL, so the combined distributed work
@@ -188,6 +193,30 @@
 		-->
 
 		<!-- Test dependencies -->
+
+		<!--
+		  TEST SCOPE ONLY. Never distributed, never on the runtime classpath, and
+		  not a dependency of the plugin - the paragraph above still holds.
+
+		  It exists for one test: CorrectedSurfaceAgainstMcib3dTest, which proves
+		  that the corrected surface this plugin reimplements in `ij` returns the
+		  same sphericity and compactness as mcib3d's MeasureCompactness on the
+		  same object. 3D Objects Counter+ fills those two columns from mcib3d;
+		  this plugin computes them. Without this test, "the columns mean the same
+		  thing in both plugins" is an assertion in a comment rather than a fact,
+		  and a divergence would surface as two shipped plugins quietly disagreeing
+		  about the shape of the same object.
+
+		  Test scope adds no licence obligation beyond the existing one: the
+		  distributed work is already GPL-3.0-or-later because of TrackMate.
+		-->
+		<dependency>
+			<groupId>org.framagit.mcib3d</groupId>
+			<artifactId>mcib3d-core</artifactId>
+			<version>4.1.7b</version>
+			<scope>test</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
