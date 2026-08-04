@@ -15,9 +15,21 @@ import java.util.Set;
  * {@code sphericity}, {@code elongation}, {@code compactness},
  * {@code mean_intensity}, {@code max_intensity}, {@code feret_diameter_max}.
  *
- * <p>Unknown feature names produce predicates that always {@code matches()} â€”
- * the engine logs a warning via the supplied
- * {@link OC3DPlusParameters.WarningSink}.
+ * <p><b>Unknown feature names always match.</b> That is deliberate: a macro
+ * written against a build that computes an extra measurement must not silently
+ * discard every object when run against one that does not. The engine reports it
+ * through {@link OC3DSDParameters.WarningSink} instead.
+ *
+ * <p><b>Why this class is not adopted from {@code oc3d-core}.</b> Core's
+ * equivalent is behaviourally identical for every predicate this plugin builds —
+ * the same nine base features, the same four operators, the same
+ * {@code matches} — and adds a feature registry this plugin has nothing to
+ * register. But this type appears in the documented public API, on
+ * {@link OC3DSD.Builder#addFilter} and {@link OC3DSDParameters#morphPredicates},
+ * and core's package is relocated when the jar is shaded. Adopting it would put
+ * a relocated internal type into a public signature, which is the thing the
+ * "do not relocate {@code sc.fiji.oc3dsd.api}" rule exists to prevent. It stays
+ * here so callers keep a stable import.
  */
 public final class MorphPredicate {
 

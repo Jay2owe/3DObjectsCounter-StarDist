@@ -127,6 +127,26 @@
 		</dependency>
 
 		<!--
+		  The shared shell this plugin used to carry its own copy of: the dialog
+		  widgets, the macro grammar, the measurement pass and the maps.
+
+		  The group id is io.github.jay2owe, not sc.fiji, and that is deliberate -
+		  it is the group id across this whole plugin family, while sc.fiji is the
+		  SciJava org's own namespace on maven.scijava.org. The Java *package* is
+		  sc.fiji.oc3d.core, which is a different string; the shade configuration
+		  in stage 05 needs both and they are not interchangeable.
+
+		  Compile scope, and shaded into the jar at stage 05, so a user never has
+		  to install it. It depends on ij alone, so bundling it adds nothing to
+		  the prerequisites.
+		-->
+		<dependency>
+			<groupId>io.github.jay2owe</groupId>
+			<artifactId>oc3d-core</artifactId>
+			<version>0.1.0-SNAPSHOT</version>
+		</dependency>
+
+		<!--
 		  TrackMate is part of the Fiji core distribution. It supplies the LAP
 		  tracker that links per-slice StarDist detections through Z, and the
 		  LabelImgExporter that turns the resulting tracks into a 3D label image.

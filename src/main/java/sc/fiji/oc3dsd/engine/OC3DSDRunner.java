@@ -6,6 +6,7 @@ import ij.measure.ResultsTable;
 import sc.fiji.oc3dsd.api.MorphPredicate;
 import sc.fiji.oc3dsd.api.OC3DSDParameters;
 import sc.fiji.oc3dsd.api.OC3DSDResult;
+import sc.fiji.oc3d.core.progress.StatusBarProgress;
 import sc.fiji.oc3dsd.runtime.DependencyDoctor;
 import sc.fiji.oc3dsd.runtime.ModelResolver;
 
@@ -47,7 +48,7 @@ public final class OC3DSDRunner {
         }
         long start = System.currentTimeMillis();
 
-        ProgressReporter progress = ProgressReporter.steps(5);
+        StatusBarProgress progress = StatusBarProgress.steps(5);
 
         try {
             File modelFile = params.modelFile == null
@@ -107,7 +108,7 @@ public final class OC3DSDRunner {
         if (params == null) {
             throw new IllegalArgumentException("params must not be null");
         }
-        ProgressReporter progress = ProgressReporter.none();
+        StatusBarProgress progress = StatusBarProgress.none();
         return measureFilterAndMap(labels, detectorStats, params, progress,
                 System.currentTimeMillis(), 0, 0, 0);
     }
@@ -115,7 +116,7 @@ public final class OC3DSDRunner {
     private static OC3DSDResult measureFilterAndMap(ImagePlus labels,
                                                     ResultsTable detectorStats,
                                                     OC3DSDParameters params,
-                                                    ProgressReporter progress,
+                                                    StatusBarProgress progress,
                                                     long start,
                                                     int singleSliceObjects,
                                                     int droppedShortObjects,
