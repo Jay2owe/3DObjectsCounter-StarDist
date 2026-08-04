@@ -112,7 +112,7 @@ public class BatchEquivalenceTest {
      * <em>means</em>.
      *
      * <p>Two writers reach disk by different routes — {@code ResultsTable.saveAs}
-     * for the tables and {@code BatchWriter.csvCell} for the manifest — so both
+     * for the tables and core's {@code CsvWriter} for the manifest — so both
      * are checked, not just the one that happened to be written most recently.
      */
     @Test

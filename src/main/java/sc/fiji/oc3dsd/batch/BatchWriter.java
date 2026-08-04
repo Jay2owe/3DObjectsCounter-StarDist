@@ -3,6 +3,7 @@ package sc.fiji.oc3dsd.batch;
 import ij.IJ;
 import ij.ImagePlus;
 import ij.measure.ResultsTable;
+import sc.fiji.oc3d.core.io.CsvWriter;
 
 import java.io.File;
 import java.io.IOException;
@@ -73,6 +74,22 @@ public final class BatchWriter {
         IJ.saveAsTiff(map, new File(new File(root, "Maps"), baseName + suffix + ".tif").getAbsolutePath());
     }
 
+    /**
+     * Writes a result table through {@link ResultsTable#saveAs}, deliberately,
+     * where the manifest goes through {@code oc3d-core}'s {@code CsvWriter}.
+     * <p>
+     * Core's writer formats every number with {@code Double.toString}. ImageJ's
+     * formats to the table's decimal places with per-column widths, which is what
+     * has always been written here: {@code 5.500}, {@code 1.056}, and integral
+     * columns bare. Routing these tables through core would therefore rewrite
+     * every number in every batch CSV — not the values, but how they read, and
+     * downstream scripts parse these files.
+     * <p>
+     * That is a user-visible change and it is not one this migration is entitled
+     * to make in passing. Unifying the two is a decision about what the batch CSV
+     * format should be, and it belongs to whoever makes that decision for the
+     * whole family, with a CHANGELOG entry and a version bump behind it.
+     */
     private void writeTable(File target, ResultsTable table) {
         if (table == null) return;
         mkdirs(target.getParentFile());
@@ -114,41 +131,41 @@ public final class BatchWriter {
         }
     }
 
-    /** Appends the manifest, one row per image. */
+    /**
+     * Appends the manifest, one row per image.
+     * <p>
+     * Quoting and encoding come from {@code oc3d-core}'s {@link CsvWriter}, which
+     * applies exactly the rules this class used to apply itself: quote on comma,
+     * double quote, CR or LF; double an embedded quote; write null as an empty
+     * field; UTF-8; platform line separator. The two produce byte-identical
+     * files, which the batch goldens check rather than assume.
+     */
     public void writeManifest(List<String[]> rows, String[] headings) {
         File target = new File(new File(root, "Summary"), "manifest.csv");
         mkdirs(target.getParentFile());
-        PrintWriter writer = null;
+        CsvWriter writer = null;
         try {
-            writer = new PrintWriter(target, "UTF-8");
-            writer.println(csvLine(headings));
+            writer = new CsvWriter(target);
+            writer.row(headings);
             for (String[] row : rows) {
-                writer.println(csvLine(row));
+                writer.row(row);
             }
         } catch (IOException e) {
             IJ.log("WARNING: could not write the manifest: " + e.getMessage());
         } catch (RuntimeException e) {
             IJ.log("WARNING: could not write the manifest: " + e.getMessage());
         } finally {
-            if (writer != null) writer.close();
+            close(writer);
         }
     }
 
-    static String csvLine(String[] cells) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < cells.length; i++) {
-            if (i > 0) sb.append(',');
-            sb.append(csvCell(cells[i]));
+    private static void close(CsvWriter writer) {
+        if (writer == null) return;
+        try {
+            writer.close();
+        } catch (IOException e) {
+            IJ.log("WARNING: could not close the manifest: " + e.getMessage());
         }
-        return sb.toString();
-    }
-
-    static String csvCell(String value) {
-        String text = value == null ? "" : value;
-        boolean needsQuotes = text.indexOf(',') >= 0 || text.indexOf('"') >= 0
-                || text.indexOf('\n') >= 0 || text.indexOf('\r') >= 0;
-        if (!needsQuotes) return text;
-        return '"' + text.replace("\"", "\"\"") + '"';
     }
 
     /** Makes a group key safe to use as a file name. */
