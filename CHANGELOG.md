@@ -1,0 +1,102 @@
+# Changelog
+
+All notable changes to 3D Objects Counter - StarDist are recorded here.
+The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
+versioning follows `VERSIONING.md`.
+
+## [Unreleased] — 0.1.0
+
+First implementation. Carved out of FLASH's `flash.pipeline.stardist` package
+and dressed in 3D Objects Counter+'s dialog and output surface.
+
+### Added
+
+- **Detection and linking.** StarDist runs on every Z-slice through TrackMate's
+  StarDist detector; the per-slice detections are linked through Z by the
+  SparseLAP tracker, and each linked chain becomes one 3D object.
+- **3D measurement from the label image** — volume, surface area, sphericity,
+  compactness, elongation, maximum Feret diameter, intensity statistics,
+  centroid, centre of mass and bounding box, using 3D Objects Counter+'s feature
+  definitions so the columns mean the same thing in both plugins.
+- **Filters** — minimum and maximum bounds on size, volume, sphericity,
+  compactness, elongation, surface area, intensity and Feret diameter, plus
+  detector-level area, quality and intensity filters that run before the
+  measurement pass.
+- **Maps** — object, surface, centroid and centre-of-mass maps, and the 3D label
+  image itself as a first-class output.
+- **Batch over a folder, on both discovery axes at once.** A recursive scan
+  decides which files are analysed; a filename regular expression with a capture
+  group decides which results are aggregated together. Results are written per
+  image, per source folder and per group, with a manifest recording every
+  parameter and the calibration in force.
+- **Group preview before a batch run**, because each image costs minutes of
+  detection time.
+- **Dependency doctor** — a first-run check naming exactly which of the four
+  required update sites is missing, plus structural validation of a custom model
+  `.zip` before TensorFlow can produce an opaque error, and clearing of a stale
+  TensorFlow crash marker left by an earlier Fiji session.
+- **Macro recording** for both commands, with `hide_display` for headless use,
+  and a public Java API (`OC3DSD` / `OC3DSDParameters` / `OC3DSDResult`) that
+  opens no dialogs, shows no windows and writes no files.
+
+### Fixed — carried over from FLASH, where the pipeline's usage pattern hid them
+
+These are corrections to the extracted source, not to a previous release of this
+plugin. FLASH runs one image at a time under a human's eye; a batch counter does
+not, and each of these produced a plausible-looking wrong number.
+
+- **Single-slice objects are no longer silently deleted.** FLASH removed every
+  detection the tracker could not link and exported tracks only, so any object
+  present on exactly one Z-slice vanished without warning — systematically
+  dropping thin objects, objects clipped by the ends of the stack, and most
+  objects in a coarsely sampled stack. Single-slice objects are now recovered as
+  real objects, controlled by `Min. slices per object` (default 1), and counted
+  and reported either way.
+- **Z and T are no longer collapsed into one axis.** FLASH set the frame count to
+  `z * t`, which let the tracker link the last Z-slice of one timepoint to the
+  first Z-slice of the next and merge them into a single object. Each timepoint
+  is now detected and linked independently and the frames are reassembled with
+  Z and T intact.
+- **Object measurements come from the label image, not from the detector.**
+  FLASH reported the mean of the detector's per-slice spot features, where
+  "area" was the mean of `pi*r^2` over an object's slices — not a volume, not a
+  cross-section, and not comparable between objects of different heights. Those
+  values are retained as clearly named diagnostics
+  (`Detector_Area_Mean`, `Detector_Quality_Mean`, `Detector_Intensity_Mean`)
+  alongside real measured morphometry.
+- **Objects are numbered 1..N.** FLASH used TrackMate's track ID plus one, which
+  is sparse, holed after filtering, and not stable between runs of the same
+  image. Numbering is now contiguous and deterministic — first slice of
+  appearance, then centroid Y, then centroid X — with the detector's own label
+  preserved in `Detector_Track_ID`.
+- **The linking distance states its units.** It is read by TrackMate in
+  calibrated units, so the same number meant five pixels on an uncalibrated
+  stack and fifty at 0.1 µm/pixel — and over-linking merges neighbouring
+  objects, the exact failure this plugin exists to prevent. The dialog now shows
+  the pixel equivalent, says so when an image is uncalibrated, and the log and
+  batch manifest record both readings.
+
+### Changed relative to the build plan
+
+- **`mcib3d-core` is not a dependency after all.** The measurement layer turned
+  out to be implementable with `ij` alone — 3D Objects Counter+'s accumulator
+  already computes the Lindblad (2005) corrected surface itself rather than
+  calling mcib3d. Measurement is therefore `ij`-only, and `3D_Objects_Counter`
+  is not a dependency either: this plugin never thresholds and never runs
+  connected components, so the native counter has nothing to contribute.
+- **Sphericity and compactness are computed here.** 3D Objects Counter+ leaves
+  those two columns to the native counter and writes NaN from its own
+  accumulator. With no native counter in this path they are computed from the
+  corrected surface that was already being accumulated, to mcib3d's definition.
+
+### Known limitations
+
+- Detection is 2D per slice. This is not a 3D StarDist model, and no such model
+  exists for Fiji. Objects that are strongly concave in Z, or sampled with a
+  large Z-step, will link poorly. The `Slices` column and the single-slice count
+  in the summary exist so those cases are visible.
+- Four update sites are required — StarDist, CSBDeep, TensorFlow and
+  TrackMate-StarDist — including roughly 166 MB of native TensorFlow. This
+  cannot be removed; the learned detector is the plugin.
+- Accuracy against manual 3D ground truth has not been measured. That benchmark
+  is planned before any preprint.

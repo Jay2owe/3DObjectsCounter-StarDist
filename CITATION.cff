@@ -1,0 +1,83 @@
+cff-version: 1.2.0
+message: "If you use this plugin, please cite it along with the methods it builds on."
+title: "3D Objects Counter - StarDist"
+abstract: >-
+  A Fiji/ImageJ plugin that counts and measures 3D objects in a Z-stack by
+  running StarDist on each slice and linking the per-slice detections through Z
+  with TrackMate's LAP tracker. Reports per-object volume, surface area,
+  sphericity, compactness, elongation, Feret diameter, intensity statistics and
+  position, produces object, surface, centroid and centre-of-mass maps and a 3D
+  label image, applies minimum and maximum morphology filters, and processes
+  folders in batch with recursive search and regex grouping.
+type: software
+# The distributed plugin links GPLv3+ libraries (TrackMate, TrackMate-StarDist)
+# and cannot run without them, so the combined work is GPL-3.0-or-later. The
+# original source in this repository is BSD-3-Clause. See LICENSING.md.
+license: GPL-3.0-or-later
+repository-code: "https://github.com/Jay2owe/3DObjectsCounter-StarDist"
+url: "https://imagej.net/plugins/3d-objects-counter-stardist"
+version: 0.1.0
+date-released: "2026-08-03"
+keywords:
+  - ImageJ
+  - Fiji
+  - StarDist
+  - TrackMate
+  - segmentation
+  - 3D object counting
+  - image analysis
+authors:
+  - family-names: Malcolm
+    given-names: Jamie
+    orcid: "https://orcid.org/0009-0008-3862-2776"
+    affiliation: "UK Dementia Research Institute at Imperial College London"
+references:
+  - type: conference-paper
+    title: "Cell Detection with Star-convex Polygons"
+    year: 2018
+    collection-title: "Medical Image Computing and Computer Assisted Intervention (MICCAI)"
+    doi: "10.1007/978-3-030-00934-2_30"
+    authors:
+      - family-names: Schmidt
+        given-names: Uwe
+      - family-names: Weigert
+        given-names: Martin
+      - family-names: Broaddus
+        given-names: Coleman
+      - family-names: Myers
+        given-names: Gene
+  - type: article
+    title: "TrackMate: An open and extensible platform for single-particle tracking"
+    year: 2017
+    journal: "Methods"
+    doi: "10.1016/j.ymeth.2016.09.016"
+    authors:
+      - family-names: Tinevez
+        given-names: Jean-Yves
+      - family-names: Perry
+        given-names: Nick
+      - family-names: Schindelin
+        given-names: Johannes
+  - type: article
+    title: "TrackMate 7: integrating state-of-the-art segmentation algorithms into tracking pipelines"
+    year: 2022
+    journal: "Nature Methods"
+    doi: "10.1038/s41592-022-01507-1"
+    authors:
+      - family-names: Ershov
+        given-names: Dmitry
+      - family-names: Phan
+        given-names: Minh-Son
+      - family-names: Tinevez
+        given-names: Jean-Yves
+  - type: article
+    title: "A guided tour into subcellular colocalization analysis in light microscopy"
+    year: 2006
+    journal: "Journal of Microscopy"
+    doi: "10.1111/j.1365-2818.2006.01706.x"
+    notes: "Source of the 3D object measurement definitions this plugin reproduces."
+    authors:
+      - family-names: Bolte
+        given-names: Susanne
+      - family-names: Cordelières
+        given-names: Fabrice P.

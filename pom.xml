@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+		http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.scijava</groupId>
+		<artifactId>pom-scijava</artifactId>
+		<version>31.1.0</version>
+		<relativePath/>
+	</parent>
+
+	<groupId>io.github.jay2owe</groupId>
+	<artifactId>3D_Objects_Counter_StarDist</artifactId>
+	<!--
+	  Versioning policy: see VERSIONING.md.
+	  First digit = new feature set.
+	  Second digit = major rework or large optimization.
+	  Third digit = bug fix or small tweak/optimization.
+	-->
+	<version>0.1.0-SNAPSHOT</version>
+
+	<name>3D Objects Counter - StarDist</name>
+	<description>Fiji/ImageJ plugin that counts and measures 3D objects in a Z-stack by running StarDist on each slice and linking the per-slice detections through Z with TrackMate, with per-object 3D measurements, morphology filters, object maps and folder batch processing.</description>
+	<url>https://github.com/Jay2owe/3DObjectsCounter-StarDist</url>
+	<inceptionYear>2026</inceptionYear>
+	<organization>
+		<name>UK Dementia Research Institute at Imperial College London</name>
+		<url>https://ukdri.ac.uk/centres/imperial</url>
+	</organization>
+	<!--
+	  The licence of the combined distributed work, which is what this element
+	  declares. Jamie Malcolm's own source in this repository is BSD-3-Clause
+	  (see LICENSE.BSD-3-Clause), but the plugin links GPLv3+ libraries -
+	  sc.fiji:TrackMate and sc.fiji:TrackMate-StarDist - and cannot run without
+	  them, so the artifact that is distributed and run is GPL-3.0-or-later.
+	  `provided` scope is a build-time concern and does not change that.
+	  See LICENSING.md.
+	-->
+	<licenses>
+		<license>
+			<name>GNU General Public License v3.0 or later</name>
+			<url>https://www.gnu.org/licenses/gpl-3.0.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>Jay2owe</id>
+			<name>Jamie Malcolm</name>
+			<email>jamiemalcolm12@gmail.com</email>
+			<url>https://github.com/Jay2owe</url>
+			<organization>UK Dementia Research Institute at Imperial College London</organization>
+			<organizationUrl>https://www.ukdri.ac.uk/labs/brancaccio-lab</organizationUrl>
+			<properties>
+				<orcid>0009-0008-3862-2776</orcid>
+			</properties>
+			<roles>
+				<role>founder</role>
+				<role>lead</role>
+				<role>developer</role>
+				<role>maintainer</role>
+			</roles>
+		</developer>
+	</developers>
+	<contributors>
+		<contributor>
+			<name>Jamie Malcolm</name>
+			<url>https://github.com/Jay2owe</url>
+			<roles>
+				<role>founder</role>
+				<role>developer</role>
+				<role>maintainer</role>
+			</roles>
+		</contributor>
+	</contributors>
+
+	<mailingLists>
+		<mailingList>
+			<name>Image.sc Forum</name>
+			<archive>https://forum.image.sc/tag/imagej</archive>
+		</mailingList>
+	</mailingLists>
+
+	<scm>
+		<connection>scm:git:https://github.com/Jay2owe/3DObjectsCounter-StarDist</connection>
+		<developerConnection>scm:git:git@github.com:Jay2owe/3DObjectsCounter-StarDist</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://github.com/Jay2owe/3DObjectsCounter-StarDist</url>
+	</scm>
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/Jay2owe/3DObjectsCounter-StarDist/issues</url>
+	</issueManagement>
+	<ciManagement>
+		<system>None</system>
+	</ciManagement>
+
+	<properties>
+		<main-class>sc.fiji.oc3dsd.ObjectsCounter3DStarDist</main-class>
+		<!--
+		  Deliberately still bsd_3: this drives the per-file headers that
+		  license-maven-plugin would stamp on *this repository's own source*,
+		  which is BSD-3-Clause. It is not the licence of the combined
+		  distributed work - that is declared in <licenses> above as
+		  GPL-3.0-or-later. Changing this to gpl_v3 would relicense Jamie's own
+		  code, which is a separate decision. See LICENSING.md.
+		-->
+		<license.licenseName>bsd_3</license.licenseName>
+		<license.copyrightOwners>Jamie Malcolm</license.copyrightOwners>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>scijava.public</id>
+			<url>https://maven.scijava.org/content/groups/public</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>net.imagej</groupId>
+			<artifactId>ij</artifactId>
+		</dependency>
+
+		<!--
+		  TrackMate is part of the Fiji core distribution. It supplies the LAP
+		  tracker that links per-slice StarDist detections through Z, and the
+		  LabelImgExporter that turns the resulting tracks into a 3D label image.
+		-->
+		<dependency>
+			<groupId>sc.fiji</groupId>
+			<artifactId>TrackMate</artifactId>
+			<version>7.14.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!--
+		  TrackMate-StarDist supplies the StarDist detector factories and pulls in
+		  de.csbdresden:StarDist_ and de.csbdresden:csbdeep transitively. Requires
+		  the StarDist, CSBDeep and TrackMate-StarDist update sites at runtime.
+		-->
+		<dependency>
+			<groupId>sc.fiji</groupId>
+			<artifactId>TrackMate-StarDist</artifactId>
+			<version>1.2.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!--
+		  Neither org.framagit.mcib3d:mcib3d-core nor sc.fiji:3D_Objects_Counter
+		  is a dependency, deliberately.
+
+		  This plugin never thresholds and never runs connected components: it
+		  holds a label image before measurement begins, so the native counter has
+		  nothing to contribute. Measurement is implemented here in `ij` alone -
+		  LabelMeasurements computes the Lindblad (2005) weighted-configuration
+		  corrected surface directly, which is the same definition mcib3d's
+		  Object3DVoxels uses, so Morph_Sphericity and the rest carry the same
+		  meaning as in 3D Objects Counter+ without linking the library.
+
+		  That keeps measurement dependency-free and removes one GPL library from
+		  the linked set. TrackMate is still GPL, so the combined distributed work
+		  remains GPL-3.0-or-later - see LICENSING.md.
+		-->
+
+		<!-- Test dependencies -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>4.11.0</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>3D_Objects_Counter_StarDist-${project.version}</finalName>
+		<plugins>
+			<!-- Suppress the inherited Class-Path manifest entry, and set an
+			     explicit Automatic-Module-Name (the artifactId starts with a
+			     digit, so Maven cannot derive a valid module name). -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>false</addClasspath>
+						</manifest>
+						<manifestEntries>
+							<Automatic-Module-Name>io.github.jay2owe.oc3dsd</Automatic-Module-Name>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
