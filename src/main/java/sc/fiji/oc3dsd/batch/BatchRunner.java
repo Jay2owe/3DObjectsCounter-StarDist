@@ -63,10 +63,36 @@ public final class BatchRunner {
             "dropped_detector_filters", "dropped_morphology_filters", "elapsed_ms", "status",
     };
 
+    /**
+     * How one image becomes a result. Production detects; the equivalence harness
+     * substitutes a prepared result so a whole batch run can be recorded without
+     * StarDist inference.
+     * <p>
+     * This is the only seam in this class, and it is deliberately the narrowest
+     * one that works: everything a user sees from a batch run — discovery,
+     * grouping, folder keys, aggregation on both axes, every CSV and the manifest
+     * — is downstream of it and therefore exercised for real, not reimplemented
+     * by a test that would then be certifying itself.
+     */
+    interface ResultSource {
+        OC3DSDResult resultFor(ImagePlus image, OC3DSDParameters params);
+    }
+
+    private static final ResultSource DETECT = new ResultSource() {
+        @Override
+        public OC3DSDResult resultFor(ImagePlus image, OC3DSDParameters params) {
+            return OC3DSD.run(params);
+        }
+    };
+
     private BatchRunner() {
     }
 
     public static Outcome run(Settings settings, OC3DSDDialogModel model) {
+        return run(settings, model, DETECT);
+    }
+
+    static Outcome run(Settings settings, OC3DSDDialogModel model, ResultSource source) {
         if (settings == null || settings.inputRoot == null || !settings.inputRoot.isDirectory()) {
             throw new IllegalArgumentException("Choose an input folder that exists.");
         }
@@ -112,7 +138,7 @@ public final class BatchRunner {
                                 IJ.log("WARNING: " + message);
                             }
                         });
-                OC3DSDResult result = OC3DSD.run(params);
+                OC3DSDResult result = source.resultFor(image, params);
 
                 String base = baseName(item.file);
                 writer.writeObjects(base, result.getObjects());
