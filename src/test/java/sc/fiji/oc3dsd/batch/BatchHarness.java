@@ -142,6 +142,29 @@ final class BatchHarness {
         }
     };
 
+    /**
+     * A run whose output root is left unset, so it lands inside the input tree —
+     * what the batch dialog does when the output folder is left blank.
+     */
+    static BatchRunner.Outcome runInPlace(File root, boolean saveLabels) {
+        BatchRunner.Settings settings = new BatchRunner.Settings();
+        settings.inputRoot = root;
+        settings.outputRoot = null;
+        settings.recursive = true;
+        settings.extensions = "tif";
+        settings.pattern = "";
+        settings.saveLabels = saveLabels;
+        settings.saveMaps = false;
+        return BatchRunner.run(settings, new OC3DSDDialogModel(), MEASURE_ONLY);
+    }
+
+    /** Two plain label images, enough to show a re-run consuming its own output. */
+    static void buildMinimalCorpus(File root) throws IOException {
+        mkdirs(root);
+        saveTiff(threeObjects(null), new File(root, "one.tif"));
+        saveTiff(twoObjects(null), new File(root, "two.tif"));
+    }
+
     // ------------------------------------------------------------------
     // The corpus
     // ------------------------------------------------------------------

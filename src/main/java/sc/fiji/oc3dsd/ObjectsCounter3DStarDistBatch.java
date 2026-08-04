@@ -7,6 +7,7 @@ import ij.plugin.PlugIn;
 import ij.plugin.frame.Recorder;
 import sc.fiji.oc3dsd.batch.BatchDiscovery;
 import sc.fiji.oc3dsd.batch.BatchRunner;
+import sc.fiji.oc3dsd.batch.BatchWriter;
 import sc.fiji.oc3dsd.runtime.DependencyDoctor;
 import sc.fiji.oc3dsd.ui.OC3DSDDialogModel;
 
@@ -163,8 +164,13 @@ public class ObjectsCounter3DStarDistBatch implements PlugIn {
      * cheapest possible check on an expensive mistake.
      */
     private boolean confirmGroups(BatchRunner.Settings settings) {
+        // Same exclusion as the run itself, or the preview promises a file count
+        // the run will not deliver.
+        File resultsFolder = new File(
+                settings.outputRoot == null ? settings.inputRoot : settings.outputRoot,
+                BatchWriter.ROOT_FOLDER);
         List<File> files = BatchDiscovery.discover(
-                settings.inputRoot, settings.recursive, settings.extensions);
+                settings.inputRoot, settings.recursive, settings.extensions, resultsFolder);
         if (files.isEmpty()) {
             IJ.error("3D Objects Counter - StarDist Batch",
                     "No matching images found in " + settings.inputRoot.getAbsolutePath()

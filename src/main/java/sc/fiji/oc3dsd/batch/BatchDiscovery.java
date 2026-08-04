@@ -59,10 +59,29 @@ public final class BatchDiscovery {
      * @param extensions comma-separated extension list; blank means {@link #DEFAULT_EXTENSIONS}
      */
     public static List<File> discover(File root, boolean recursive, String extensions) {
+        return discover(root, recursive, extensions, null);
+    }
+
+    /**
+     * Walks {@code root}, skipping {@code excluded} and everything under it.
+     *
+     * <p>The exclusion is not optional in practice. Leaving the output folder
+     * blank puts the results inside the input folder, which is the obvious thing
+     * for a user to do; the run then writes {@code _labels.tif} files into the
+     * tree it just scanned. Without this, running the same folder twice makes the
+     * second run measure the first run's label images as though they were new
+     * inputs — and a label image is a perfectly valid input that yields
+     * perfectly plausible numbers, so nothing looks wrong.
+     *
+     * @param excluded directory to skip along with all of its descendants;
+     *                 {@code null} excludes nothing
+     */
+    public static List<File> discover(File root, boolean recursive, String extensions,
+                                      File excluded) {
         List<File> found = new ArrayList<File>();
         if (root == null || !root.isDirectory()) return found;
         List<String> allowed = parseExtensions(extensions);
-        collect(root, recursive, allowed, found);
+        collect(root, recursive, allowed, found, canonical(excluded));
         Collections.sort(found, new Comparator<File>() {
             @Override
             public int compare(File a, File b) {
@@ -70,6 +89,20 @@ public final class BatchDiscovery {
             }
         });
         return found;
+    }
+
+    /**
+     * Canonical form, so the comparison survives {@code .}, {@code ..} and a
+     * symbolic link pointing at the output folder by another name. Falls back to
+     * the absolute path when the file system will not answer.
+     */
+    private static String canonical(File file) {
+        if (file == null) return null;
+        try {
+            return file.getCanonicalPath();
+        } catch (java.io.IOException unresolvable) {
+            return file.getAbsolutePath();
+        }
     }
 
     /**
@@ -159,12 +192,15 @@ public final class BatchDiscovery {
         return sb.toString();
     }
 
-    private static void collect(File dir, boolean recursive, List<String> allowed, List<File> out) {
+    private static void collect(File dir, boolean recursive, List<String> allowed,
+                                List<File> out, String excluded) {
         File[] entries = dir.listFiles();
         if (entries == null) return;
         for (File entry : entries) {
             if (entry.isDirectory()) {
-                if (recursive) collect(entry, true, allowed, out);
+                if (!recursive) continue;
+                if (excluded != null && excluded.equals(canonical(entry))) continue;
+                collect(entry, true, allowed, out, excluded);
             } else if (hasAllowedExtension(entry, allowed)) {
                 out.add(entry);
             }

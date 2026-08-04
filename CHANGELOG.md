@@ -61,6 +61,23 @@ and dressed in 3D Objects Counter+'s dialog and output surface.
   the label image as unsigned 16-bit — so this is reachable only by calling the
   engine classes directly on a float label image of your own.
 
+### Fixed
+
+- **A batch re-run no longer consumes its own previous output.** Leaving the
+  output folder blank puts the results inside the input folder — the obvious
+  thing to do, and what the dialog offers. Discovery is recursive by default and
+  label images are saved by default, so the first run wrote `_labels.tif` files
+  into the tree it had just scanned. Running the same folder a second time then
+  measured those label images as though they were new inputs: the object count
+  grew, every aggregate and summary gained rows, and nothing indicated it,
+  because a label image is a valid input that produces entirely plausible
+  numbers. It compounded on each further run. The plugin's own output folder is
+  now excluded from discovery, in the run and in the group preview alike.
+
+  Found by reconciling this plugin's discovery against `oc3d-core`'s, which
+  carries the exclusion. If you have re-run a batch into its own input folder,
+  the results from the second and later runs are wrong and should be regenerated.
+
 ### Fixed — carried over from FLASH, where the pipeline's usage pattern hid them
 
 These are corrections to the extracted source, not to a previous release of this

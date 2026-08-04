@@ -98,8 +98,12 @@ public final class BatchRunner {
         }
         File outputRoot = settings.outputRoot == null ? settings.inputRoot : settings.outputRoot;
 
+        // The plugin's own output folder, not outputRoot itself: when the output
+        // is left blank it *is* the input root, and excluding that would exclude
+        // every input.
+        File resultsFolder = new File(outputRoot, BatchWriter.ROOT_FOLDER);
         List<File> files = BatchDiscovery.discover(
-                settings.inputRoot, settings.recursive, settings.extensions);
+                settings.inputRoot, settings.recursive, settings.extensions, resultsFolder);
         List<BatchDiscovery.Item> items = BatchDiscovery.group(
                 files, settings.pattern, settings.groupIndex);
 
