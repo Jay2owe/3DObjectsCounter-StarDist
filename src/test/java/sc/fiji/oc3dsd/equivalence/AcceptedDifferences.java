@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Differences from the goldens that have been looked at and accepted.
  * <p>
- * Goldens are immutable (harness §7): a wrong golden is a bug report against the
+ * Goldens are immutable: a wrong golden is a bug report against the
  * shipped plugin, fixed as its own change, never regenerated to make a diff go
  * away. But a golden can be a <em>correct</em> record of behaviour that then
  * changes on purpose — a reworded message, a deliberately different ordering.

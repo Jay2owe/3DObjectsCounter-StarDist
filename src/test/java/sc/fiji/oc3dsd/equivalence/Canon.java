@@ -260,7 +260,7 @@ final class Canon {
      * A label image as a <em>partition</em>: per label, its voxel count,
      * bounding box and a hash of its voxel positions.
      * <p>
-     * Harness §5 asks for object maps to be compared as partitions rather than
+     * Object maps are compared as partitions rather than
      * pixel-by-pixel, so that a pure renumbering is not read as thousands of
      * failures. Recording the per-label hash gives both readings at once: the
      * set of hashes answers "is it the same partition?", and the label each hash
@@ -444,8 +444,9 @@ final class Canon {
      * One label's extent. Voxels arrive in z → y → x order, which is already
      * canonical, so the hash is order-dependent by design: a partition that
      * kept the same voxels but reached them in a different order would be a
-     * different traversal, and traversal order is a hard constraint here
-     * (harness §3).
+     * different traversal, and traversal order is a hard constraint here:
+     * floating-point addition is not associative, so a different order perturbs
+     * {@code Mean} and {@code StdDev} in their last bits.
      */
     private static final class LabelExtent {
         private final int label;

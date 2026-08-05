@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The synthetic label corpus, from harness §6 restricted to what applies to a
- * plugin that is <em>handed</em> a label image.
+ * The synthetic label corpus, restricted to what applies to a plugin that is
+ * <em>handed</em> a label image rather than thresholding one itself.
  * <p>
  * There is no threshold sweep here and no connectivity discriminator: this
  * plugin never thresholds and never runs connected components, so both would be

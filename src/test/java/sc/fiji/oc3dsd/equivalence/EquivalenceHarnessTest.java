@@ -31,7 +31,7 @@ import static org.junit.Assert.fail;
  * <pre>
  * mvn -o -B test -Doc3dsd.harness.capture=true
  * </pre>
- * Capture refuses to overwrite an existing golden set. Harness §7: a wrong
+ * Capture refuses to overwrite an existing golden set. A wrong
  * golden is a bug report against the shipped plugin, fixed as its own change —
  * never regenerated to make a diff go away. Deleting the directory to get past
  * that guard is a visible act in version control, which is the point.
@@ -234,7 +234,7 @@ public class EquivalenceHarnessTest {
         File root = Harness.goldenRoot();
         if (root.exists()) {
             fail("Goldens already exist at " + root.getAbsolutePath()
-                    + ". They are immutable (harness §7). A wrong golden is a bug report"
+                    + ". They are immutable. A wrong golden is a bug report"
                     + " against the shipped plugin, fixed as its own change — never"
                     + " regenerated to make a diff go away.");
         }
@@ -284,8 +284,10 @@ public class EquivalenceHarnessTest {
         sb.append("— 163678 of them — with Median the only column added. Capturing this set\n");
         sb.append("without that proof would have replaced the evidence with an assumption.\n");
         sb.append('\n');
-        sb.append("Immutable from this point: harness §7. Detection is NOT exercised — see\n");
-        sb.append("docs/migration/DETERMINISM.md for what this set can and cannot certify.\n");
+        sb.append("Immutable from this point. Detection is NOT exercised: the fixtures are\n");
+        sb.append("synthetic label images, so nothing here certifies StarDist inference,\n");
+        sb.append("Z-linking, or that two runs of the same real stack agree. See the Harness\n");
+        sb.append("class javadoc for the full boundary.\n");
         sb.append('\n');
         sb.append("Coverage reductions, stated rather than left implicit:\n");
         sb.append(Harness.reductionNotes());

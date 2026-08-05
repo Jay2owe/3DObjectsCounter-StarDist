@@ -3,9 +3,10 @@ runs: 557
 fixtures: 22
 configurations: 32
 
-Captured from the pre-migration build. Immutable from this point:
-harness §7. Detection is NOT exercised — see docs/migration/DETERMINISM.md
-for what this set can and cannot certify.
+Captured from the pre-migration build. Immutable from this point.
+Detection is NOT exercised: the fixtures are synthetic label images, so
+nothing here certifies StarDist inference, Z-linking, or that two runs of
+the same real stack agree.
 
 Coverage reductions, stated rather than left implicit:
 REDUCED count_254 (~254 objects): runs 1 of 25 map-building configurations. Every measurement configuration still runs.

@@ -182,9 +182,10 @@ final class Sweep {
         configs.add(new Builder("max_50").size(0, 50).build());
         configs.add(new Builder("min_5_max_200").size(5, 200).build());
 
-        // Edge exclusion. Harness §3 puts the object set under this option in
-        // Tier 3 for Plus, because the classic counter mislabels edge contact
-        // across a late merge. That defect cannot occur here — this plugin never
+        // Edge exclusion. The object set under this option is a known
+        // algorithmic difference in 3D Objects Counter+, because the classic
+        // counter mislabels edge contact across a late merge. Not so here —
+        // this plugin never
         // merges provisional ids — so it stays Tier 1, and this configuration is
         // what holds that claim up.
         configs.add(new Builder("exclude_edges").edges().build());

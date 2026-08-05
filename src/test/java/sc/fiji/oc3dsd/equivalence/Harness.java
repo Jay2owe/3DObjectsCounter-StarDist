@@ -25,8 +25,22 @@ import java.util.TreeSet;
  * drift together.
  * <p>
  * StarDist inference and TrackMate linking are upstream of this seam and are
- * <strong>not exercised</strong>. See {@code docs/migration/DETERMINISM.md} for
- * what that does and does not let the harness certify.
+ * <strong>not exercised</strong>. Stated in full rather than left to be inferred,
+ * because a harness is only as useful as its known boundary.
+ * <p>
+ * <strong>Certified</strong>, across every run in the sweep: every column of the
+ * statistics table; the size, edge-exclusion and morphology filters; label
+ * renumbering including the renumber-and-rescan branch; all four maps, their
+ * pixels and their number overlays; the summary; and the macro round-trip over
+ * every option the grammar accepts.
+ * <p>
+ * <strong>Not certified</strong>: detection, Z-linking, the detector diagnostics
+ * table, {@code minSlices}, and the detector-level area, quality and intensity
+ * filters — all upstream of the seam. Nor that two runs of the same real stack
+ * produce the same label image: that needs real stacks through a live detector,
+ * which this corpus deliberately does not stand in for. The fixtures are
+ * synthetic label images, so no claim here is an end-to-end claim about the
+ * plugin as a user experiences it.
  */
 final class Harness {
 

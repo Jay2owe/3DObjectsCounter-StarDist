@@ -3,16 +3,20 @@ package sc.fiji.oc3dsd.equivalence;
 import java.util.Locale;
 
 /**
- * The column contract from {@code EQUIVALENCE_HARNESS.md} §3, as code, so it
- * cannot drift from the prose.
+ * The column contract: which columns must match exactly, which may differ within
+ * a stated tolerance, and which are known to differ for a stated reason.
  * <p>
- * The tolerances here are the ones declared in {@code docs/migration/TOLERANCES.md}
- * <em>before</em> any migration code was written. Harness §3 is explicit that a
- * tolerance is not a number to be chosen conveniently after seeing results, and
- * keeping them in a class the harness reads — rather than in a constant someone
- * edits when a test goes red — is what makes that rule enforceable rather than
- * aspirational. Changing a value here is a visible change to the contract in
- * version control, reviewable as such.
+ * <strong>This class is the declaration itself, not a copy of one.</strong> Every
+ * value here was fixed before the code it judges was written, which is the only
+ * thing that makes any of them meaningful — a tolerance chosen after seeing a
+ * failure is not a tolerance, it is a way of passing. Keeping them where the
+ * harness reads them, rather than in prose beside it, is what makes that rule
+ * enforceable: changing one is a diff in version control, reviewable as such,
+ * and there is no second copy for it to disagree with.
+ * <p>
+ * Tier 1 is the default. A column this class has never heard of is either new or
+ * renamed, both of which a user sees, so it gets no tolerance rather than
+ * inheriting a convenient one — see {@link #tierOf}.
  */
 final class Tiers {
 
@@ -40,9 +44,9 @@ final class Tiers {
         String name = column == null ? "" : column.trim();
         String lower = name.toLowerCase(Locale.ROOT);
 
-        // Tier 3 — the bounded Feret estimate. Harness §3 requires this to be
-        // resolved explicitly (accept or match) with a CHANGELOG entry, not
-        // discovered at release time.
+        // Tier 3 — the bounded Feret estimate. Resolved explicitly, either by
+        // accepting the difference or by matching it, with a CHANGELOG entry;
+        // never left to be discovered at release time.
         if (lower.startsWith("morph_feret")) return Tier.THREE;
 
         // Tier 2 — surface and everything derived from it.
@@ -77,8 +81,8 @@ final class Tiers {
 
         String lower = column == null ? "" : column.trim().toLowerCase(Locale.ROOT);
 
-        // Elongation comes from the eigenvalues of the moment tensor. Harness §3
-        // allows <= 1e-9 relative for it, because a different but algebraically
+        // Elongation comes from the eigenvalues of the moment tensor. Declared
+        // at <= 1e-9 relative, because a different but algebraically
         // equivalent eigenvalue solver can differ in the last bits without any
         // difference in meaning. This is the one tolerance in this repo that is
         // genuinely expected to be exercised.

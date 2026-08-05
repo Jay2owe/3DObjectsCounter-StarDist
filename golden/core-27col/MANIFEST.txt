@@ -14,8 +14,10 @@ and proves every value under every carried-over column is identical here
 — 163678 of them — with Median the only column added. Capturing this set
 without that proof would have replaced the evidence with an assumption.
 
-Immutable from this point: harness §7. Detection is NOT exercised — see
-docs/migration/DETERMINISM.md for what this set can and cannot certify.
+Immutable from this point. Detection is NOT exercised: the fixtures are
+synthetic label images, so nothing here certifies StarDist inference,
+Z-linking, or that two runs of the same real stack agree. See the Harness
+class javadoc for the full boundary.
 
 Coverage reductions, stated rather than left implicit:
 REDUCED count_254 (~254 objects): runs 1 of 25 map-building configurations. Every measurement configuration still runs.
