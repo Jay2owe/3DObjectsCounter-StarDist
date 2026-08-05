@@ -159,6 +159,14 @@ not, and each of these produced a plausible-looking wrong number.
   sees. **TrackMate stays pinned at 7.14.0**, checked explicitly after the bump
   rather than left to the parent, and the plugin still compiles for Java 8.
 
+- **`oc3d-core` is pinned to a fixed `0.1.0`** rather than tracking a
+  snapshot. The module's code is bundled inside this plugin's jar, so what it
+  contained at build time is part of what gets released, not a build detail. On
+  a snapshot it changed three times during this migration and two builds twenty
+  minutes apart carried different code — every result still matched, but only
+  because the comparison was re-run each time. A fixed version cannot change
+  underneath a build, and the jar now records which one it carries.
+
 ### Changed relative to the build plan
 
 - **`mcib3d-core` is not a dependency after all.** The measurement layer turned

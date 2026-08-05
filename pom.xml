@@ -116,8 +116,21 @@
 		  Declared once and used twice: by the dependency below and by the
 		  Bundled-Dependency manifest entry, so the jar records which core it
 		  actually carries and the two cannot drift apart.
+
+		  A FIXED version, not a SNAPSHOT, and that distinction is the whole
+		  point. Shading puts core's bytecode inside the artifact users run, so
+		  "whatever was installed when this was built" would be part of a
+		  released plugin rather than a build detail. On a SNAPSHOT it moved
+		  three times during this migration - once mid-compile - and two builds
+		  twenty minutes apart bundled different classes. The harness stayed
+		  green, but only because it was re-run; nothing about the dependency
+		  announced that it had changed.
+
+		  0.1.0 is immutable in the local repository, so every build of this
+		  plugin bundles the same bytes. Upgrading is now a deliberate edit
+		  here, followed by a full harness run.
 		-->
-		<oc3d-core.version>0.1.0-SNAPSHOT</oc3d-core.version>
+		<oc3d-core.version>0.1.0</oc3d-core.version>
 	</properties>
 
 	<repositories>
