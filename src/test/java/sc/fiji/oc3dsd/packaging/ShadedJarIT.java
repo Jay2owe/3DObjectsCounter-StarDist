@@ -362,15 +362,26 @@ public class ShadedJarIT {
      * and are the user's own copies; bundling any of them would collide with
      * what Fiji already loaded. An {@code <artifactSet>} typo in the other
      * direction — too broad — is caught here.
+     * <p>
+     * {@code META-INF/} is named entry by entry rather than waved through as a
+     * prefix. Most of what a broadened shade would drag in lands there and
+     * nowhere else: {@code META-INF/services/} files, which relocation does not
+     * rewrite and which would then name classes that no longer exist under those
+     * names; signature files, which invalidate a resigned jar; another project's
+     * licence. Allowing the whole directory would let all of that through the
+     * one test whose job is to notice it.
      */
     @Test
     public void nothingElseWasBundled() {
+        String ownMavenMetadata =
+                "META-INF/maven/io.github.jay2owe/3D_Objects_Counter_StarDist/";
         Set<String> strangers = new TreeSet<String>();
         for (String name : entries) {
             if (name.endsWith("/")) continue;
             if (name.startsWith(OWN_PATH)) continue;
-            if (name.startsWith("META-INF/")) continue;
             if ("plugins.config".equals(name)) continue;
+            if ("META-INF/MANIFEST.MF".equals(name)) continue;
+            if (name.startsWith(ownMavenMetadata)) continue;
             strangers.add(name);
         }
         assertTrue("unexpected entries in the jar: " + strangers, strangers.isEmpty());

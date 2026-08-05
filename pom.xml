@@ -296,6 +296,49 @@
 			</plugin>
 
 			<!--
+			  TrackMate must resolve to exactly 7.14.0, and this fails the build
+			  if it ever does not.
+
+			  The version is pinned in <dependencies> above, but a pin is only a
+			  preference: pom-scijava manages TrackMate, so a future parent bump
+			  that removes or overrides the pin moves it silently, and the first
+			  symptom would be TrackMate 8 - which dropped Java 8, has already
+			  been rolled back once on this machine, and is its own project with
+			  its own equivalence run. The 31.1.0 -> 43.0.0 bump was checked by
+			  hand and held; nothing made that a property of the build until now.
+
+			  Checked against the RESOLVED dependency tree rather than the pom
+			  text, which is the claim that actually matters.
+			-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>pin-trackmate</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<bannedDependencies>
+									<excludes>
+										<exclude>sc.fiji:TrackMate</exclude>
+									</excludes>
+									<includes>
+										<include>sc.fiji:TrackMate:[7.14.0]</include>
+									</includes>
+									<message>TrackMate must stay at exactly 7.14.0. The TrackMate 7 -&gt; 8 upgrade is out of scope for the oc3d-core migration: v8 drops Java 8 and restructures the Python integration, and it needs its own equivalence run against the goldens. If a parent bump moved it, put the pin back rather than accepting the move here.</message>
+									<searchTransitive>true</searchTransitive>
+								</bannedDependencies>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!--
 			  Bundle oc3d-core into the jar under a private package, so installing
 			  this plugin is still one file and two plugins in the same Fiji can
 			  carry different core versions without one winning.
