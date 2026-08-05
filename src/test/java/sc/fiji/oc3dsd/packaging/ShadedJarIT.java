@@ -266,6 +266,45 @@ public class ShadedJarIT {
     }
 
     /**
+     * And <em>only</em> those five survive un-relocated.
+     * <p>
+     * The check above is one-directional: it notices a key that went missing,
+     * not a string that should have moved and did not. Those are different
+     * mistakes with the same cause — the {@code <excludes>} list — and the
+     * second one is the quieter of the two. An exclusion added for something
+     * that is really a class name, or written loosely enough to catch one,
+     * leaves a live reference to a package the jar no longer contains, and the
+     * only symptom is a {@code NoClassDefFoundError} when that path first runs.
+     * <p>
+     * Pinning the exact set means the excludes list cannot grow, or be
+     * broadened, without someone saying so here.
+     */
+    @Test
+    public void onlyThePropertyKeysSurviveUnrelocated() {
+        Set<String> survivors = new TreeSet<String>();
+        for (String body : classText.values()) {
+            int at = body.indexOf(CORE_PACKAGE + ".");
+            while (at >= 0) {
+                int end = at;
+                while (end < body.length() && isNameChar(body.charAt(end))) end++;
+                survivors.add(trimTrailingDots(body.substring(at, end)));
+                at = body.indexOf(CORE_PACKAGE + ".", at + 1);
+            }
+        }
+        assertEquals("the un-relocated strings in the jar are not exactly the five"
+                + " property keys. Anything extra is a reference the relocation"
+                + " should have rewritten and did not, which fails only when that"
+                + " code path first runs in Fiji.",
+                new TreeSet<String>(PROPERTY_KEYS), survivors);
+    }
+
+    private static String trimTrailingDots(String candidate) {
+        int end = candidate.length();
+        while (end > 0 && candidate.charAt(end - 1) == '.') end--;
+        return candidate.substring(0, end);
+    }
+
+    /**
      * And the general form of the same check, for keys nobody has added yet.
      * <p>
      * The list above goes stale the moment core declares a sixth property. This
