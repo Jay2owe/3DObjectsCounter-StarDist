@@ -72,6 +72,21 @@ and dressed in 3D Objects Counter+'s dialog and output surface.
   order. Only the ordering of that one list changed — the same names are
   accepted, a valid macro parses to exactly the same parameters, and the same
   exception is thrown for an invalid one.
+- **The five tuning properties are renamed into `oc3d-core`'s namespace.** They
+  come with the shared module rather than being declared here, so they now read
+  `sc.fiji.oc3d.core.maxDenseLabel`, `.maxOverlayLabels`, `.overlaySkipped`,
+  `.overlaySkippedReason` and `.optionalMapMemoryReserveBytes` — previously
+  `sc.fiji.oc3dsd.maxDenseLabelMeasurementsLabel` and `sc.fiji.oc3dsd.*` for the
+  rest. The first four are internal escape hatches; the last is a system
+  property overriding how much free heap an optional map must leave behind, and
+  `overlaySkipped` is set on a map image where a macro can read it.
+
+  None of them was ever documented outside the source, so this is noted for
+  completeness rather than as a break anyone is likely to feel. The names are
+  now the same in every plugin in the family, which is the point of sharing the
+  module, and they survive being bundled into the jar unchanged — verified
+  against the built artifact, because relocating a bundled module silently
+  rewrites exactly this kind of string.
 - **Renumbering clears a pixel that is not a valid label**, rather than leaving
   it in place. A pixel that is non-zero but negative, non-finite or fractional
   was never counted as an object; it is now also cleared from the renumbered

@@ -111,6 +111,13 @@
 		-->
 		<license.licenseName>bsd_3</license.licenseName>
 		<license.copyrightOwners>Jamie Malcolm</license.copyrightOwners>
+
+		<!--
+		  Declared once and used twice: by the dependency below and by the
+		  Bundled-Dependency manifest entry, so the jar records which core it
+		  actually carries and the two cannot drift apart.
+		-->
+		<oc3d-core.version>0.1.0-SNAPSHOT</oc3d-core.version>
 	</properties>
 
 	<repositories>
@@ -143,7 +150,7 @@
 		<dependency>
 			<groupId>io.github.jay2owe</groupId>
 			<artifactId>oc3d-core</artifactId>
-			<version>0.1.0-SNAPSHOT</version>
+			<version>${oc3d-core.version}</version>
 		</dependency>
 
 		<!--
@@ -265,8 +272,165 @@
 						</manifest>
 						<manifestEntries>
 							<Automatic-Module-Name>io.github.jay2owe.oc3dsd</Automatic-Module-Name>
+							<!--
+							  Which oc3d-core is baked into this jar. The shade step
+							  below writes a dependency-reduced pom, which correctly
+							  stops declaring oc3d-core as something to resolve - but
+							  that also erases the only record of what was bundled.
+							  This is that record, and it reads the same property the
+							  dependency does, so it cannot name a version other than
+							  the one actually shaded in.
+							-->
+							<Bundled-Dependency>io.github.jay2owe:oc3d-core:${oc3d-core.version}</Bundled-Dependency>
 						</manifestEntries>
 					</archive>
+				</configuration>
+			</plugin>
+
+			<!--
+			  Bundle oc3d-core into the jar under a private package, so installing
+			  this plugin is still one file and two plugins in the same Fiji can
+			  carry different core versions without one winning.
+
+			  Everything here is checked against the built artifact by
+			  ShadedJarIT rather than trusted, because every failure mode in this
+			  configuration is silent at build time and only shows up in Fiji.
+			-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>bundle-oc3d-core</id>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<!--
+							  A Maven COORDINATE (groupId:artifactId), not a Java
+							  package - the relocation below takes the package, and
+							  the two are different strings. A wrong coordinate here
+							  does not error: it matches nothing, the build succeeds,
+							  and the jar ships without the core classes.
+							  ShadedJarIT.coreIsActuallyBundled is what catches that.
+
+							  Only oc3d-core. TrackMate, TrackMate-StarDist, StarDist
+							  and CSBDeep are genuine prerequisites from update sites;
+							  bundling them would collide with the user's own copies.
+							-->
+							<artifactSet>
+								<includes>
+									<include>io.github.jay2owe:oc3d-core</include>
+								</includes>
+							</artifactSet>
+							<relocations>
+								<relocation>
+									<pattern>sc.fiji.oc3d.core</pattern>
+									<shadedPattern>sc.fiji.oc3dsd.internal.core</shadedPattern>
+									<!--
+									  Keeps the core's five property KEYS spelled the
+									  way core declares them.
+
+									  This is not a precaution against something that
+									  might happen. maven-shade-plugin rewrites string
+									  constants that parse as class names, not only
+									  bytecode references, and without this exclusion
+									  it demonstrably renames all five - so
+									  -Dsc.fiji.oc3d.core.optionalMapMemoryReserveBytes
+									  becomes a silent no-op and a macro reading the
+									  overlaySkipped property off a map image gets
+									  null. Core documents the opposite intent: one
+									  key, identical in every shaded copy, because a
+									  heap knob is a property of the JVM rather than
+									  of whichever plugin got shaded first.
+
+									  Listed one by one, and NOT as sc.fiji.oc3d.core.*
+									  even though that reads like the shape of the
+									  thing. Shade matches these with Ant path
+									  semantics against File.separator, so on Windows
+									  the whole path is a single token and the `*`
+									  spans slashes: that pattern excluded all 71 core
+									  classes from relocation, on this platform only,
+									  while the build reported success.
+									  ShadedJarIT.theOriginalPackageIsAbsentFromTheJarLayout
+									  is what caught it. Exact names have no wildcard
+									  to interpret and mean the same on every platform.
+
+									  A key core adds later will not be listed here,
+									  and the guard for that is not vigilance:
+									  ShadedJarIT.nothingInTheRelocatedNamespaceIsAStringRatherThanAClass
+									  fails on any string in the relocated namespace
+									  that names no class in the jar, which is what a
+									  rewritten key looks like.
+									-->
+									<excludes>
+										<exclude>sc.fiji.oc3d.core.maxDenseLabel</exclude>
+										<exclude>sc.fiji.oc3d.core.maxOverlayLabels</exclude>
+										<exclude>sc.fiji.oc3d.core.overlaySkipped</exclude>
+										<exclude>sc.fiji.oc3d.core.overlaySkippedReason</exclude>
+										<exclude>sc.fiji.oc3d.core.optionalMapMemoryReserveBytes</exclude>
+									</excludes>
+								</relocation>
+							</relocations>
+							<!--
+							  oc3d-core is bundled, so a consumer of this artifact
+							  must not be told to resolve it - it is published
+							  nowhere. Written under target/ to keep it out of the
+							  working tree, where it is generated build output that
+							  looks like a source file.
+							-->
+							<createDependencyReducedPom>true</createDependencyReducedPom>
+							<dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml</dependencyReducedPomLocation>
+							<filters>
+								<filter>
+									<artifact>io.github.jay2owe:oc3d-core</artifact>
+									<excludes>
+										<!-- Provenance belongs in one place: the
+										     Bundled-Dependency manifest entry. Two
+										     poms under META-INF/maven invite reading
+										     the wrong one. -->
+										<exclude>META-INF/maven/**</exclude>
+									</excludes>
+								</filter>
+							</filters>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!--
+			  ShadedJarIT inspects the packaged jar, so it cannot run in the test
+			  phase - at that point the jar does not exist yet. Failsafe runs it
+			  after package, and `mvn verify` is therefore the command that checks
+			  packaging; `mvn test` still checks behaviour.
+			-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>verify-packaging</id>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!--
+					  Handed the exact path rather than letting the test guess at
+					  target/*.jar - a guess would quietly pass against the wrong
+					  jar the day a second one appears there.
+					-->
+					<systemPropertyVariables>
+						<oc3dsd.shadedJar>${project.build.directory}/${project.build.finalName}.jar</oc3dsd.shadedJar>
+						<oc3dsd.coreVersion>${oc3d-core.version}</oc3dsd.coreVersion>
+						<!-- Not user.dir: failsafe does not run from the project
+						     root, and a test that reads the wrong directory
+						     reports on the wrong file. -->
+						<oc3dsd.basedir>${project.basedir}</oc3dsd.basedir>
+					</systemPropertyVariables>
 				</configuration>
 			</plugin>
 		</plugins>
