@@ -3,7 +3,6 @@ package sc.fiji.oc3dsd.engine;
 import ij.ImagePlus;
 import ij.measure.Calibration;
 import ij.measure.ResultsTable;
-import sc.fiji.oc3dsd.api.MorphPredicate;
 import sc.fiji.oc3dsd.api.OC3DSDParameters;
 import sc.fiji.oc3dsd.api.OC3DSDResult;
 import sc.fiji.oc3d.core.label.LabelRenumberer;
@@ -26,10 +25,10 @@ import java.util.Set;
  * <p>
  * The order matters and is not arbitrary. Detector-level filters run inside the
  * detection stage, on the detector's own features, so obvious noise never
- * reaches the expensive measurement pass. Morphology filters run afterwards, on
- * real measured volume and shape, because they are meaningless before anything
- * has been measured. Objects are renumbered after each filtering stage so the
- * label image never carries holes.
+ * reaches the expensive measurement pass. The size bounds and the edge rule run
+ * afterwards, on real measured voxel counts and bounding boxes, because they are
+ * meaningless before anything has been measured. Objects are renumbered after
+ * each filtering stage so the label image never carries holes.
  */
 public final class OC3DSDRunner {
 
@@ -139,9 +138,9 @@ public final class OC3DSDRunner {
         progress.step("Filtering");
         ResultsTable objects = measured.toStatisticsTable(null);
         Set<Integer> keep = survivors(objects, measured, params, labels);
-        int droppedByMorphology = measured.labelsSorted().size() - keep.size();
+        int droppedByObjectFilters = measured.labelsSorted().size() - keep.size();
 
-        if (droppedByMorphology > 0) {
+        if (droppedByObjectFilters > 0) {
             LabelRenumberer.Result renumbered = LabelRenumberer.renumber(labels, keep);
             measured = LabelFeatureAccumulator.scan(labels, params.intensityImage, cal);
             objects = measured.toStatisticsTable(null);
@@ -179,7 +178,7 @@ public final class OC3DSDRunner {
                 singleSliceObjects,
                 droppedShortObjects,
                 droppedByDetectorFilters,
-                droppedByMorphology,
+                droppedByObjectFilters,
                 System.currentTimeMillis() - start);
     }
 
@@ -187,7 +186,7 @@ public final class OC3DSDRunner {
     // Filtering
     // ------------------------------------------------------------------
 
-    /** Labels that pass the size bounds, the edge rule and every morphology predicate. */
+    /** Labels that pass the size bounds and the edge rule. */
     private static Set<Integer> survivors(ResultsTable objects,
                                           LabelFeatureAccumulator.Result measured,
                                           OC3DSDParameters params,
@@ -209,7 +208,6 @@ public final class OC3DSDRunner {
 
             if (params.excludeOnEdges && touchesEdge(values, width, height, depth)) continue;
 
-            if (!passesAll(params.morphPredicates, values, objects, row, params)) continue;
 
             keep.add(Integer.valueOf(label));
         }
@@ -235,64 +233,6 @@ public final class OC3DSDRunner {
                 || values.boundingX() + values.boundingWidth() - 1 >= width - 1
                 || values.boundingY() + values.boundingHeight() - 1 >= height - 1
                 || values.boundingZ() + values.boundingDepth() - 1 >= depth - 1;
-    }
-
-    private static boolean passesAll(List<MorphPredicate> predicates,
-                                     LabelFeatureAccumulator.FeatureValues values,
-                                     ResultsTable objects,
-                                     int row,
-                                     OC3DSDParameters params) {
-        if (predicates == null || predicates.isEmpty()) return true;
-        for (MorphPredicate predicate : predicates) {
-            Double observed = featureValue(predicate.featureName, values, objects, row);
-            if (observed == null) {
-                params.warningSink.warn("Unknown filter feature '" + predicate.featureName
-                        + "'; the filter was ignored.");
-                continue;
-            }
-            if (Double.isNaN(observed.doubleValue())) {
-                // A feature that could not be computed for this object cannot
-                // exclude it. Silently dropping such objects would make the
-                // count depend on a measurement failure.
-                continue;
-            }
-            if (!predicate.matches(observed.doubleValue())) return false;
-        }
-        return true;
-    }
-
-    /**
-     * Maps a macro feature name to the measured value, or null when unknown.
-     * <p>
-     * Core's {@code FeatureValues.feature(String)} covers the same nine names,
-     * but it is deliberately not used here. It matches case-sensitively where
-     * this lower-cases first, and it returns {@code NaN} for a name it does not
-     * recognise — which this code has to tell apart from a feature that is known
-     * but could not be computed. The first warns and ignores the filter; the
-     * second passes the object through. Collapsing them would silently change
-     * which objects survive.
-     */
-    private static Double featureValue(String feature,
-                                       LabelFeatureAccumulator.FeatureValues values,
-                                       ResultsTable objects,
-                                       int row) {
-        if (feature == null) return null;
-        String name = feature.trim().toLowerCase(java.util.Locale.ROOT);
-        if ("sphericity".equals(name)) return Double.valueOf(values.sphericity());
-        if ("compactness".equals(name)) return Double.valueOf(values.compactness());
-        if ("elongation".equals(name)) return Double.valueOf(values.elongation());
-        if ("volume".equals(name)) return Double.valueOf(values.voxelCount());
-        if ("volume_calibrated".equals(name)) return Double.valueOf(values.calibratedVolume());
-        if ("surface_area".equals(name)) return Double.valueOf(values.surfaceArea());
-        if ("mean_intensity".equals(name)) return Double.valueOf(values.meanIntensity());
-        if ("max_intensity".equals(name)) return Double.valueOf(values.maxIntensity());
-        if ("feret_diameter_max".equals(name)) return Double.valueOf(values.feretDiameterMax());
-        // Anything else may still be a column the table carries.
-        int column = objects.getColumnIndex(feature);
-        if (column != ResultsTable.COLUMN_NOT_FOUND) {
-            return Double.valueOf(objects.getValueAsDouble(column, row));
-        }
-        return null;
     }
 
     // ------------------------------------------------------------------

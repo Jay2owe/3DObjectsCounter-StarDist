@@ -25,7 +25,7 @@ public final class OC3DSDResult {
     private final int singleSliceObjects;
     private final int droppedShortObjects;
     private final int droppedByDetectorFilters;
-    private final int droppedByMorphologyFilters;
+    private final int droppedByObjectFilters;
     private final long elapsedMs;
 
     public OC3DSDResult(ResultsTable objects,
@@ -39,7 +39,7 @@ public final class OC3DSDResult {
                         int singleSliceObjects,
                         int droppedShortObjects,
                         int droppedByDetectorFilters,
-                        int droppedByMorphologyFilters,
+                        int droppedByObjectFilters,
                         long elapsedMs) {
         this.objects = objects;
         this.summary = summary;
@@ -52,7 +52,7 @@ public final class OC3DSDResult {
         this.singleSliceObjects = singleSliceObjects;
         this.droppedShortObjects = droppedShortObjects;
         this.droppedByDetectorFilters = droppedByDetectorFilters;
-        this.droppedByMorphologyFilters = droppedByMorphologyFilters;
+        this.droppedByObjectFilters = droppedByObjectFilters;
         this.elapsedMs = elapsedMs;
     }
 
@@ -110,9 +110,9 @@ public final class OC3DSDResult {
         return droppedByDetectorFilters;
     }
 
-    /** Objects discarded by the size bounds or the morphology predicates. */
-    public int getDroppedByMorphologyFilters() {
-        return droppedByMorphologyFilters;
+    /** Objects discarded after measurement, by the size bounds or the edge rule. */
+    public int getDroppedByObjectFilters() {
+        return droppedByObjectFilters;
     }
 
     public long getElapsedMs() {

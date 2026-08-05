@@ -1,13 +1,8 @@
 package sc.fiji.oc3dsd;
 
-import sc.fiji.oc3d.core.macro.MacroFilters;
 import sc.fiji.oc3d.core.macro.MacroOptions;
-import sc.fiji.oc3dsd.api.MorphPredicate;
 import sc.fiji.oc3dsd.ui.OC3DSDDialogModel;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Parses the options string passed to
@@ -25,7 +20,6 @@ import java.util.List;
  *   <li>{@code max=<int|Infinity>} — maximum object voxel count, default Infinity.</li>
  *   <li>{@code exclude_edges} — flag, exclude objects touching image borders.</li>
  *   <li>{@code redirect=[image title]} — optional intensity-measurement source.</li>
- *   <li>{@code sphericity>=0.6}, {@code volume>=100}, … — direct filter predicates.</li>
  *   <li>{@code hide_labels}, {@code hide_surfaces}, {@code hide_centroids},
  *       {@code hide_centers_of_mass}, {@code hide_stats}, {@code hide_summary} —
  *       flags suppressing an output that is otherwise shown.</li>
@@ -39,7 +33,7 @@ import java.util.List;
  *
  * <p><strong>The grammar itself lives in {@code oc3d-core}.</strong>
  * {@link MacroOptions} does the tokenising, bracket handling and numeric
- * parsing; {@link MacroFilters} does the direct predicates. What stays here is
+ * parsing. What stays here is
  * the part that is genuinely StarDist's: which options exist, what they default
  * to, and how they map onto a dialog model that carries a detection section no
  * other variant has. The forwarding methods below are kept because callers in
@@ -50,46 +44,6 @@ public final class MacroOptionsParser {
 
     private MacroOptionsParser() {}
 
-    /** @see MacroFilters#MAX_FILTERS */
-    public static final int MAX_FILTERS = MacroFilters.MAX_FILTERS;
-
-    /**
-     * Feature names accepted in a direct filter predicate.
-     *
-     * <p>Wider than what this version measures. The extended names —
-     * {@code fractal_*}, {@code sholl_*}, {@code skeleton_*} and the composites
-     * — are accepted so a macro written for 3D Objects Counter+, or for a later
-     * version of this plugin, parses rather than failing. A predicate on a
-     * feature that is not computed evaluates to a pass and the engine warns; see
-     * {@link MorphPredicate}.
-     */
-    private static final List<String> FILTER_FEATURES = Collections.unmodifiableList(Arrays.asList(
-            "feret_diameter_max",
-            "volume_calibrated",
-            "mean_intensity",
-            "max_intensity",
-            "surface_area",
-            "compactness",
-            "sphericity",
-            "elongation",
-            "volume",
-            "fractal_dim_xy",
-            "fractal_r2_xy",
-            "lacunarity_mean_xy",
-            "lacunarity_spread_xy",
-            "sholl_critical_radius_um",
-            "sholl_critical_intersections",
-            "sholl_schoenen_index",
-            "sholl_primary_branches",
-            "skeleton_branches",
-            "skeleton_junctions",
-            "skeleton_endpoints",
-            "skeleton_voxels",
-            "ri",
-            "sri",
-            "pb",
-            "mp",
-            "vsd"));
 
     /**
      * Applies a macro-options string to a dialog model.
@@ -138,11 +92,6 @@ public final class MacroOptionsParser {
         String redirect = getBracketed(opts, "redirect", null);
         model.redirectTitle = redirect == null ? "" : redirect;
 
-        for (sc.fiji.oc3d.core.api.MorphPredicate predicate
-                : MacroFilters.parse(opts, FILTER_FEATURES)) {
-            model.addFilter(new OC3DSDDialogModel.FilterRow(
-                    predicate.featureName, predicate.op.symbol(), predicate.value, true));
-        }
         return model;
     }
 

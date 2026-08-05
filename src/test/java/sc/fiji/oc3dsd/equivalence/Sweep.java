@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * The configuration sweep: size bounds, edge exclusion, redirect, calibration,
- * each map on and off, and the morphology filters.
+ * and each map on and off.
  * <p>
  * <strong>Not a full cross-product, and deliberately so.</strong> Crossing every
  * level of every factor here is roughly two thousand configurations per fixture,
@@ -16,9 +16,10 @@ import java.util.List;
  * pipeline — size bounds and edge exclusion select objects, calibration scales
  * measurements, maps are pure output — so their interactions are shallow. The
  * sweep is therefore one-factor-at-a-time from a baseline, which isolates the
- * cause of any diff, plus two deliberately combined configurations to catch the
- * interactions that do exist (filtering with a calibration in force, and
- * renumbering with maps built afterwards from the renumbered labels).
+ * cause of any diff, plus one deliberately combined configuration to catch the
+ * interaction that does exist: objects dropped by the size bounds and the edge
+ * rule trigger renumbering, after which the maps are built from the renumbered
+ * labels and must still join to the table.
  * <p>
  * Every configuration is named, and the name is the golden directory, so a
  * failure says which factor moved.
@@ -48,7 +49,6 @@ final class Sweep {
         final boolean surfaceMap;
         final boolean centroidMap;
         final boolean comMap;
-        final String[] filters;
 
         private Config(Builder b) {
             this.name = b.name;
@@ -61,7 +61,6 @@ final class Sweep {
             this.surfaceMap = b.surfaceMap;
             this.centroidMap = b.centroidMap;
             this.comMap = b.comMap;
-            this.filters = b.filters;
         }
 
         boolean buildsAnyMap() {
@@ -92,12 +91,6 @@ final class Sweep {
             sb.append("calibration=").append(cal).append('\n');
             sb.append("maps=").append(objectMap).append(',').append(surfaceMap)
                     .append(',').append(centroidMap).append(',').append(comMap).append('\n');
-            sb.append("filters=");
-            for (int i = 0; i < filters.length; i++) {
-                if (i > 0) sb.append(' ');
-                sb.append(filters[i]);
-            }
-            sb.append('\n');
             return sb.toString();
         }
     }
@@ -122,7 +115,6 @@ final class Sweep {
         private boolean surfaceMap = true;
         private boolean centroidMap = true;
         private boolean comMap = true;
-        private String[] filters = new String[0];
 
         Builder(String name) {
             this.name = name;
@@ -157,11 +149,6 @@ final class Sweep {
             return this;
         }
 
-        Builder filters(String... value) {
-            this.filters = value;
-            return this;
-        }
-
         Config build() {
             return new Config(this);
         }
@@ -182,12 +169,11 @@ final class Sweep {
         configs.add(new Builder("max_50").size(0, 50).build());
         configs.add(new Builder("min_5_max_200").size(5, 200).build());
 
-        // Edge exclusion. The object set under this option is a known
-        // algorithmic difference in 3D Objects Counter+, because the classic
-        // counter mislabels edge contact across a late merge. Not so here —
-        // this plugin never
-        // merges provisional ids — so it stays Tier 1, and this configuration is
-        // what holds that claim up.
+        // Edge exclusion. The object set under this option is a known algorithmic
+        // difference in 3D Objects Counter+, because the classic counter mislabels
+        // edge contact across a late merge. That cannot happen here — this plugin
+        // never merges provisional ids — so it stays exact, and this configuration
+        // is what holds that claim up.
         configs.add(new Builder("exclude_edges").edges().build());
 
         // Redirect.
@@ -206,30 +192,6 @@ final class Sweep {
         configs.add(new Builder("map_centroids").maps(false, false, true, false).build());
         configs.add(new Builder("map_com").maps(false, false, false, true).build());
 
-        // Morphology filters, one feature at a time.
-        configs.add(new Builder("filter_volume").filters("volume>=8").build());
-        configs.add(new Builder("filter_sphericity").filters("sphericity>=0.3").build());
-        configs.add(new Builder("filter_elongation").filters("elongation<=3").build());
-        configs.add(new Builder("filter_surface_area").filters("surface_area>=10").build());
-        configs.add(new Builder("filter_feret").filters("feret_diameter_max>=2").build());
-        configs.add(new Builder("filter_volume_calibrated")
-                .cal(Cal.ISOTROPIC).filters("volume_calibrated>=1").build());
-        // Intensity features with no redirect image resolve to NaN. A feature
-        // that could not be computed must not exclude an object — otherwise the
-        // count would depend on a measurement failure — so this must be a no-op.
-        configs.add(new Builder("filter_mean_intensity_no_redirect")
-                .filters("mean_intensity>=10").build());
-        configs.add(new Builder("filter_mean_intensity")
-                .redirect().filters("mean_intensity>=10").build());
-        configs.add(new Builder("filter_max_intensity")
-                .redirect().filters("max_intensity>=200").build());
-        // An unknown feature warns and is ignored rather than silently
-        // excluding everything. The warning text is user-visible and recorded.
-        configs.add(new Builder("filter_unknown_feature")
-                .filters("no_such_feature>=1").build());
-        configs.add(new Builder("filter_two_features")
-                .filters("volume>=8", "sphericity>=0.2").build());
-
         // Map-free duplicates of the factors that select objects. Fixtures with
         // tens of thousands of objects cannot afford a numbered overlay per
         // object, but they must still exercise size bounds, edge exclusion, the
@@ -243,18 +205,15 @@ final class Sweep {
                 .edges().maps(false, false, false, false).build());
         configs.add(new Builder("no_maps_redirect")
                 .redirect().maps(false, false, false, false).build());
-        configs.add(new Builder("no_maps_filter_volume")
-                .filters("volume>=8").maps(false, false, false, false).build());
 
-        // The interactions that genuinely exist: filtering drops objects, which
-        // triggers the renumber-and-rescan path, after which the maps are built
-        // from the renumbered labels and must still join to the table.
-        configs.add(new Builder("combined_strict")
-                .size(5, 500).edges().redirect().cal(Cal.ANISOTROPIC)
-                .filters("sphericity>=0.3").build());
-        configs.add(new Builder("combined_loose")
-                .redirect().cal(Cal.ISOTROPIC).maps(false, false, false, false)
-                .filters("volume>=2").build());
+        // The interaction that genuinely exists: the size bounds and the edge rule
+        // drop objects, which triggers the renumber-and-rescan path, after which
+        // the maps are built from the renumbered labels and must still join to the
+        // table. The old combined_loose configuration went with the filters: without
+        // a predicate it dropped nothing, and redirect, calibration and no-maps are
+        // each already covered on their own.
+        configs.add(new Builder("combined_size_edge_redirect")
+                .size(5, 500).edges().redirect().cal(Cal.ANISOTROPIC).build());
 
         return configs;
     }

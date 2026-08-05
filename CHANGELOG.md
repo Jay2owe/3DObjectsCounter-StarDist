@@ -18,10 +18,10 @@ and dressed in 3D Objects Counter+'s dialog and output surface.
   compactness, elongation, maximum Feret diameter, intensity statistics,
   centroid, centre of mass and bounding box, using 3D Objects Counter+'s feature
   definitions so the columns mean the same thing in both plugins.
-- **Filters** — minimum and maximum bounds on size, volume, sphericity,
-  compactness, elongation, surface area, intensity and Feret diameter, plus
-  detector-level area, quality and intensity filters that run before the
-  measurement pass.
+- **Filters** — minimum and maximum object size and exclusion of objects
+  touching the image edges, plus detector-level area, quality and intensity
+  filters that run before the measurement pass. **Shape is measured, not
+  filtered on** — see below.
 - **Maps** — object, surface, centroid and centre-of-mass maps, and the 3D label
   image itself as a first-class output.
 - **Batch over a folder, on both discovery axes at once.** A recursive scan
@@ -72,6 +72,28 @@ and dressed in 3D Objects Counter+'s dialog and output surface.
   order. Only the ordering of that one list changed — the same names are
   accepted, a valid macro parses to exactly the same parameters, and the same
   exception is thrown for an invalid one.
+- **No filtering on shape.** Sphericity, compactness, elongation and maximum
+  Feret diameter are measured and reported; nothing drops an object on their
+  basis. The `feature >= value` filter mechanism 3D Objects Counter+ carries is
+  deliberately absent here, in the dialog, in the macro grammar and in the Java
+  API.
+
+  The reasoning is that the object count is this plugin's headline number, and a
+  shape threshold sitting in a dialog is an easy way to move it without noticing
+  — particularly for sphericity and compactness, which this plugin computes
+  itself rather than taking from the native counter. Sorting, plotting or
+  filtering the exported table gives the same result with the arithmetic visible.
+
+  What this means in practice: `MorphPredicate`, `OC3DSD.Builder.addFilter` and
+  `OC3DSDParameters.morphPredicates` no longer exist, and the per-feature min/max
+  boxes are gone from the dialog. A macro carrying a 3D Objects Counter+ shape
+  predicate still parses and is ignored rather than failing, because someone will
+  paste one.
+
+  The count of objects dropped after measurement is now
+  `getDroppedByObjectFilters()`, and the batch column is `dropped_object_filters`
+  — the number only ever covered the size bounds and the edge rule, and calling it
+  "morphology" was already imprecise.
 - **The five tuning properties are renamed into `oc3d-core`'s namespace.** They
   come with the shared module rather than being declared here, so they now read
   `sc.fiji.oc3d.core.maxDenseLabel`, `.maxOverlayLabels`, `.overlaySkipped`,

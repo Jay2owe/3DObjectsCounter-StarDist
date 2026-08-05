@@ -5,17 +5,14 @@ import sc.fiji.oc3dsd.engine.StarDistLinkingParams;
 import sc.fiji.oc3dsd.engine.StarDistPostFilters;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Immutable parameter bundle for one run.
  * <p>
  * Where 3D Objects Counter+ takes a {@code threshold}, this takes a model and
- * the detection and linking settings. Everything after the objects exist — size
- * bounds, morphology predicates, the redirect image — is deliberately identical,
- * so the two plugins' filters mean the same thing.
+ * the detection and linking settings. Everything after the objects exist — the
+ * size bounds, the edge rule, the redirect image — is deliberately identical, so
+ * the two plugins' filters mean the same thing.
  *
  * <p>Build one with {@link OC3DSD#builder(ImagePlus)}.
  */
@@ -52,8 +49,6 @@ public final class OC3DSDParameters {
     public final int maxSize;
     /** Whether to exclude objects touching the image edges. */
     public final boolean excludeOnEdges;
-    /** Morphology predicates; an object must pass <em>all</em> of them to survive. */
-    public final List<MorphPredicate> morphPredicates;
     /** Optional intensity-measurement source (the "redirect" image). May be null. */
     public final ImagePlus intensityImage;
 
@@ -76,7 +71,6 @@ public final class OC3DSDParameters {
                      int minSize,
                      int maxSize,
                      boolean excludeOnEdges,
-                     List<MorphPredicate> morphPredicates,
                      ImagePlus intensityImage,
                      boolean buildObjectMap,
                      boolean buildSurfaceMap,
@@ -96,17 +90,11 @@ public final class OC3DSDParameters {
         this.minSize = Math.max(0, minSize);
         this.maxSize = Math.max(this.minSize, maxSize);
         this.excludeOnEdges = excludeOnEdges;
-        this.morphPredicates = immutableCopy(morphPredicates);
         this.intensityImage = intensityImage;
         this.buildObjectMap = buildObjectMap;
         this.buildSurfaceMap = buildSurfaceMap;
         this.buildCentroidMap = buildCentroidMap;
         this.buildCentreOfMassMap = buildCentreOfMassMap;
         this.warningSink = warningSink == null ? NO_OP_WARNING_SINK : warningSink;
-    }
-
-    private static List<MorphPredicate> immutableCopy(List<MorphPredicate> source) {
-        if (source == null || source.isEmpty()) return Collections.emptyList();
-        return Collections.unmodifiableList(new ArrayList<MorphPredicate>(source));
     }
 }

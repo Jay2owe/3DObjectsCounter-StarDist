@@ -3,7 +3,6 @@ package sc.fiji.oc3dsd.ui;
 import ij.ImagePlus;
 import sc.fiji.oc3d.core.ui.DialogModel;
 import sc.fiji.oc3dsd.MacroOptionsParser;
-import sc.fiji.oc3dsd.api.MorphPredicate;
 import sc.fiji.oc3dsd.api.OC3DSD;
 import sc.fiji.oc3dsd.api.OC3DSDParameters;
 import sc.fiji.oc3dsd.engine.StarDistLinkingParams;
@@ -11,6 +10,7 @@ import sc.fiji.oc3dsd.runtime.ModelResolver;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -168,28 +168,7 @@ public final class OC3DSDDialogModel extends DialogModel {
                 .buildCentroidMap(showCentroids)
                 .buildCentreOfMassMap(showCentersOfMass)
                 .warningSink(warningSink);
-        for (MorphPredicate predicate : predicatesForApi()) {
-            builder.addFilter(predicate);
-        }
         return builder.build();
-    }
-
-    /**
-     * The enabled filters as this plugin's own {@link MorphPredicate}.
-     * <p>
-     * Core computes the predicates; the public API takes this plugin's type,
-     * which is deliberately not adopted from core because core's package is
-     * relocated when the jar is shaded and a relocated type has no business in a
-     * published signature. The two carry the same feature name, operator and
-     * value, so this is a rename across a boundary, not a conversion.
-     */
-    public List<MorphPredicate> predicatesForApi() {
-        List<MorphPredicate> out = new ArrayList<MorphPredicate>();
-        for (sc.fiji.oc3d.core.api.MorphPredicate predicate : enabledPredicates()) {
-            out.add(new MorphPredicate(predicate.featureName,
-                    operatorFrom(predicate.op.symbol()), predicate.value));
-        }
-        return out;
     }
 
     /**
@@ -210,10 +189,23 @@ public final class OC3DSDDialogModel extends DialogModel {
         return unit == null ? "pixel" : unit;
     }
 
-    static MorphPredicate.Operator operatorFrom(String symbol) {
-        if ("<=".equals(symbol)) return MorphPredicate.Operator.LE;
-        if (">".equals(symbol)) return MorphPredicate.Operator.GT;
-        if ("<".equals(symbol)) return MorphPredicate.Operator.LT;
-        return MorphPredicate.Operator.GE;
+    /**
+     * No morphology predicates, ever. This plugin does not filter on shape.
+     * <p>
+     * The shared dialog model still carries the machinery, because 3D Objects
+     * Counter+ uses it, and it derives predicates from per-feature ranges whose
+     * text this plugin's dialog no longer offers. Left inherited, that is a
+     * filter nobody can see: the fields are gone from the dialog, so a predicate
+     * arriving from a default, a macro option or a later change to the shared
+     * module would silently drop objects with nothing on screen to explain it.
+     * <p>
+     * Overridden rather than trusted, because the alternative is trusting that
+     * the ranges stay at their defaults in a module this repository does not own.
+     * Returning empty makes the absence a property of this plugin instead of a
+     * coincidence about that one.
+     */
+    @Override
+    public List<sc.fiji.oc3d.core.api.MorphPredicate> enabledPredicates() {
+        return Collections.emptyList();
     }
 }

@@ -1,14 +1,14 @@
 golden set: core-27col
 reference set: pre-migration-26col
-runs: 557
+runs: 337
 fixtures: 22
-configurations: 32
+configurations: 19
 
 The 27-column schema: the column order 3D Objects Counter+ has always
 shipped, adopted from oc3d-core so the family has one column order.
 Median sits between StdDev and Min; the Morph_* block follows Label.
 
-Supersedes golden/pre-migration-26col, which records the 26-column layout
+Supersedes golden/pre-migration-26col, which records the 26-column layout this plugin
 shipped before. That set is KEPT, not deleted: SchemaTransitionTest reads it
 and proves every value under every carried-over column is identical here
 — 163678 of them — with Median the only column added. Capturing this set
@@ -20,12 +20,12 @@ Z-linking, or that two runs of the same real stack agree. See the Harness
 class javadoc for the full boundary.
 
 Coverage reductions, stated rather than left implicit:
-REDUCED count_254 (~254 objects): runs 1 of 25 map-building configurations. Every measurement configuration still runs.
-REDUCED count_255 (~255 objects): runs 1 of 25 map-building configurations. Every measurement configuration still runs.
-REDUCED count_256 (~256 objects): runs 1 of 25 map-building configurations. Every measurement configuration still runs.
-REDUCED count_65534 (~65534 objects): runs 0 of 25 map-building configurations. Every measurement configuration still runs.
-REDUCED count_65535 (~65535 objects): runs 0 of 25 map-building configurations. Every measurement configuration still runs.
-REDUCED count_65536 (~65536 objects): runs 0 of 25 map-building configurations. Every measurement configuration still runs.
+REDUCED count_254 (~254 objects): runs 1 of 14 map-building configurations. Every measurement configuration still runs.
+REDUCED count_255 (~255 objects): runs 1 of 14 map-building configurations. Every measurement configuration still runs.
+REDUCED count_256 (~256 objects): runs 1 of 14 map-building configurations. Every measurement configuration still runs.
+REDUCED count_65534 (~65534 objects): runs 0 of 14 map-building configurations. Every measurement configuration still runs.
+REDUCED count_65535 (~65535 objects): runs 0 of 14 map-building configurations. Every measurement configuration still runs.
+REDUCED count_65536 (~65536 objects): runs 0 of 14 map-building configurations. Every measurement configuration still runs.
 REDUCED tables and partitions above 512 entries record a digest plus the first and last 32 rows instead of
         every row. Comparison there is exact-only, so a Tier 2 difference inside tolerance reports as a
         failure to diagnose rather than passing quietly.

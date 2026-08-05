@@ -60,7 +60,7 @@ public final class BatchRunner {
             "linking_distance", "linking_distance_px", "gap_distance", "slice_gap", "min_slices",
             "min_size", "max_size", "exclude_edges",
             "objects", "single_slice_objects", "dropped_short",
-            "dropped_detector_filters", "dropped_morphology_filters", "elapsed_ms", "status",
+            "dropped_detector_filters", "dropped_object_filters", "elapsed_ms", "status",
     };
 
     /**
@@ -276,7 +276,7 @@ public final class BatchRunner {
                 Integer.toString(result.getSingleSliceObjects()),
                 Integer.toString(result.getDroppedShortObjects()),
                 Integer.toString(result.getDroppedByDetectorFilters()),
-                Integer.toString(result.getDroppedByMorphologyFilters()),
+                Integer.toString(result.getDroppedByObjectFilters()),
                 Long.toString(result.getElapsedMs()),
                 status,
         };

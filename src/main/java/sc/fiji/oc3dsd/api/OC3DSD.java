@@ -67,7 +67,6 @@ public final class OC3DSD {
         private int minSize = 10;
         private int maxSize = Integer.MAX_VALUE;
         private boolean excludeOnEdges = false;
-        private final List<MorphPredicate> filters = new ArrayList<MorphPredicate>();
         private ImagePlus intensityImage;
         private boolean buildObjectMap = true;
         private boolean buildSurfaceMap = true;
@@ -164,11 +163,6 @@ public final class OC3DSD {
             return this;
         }
 
-        public Builder addFilter(MorphPredicate predicate) {
-            if (predicate != null) this.filters.add(predicate);
-            return this;
-        }
-
         /** Optional intensity-measurement source (the "redirect" image). */
         public Builder intensityImage(ImagePlus value) {
             this.intensityImage = value;
@@ -219,7 +213,6 @@ public final class OC3DSD {
                     minSize,
                     maxSize,
                     excludeOnEdges,
-                    filters,
                     intensityImage,
                     buildObjectMap,
                     buildSurfaceMap,

@@ -84,10 +84,6 @@ public final class OC3DSDDialog {
         gd.addNumericField("Min size (voxels)", model.minSize, 0);
         gd.addStringField("Max size (voxels)",
                 model.maxSize == Integer.MAX_VALUE ? "Infinity" : Integer.toString(model.maxSize), 12);
-        for (OC3DSDDialogModel.FeatureRange range : model.featureRanges()) {
-            gd.addStringField(range.label + " min", range.minText, 10);
-            gd.addStringField(range.label + " max", range.maxText, 10);
-        }
         gd.addCheckbox("Exclude objects on edges", model.excludeOnEdges);
 
         gd.addMessage("Output");
@@ -119,10 +115,6 @@ public final class OC3DSDDialog {
 
         model.minSize = (int) gd.getNextNumber();
         model.maxSize = parseMaxSize(gd.getNextString());
-        for (OC3DSDDialogModel.FeatureRange range : model.featureRanges()) {
-            range.minText = gd.getNextString();
-            range.maxText = gd.getNextString();
-        }
         model.excludeOnEdges = gd.getNextBoolean();
 
         model.showLabels = gd.getNextBoolean();

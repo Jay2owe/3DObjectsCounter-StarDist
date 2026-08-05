@@ -6,10 +6,9 @@ excludeOnEdges=false
 redirect=false
 calibration=NONE
 maps=false,false,true,false
-filters=
 ## counts
 objects=5
-droppedByMorphology=0
+droppedByObjectFilters=0
 droppedByDetectorFilters=0
 droppedShort=0
 singleSlice=0

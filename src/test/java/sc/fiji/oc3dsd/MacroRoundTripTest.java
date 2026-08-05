@@ -90,13 +90,18 @@ public class MacroRoundTripTest {
     }
 
     @Test
-    public void filtersRoundTripThroughOptions() {
+    public void plusStyleFilterSyntaxParsesAndIsIgnored() {
+        // This plugin has no morphology filters. 3D Objects Counter+ does, and
+        // someone will paste one of its macros in here — so the predicate syntax
+        // has to be tolerated rather than rejected. It is read as an unrecognised
+        // option and has no effect, which is the same thing ImageJ does with any
+        // option a command does not know.
         OC3DSDDialogModel model = MacroOptionsParser.parse(
-                "filter=sphericity min=0 max=Infinity");
+                "sphericity>=0.6 min=0 max=Infinity");
 
-        // The direct-predicate syntax is 3D Objects Counter+'s; parsing it must
-        // not throw even when the plugin adds no predicate of its own.
         assertTrue(model.validate().isEmpty());
+        assertTrue("a predicate in the options must not become a filter",
+                model.enabledPredicates().isEmpty());
     }
 
     @Test

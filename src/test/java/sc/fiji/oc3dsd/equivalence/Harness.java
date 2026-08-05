@@ -2,7 +2,6 @@ package sc.fiji.oc3dsd.equivalence;
 
 import ij.ImagePlus;
 import sc.fiji.oc3dsd.MacroOptionsParser;
-import sc.fiji.oc3dsd.api.MorphPredicate;
 import sc.fiji.oc3dsd.api.OC3DSD;
 import sc.fiji.oc3dsd.api.OC3DSDParameters;
 import sc.fiji.oc3dsd.api.OC3DSDResult;
@@ -224,9 +223,6 @@ final class Harness {
                         warnings.add(message);
                     }
                 });
-        for (int i = 0; i < run.config.filters.length; i++) {
-            builder.addFilter(MorphPredicate.parse(run.config.filters[i]));
-        }
         OC3DSDParameters params = builder.build();
 
         long t0 = System.currentTimeMillis();
@@ -239,7 +235,7 @@ final class Harness {
         sb.append("## configuration\n").append(run.config.describe());
         sb.append("## counts\n");
         sb.append("objects=").append(result.getObjectCount()).append('\n');
-        sb.append("droppedByMorphology=").append(result.getDroppedByMorphologyFilters()).append('\n');
+        sb.append("droppedByObjectFilters=").append(result.getDroppedByObjectFilters()).append('\n');
         sb.append("droppedByDetectorFilters=").append(result.getDroppedByDetectorFilters()).append('\n');
         sb.append("droppedShort=").append(result.getDroppedShortObjects()).append('\n');
         sb.append("singleSlice=").append(result.getSingleSliceObjects()).append('\n');
@@ -323,39 +319,17 @@ final class Harness {
         cases.add("hide_summary");
         cases.add("save_labels");
         cases.add("redirect=[My Image 01.tif]");
-        // Every filter feature the parser advertises.
-        cases.add("volume>=100");
-        cases.add("volume_calibrated>=1.5");
-        cases.add("surface_area<=200");
+        // Filter predicates are no longer part of the grammar. A couple are kept
+        // as cases because the guarantee that replaced them is worth pinning: a
+        // macro carrying 3D Objects Counter+'s predicate syntax must still parse,
+        // and be ignored, rather than throw. Someone will paste one.
         cases.add("sphericity>=0.6");
-        cases.add("compactness>0.2");
-        cases.add("elongation<3");
-        cases.add("mean_intensity>=10");
-        cases.add("max_intensity>=200");
-        cases.add("feret_diameter_max>=5");
-        cases.add("fractal_dim_xy>=1.2");
-        cases.add("fractal_r2_xy>=0.9");
-        cases.add("lacunarity_mean_xy>=0.1");
-        cases.add("lacunarity_spread_xy>=0.1");
-        cases.add("sholl_critical_radius_um>=1");
-        cases.add("sholl_critical_intersections>=2");
-        cases.add("sholl_schoenen_index>=0.5");
-        cases.add("sholl_primary_branches>=3");
-        cases.add("skeleton_branches>=4");
-        cases.add("skeleton_junctions>=1");
-        cases.add("skeleton_endpoints>=2");
-        cases.add("skeleton_voxels>=50");
-        cases.add("ri>=0.5");
-        cases.add("sri>=0.5");
-        cases.add("pb>=0.5");
-        cases.add("mp>=0.5");
-        cases.add("vsd>=0.5");
+        cases.add("volume>=100 elongation<3");
         // Combinations, and the README's own example.
         cases.add("channel=1 model=versatile_fluo probability=0.5 overlap=0.4 "
                 + "linking_distance=5.0 gap_distance=5.0 slice_gap=1 min_slices=1 "
-                + "min=10 sphericity>=0.3 exclude_edges save_labels hide_summary");
+                + "min=10 exclude_edges save_labels hide_summary");
         cases.add("min=10 hide_display");
-        cases.add("volume>=8 sphericity>=0.2 elongation<=3");
         // Rejections. The error text is user-visible and is part of the contract.
         cases.add("filter1=sphericity>=0.6");
         cases.add("sphericity=0.6");
@@ -432,14 +406,11 @@ final class Harness {
         sb.append(prefix).append(".showSummary=").append(model.showSummary).append('\n');
         sb.append(prefix).append(".saveLabels=").append(model.saveLabels).append('\n');
         sb.append(prefix).append(".redirectTitle=").append(model.redirectTitle).append('\n');
-        List<OC3DSDDialogModel.FilterRow> filters = model.filters();
-        sb.append(prefix).append(".filters=").append(filters.size()).append('\n');
-        for (int i = 0; i < filters.size(); i++) {
-            OC3DSDDialogModel.FilterRow row = filters.get(i);
-            sb.append(prefix).append(".filter[").append(i).append("]=")
-                    .append(row.feature).append(row.operator).append(Canon.num(row.value))
-                    .append(" enabled=").append(row.enabled).append('\n');
-        }
+        // Predicates are recorded as a count so the macro golden still fails if
+        // this plugin ever starts producing one. There are no fields to record
+        // beyond that: enabledPredicates() is overridden to return nothing.
+        sb.append(prefix).append(".predicates=")
+                .append(model.enabledPredicates().size()).append('\n');
         List<String> problems = new ArrayList<String>(model.validate());
         Collections.sort(problems);
         sb.append(prefix).append(".validate=").append(problems.size()).append('\n');

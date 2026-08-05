@@ -34,8 +34,8 @@ hidden inside it.
 - TrackMate LAP linking across Z, with linking distance, gap-closing distance and slice gap exposed.
 - Per-object 3D measurements, in the same columns and to the same definitions as
   [3D Objects Counter+](https://github.com/Jay2owe/3DObjectsCounterPlus).
-- Minimum and maximum filters on size, volume, sphericity, compactness, elongation, surface area,
-  intensity and Feret diameter.
+- Minimum and maximum object size, and exclusion of objects touching the image edges. Shape is
+  measured and reported, not filtered on — see [Filtering](#filtering).
 - Object, surface, centroid and centre-of-mass maps with numbered labels, plus the 3D label image.
 - Live preview of detection on the displayed slice before running the whole stack.
 - Folder batch with recursive search **and** regex grouping: recursion decides which files are
@@ -72,12 +72,27 @@ Set the channel to detect on, choose a model, and set **Probability** and **Over
 **Run Preview** to see detections on the current slice. Under **Linking**, set **Linking max
 distance** — how far an object may move between consecutive slices and still be the same object, in
 calibrated units — plus the gap-closing distance, maximum slice gap and minimum slices per object.
-Then set the filters and choose the outputs. **Preview** runs the count and keeps the dialog open;
+Then set the size bounds and choose the outputs. **Preview** runs the count and keeps the dialog
+open;
 **OK** runs it and closes.
 
 `Analyze > 3D Objects Counter - StarDist Batch` runs a folder. Choose the root, whether to include
 subfolders, and optionally a filename regular expression whose capture group names the group each
 file belongs to. The groups are shown for confirmation before the run starts.
+
+## Filtering
+
+Objects are selected on **size** and on whether they touch an image edge. There is deliberately no
+filtering on shape.
+
+Sphericity, compactness, elongation and maximum Feret diameter are still measured and still appear
+in the results table, so you can sort on them, plot them, or filter the exported table however you
+like. What the plugin will not do is silently drop objects on your behalf using them, because the
+count is the headline number and a shape threshold buried in a dialog is an easy way to change it
+without noticing.
+
+If you paste a macro from 3D Objects Counter+ that carries a shape predicate, it parses and is
+ignored rather than failing.
 
 ## Macro
 
@@ -85,7 +100,7 @@ file belongs to. The groups are shown for confirmation before the run starts.
 run("3D Objects Counter - StarDist",
     "channel=1 model=versatile_fluo probability=0.5 overlap=0.4 " +
     "linking_distance=5.0 gap_distance=5.0 slice_gap=1 min_slices=1 " +
-    "min=10 filter=sphericity min=0.3 max=1.0 " +
+    "min=10 " +
     "exclude_edges save_labels hide_summary");
 ```
 

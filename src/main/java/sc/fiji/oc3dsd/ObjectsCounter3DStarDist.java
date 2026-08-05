@@ -105,11 +105,11 @@ public class ObjectsCounter3DStarDist implements PlugIn {
         IJ.log("  Single-slice objects: " + result.getSingleSliceObjects()
                 + (result.getDroppedShortObjects() > 0
                 ? "  (" + result.getDroppedShortObjects() + " dropped below the minimum)" : ""));
-        int dropped = result.getDroppedByDetectorFilters() + result.getDroppedByMorphologyFilters();
+        int dropped = result.getDroppedByDetectorFilters() + result.getDroppedByObjectFilters();
         if (dropped > 0) {
             IJ.log("  Filtered out: " + result.getDroppedByDetectorFilters()
-                    + " by detector filters, " + result.getDroppedByMorphologyFilters()
-                    + " by morphology filters");
+                    + " by detector filters, " + result.getDroppedByObjectFilters()
+                    + " by size or edge filters");
         }
         IJ.log("  Elapsed: " + result.getElapsedMs() + " ms");
     }

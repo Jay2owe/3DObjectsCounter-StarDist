@@ -83,7 +83,6 @@ public class ShadedJarIT {
             "io/CsvWriter",
             "ui/DialogModel",
             "macro/MacroOptions",
-            "macro/MacroFilters",
             "api/MorphPredicate");
 
     /**
@@ -218,17 +217,15 @@ public class ShadedJarIT {
      * <p>
      * Note the jar holds two packages ending in {@code api}: this one, and
      * core's own, relocated to {@code ...internal.core.api}. Core's belongs
-     * there — {@code internal} is what distinguishes them, and keeping a
-     * relocated type out of this plugin's published signatures is why
-     * {@code MorphPredicate} was kept local rather than adopted from core.
-     * Checking for "an api package that moved" would flag that correct
-     * relocation, so this names the types instead.
+     * there — {@code internal} is what distinguishes them. Checking for "an api
+     * package that moved" would flag that correct relocation, so this names the
+     * types instead.
      */
     @Test
     public void thePublicApiIsNotRelocated() {
         List<String> missing = new ArrayList<String>();
         for (String type : Arrays.asList(
-                "OC3DSD", "OC3DSDParameters", "OC3DSDResult", "MorphPredicate")) {
+                "OC3DSD", "OC3DSDParameters", "OC3DSDResult")) {
             String expected = OWN_PATH + "api/" + type + ".class";
             if (!entries.contains(expected)) missing.add(expected);
         }

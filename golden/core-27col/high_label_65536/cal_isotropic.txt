@@ -6,10 +6,9 @@ excludeOnEdges=false
 redirect=false
 calibration=ISOTROPIC
 maps=true,true,true,true
-filters=
 ## counts
 objects=2
-droppedByMorphology=0
+droppedByObjectFilters=0
 droppedByDetectorFilters=0
 droppedShort=0
 singleSlice=0

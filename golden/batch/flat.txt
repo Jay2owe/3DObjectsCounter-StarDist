@@ -91,7 +91,7 @@ wt,3
 ## Summary/manifest.csv
 lineEndings=CRLF
 lines=4 trailingNewline=true
-file,folder,group,unit,pixel_width,pixel_depth,model,probability,overlap,linking_distance,linking_distance_px,gap_distance,slice_gap,min_slices,min_size,max_size,exclude_edges,objects,single_slice_objects,dropped_short,dropped_detector_filters,dropped_morphology_filters,elapsed_ms,status
+file,folder,group,unit,pixel_width,pixel_depth,model,probability,overlap,linking_distance,linking_distance_px,gap_distance,slice_gap,min_slices,min_size,max_size,exclude_edges,objects,single_slice_objects,dropped_short,dropped_detector_filters,dropped_object_filters,elapsed_ms,status
 <IN>\a_ko_02.tif,.,ko,micron,0.5,2.0,versatile fluorescence (bundled),0.5,0.4,5.0,10.0,5.0,1,1,1,Infinity,false,2,0,0,0,0,<ELAPSED>,ok
 <IN>\a_wt_01.tif,.,wt,pixel,1.0,1.0,versatile fluorescence (bundled),0.5,0.4,5.0,5.0,5.0,1,1,1,Infinity,false,3,0,0,0,0,<ELAPSED>,ok
 <IN>\broken_wt_09.tif,.,wt,,,,versatile fluorescence (bundled),,,,,,,,,,,,,,,,,failed: the file could not be opened
