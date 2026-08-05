@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>org.scijava</groupId>
 		<artifactId>pom-scijava</artifactId>
-		<version>31.1.0</version>
+		<version>43.0.0</version>
 		<relativePath/>
 	</parent>
 
@@ -128,6 +128,14 @@
 	</repositories>
 
 	<dependencies>
+		<!--
+		  ImageJ 1.x, version managed by pom-scijava. The parent bump to 43.0.0
+		  moved it from 1.53f to 1.54p, which is not a cosmetic change here: ij
+		  is the measurement substrate, and ResultsTable's own formatting writes
+		  every batch CSV. The equivalence and batch goldens were run against it
+		  and every value and every byte matched, which is the only reason that
+		  move is recorded as safe rather than assumed to be.
+		-->
 		<dependency>
 			<groupId>net.imagej</groupId>
 			<artifactId>ij</artifactId>

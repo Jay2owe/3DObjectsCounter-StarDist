@@ -149,6 +149,16 @@ not, and each of these produced a plausible-looking wrong number.
   the pixel equivalent, says so when an image is uncalibrated, and the log and
   batch manifest record both readings.
 
+### Build
+
+- **`pom-scijava` 31.1.0 → 43.0.0**, matching the rest of the family. This moves
+  dozens of managed versions at once, including **ImageJ 1.x from 1.53f to
+  1.54p** — the library every measurement and every batch CSV is written
+  through. The full equivalence and batch golden sets were run against it and
+  every value and every byte matched, so the upgrade changes nothing a user
+  sees. **TrackMate stays pinned at 7.14.0**, checked explicitly after the bump
+  rather than left to the parent, and the plugin still compiles for Java 8.
+
 ### Changed relative to the build plan
 
 - **`mcib3d-core` is not a dependency after all.** The measurement layer turned

@@ -377,6 +377,34 @@ public class ShadedJarIT {
     }
 
     /**
+     * Nothing in the jar needs a newer JVM than the plugin targets.
+     * <p>
+     * The pom compiles this plugin for Java 8 because that is what a good deal
+     * of the Fiji installed base still runs. Bundling a module says nothing
+     * about what the module was compiled for, and a core built on a newer JDK
+     * would ship class files those users cannot load — not at install time, and
+     * not at startup, but the first time the code path is reached.
+     * <p>
+     * Relocation does not rewrite the class file version, so this is a property
+     * of how core was built, which is outside this repository. That is exactly
+     * why the check belongs on the artifact.
+     */
+    @Test
+    public void nothingInTheJarNeedsANewerJvmThanThePluginTargets() {
+        int javaEight = 52;
+        Map<String, Integer> tooNew = new LinkedHashMap<String, Integer>();
+        for (Map.Entry<String, String> entry : classText.entrySet()) {
+            String body = entry.getValue();
+            if (body.length() < 8) continue;
+            int major = (body.charAt(6) << 8) | body.charAt(7);
+            if (major > javaEight) tooNew.put(entry.getKey(), Integer.valueOf(major));
+        }
+        assertTrue("class files needing a JVM newer than Java 8 (major " + javaEight
+                + "), which the pom targets and much of the Fiji installed base"
+                + " still runs: " + tooNew, tooNew.isEmpty());
+    }
+
+    /**
      * The dependency-reduced pom is build output and stays in {@code target/}.
      * <p>
      * Shade writes it into the project root by default, where it sits next to
