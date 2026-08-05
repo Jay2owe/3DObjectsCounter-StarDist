@@ -268,7 +268,7 @@ public class EquivalenceHarnessTest {
     private static String manifest(List<Harness.Run> runs) {
         StringBuilder sb = new StringBuilder();
         sb.append("golden set: ").append(Harness.GOLDEN_SET).append('\n');
-        sb.append("reference sha: ").append(Harness.REFERENCE_SHA).append('\n');
+        sb.append("reference set: ").append(Harness.REFERENCE_SET).append('\n');
         sb.append("runs: ").append(runs.size()).append('\n');
         sb.append("fixtures: ").append(Fixtures.all().size()).append('\n');
         sb.append("configurations: ").append(Sweep.all().size()).append('\n');
@@ -277,7 +277,7 @@ public class EquivalenceHarnessTest {
         sb.append("shipped, adopted from oc3d-core so the family has one column order.\n");
         sb.append("Median sits between StdDev and Min; the Morph_* block follows Label.\n");
         sb.append('\n');
-        sb.append("Superseded golden/").append(Harness.REFERENCE_SHA);
+        sb.append("Supersedes golden/").append(Harness.REFERENCE_SET);
         sb.append(", which records the 26-column layout this plugin\n");
         sb.append("shipped before. That set is KEPT, not deleted: SchemaTransitionTest reads it\n");
         sb.append("and proves every value under every carried-over column is identical here\n");

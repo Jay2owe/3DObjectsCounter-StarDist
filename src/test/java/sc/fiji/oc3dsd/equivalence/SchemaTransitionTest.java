@@ -25,7 +25,7 @@ import static org.junit.Assert.fail;
  *
  * <h2>Why this test exists rather than a recapture</h2>
  *
- * The pre-migration goldens in {@code golden/d4ef7df} record 26 columns with the
+ * The pre-migration goldens in {@code golden/pre-migration-26col} record 26 columns with the
  * {@code Morph_*} block before {@code BX}. Core emits 27, with {@code Median}
  * between {@code StdDev} and {@code Min} and the {@code Morph_*} block after
  * {@code Label} — the order 3D Objects Counter+ has always shipped, verified
@@ -56,7 +56,7 @@ import static org.junit.Assert.fail;
 public class SchemaTransitionTest {
 
     private static final Charset UTF8 = Charset.forName("UTF-8");
-    private static final File OLD_GOLDEN_ROOT = new File("golden/d4ef7df");
+    private static final File OLD_GOLDEN_ROOT = new File("golden/" + Harness.REFERENCE_SET);
 
     /** The one column the transition is allowed to add. */
     private static final Set<String> ALLOWED_NEW_COLUMNS =

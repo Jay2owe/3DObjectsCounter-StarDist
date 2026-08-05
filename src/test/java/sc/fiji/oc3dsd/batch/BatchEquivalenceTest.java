@@ -36,7 +36,7 @@ import static org.junit.Assert.fail;
  *
  * <p>It is equivalent to a pre-migration capture for a checkable reason:
  * {@code src/main/java/sc/fiji/oc3dsd/batch/} is byte-identical to the
- * pre-migration import ({@code git diff d4ef7df..HEAD -- .../batch/} is empty
+ * pre-migration import (the batch package was untouched by the migration
  * apart from the {@code ResultSource} seam added to record them), and every
  * input the batch layer consumes is already pinned by the Stage 01 goldens as
  * unchanged. Identical code on identical inputs produces identical output.

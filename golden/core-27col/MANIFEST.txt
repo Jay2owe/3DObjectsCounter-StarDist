@@ -1,5 +1,5 @@
 golden set: core-27col
-reference sha: d4ef7df
+reference set: pre-migration-26col
 runs: 557
 fixtures: 22
 configurations: 32
@@ -8,7 +8,7 @@ The 27-column schema: the column order 3D Objects Counter+ has always
 shipped, adopted from oc3d-core so the family has one column order.
 Median sits between StdDev and Min; the Morph_* block follows Label.
 
-Superseded golden/d4ef7df, which records the 26-column layout this plugin
+Supersedes golden/pre-migration-26col, which records the 26-column layout
 shipped before. That set is KEPT, not deleted: SchemaTransitionTest reads it
 and proves every value under every carried-over column is identical here
 — 163678 of them — with Median the only column added. Capturing this set

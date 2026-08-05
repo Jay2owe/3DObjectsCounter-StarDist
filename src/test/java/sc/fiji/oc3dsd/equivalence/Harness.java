@@ -48,15 +48,18 @@ final class Harness {
     static final String CAPTURE_PROPERTY = "oc3dsd.harness.capture";
 
     /**
-     * The pre-migration reference commit, from SD stage 01 step 0.
+     * The 26-column set captured before any shared code was adopted.
      *
      * <p>No longer the active golden set — see {@link #GOLDEN_SET} — but still
-     * the reference the migration is judged against. {@code golden/d4ef7df} is
-     * kept as the record of what shipped before, and
-     * {@link SchemaTransitionTest} reads it directly to prove that adopting
-     * core's schema moved the columns and no values.
+     * the reference the change is judged against. It is kept as the record of
+     * what shipped before, and {@link SchemaTransitionTest} reads it directly to
+     * prove that adopting the shared schema moved the columns and no values.
+     *
+     * <p>Named for what it contains rather than for the commit that produced it,
+     * on the same reasoning as {@link #GOLDEN_SET}: a name that survives history
+     * being rewritten, and that tells a reader what is inside without looking.
      */
-    static final String REFERENCE_SHA = "d4ef7df";
+    static final String REFERENCE_SET = "pre-migration-26col";
 
     /**
      * The golden set currently compared against.
@@ -65,7 +68,7 @@ final class Harness {
      * distinguishes it: the 27-column layout 3D Objects Counter+ has always
      * shipped, which this plugin adopted from {@code oc3d-core} so the family
      * has one column order. The values under every column carried over from
-     * {@link #REFERENCE_SHA} are identical — 163 678 of them, checked by
+     * {@link #REFERENCE_SET} are identical — 163 678 of them, checked by
      * {@link SchemaTransitionTest}, which is what licensed capturing this set.
      */
     static final String GOLDEN_SET = "core-27col";

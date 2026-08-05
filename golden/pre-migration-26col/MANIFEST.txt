@@ -1,4 +1,4 @@
-reference sha: d4ef7df
+golden set: pre-migration-26col
 runs: 557
 fixtures: 22
 configurations: 32
