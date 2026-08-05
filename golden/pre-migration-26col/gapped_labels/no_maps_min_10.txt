@@ -1,0 +1,54 @@
+# fixture=gapped_labels config=no_maps_min_10
+## configuration
+minSize=10
+maxSize=Infinity
+excludeOnEdges=false
+redirect=false
+calibration=NONE
+maps=false,false,false,false
+filters=
+## counts
+objects=3
+droppedByMorphology=0
+droppedByDetectorFilters=0
+droppedShort=0
+singleSlice=0
+## warnings
+count=0
+## statistics
+rows=3 columns=26
+headings	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Min	Max	X	Y	Z	XM	YM	ZM	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um	BX	BY	BZ	B-width	B-height	B-depth	Label
+body_sha256=d64b9d8cc0e80ea44a14fa396f857a7cda9fc64c25593037b0e850c6bd45049b
+detail=full
+0	36.0	96.0	36.0	36.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	2.0	6.5	2.5	2.0	6.5	2.5	0.8222774618879523	0.5559748675415127	s:NaN	7.0710678118654755	2.0	4.0	0.0	1.0	6.0	6.0	1.0
+1	36.0	96.0	36.0	36.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.0	6.5	3.5	7.0	6.5	3.5	0.8222774618879523	0.5559748675415127	s:NaN	7.0710678118654755	7.0	4.0	1.0	1.0	6.0	6.0	5.0
+2	36.0	96.0	36.0	36.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	12.0	6.5	4.5	12.0	6.5	4.5	0.8222774618879523	0.5559748675415127	s:NaN	7.071067811865475	12.0	4.0	2.0	1.0	6.0	6.0	9.0
+## summary
+rows=4 columns=27
+headings	Statistic	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Min	Max	X	Y	Z	XM	YM	ZM	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um	BX	BY	BZ	B-width	B-height	B-depth	Label
+body_sha256=3802b964a45541189e4e1a0aa89f23dbc40c70c34c77f001e8265b56c2be1786
+detail=full
+0	s:Mean	36.0	96.0	36.0	36.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.0	6.5	3.5	7.0	6.5	3.5	0.8222774618879521	0.5559748675415127	s:NaN	7.0710678118654755	7.0	4.0	1.0	1.0	6.0	6.0	5.0
+1	s:StdDev	0.0	0.0	0.0	0.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	4.08248290463863	0.0	0.8164965809277257	4.08248290463863	0.0	0.8164965809277257	1.8250120749944284E-8	0.0	s:NaN	0.0	4.08248290463863	0.0	0.816496580927726	0.0	0.0	0.0	3.2659863237109037
+2	s:Min	36.0	96.0	36.0	36.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	2.0	6.5	2.5	2.0	6.5	2.5	0.8222774618879523	0.5559748675415127	s:NaN	7.071067811865475	2.0	4.0	0.0	1.0	6.0	6.0	1.0
+3	s:Max	36.0	96.0	36.0	36.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	12.0	6.5	4.5	12.0	6.5	4.5	0.8222774618879523	0.5559748675415127	s:NaN	7.0710678118654755	12.0	4.0	2.0	1.0	6.0	6.0	9.0
+## labelImage
+dims=16x16x16
+czt=1,16,1
+bitDepth=16
+displayRange=0.0,0.0
+calibration=1.0,1.0,1.0,pixel
+labels=3
+partition_sha256=792549eab362c9205c248f97eb98497f995164cc18c49c8f41e4e57eb8d7d3dc
+detail=full
+1	36	2,4,0	1,6,6	657ac50235fd1c25c89cc454ed4ea833
+5	36	7,4,1	1,6,6	e8a3e8013095180147a1bbefab5eae42
+9	36	12,4,2	1,6,6	8237f6c349ed93650acbfdb016a53a8b
+## objectMap
+absent
+## surfaceMap
+absent
+## centroidMap
+absent
+## centreOfMassMap
+absent

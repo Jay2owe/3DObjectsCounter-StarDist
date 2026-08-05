@@ -1,0 +1,64 @@
+# Build output
+/target/
+mcib3d-core-*.jar
+/.mvn/
+/.m2/
+
+# Local/private release and planning artefacts
+/PUBLISHING_AUDIT.md
+/release-staging/
+/docs/
+/.planning/
+/graphify-out/
+/obsidian/
+/mempalace/
+/mempalace*/
+next_plan*
+vision.md
+
+# Agent-local context
+/.claude/
+/CLAUDE.md
+/CLAUDE_CONTEXT*.md
+/AGENTS.md
+/GEMINI.md
+/EXECUTION_STATUS.md
+/context_hook.py
+
+# Raw imaging data should stay out of the public plugin repo
+*.lif
+*.czi
+*.nd2
+*.oib
+*.oif
+*.lsm
+*.zvi
+*.tif
+*.tiff
+
+# Secrets and local environment
+.env
+.env.*
+*.pem
+*.key
+
+# IDE files
+/.idea/
+*.iml
+/.vscode/
+/.classpath
+/.project
+/.settings/
+*.swp
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temp files
+*.tmp.*
+__pycache__/
+*.pyc
+*conflicted copy*

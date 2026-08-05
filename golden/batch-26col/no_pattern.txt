@@ -1,0 +1,144 @@
+# batch no_pattern
+processed=6 failed=1 objects=15
+files=13
+  Groups/all_objects.csv
+  Groups/all_summary.csv
+  Objects/a_ko_02_objects.csv
+  Objects/a_wt_01_objects.csv
+  Objects/b_ko_04_objects.csv
+  Objects/b_wt_03_objects.csv
+  Objects/odd,name_wt_05_objects.csv
+  Objects/ungrouped_objects.csv
+  README.txt
+  Summary/groups.csv
+  Summary/manifest.csv
+  Summary/per_folder_summary.csv
+  Summary/summary.csv
+
+## Groups/all_objects.csv
+lineEndings=CRLF
+lines=16 trailingNewline=true
+File,Group,Folder,Volume (micron^3),Surface (micron^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,Mean,StdDev,Min,Max,X,Y,Z,XM,YM,ZM,Morph_Sphericity,Morph_Compactness,Morph_Elongation,Morph_Feret3D_um,BX,BY,BZ,B-width,B-height,B-depth,Label,Volume (pixel^3),Surface (pixel^2)
+a_ko_02.tif,all,.,54,90,108,92,NaN,NaN,NaN,NaN,NaN,5.500,5.500,2.000,5.500,5.500,2.000,1.056,1.177,1.912,5.196,3,3,1,6,6,3,1,0,0
+a_ko_02.tif,all,.,45,81,90,78,NaN,NaN,NaN,NaN,NaN,14.500,14.000,1.000,14.500,14.000,1.000,1.084,1.274,2.309,4.907,12,12,0,6,5,3,2,0,0
+a_wt_01.tif,all,.,0,0,75,66,NaN,NaN,NaN,NaN,NaN,4.000,4.000,2.000,4.000,4.000,2.000,1.116,1.390,1.732,5.774,2,2,1,5,5,3,1,75,110
+a_wt_01.tif,all,.,0,0,120,96,NaN,NaN,NaN,NaN,NaN,12.500,12.000,2.500,12.500,12.000,2.500,1.095,1.312,1.528,6.928,10,10,1,6,5,4,2,120,148
+a_wt_01.tif,all,.,0,0,75,66,NaN,NaN,NaN,NaN,NaN,19.000,18.000,3.000,19.000,18.000,3.000,1.116,1.390,1.732,5.774,17,16,2,5,5,3,3,75,110
+b_ko_04.tif,all,nested,0,0,1,1,NaN,NaN,NaN,NaN,NaN,1.000,1.000,1.000,1.000,1.000,1.000,NaN,NaN,NaN,0.000,1,1,1,1,1,1,1,1,6
+b_ko_04.tif,all,nested,0,0,18,18,NaN,NaN,NaN,NaN,NaN,5.000,5.000,1.500,5.000,5.000,1.500,1.317,2.285,1.633,2.887,4,4,1,3,3,2,2,18,42
+b_ko_04.tif,all,nested,0,0,320,212,NaN,NaN,NaN,NaN,NaN,13.500,13.500,2.000,13.500,13.500,2.000,1.020,1.060,1.620,10.392,10,10,0,8,8,5,3,320,288
+b_wt_03.tif,all,nested,0,0,90,78,NaN,NaN,NaN,NaN,NaN,2.000,4.500,1.000,2.000,4.500,1.000,1.084,1.274,2.092,6.364,0,2,0,5,6,3,1,90,126
+b_wt_03.tif,all,nested,0,0,50,50,NaN,NaN,NaN,NaN,NaN,10.000,10.000,1.500,10.000,10.000,1.500,1.076,1.247,2.828,5.657,8,8,1,5,5,2,2,50,90
+"odd,name_wt_05.tif",all,nested,0,0,108,92,NaN,NaN,NaN,NaN,NaN,5.500,5.500,2.000,5.500,5.500,2.000,1.056,1.177,2.092,7.071,3,3,1,6,6,3,1,108,144
+"odd,name_wt_05.tif",all,nested,0,0,90,78,NaN,NaN,NaN,NaN,NaN,14.500,14.000,1.000,14.500,14.000,1.000,1.084,1.274,2.092,6.364,12,12,0,6,5,3,2,90,126
+ungrouped.tif,all,nested,0,0,75,66,NaN,NaN,NaN,NaN,NaN,4.000,4.000,2.000,4.000,4.000,2.000,1.116,1.390,1.732,5.774,2,2,1,5,5,3,1,75,110
+ungrouped.tif,all,nested,0,0,120,96,NaN,NaN,NaN,NaN,NaN,12.500,12.000,2.500,12.500,12.000,2.500,1.095,1.312,1.528,6.928,10,10,1,6,5,4,2,120,148
+ungrouped.tif,all,nested,0,0,75,66,NaN,NaN,NaN,NaN,NaN,19.000,18.000,3.000,19.000,18.000,3.000,1.116,1.390,1.732,5.774,17,16,2,5,5,3,3,75,110
+
+## Groups/all_summary.csv
+lineEndings=CRLF
+lines=5 trailingNewline=true
+Statistic,File,Group,Folder,Volume (micron^3),Surface (micron^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,Mean,StdDev,Min,Max,X,Y,Z,XM,YM,ZM,Morph_Sphericity,Morph_Compactness,Morph_Elongation,Morph_Feret3D_um,BX,BY,BZ,B-width,B-height,B-depth,Label,Volume (pixel^3),Surface (pixel^2)
+Mean,NaN,NaN,NaN,6.600,11.400,94.333,77.000,NaN,NaN,NaN,NaN,NaN,9.500,9.400,1.867,9.500,9.400,1.867,1.102,1.354,1.897,5.719,7.400,7.400,0.867,5.200,5.000,3.000,1.800,81.133,103.867
+StdDev,NaN,NaN,NaN,16.907,29.111,68.640,44.624,NaN,NaN,NaN,NaN,NaN,5.808,5.314,0.670,5.808,5.314,0.670,0.065,0.274,0.346,2.146,5.487,5.096,0.618,1.514,1.461,0.894,0.748,75.564,71.047
+Min,NaN,NaN,NaN,0.000,0.000,1.000,1.000,NaN,NaN,NaN,NaN,NaN,1.000,1.000,1.000,1.000,1.000,1.000,1.020,1.060,1.528,0.000,0.000,1.000,0.000,1.000,1.000,1.000,1.000,0.000,0.000
+Max,NaN,NaN,NaN,54.000,90.000,320.000,212.000,NaN,NaN,NaN,NaN,NaN,19.000,18.000,3.000,19.000,18.000,3.000,1.317,2.285,2.828,10.392,17.000,16.000,2.000,8.000,8.000,5.000,3.000,320.000,288.000
+
+## Objects/a_ko_02_objects.csv
+lineEndings=CRLF
+lines=3 trailingNewline=true
+Volume (micron^3),Surface (micron^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,Mean,StdDev,Min,Max,X,Y,Z,XM,YM,ZM,Morph_Sphericity,Morph_Compactness,Morph_Elongation,Morph_Feret3D_um,BX,BY,BZ,B-width,B-height,B-depth,Label
+54,90,108,92,NaN,NaN,NaN,NaN,NaN,5.500,5.500,2,5.500,5.500,2,1.056,1.177,1.912,5.196,3,3,1,6,6,3,1
+45,81,90,78,NaN,NaN,NaN,NaN,NaN,14.500,14.000,1,14.500,14.000,1,1.084,1.274,2.309,4.907,12,12,0,6,5,3,2
+
+## Objects/a_wt_01_objects.csv
+lineEndings=CRLF
+lines=4 trailingNewline=true
+Volume (pixel^3),Surface (pixel^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,Mean,StdDev,Min,Max,X,Y,Z,XM,YM,ZM,Morph_Sphericity,Morph_Compactness,Morph_Elongation,Morph_Feret3D_um,BX,BY,BZ,B-width,B-height,B-depth,Label
+75,110,75,66,NaN,NaN,NaN,NaN,NaN,4.000,4,2.000,4.000,4,2.000,1.116,1.390,1.732,5.774,2,2,1,5,5,3,1
+120,148,120,96,NaN,NaN,NaN,NaN,NaN,12.500,12,2.500,12.500,12,2.500,1.095,1.312,1.528,6.928,10,10,1,6,5,4,2
+75,110,75,66,NaN,NaN,NaN,NaN,NaN,19.000,18,3.000,19.000,18,3.000,1.116,1.390,1.732,5.774,17,16,2,5,5,3,3
+
+## Objects/b_ko_04_objects.csv
+lineEndings=CRLF
+lines=4 trailingNewline=true
+Volume (pixel^3),Surface (pixel^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,Mean,StdDev,Min,Max,X,Y,Z,XM,YM,ZM,Morph_Sphericity,Morph_Compactness,Morph_Elongation,Morph_Feret3D_um,BX,BY,BZ,B-width,B-height,B-depth,Label
+1,6,1,1,NaN,NaN,NaN,NaN,NaN,1.000,1.000,1.000,1.000,1.000,1.000,NaN,NaN,NaN,0.000,1,1,1,1,1,1,1
+18,42,18,18,NaN,NaN,NaN,NaN,NaN,5.000,5.000,1.500,5.000,5.000,1.500,1.317,2.285,1.633,2.887,4,4,1,3,3,2,2
+320,288,320,212,NaN,NaN,NaN,NaN,NaN,13.500,13.500,2.000,13.500,13.500,2.000,1.020,1.060,1.620,10.392,10,10,0,8,8,5,3
+
+## Objects/b_wt_03_objects.csv
+lineEndings=CRLF
+lines=3 trailingNewline=true
+Volume (pixel^3),Surface (pixel^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,Mean,StdDev,Min,Max,X,Y,Z,XM,YM,ZM,Morph_Sphericity,Morph_Compactness,Morph_Elongation,Morph_Feret3D_um,BX,BY,BZ,B-width,B-height,B-depth,Label
+90,126,90,78,NaN,NaN,NaN,NaN,NaN,2,4.500,1.000,2,4.500,1.000,1.084,1.274,2.092,6.364,0,2,0,5,6,3,1
+50,90,50,50,NaN,NaN,NaN,NaN,NaN,10,10.000,1.500,10,10.000,1.500,1.076,1.247,2.828,5.657,8,8,1,5,5,2,2
+
+## Objects/odd,name_wt_05_objects.csv
+lineEndings=CRLF
+lines=3 trailingNewline=true
+Volume (pixel^3),Surface (pixel^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,Mean,StdDev,Min,Max,X,Y,Z,XM,YM,ZM,Morph_Sphericity,Morph_Compactness,Morph_Elongation,Morph_Feret3D_um,BX,BY,BZ,B-width,B-height,B-depth,Label
+108,144,108,92,NaN,NaN,NaN,NaN,NaN,5.500,5.500,2,5.500,5.500,2,1.056,1.177,2.092,7.071,3,3,1,6,6,3,1
+90,126,90,78,NaN,NaN,NaN,NaN,NaN,14.500,14.000,1,14.500,14.000,1,1.084,1.274,2.092,6.364,12,12,0,6,5,3,2
+
+## Objects/ungrouped_objects.csv
+lineEndings=CRLF
+lines=4 trailingNewline=true
+Volume (pixel^3),Surface (pixel^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,Mean,StdDev,Min,Max,X,Y,Z,XM,YM,ZM,Morph_Sphericity,Morph_Compactness,Morph_Elongation,Morph_Feret3D_um,BX,BY,BZ,B-width,B-height,B-depth,Label
+75,110,75,66,NaN,NaN,NaN,NaN,NaN,4.000,4,2.000,4.000,4,2.000,1.116,1.390,1.732,5.774,2,2,1,5,5,3,1
+120,148,120,96,NaN,NaN,NaN,NaN,NaN,12.500,12,2.500,12.500,12,2.500,1.095,1.312,1.528,6.928,10,10,1,6,5,4,2
+75,110,75,66,NaN,NaN,NaN,NaN,NaN,19.000,18,3.000,19.000,18,3.000,1.116,1.390,1.732,5.774,17,16,2,5,5,3,3
+
+## README.txt
+lineEndings=CRLF
+lines=16 trailingNewline=true
+3D Objects Counter - StarDist — batch output
+
+Labels/   one 3D label image per input, objects numbered 1..N.
+Objects/  one row per object per input.
+Maps/     object, surface, centroid and centre-of-mass maps.
+Groups/   objects and summary aggregated by the filename regex group.
+Summary/  summary.csv over everything, per_folder_summary.csv by source
+          folder, groups.csv by regex group, and manifest.csv.
+
+manifest.csv records the parameters, calibration and counts for every
+image. Keep it: it is what makes these numbers reproducible.
+
+Note on method: StarDist runs on each Z-slice and the detections are
+linked through Z by TrackMate. This is not a 3D StarDist model. The
+Slices column reports how many slices each object spans; objects
+spanning a single slice deserve a look before they are trusted.
+
+## Summary/groups.csv
+lineEndings=CRLF
+lines=2 trailingNewline=true
+Group,Objects
+all,15
+
+## Summary/manifest.csv
+lineEndings=CRLF
+lines=8 trailingNewline=true
+file,folder,group,unit,pixel_width,pixel_depth,model,probability,overlap,linking_distance,linking_distance_px,gap_distance,slice_gap,min_slices,min_size,max_size,exclude_edges,objects,single_slice_objects,dropped_short,dropped_detector_filters,dropped_morphology_filters,elapsed_ms,status
+<IN>\a_ko_02.tif,.,all,micron,0.5,2.0,versatile fluorescence (bundled),0.5,0.4,5.0,10.0,5.0,1,1,1,Infinity,false,2,0,0,0,0,<ELAPSED>,ok
+<IN>\a_wt_01.tif,.,all,pixel,1.0,1.0,versatile fluorescence (bundled),0.5,0.4,5.0,5.0,5.0,1,1,1,Infinity,false,3,0,0,0,0,<ELAPSED>,ok
+<IN>\broken_wt_09.tif,.,all,,,,versatile fluorescence (bundled),,,,,,,,,,,,,,,,,failed: the file could not be opened
+<IN>\nested\b_ko_04.tif,nested,all,pixel,1.0,1.0,versatile fluorescence (bundled),0.5,0.4,5.0,5.0,5.0,1,1,1,Infinity,false,3,0,0,0,0,<ELAPSED>,ok
+<IN>\nested\b_wt_03.tif,nested,all,pixel,1.0,1.0,versatile fluorescence (bundled),0.5,0.4,5.0,5.0,5.0,1,1,1,Infinity,false,2,0,0,0,0,<ELAPSED>,ok
+"<IN>\nested\odd,name_wt_05.tif",nested,all,pixel,1.0,1.0,versatile fluorescence (bundled),0.5,0.4,5.0,5.0,5.0,1,1,1,Infinity,false,2,0,0,0,0,<ELAPSED>,ok
+<IN>\nested\ungrouped.tif,nested,all,pixel,1.0,1.0,versatile fluorescence (bundled),0.5,0.4,5.0,5.0,5.0,1,1,1,Infinity,false,3,0,0,0,0,<ELAPSED>,ok
+
+## Summary/per_folder_summary.csv
+lineEndings=CRLF
+lines=3 trailingNewline=true
+Folder,Objects
+.,5
+nested,10
+
+## Summary/summary.csv
+lineEndings=CRLF
+lines=5 trailingNewline=true
+Statistic,File,Group,Folder,Volume (micron^3),Surface (micron^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,Mean,StdDev,Min,Max,X,Y,Z,XM,YM,ZM,Morph_Sphericity,Morph_Compactness,Morph_Elongation,Morph_Feret3D_um,BX,BY,BZ,B-width,B-height,B-depth,Label,Volume (pixel^3),Surface (pixel^2)
+Mean,NaN,NaN,NaN,6.600,11.400,94.333,77.000,NaN,NaN,NaN,NaN,NaN,9.500,9.400,1.867,9.500,9.400,1.867,1.102,1.354,1.897,5.719,7.400,7.400,0.867,5.200,5.000,3.000,1.800,81.133,103.867
+StdDev,NaN,NaN,NaN,16.907,29.111,68.640,44.624,NaN,NaN,NaN,NaN,NaN,5.808,5.314,0.670,5.808,5.314,0.670,0.065,0.274,0.346,2.146,5.487,5.096,0.618,1.514,1.461,0.894,0.748,75.564,71.047
+Min,NaN,NaN,NaN,0.000,0.000,1.000,1.000,NaN,NaN,NaN,NaN,NaN,1.000,1.000,1.000,1.000,1.000,1.000,1.020,1.060,1.528,0.000,0.000,1.000,0.000,1.000,1.000,1.000,1.000,0.000,0.000
+Max,NaN,NaN,NaN,54.000,90.000,320.000,212.000,NaN,NaN,NaN,NaN,NaN,19.000,18.000,3.000,19.000,18.000,3.000,1.317,2.285,2.828,10.392,17.000,16.000,2.000,8.000,8.000,5.000,3.000,320.000,288.000

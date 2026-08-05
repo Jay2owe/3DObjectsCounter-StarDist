@@ -1,0 +1,100 @@
+# fixture=mixed_sizes config=filter_max_intensity
+## configuration
+minSize=0
+maxSize=Infinity
+excludeOnEdges=false
+redirect=true
+calibration=NONE
+maps=true,true,true,true
+filters=max_intensity>=200
+## counts
+objects=2
+droppedByMorphology=3
+droppedByDetectorFilters=0
+droppedShort=0
+singleSlice=0
+## warnings
+count=0
+## statistics
+rows=2 columns=27
+headings	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=58b1de14eac338db2d2cc66169091f13234314a51e8d0dc6b58b00f5ce70b8e2
+detail=full
+0	27.0	54.0	27.0	26.0	5257.0	194.7037037037037	45.18752270820793	198.0	2.0	246.0	11.0	3.0	3.0	10.976222179950542	2.9967662164732736	3.051550313867225	10.0	2.0	2.0	3.0	3.0	3.0	1.0	1.2741900216184987	2.0687242205978604	1.0000000000000067	3.464101615137756
+1	64.0	96.0	64.0	56.0	7631.0	119.234375	96.35347395584331	65.5	1.0	251.0	15.5	3.5	3.5	15.39247805005897	3.3567029222906566	2.8665967763071682	14.0	2.0	2.0	4.0	4.0	4.0	2.0	1.1663352536115121	1.586610077372494	1.0	5.196152422706633
+## summary
+rows=4 columns=28
+headings	Statistic	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=2ae812b3af8db390d32a62e9597b146fe85e455b95ad956baabd510460afe2af
+detail=full
+0	s:Mean	45.5	75.0	45.5	41.0	6444.0	156.96903935185185	70.77049833202562	131.75	1.5	248.5	13.25	3.25	3.25	13.184350115004756	3.1767345693819653	2.9590735450871968	12.0	2.0	2.0	3.5	3.5	3.5	1.5	1.2202626376150054	1.8276671489851772	1.0000000000000033	4.3301270189221945
+1	s:StdDev	18.5	21.0	18.5	15.0	1187.0	37.73466435185181	25.582975623817678	66.25	0.5	2.5	2.25	0.25	0.25	2.2081279350542133	0.17996835290868457	0.09247676878002693	2.0	0.0	0.0	0.5	0.5	0.5	0.5	0.05392738400349448	0.241057071612683	0.0	0.8660254037844386
+2	s:Min	27.0	54.0	27.0	26.0	5257.0	119.234375	45.18752270820793	65.5	1.0	246.0	11.0	3.0	3.0	10.976222179950542	2.9967662164732736	2.8665967763071682	10.0	2.0	2.0	3.0	3.0	3.0	1.0	1.1663352536115121	1.586610077372494	1.0	3.464101615137756
+3	s:Max	64.0	96.0	64.0	56.0	7631.0	194.7037037037037	96.35347395584331	198.0	2.0	251.0	15.5	3.5	3.5	15.39247805005897	3.3567029222906566	3.051550313867225	14.0	2.0	2.0	4.0	4.0	4.0	2.0	1.2741900216184987	2.0687242205978604	1.0000000000000067	5.196152422706633
+## labelImage
+dims=20x20x20
+czt=1,20,1
+bitDepth=16
+displayRange=0.0,2.0
+calibration=1.0,1.0,1.0,pixel
+labels=2
+partition_sha256=45782d9102e775f2b7e475a0465e7cf6319a83b1d0fdfdca6422e6bdc5b5f1ae
+detail=full
+1	27	10,2,2	3,3,3	97dcba5678f3f53279468ed879241541
+2	64	14,2,2	4,4,4	a62a9df7025232a5de45a925d6a7b0d0
+## objectMap
+title=Objects map of mixed_sizes
+dims=20x20x20
+czt=1,20,1
+bitDepth=16
+displayRange=0.0,2.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=fbe589713be99b46f7f4e9b352f567833a6310b8cf4816f2fff80fe484fef41d
+overlaySkipped=no
+overlay=2
+overlay_sha256=878b517f318bf7f6e86f430281076646ed43a954de06223994cd0f63c196b73d
+detail=full
+1	4	11	3
+2	5	16	4
+## surfaceMap
+title=Surfaces map of mixed_sizes
+dims=20x20x20
+czt=1,20,1
+bitDepth=8
+displayRange=0.0,2.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=0b0b363ba71c9d3932f0bbf9d5660d71aa282a55196d1148f683018087594806
+overlaySkipped=no
+overlay=2
+overlay_sha256=878b517f318bf7f6e86f430281076646ed43a954de06223994cd0f63c196b73d
+detail=full
+1	4	11	3
+2	5	16	4
+## centroidMap
+title=Centroids map of mixed_sizes
+dims=20x20x20
+czt=1,20,1
+bitDepth=8
+displayRange=0.0,2.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=83dda7a8670b71644dc340d5e06ed470ab87b0b98cfbdccccfcd10d29f6fc4bc
+overlaySkipped=no
+overlay=2
+overlay_sha256=878b517f318bf7f6e86f430281076646ed43a954de06223994cd0f63c196b73d
+detail=full
+1	4	11	3
+2	5	16	4
+## centreOfMassMap
+title=Centers of mass map of mixed_sizes
+dims=20x20x20
+czt=1,20,1
+bitDepth=8
+displayRange=0.0,2.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=82d5ba54235114795f50695777c03dcb9f9594763b2679c91ce05441289cf661
+overlaySkipped=no
+overlay=2
+overlay_sha256=a5bd4cea4e8796d66f41be1604f842d4193897d35d097e581ccee01f144fdbd1
+detail=full
+1	4	11	3
+2	4	15	3

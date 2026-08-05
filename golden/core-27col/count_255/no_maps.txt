@@ -1,0 +1,558 @@
+# fixture=count_255 config=no_maps
+## configuration
+minSize=0
+maxSize=Infinity
+excludeOnEdges=false
+redirect=false
+calibration=NONE
+maps=false,false,false,false
+filters=
+## counts
+objects=255
+droppedByMorphology=0
+droppedByDetectorFilters=0
+droppedShort=0
+singleSlice=0
+## warnings
+count=0
+## statistics
+rows=255 columns=27
+headings	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=4b7f72065af588c142dc7b7c0e60aa29ae394e336b001753d0462e70f6b51e07
+detail=full
+0	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	1.0	1.0	0.0	1.0	1.0	0.0	1.0	1.0	0.0	1.0	1.0	1.0	1.0	s:NaN	s:NaN	s:NaN	0.0
+1	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	3.0	1.0	0.0	3.0	1.0	0.0	3.0	1.0	0.0	1.0	1.0	1.0	2.0	s:NaN	s:NaN	s:NaN	0.0
+2	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	5.0	1.0	0.0	5.0	1.0	0.0	5.0	1.0	0.0	1.0	1.0	1.0	3.0	s:NaN	s:NaN	s:NaN	0.0
+3	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.0	1.0	0.0	7.0	1.0	0.0	7.0	1.0	0.0	1.0	1.0	1.0	4.0	s:NaN	s:NaN	s:NaN	0.0
+4	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	9.0	1.0	0.0	9.0	1.0	0.0	9.0	1.0	0.0	1.0	1.0	1.0	5.0	s:NaN	s:NaN	s:NaN	0.0
+5	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.0	1.0	0.0	11.0	1.0	0.0	11.0	1.0	0.0	1.0	1.0	1.0	6.0	s:NaN	s:NaN	s:NaN	0.0
+6	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	13.0	1.0	0.0	13.0	1.0	0.0	13.0	1.0	0.0	1.0	1.0	1.0	7.0	s:NaN	s:NaN	s:NaN	0.0
+7	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	15.0	1.0	0.0	15.0	1.0	0.0	15.0	1.0	0.0	1.0	1.0	1.0	8.0	s:NaN	s:NaN	s:NaN	0.0
+8	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	17.0	1.0	0.0	17.0	1.0	0.0	17.0	1.0	0.0	1.0	1.0	1.0	9.0	s:NaN	s:NaN	s:NaN	0.0
+9	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	19.0	1.0	0.0	19.0	1.0	0.0	19.0	1.0	0.0	1.0	1.0	1.0	10.0	s:NaN	s:NaN	s:NaN	0.0
+10	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	21.0	1.0	0.0	21.0	1.0	0.0	21.0	1.0	0.0	1.0	1.0	1.0	11.0	s:NaN	s:NaN	s:NaN	0.0
+11	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	23.0	1.0	0.0	23.0	1.0	0.0	23.0	1.0	0.0	1.0	1.0	1.0	12.0	s:NaN	s:NaN	s:NaN	0.0
+12	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	25.0	1.0	0.0	25.0	1.0	0.0	25.0	1.0	0.0	1.0	1.0	1.0	13.0	s:NaN	s:NaN	s:NaN	0.0
+13	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	27.0	1.0	0.0	27.0	1.0	0.0	27.0	1.0	0.0	1.0	1.0	1.0	14.0	s:NaN	s:NaN	s:NaN	0.0
+14	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	29.0	1.0	0.0	29.0	1.0	0.0	29.0	1.0	0.0	1.0	1.0	1.0	15.0	s:NaN	s:NaN	s:NaN	0.0
+15	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	31.0	1.0	0.0	31.0	1.0	0.0	31.0	1.0	0.0	1.0	1.0	1.0	16.0	s:NaN	s:NaN	s:NaN	0.0
+16	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	1.0	3.0	0.0	1.0	3.0	0.0	1.0	3.0	0.0	1.0	1.0	1.0	17.0	s:NaN	s:NaN	s:NaN	0.0
+17	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	3.0	3.0	0.0	3.0	3.0	0.0	3.0	3.0	0.0	1.0	1.0	1.0	18.0	s:NaN	s:NaN	s:NaN	0.0
+18	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	5.0	3.0	0.0	5.0	3.0	0.0	5.0	3.0	0.0	1.0	1.0	1.0	19.0	s:NaN	s:NaN	s:NaN	0.0
+19	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.0	3.0	0.0	7.0	3.0	0.0	7.0	3.0	0.0	1.0	1.0	1.0	20.0	s:NaN	s:NaN	s:NaN	0.0
+20	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	9.0	3.0	0.0	9.0	3.0	0.0	9.0	3.0	0.0	1.0	1.0	1.0	21.0	s:NaN	s:NaN	s:NaN	0.0
+21	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.0	3.0	0.0	11.0	3.0	0.0	11.0	3.0	0.0	1.0	1.0	1.0	22.0	s:NaN	s:NaN	s:NaN	0.0
+22	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	13.0	3.0	0.0	13.0	3.0	0.0	13.0	3.0	0.0	1.0	1.0	1.0	23.0	s:NaN	s:NaN	s:NaN	0.0
+23	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	15.0	3.0	0.0	15.0	3.0	0.0	15.0	3.0	0.0	1.0	1.0	1.0	24.0	s:NaN	s:NaN	s:NaN	0.0
+24	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	17.0	3.0	0.0	17.0	3.0	0.0	17.0	3.0	0.0	1.0	1.0	1.0	25.0	s:NaN	s:NaN	s:NaN	0.0
+25	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	19.0	3.0	0.0	19.0	3.0	0.0	19.0	3.0	0.0	1.0	1.0	1.0	26.0	s:NaN	s:NaN	s:NaN	0.0
+26	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	21.0	3.0	0.0	21.0	3.0	0.0	21.0	3.0	0.0	1.0	1.0	1.0	27.0	s:NaN	s:NaN	s:NaN	0.0
+27	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	23.0	3.0	0.0	23.0	3.0	0.0	23.0	3.0	0.0	1.0	1.0	1.0	28.0	s:NaN	s:NaN	s:NaN	0.0
+28	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	25.0	3.0	0.0	25.0	3.0	0.0	25.0	3.0	0.0	1.0	1.0	1.0	29.0	s:NaN	s:NaN	s:NaN	0.0
+29	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	27.0	3.0	0.0	27.0	3.0	0.0	27.0	3.0	0.0	1.0	1.0	1.0	30.0	s:NaN	s:NaN	s:NaN	0.0
+30	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	29.0	3.0	0.0	29.0	3.0	0.0	29.0	3.0	0.0	1.0	1.0	1.0	31.0	s:NaN	s:NaN	s:NaN	0.0
+31	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	31.0	3.0	0.0	31.0	3.0	0.0	31.0	3.0	0.0	1.0	1.0	1.0	32.0	s:NaN	s:NaN	s:NaN	0.0
+32	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	1.0	5.0	0.0	1.0	5.0	0.0	1.0	5.0	0.0	1.0	1.0	1.0	33.0	s:NaN	s:NaN	s:NaN	0.0
+33	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	3.0	5.0	0.0	3.0	5.0	0.0	3.0	5.0	0.0	1.0	1.0	1.0	34.0	s:NaN	s:NaN	s:NaN	0.0
+34	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	5.0	5.0	0.0	5.0	5.0	0.0	5.0	5.0	0.0	1.0	1.0	1.0	35.0	s:NaN	s:NaN	s:NaN	0.0
+35	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.0	5.0	0.0	7.0	5.0	0.0	7.0	5.0	0.0	1.0	1.0	1.0	36.0	s:NaN	s:NaN	s:NaN	0.0
+36	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	9.0	5.0	0.0	9.0	5.0	0.0	9.0	5.0	0.0	1.0	1.0	1.0	37.0	s:NaN	s:NaN	s:NaN	0.0
+37	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.0	5.0	0.0	11.0	5.0	0.0	11.0	5.0	0.0	1.0	1.0	1.0	38.0	s:NaN	s:NaN	s:NaN	0.0
+38	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	13.0	5.0	0.0	13.0	5.0	0.0	13.0	5.0	0.0	1.0	1.0	1.0	39.0	s:NaN	s:NaN	s:NaN	0.0
+39	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	15.0	5.0	0.0	15.0	5.0	0.0	15.0	5.0	0.0	1.0	1.0	1.0	40.0	s:NaN	s:NaN	s:NaN	0.0
+40	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	17.0	5.0	0.0	17.0	5.0	0.0	17.0	5.0	0.0	1.0	1.0	1.0	41.0	s:NaN	s:NaN	s:NaN	0.0
+41	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	19.0	5.0	0.0	19.0	5.0	0.0	19.0	5.0	0.0	1.0	1.0	1.0	42.0	s:NaN	s:NaN	s:NaN	0.0
+42	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	21.0	5.0	0.0	21.0	5.0	0.0	21.0	5.0	0.0	1.0	1.0	1.0	43.0	s:NaN	s:NaN	s:NaN	0.0
+43	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	23.0	5.0	0.0	23.0	5.0	0.0	23.0	5.0	0.0	1.0	1.0	1.0	44.0	s:NaN	s:NaN	s:NaN	0.0
+44	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	25.0	5.0	0.0	25.0	5.0	0.0	25.0	5.0	0.0	1.0	1.0	1.0	45.0	s:NaN	s:NaN	s:NaN	0.0
+45	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	27.0	5.0	0.0	27.0	5.0	0.0	27.0	5.0	0.0	1.0	1.0	1.0	46.0	s:NaN	s:NaN	s:NaN	0.0
+46	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	29.0	5.0	0.0	29.0	5.0	0.0	29.0	5.0	0.0	1.0	1.0	1.0	47.0	s:NaN	s:NaN	s:NaN	0.0
+47	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	31.0	5.0	0.0	31.0	5.0	0.0	31.0	5.0	0.0	1.0	1.0	1.0	48.0	s:NaN	s:NaN	s:NaN	0.0
+48	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	1.0	7.0	0.0	1.0	7.0	0.0	1.0	7.0	0.0	1.0	1.0	1.0	49.0	s:NaN	s:NaN	s:NaN	0.0
+49	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	3.0	7.0	0.0	3.0	7.0	0.0	3.0	7.0	0.0	1.0	1.0	1.0	50.0	s:NaN	s:NaN	s:NaN	0.0
+50	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	5.0	7.0	0.0	5.0	7.0	0.0	5.0	7.0	0.0	1.0	1.0	1.0	51.0	s:NaN	s:NaN	s:NaN	0.0
+51	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.0	7.0	0.0	7.0	7.0	0.0	7.0	7.0	0.0	1.0	1.0	1.0	52.0	s:NaN	s:NaN	s:NaN	0.0
+52	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	9.0	7.0	0.0	9.0	7.0	0.0	9.0	7.0	0.0	1.0	1.0	1.0	53.0	s:NaN	s:NaN	s:NaN	0.0
+53	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.0	7.0	0.0	11.0	7.0	0.0	11.0	7.0	0.0	1.0	1.0	1.0	54.0	s:NaN	s:NaN	s:NaN	0.0
+54	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	13.0	7.0	0.0	13.0	7.0	0.0	13.0	7.0	0.0	1.0	1.0	1.0	55.0	s:NaN	s:NaN	s:NaN	0.0
+55	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	15.0	7.0	0.0	15.0	7.0	0.0	15.0	7.0	0.0	1.0	1.0	1.0	56.0	s:NaN	s:NaN	s:NaN	0.0
+56	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	17.0	7.0	0.0	17.0	7.0	0.0	17.0	7.0	0.0	1.0	1.0	1.0	57.0	s:NaN	s:NaN	s:NaN	0.0
+57	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	19.0	7.0	0.0	19.0	7.0	0.0	19.0	7.0	0.0	1.0	1.0	1.0	58.0	s:NaN	s:NaN	s:NaN	0.0
+58	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	21.0	7.0	0.0	21.0	7.0	0.0	21.0	7.0	0.0	1.0	1.0	1.0	59.0	s:NaN	s:NaN	s:NaN	0.0
+59	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	23.0	7.0	0.0	23.0	7.0	0.0	23.0	7.0	0.0	1.0	1.0	1.0	60.0	s:NaN	s:NaN	s:NaN	0.0
+60	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	25.0	7.0	0.0	25.0	7.0	0.0	25.0	7.0	0.0	1.0	1.0	1.0	61.0	s:NaN	s:NaN	s:NaN	0.0
+61	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	27.0	7.0	0.0	27.0	7.0	0.0	27.0	7.0	0.0	1.0	1.0	1.0	62.0	s:NaN	s:NaN	s:NaN	0.0
+62	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	29.0	7.0	0.0	29.0	7.0	0.0	29.0	7.0	0.0	1.0	1.0	1.0	63.0	s:NaN	s:NaN	s:NaN	0.0
+63	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	31.0	7.0	0.0	31.0	7.0	0.0	31.0	7.0	0.0	1.0	1.0	1.0	64.0	s:NaN	s:NaN	s:NaN	0.0
+64	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	1.0	9.0	0.0	1.0	9.0	0.0	1.0	9.0	0.0	1.0	1.0	1.0	65.0	s:NaN	s:NaN	s:NaN	0.0
+65	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	3.0	9.0	0.0	3.0	9.0	0.0	3.0	9.0	0.0	1.0	1.0	1.0	66.0	s:NaN	s:NaN	s:NaN	0.0
+66	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	5.0	9.0	0.0	5.0	9.0	0.0	5.0	9.0	0.0	1.0	1.0	1.0	67.0	s:NaN	s:NaN	s:NaN	0.0
+67	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.0	9.0	0.0	7.0	9.0	0.0	7.0	9.0	0.0	1.0	1.0	1.0	68.0	s:NaN	s:NaN	s:NaN	0.0
+68	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	9.0	9.0	0.0	9.0	9.0	0.0	9.0	9.0	0.0	1.0	1.0	1.0	69.0	s:NaN	s:NaN	s:NaN	0.0
+69	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.0	9.0	0.0	11.0	9.0	0.0	11.0	9.0	0.0	1.0	1.0	1.0	70.0	s:NaN	s:NaN	s:NaN	0.0
+70	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	13.0	9.0	0.0	13.0	9.0	0.0	13.0	9.0	0.0	1.0	1.0	1.0	71.0	s:NaN	s:NaN	s:NaN	0.0
+71	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	15.0	9.0	0.0	15.0	9.0	0.0	15.0	9.0	0.0	1.0	1.0	1.0	72.0	s:NaN	s:NaN	s:NaN	0.0
+72	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	17.0	9.0	0.0	17.0	9.0	0.0	17.0	9.0	0.0	1.0	1.0	1.0	73.0	s:NaN	s:NaN	s:NaN	0.0
+73	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	19.0	9.0	0.0	19.0	9.0	0.0	19.0	9.0	0.0	1.0	1.0	1.0	74.0	s:NaN	s:NaN	s:NaN	0.0
+74	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	21.0	9.0	0.0	21.0	9.0	0.0	21.0	9.0	0.0	1.0	1.0	1.0	75.0	s:NaN	s:NaN	s:NaN	0.0
+75	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	23.0	9.0	0.0	23.0	9.0	0.0	23.0	9.0	0.0	1.0	1.0	1.0	76.0	s:NaN	s:NaN	s:NaN	0.0
+76	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	25.0	9.0	0.0	25.0	9.0	0.0	25.0	9.0	0.0	1.0	1.0	1.0	77.0	s:NaN	s:NaN	s:NaN	0.0
+77	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	27.0	9.0	0.0	27.0	9.0	0.0	27.0	9.0	0.0	1.0	1.0	1.0	78.0	s:NaN	s:NaN	s:NaN	0.0
+78	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	29.0	9.0	0.0	29.0	9.0	0.0	29.0	9.0	0.0	1.0	1.0	1.0	79.0	s:NaN	s:NaN	s:NaN	0.0
+79	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	31.0	9.0	0.0	31.0	9.0	0.0	31.0	9.0	0.0	1.0	1.0	1.0	80.0	s:NaN	s:NaN	s:NaN	0.0
+80	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	1.0	11.0	0.0	1.0	11.0	0.0	1.0	11.0	0.0	1.0	1.0	1.0	81.0	s:NaN	s:NaN	s:NaN	0.0
+81	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	3.0	11.0	0.0	3.0	11.0	0.0	3.0	11.0	0.0	1.0	1.0	1.0	82.0	s:NaN	s:NaN	s:NaN	0.0
+82	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	5.0	11.0	0.0	5.0	11.0	0.0	5.0	11.0	0.0	1.0	1.0	1.0	83.0	s:NaN	s:NaN	s:NaN	0.0
+83	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.0	11.0	0.0	7.0	11.0	0.0	7.0	11.0	0.0	1.0	1.0	1.0	84.0	s:NaN	s:NaN	s:NaN	0.0
+84	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	9.0	11.0	0.0	9.0	11.0	0.0	9.0	11.0	0.0	1.0	1.0	1.0	85.0	s:NaN	s:NaN	s:NaN	0.0
+85	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.0	11.0	0.0	11.0	11.0	0.0	11.0	11.0	0.0	1.0	1.0	1.0	86.0	s:NaN	s:NaN	s:NaN	0.0
+86	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	13.0	11.0	0.0	13.0	11.0	0.0	13.0	11.0	0.0	1.0	1.0	1.0	87.0	s:NaN	s:NaN	s:NaN	0.0
+87	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	15.0	11.0	0.0	15.0	11.0	0.0	15.0	11.0	0.0	1.0	1.0	1.0	88.0	s:NaN	s:NaN	s:NaN	0.0
+88	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	17.0	11.0	0.0	17.0	11.0	0.0	17.0	11.0	0.0	1.0	1.0	1.0	89.0	s:NaN	s:NaN	s:NaN	0.0
+89	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	19.0	11.0	0.0	19.0	11.0	0.0	19.0	11.0	0.0	1.0	1.0	1.0	90.0	s:NaN	s:NaN	s:NaN	0.0
+90	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	21.0	11.0	0.0	21.0	11.0	0.0	21.0	11.0	0.0	1.0	1.0	1.0	91.0	s:NaN	s:NaN	s:NaN	0.0
+91	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	23.0	11.0	0.0	23.0	11.0	0.0	23.0	11.0	0.0	1.0	1.0	1.0	92.0	s:NaN	s:NaN	s:NaN	0.0
+92	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	25.0	11.0	0.0	25.0	11.0	0.0	25.0	11.0	0.0	1.0	1.0	1.0	93.0	s:NaN	s:NaN	s:NaN	0.0
+93	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	27.0	11.0	0.0	27.0	11.0	0.0	27.0	11.0	0.0	1.0	1.0	1.0	94.0	s:NaN	s:NaN	s:NaN	0.0
+94	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	29.0	11.0	0.0	29.0	11.0	0.0	29.0	11.0	0.0	1.0	1.0	1.0	95.0	s:NaN	s:NaN	s:NaN	0.0
+95	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	31.0	11.0	0.0	31.0	11.0	0.0	31.0	11.0	0.0	1.0	1.0	1.0	96.0	s:NaN	s:NaN	s:NaN	0.0
+96	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	1.0	13.0	0.0	1.0	13.0	0.0	1.0	13.0	0.0	1.0	1.0	1.0	97.0	s:NaN	s:NaN	s:NaN	0.0
+97	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	3.0	13.0	0.0	3.0	13.0	0.0	3.0	13.0	0.0	1.0	1.0	1.0	98.0	s:NaN	s:NaN	s:NaN	0.0
+98	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	5.0	13.0	0.0	5.0	13.0	0.0	5.0	13.0	0.0	1.0	1.0	1.0	99.0	s:NaN	s:NaN	s:NaN	0.0
+99	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.0	13.0	0.0	7.0	13.0	0.0	7.0	13.0	0.0	1.0	1.0	1.0	100.0	s:NaN	s:NaN	s:NaN	0.0
+100	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	9.0	13.0	0.0	9.0	13.0	0.0	9.0	13.0	0.0	1.0	1.0	1.0	101.0	s:NaN	s:NaN	s:NaN	0.0
+101	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.0	13.0	0.0	11.0	13.0	0.0	11.0	13.0	0.0	1.0	1.0	1.0	102.0	s:NaN	s:NaN	s:NaN	0.0
+102	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	13.0	13.0	0.0	13.0	13.0	0.0	13.0	13.0	0.0	1.0	1.0	1.0	103.0	s:NaN	s:NaN	s:NaN	0.0
+103	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	15.0	13.0	0.0	15.0	13.0	0.0	15.0	13.0	0.0	1.0	1.0	1.0	104.0	s:NaN	s:NaN	s:NaN	0.0
+104	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	17.0	13.0	0.0	17.0	13.0	0.0	17.0	13.0	0.0	1.0	1.0	1.0	105.0	s:NaN	s:NaN	s:NaN	0.0
+105	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	19.0	13.0	0.0	19.0	13.0	0.0	19.0	13.0	0.0	1.0	1.0	1.0	106.0	s:NaN	s:NaN	s:NaN	0.0
+106	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	21.0	13.0	0.0	21.0	13.0	0.0	21.0	13.0	0.0	1.0	1.0	1.0	107.0	s:NaN	s:NaN	s:NaN	0.0
+107	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	23.0	13.0	0.0	23.0	13.0	0.0	23.0	13.0	0.0	1.0	1.0	1.0	108.0	s:NaN	s:NaN	s:NaN	0.0
+108	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	25.0	13.0	0.0	25.0	13.0	0.0	25.0	13.0	0.0	1.0	1.0	1.0	109.0	s:NaN	s:NaN	s:NaN	0.0
+109	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	27.0	13.0	0.0	27.0	13.0	0.0	27.0	13.0	0.0	1.0	1.0	1.0	110.0	s:NaN	s:NaN	s:NaN	0.0
+110	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	29.0	13.0	0.0	29.0	13.0	0.0	29.0	13.0	0.0	1.0	1.0	1.0	111.0	s:NaN	s:NaN	s:NaN	0.0
+111	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	31.0	13.0	0.0	31.0	13.0	0.0	31.0	13.0	0.0	1.0	1.0	1.0	112.0	s:NaN	s:NaN	s:NaN	0.0
+112	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	1.0	15.0	0.0	1.0	15.0	0.0	1.0	15.0	0.0	1.0	1.0	1.0	113.0	s:NaN	s:NaN	s:NaN	0.0
+113	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	3.0	15.0	0.0	3.0	15.0	0.0	3.0	15.0	0.0	1.0	1.0	1.0	114.0	s:NaN	s:NaN	s:NaN	0.0
+114	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	5.0	15.0	0.0	5.0	15.0	0.0	5.0	15.0	0.0	1.0	1.0	1.0	115.0	s:NaN	s:NaN	s:NaN	0.0
+115	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.0	15.0	0.0	7.0	15.0	0.0	7.0	15.0	0.0	1.0	1.0	1.0	116.0	s:NaN	s:NaN	s:NaN	0.0
+116	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	9.0	15.0	0.0	9.0	15.0	0.0	9.0	15.0	0.0	1.0	1.0	1.0	117.0	s:NaN	s:NaN	s:NaN	0.0
+117	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.0	15.0	0.0	11.0	15.0	0.0	11.0	15.0	0.0	1.0	1.0	1.0	118.0	s:NaN	s:NaN	s:NaN	0.0
+118	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	13.0	15.0	0.0	13.0	15.0	0.0	13.0	15.0	0.0	1.0	1.0	1.0	119.0	s:NaN	s:NaN	s:NaN	0.0
+119	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	15.0	15.0	0.0	15.0	15.0	0.0	15.0	15.0	0.0	1.0	1.0	1.0	120.0	s:NaN	s:NaN	s:NaN	0.0
+120	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	17.0	15.0	0.0	17.0	15.0	0.0	17.0	15.0	0.0	1.0	1.0	1.0	121.0	s:NaN	s:NaN	s:NaN	0.0
+121	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	19.0	15.0	0.0	19.0	15.0	0.0	19.0	15.0	0.0	1.0	1.0	1.0	122.0	s:NaN	s:NaN	s:NaN	0.0
+122	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	21.0	15.0	0.0	21.0	15.0	0.0	21.0	15.0	0.0	1.0	1.0	1.0	123.0	s:NaN	s:NaN	s:NaN	0.0
+123	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	23.0	15.0	0.0	23.0	15.0	0.0	23.0	15.0	0.0	1.0	1.0	1.0	124.0	s:NaN	s:NaN	s:NaN	0.0
+124	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	25.0	15.0	0.0	25.0	15.0	0.0	25.0	15.0	0.0	1.0	1.0	1.0	125.0	s:NaN	s:NaN	s:NaN	0.0
+125	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	27.0	15.0	0.0	27.0	15.0	0.0	27.0	15.0	0.0	1.0	1.0	1.0	126.0	s:NaN	s:NaN	s:NaN	0.0
+126	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	29.0	15.0	0.0	29.0	15.0	0.0	29.0	15.0	0.0	1.0	1.0	1.0	127.0	s:NaN	s:NaN	s:NaN	0.0
+127	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	31.0	15.0	0.0	31.0	15.0	0.0	31.0	15.0	0.0	1.0	1.0	1.0	128.0	s:NaN	s:NaN	s:NaN	0.0
+128	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	1.0	17.0	0.0	1.0	17.0	0.0	1.0	17.0	0.0	1.0	1.0	1.0	129.0	s:NaN	s:NaN	s:NaN	0.0
+129	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	3.0	17.0	0.0	3.0	17.0	0.0	3.0	17.0	0.0	1.0	1.0	1.0	130.0	s:NaN	s:NaN	s:NaN	0.0
+130	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	5.0	17.0	0.0	5.0	17.0	0.0	5.0	17.0	0.0	1.0	1.0	1.0	131.0	s:NaN	s:NaN	s:NaN	0.0
+131	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.0	17.0	0.0	7.0	17.0	0.0	7.0	17.0	0.0	1.0	1.0	1.0	132.0	s:NaN	s:NaN	s:NaN	0.0
+132	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	9.0	17.0	0.0	9.0	17.0	0.0	9.0	17.0	0.0	1.0	1.0	1.0	133.0	s:NaN	s:NaN	s:NaN	0.0
+133	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.0	17.0	0.0	11.0	17.0	0.0	11.0	17.0	0.0	1.0	1.0	1.0	134.0	s:NaN	s:NaN	s:NaN	0.0
+134	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	13.0	17.0	0.0	13.0	17.0	0.0	13.0	17.0	0.0	1.0	1.0	1.0	135.0	s:NaN	s:NaN	s:NaN	0.0
+135	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	15.0	17.0	0.0	15.0	17.0	0.0	15.0	17.0	0.0	1.0	1.0	1.0	136.0	s:NaN	s:NaN	s:NaN	0.0
+136	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	17.0	17.0	0.0	17.0	17.0	0.0	17.0	17.0	0.0	1.0	1.0	1.0	137.0	s:NaN	s:NaN	s:NaN	0.0
+137	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	19.0	17.0	0.0	19.0	17.0	0.0	19.0	17.0	0.0	1.0	1.0	1.0	138.0	s:NaN	s:NaN	s:NaN	0.0
+138	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	21.0	17.0	0.0	21.0	17.0	0.0	21.0	17.0	0.0	1.0	1.0	1.0	139.0	s:NaN	s:NaN	s:NaN	0.0
+139	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	23.0	17.0	0.0	23.0	17.0	0.0	23.0	17.0	0.0	1.0	1.0	1.0	140.0	s:NaN	s:NaN	s:NaN	0.0
+140	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	25.0	17.0	0.0	25.0	17.0	0.0	25.0	17.0	0.0	1.0	1.0	1.0	141.0	s:NaN	s:NaN	s:NaN	0.0
+141	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	27.0	17.0	0.0	27.0	17.0	0.0	27.0	17.0	0.0	1.0	1.0	1.0	142.0	s:NaN	s:NaN	s:NaN	0.0
+142	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	29.0	17.0	0.0	29.0	17.0	0.0	29.0	17.0	0.0	1.0	1.0	1.0	143.0	s:NaN	s:NaN	s:NaN	0.0
+143	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	31.0	17.0	0.0	31.0	17.0	0.0	31.0	17.0	0.0	1.0	1.0	1.0	144.0	s:NaN	s:NaN	s:NaN	0.0
+144	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	1.0	19.0	0.0	1.0	19.0	0.0	1.0	19.0	0.0	1.0	1.0	1.0	145.0	s:NaN	s:NaN	s:NaN	0.0
+145	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	3.0	19.0	0.0	3.0	19.0	0.0	3.0	19.0	0.0	1.0	1.0	1.0	146.0	s:NaN	s:NaN	s:NaN	0.0
+146	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	5.0	19.0	0.0	5.0	19.0	0.0	5.0	19.0	0.0	1.0	1.0	1.0	147.0	s:NaN	s:NaN	s:NaN	0.0
+147	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.0	19.0	0.0	7.0	19.0	0.0	7.0	19.0	0.0	1.0	1.0	1.0	148.0	s:NaN	s:NaN	s:NaN	0.0
+148	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	9.0	19.0	0.0	9.0	19.0	0.0	9.0	19.0	0.0	1.0	1.0	1.0	149.0	s:NaN	s:NaN	s:NaN	0.0
+149	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.0	19.0	0.0	11.0	19.0	0.0	11.0	19.0	0.0	1.0	1.0	1.0	150.0	s:NaN	s:NaN	s:NaN	0.0
+150	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	13.0	19.0	0.0	13.0	19.0	0.0	13.0	19.0	0.0	1.0	1.0	1.0	151.0	s:NaN	s:NaN	s:NaN	0.0
+151	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	15.0	19.0	0.0	15.0	19.0	0.0	15.0	19.0	0.0	1.0	1.0	1.0	152.0	s:NaN	s:NaN	s:NaN	0.0
+152	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	17.0	19.0	0.0	17.0	19.0	0.0	17.0	19.0	0.0	1.0	1.0	1.0	153.0	s:NaN	s:NaN	s:NaN	0.0
+153	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	19.0	19.0	0.0	19.0	19.0	0.0	19.0	19.0	0.0	1.0	1.0	1.0	154.0	s:NaN	s:NaN	s:NaN	0.0
+154	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	21.0	19.0	0.0	21.0	19.0	0.0	21.0	19.0	0.0	1.0	1.0	1.0	155.0	s:NaN	s:NaN	s:NaN	0.0
+155	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	23.0	19.0	0.0	23.0	19.0	0.0	23.0	19.0	0.0	1.0	1.0	1.0	156.0	s:NaN	s:NaN	s:NaN	0.0
+156	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	25.0	19.0	0.0	25.0	19.0	0.0	25.0	19.0	0.0	1.0	1.0	1.0	157.0	s:NaN	s:NaN	s:NaN	0.0
+157	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	27.0	19.0	0.0	27.0	19.0	0.0	27.0	19.0	0.0	1.0	1.0	1.0	158.0	s:NaN	s:NaN	s:NaN	0.0
+158	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	29.0	19.0	0.0	29.0	19.0	0.0	29.0	19.0	0.0	1.0	1.0	1.0	159.0	s:NaN	s:NaN	s:NaN	0.0
+159	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	31.0	19.0	0.0	31.0	19.0	0.0	31.0	19.0	0.0	1.0	1.0	1.0	160.0	s:NaN	s:NaN	s:NaN	0.0
+160	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	1.0	21.0	0.0	1.0	21.0	0.0	1.0	21.0	0.0	1.0	1.0	1.0	161.0	s:NaN	s:NaN	s:NaN	0.0
+161	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	3.0	21.0	0.0	3.0	21.0	0.0	3.0	21.0	0.0	1.0	1.0	1.0	162.0	s:NaN	s:NaN	s:NaN	0.0
+162	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	5.0	21.0	0.0	5.0	21.0	0.0	5.0	21.0	0.0	1.0	1.0	1.0	163.0	s:NaN	s:NaN	s:NaN	0.0
+163	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.0	21.0	0.0	7.0	21.0	0.0	7.0	21.0	0.0	1.0	1.0	1.0	164.0	s:NaN	s:NaN	s:NaN	0.0
+164	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	9.0	21.0	0.0	9.0	21.0	0.0	9.0	21.0	0.0	1.0	1.0	1.0	165.0	s:NaN	s:NaN	s:NaN	0.0
+165	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.0	21.0	0.0	11.0	21.0	0.0	11.0	21.0	0.0	1.0	1.0	1.0	166.0	s:NaN	s:NaN	s:NaN	0.0
+166	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	13.0	21.0	0.0	13.0	21.0	0.0	13.0	21.0	0.0	1.0	1.0	1.0	167.0	s:NaN	s:NaN	s:NaN	0.0
+167	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	15.0	21.0	0.0	15.0	21.0	0.0	15.0	21.0	0.0	1.0	1.0	1.0	168.0	s:NaN	s:NaN	s:NaN	0.0
+168	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	17.0	21.0	0.0	17.0	21.0	0.0	17.0	21.0	0.0	1.0	1.0	1.0	169.0	s:NaN	s:NaN	s:NaN	0.0
+169	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	19.0	21.0	0.0	19.0	21.0	0.0	19.0	21.0	0.0	1.0	1.0	1.0	170.0	s:NaN	s:NaN	s:NaN	0.0
+170	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	21.0	21.0	0.0	21.0	21.0	0.0	21.0	21.0	0.0	1.0	1.0	1.0	171.0	s:NaN	s:NaN	s:NaN	0.0
+171	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	23.0	21.0	0.0	23.0	21.0	0.0	23.0	21.0	0.0	1.0	1.0	1.0	172.0	s:NaN	s:NaN	s:NaN	0.0
+172	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	25.0	21.0	0.0	25.0	21.0	0.0	25.0	21.0	0.0	1.0	1.0	1.0	173.0	s:NaN	s:NaN	s:NaN	0.0
+173	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	27.0	21.0	0.0	27.0	21.0	0.0	27.0	21.0	0.0	1.0	1.0	1.0	174.0	s:NaN	s:NaN	s:NaN	0.0
+174	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	29.0	21.0	0.0	29.0	21.0	0.0	29.0	21.0	0.0	1.0	1.0	1.0	175.0	s:NaN	s:NaN	s:NaN	0.0
+175	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	31.0	21.0	0.0	31.0	21.0	0.0	31.0	21.0	0.0	1.0	1.0	1.0	176.0	s:NaN	s:NaN	s:NaN	0.0
+176	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	1.0	23.0	0.0	1.0	23.0	0.0	1.0	23.0	0.0	1.0	1.0	1.0	177.0	s:NaN	s:NaN	s:NaN	0.0
+177	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	3.0	23.0	0.0	3.0	23.0	0.0	3.0	23.0	0.0	1.0	1.0	1.0	178.0	s:NaN	s:NaN	s:NaN	0.0
+178	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	5.0	23.0	0.0	5.0	23.0	0.0	5.0	23.0	0.0	1.0	1.0	1.0	179.0	s:NaN	s:NaN	s:NaN	0.0
+179	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.0	23.0	0.0	7.0	23.0	0.0	7.0	23.0	0.0	1.0	1.0	1.0	180.0	s:NaN	s:NaN	s:NaN	0.0
+180	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	9.0	23.0	0.0	9.0	23.0	0.0	9.0	23.0	0.0	1.0	1.0	1.0	181.0	s:NaN	s:NaN	s:NaN	0.0
+181	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.0	23.0	0.0	11.0	23.0	0.0	11.0	23.0	0.0	1.0	1.0	1.0	182.0	s:NaN	s:NaN	s:NaN	0.0
+182	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	13.0	23.0	0.0	13.0	23.0	0.0	13.0	23.0	0.0	1.0	1.0	1.0	183.0	s:NaN	s:NaN	s:NaN	0.0
+183	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	15.0	23.0	0.0	15.0	23.0	0.0	15.0	23.0	0.0	1.0	1.0	1.0	184.0	s:NaN	s:NaN	s:NaN	0.0
+184	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	17.0	23.0	0.0	17.0	23.0	0.0	17.0	23.0	0.0	1.0	1.0	1.0	185.0	s:NaN	s:NaN	s:NaN	0.0
+185	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	19.0	23.0	0.0	19.0	23.0	0.0	19.0	23.0	0.0	1.0	1.0	1.0	186.0	s:NaN	s:NaN	s:NaN	0.0
+186	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	21.0	23.0	0.0	21.0	23.0	0.0	21.0	23.0	0.0	1.0	1.0	1.0	187.0	s:NaN	s:NaN	s:NaN	0.0
+187	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	23.0	23.0	0.0	23.0	23.0	0.0	23.0	23.0	0.0	1.0	1.0	1.0	188.0	s:NaN	s:NaN	s:NaN	0.0
+188	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	25.0	23.0	0.0	25.0	23.0	0.0	25.0	23.0	0.0	1.0	1.0	1.0	189.0	s:NaN	s:NaN	s:NaN	0.0
+189	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	27.0	23.0	0.0	27.0	23.0	0.0	27.0	23.0	0.0	1.0	1.0	1.0	190.0	s:NaN	s:NaN	s:NaN	0.0
+190	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	29.0	23.0	0.0	29.0	23.0	0.0	29.0	23.0	0.0	1.0	1.0	1.0	191.0	s:NaN	s:NaN	s:NaN	0.0
+191	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	31.0	23.0	0.0	31.0	23.0	0.0	31.0	23.0	0.0	1.0	1.0	1.0	192.0	s:NaN	s:NaN	s:NaN	0.0
+192	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	1.0	25.0	0.0	1.0	25.0	0.0	1.0	25.0	0.0	1.0	1.0	1.0	193.0	s:NaN	s:NaN	s:NaN	0.0
+193	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	3.0	25.0	0.0	3.0	25.0	0.0	3.0	25.0	0.0	1.0	1.0	1.0	194.0	s:NaN	s:NaN	s:NaN	0.0
+194	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	5.0	25.0	0.0	5.0	25.0	0.0	5.0	25.0	0.0	1.0	1.0	1.0	195.0	s:NaN	s:NaN	s:NaN	0.0
+195	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.0	25.0	0.0	7.0	25.0	0.0	7.0	25.0	0.0	1.0	1.0	1.0	196.0	s:NaN	s:NaN	s:NaN	0.0
+196	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	9.0	25.0	0.0	9.0	25.0	0.0	9.0	25.0	0.0	1.0	1.0	1.0	197.0	s:NaN	s:NaN	s:NaN	0.0
+197	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.0	25.0	0.0	11.0	25.0	0.0	11.0	25.0	0.0	1.0	1.0	1.0	198.0	s:NaN	s:NaN	s:NaN	0.0
+198	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	13.0	25.0	0.0	13.0	25.0	0.0	13.0	25.0	0.0	1.0	1.0	1.0	199.0	s:NaN	s:NaN	s:NaN	0.0
+199	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	15.0	25.0	0.0	15.0	25.0	0.0	15.0	25.0	0.0	1.0	1.0	1.0	200.0	s:NaN	s:NaN	s:NaN	0.0
+200	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	17.0	25.0	0.0	17.0	25.0	0.0	17.0	25.0	0.0	1.0	1.0	1.0	201.0	s:NaN	s:NaN	s:NaN	0.0
+201	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	19.0	25.0	0.0	19.0	25.0	0.0	19.0	25.0	0.0	1.0	1.0	1.0	202.0	s:NaN	s:NaN	s:NaN	0.0
+202	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	21.0	25.0	0.0	21.0	25.0	0.0	21.0	25.0	0.0	1.0	1.0	1.0	203.0	s:NaN	s:NaN	s:NaN	0.0
+203	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	23.0	25.0	0.0	23.0	25.0	0.0	23.0	25.0	0.0	1.0	1.0	1.0	204.0	s:NaN	s:NaN	s:NaN	0.0
+204	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	25.0	25.0	0.0	25.0	25.0	0.0	25.0	25.0	0.0	1.0	1.0	1.0	205.0	s:NaN	s:NaN	s:NaN	0.0
+205	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	27.0	25.0	0.0	27.0	25.0	0.0	27.0	25.0	0.0	1.0	1.0	1.0	206.0	s:NaN	s:NaN	s:NaN	0.0
+206	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	29.0	25.0	0.0	29.0	25.0	0.0	29.0	25.0	0.0	1.0	1.0	1.0	207.0	s:NaN	s:NaN	s:NaN	0.0
+207	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	31.0	25.0	0.0	31.0	25.0	0.0	31.0	25.0	0.0	1.0	1.0	1.0	208.0	s:NaN	s:NaN	s:NaN	0.0
+208	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	1.0	27.0	0.0	1.0	27.0	0.0	1.0	27.0	0.0	1.0	1.0	1.0	209.0	s:NaN	s:NaN	s:NaN	0.0
+209	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	3.0	27.0	0.0	3.0	27.0	0.0	3.0	27.0	0.0	1.0	1.0	1.0	210.0	s:NaN	s:NaN	s:NaN	0.0
+210	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	5.0	27.0	0.0	5.0	27.0	0.0	5.0	27.0	0.0	1.0	1.0	1.0	211.0	s:NaN	s:NaN	s:NaN	0.0
+211	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.0	27.0	0.0	7.0	27.0	0.0	7.0	27.0	0.0	1.0	1.0	1.0	212.0	s:NaN	s:NaN	s:NaN	0.0
+212	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	9.0	27.0	0.0	9.0	27.0	0.0	9.0	27.0	0.0	1.0	1.0	1.0	213.0	s:NaN	s:NaN	s:NaN	0.0
+213	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.0	27.0	0.0	11.0	27.0	0.0	11.0	27.0	0.0	1.0	1.0	1.0	214.0	s:NaN	s:NaN	s:NaN	0.0
+214	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	13.0	27.0	0.0	13.0	27.0	0.0	13.0	27.0	0.0	1.0	1.0	1.0	215.0	s:NaN	s:NaN	s:NaN	0.0
+215	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	15.0	27.0	0.0	15.0	27.0	0.0	15.0	27.0	0.0	1.0	1.0	1.0	216.0	s:NaN	s:NaN	s:NaN	0.0
+216	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	17.0	27.0	0.0	17.0	27.0	0.0	17.0	27.0	0.0	1.0	1.0	1.0	217.0	s:NaN	s:NaN	s:NaN	0.0
+217	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	19.0	27.0	0.0	19.0	27.0	0.0	19.0	27.0	0.0	1.0	1.0	1.0	218.0	s:NaN	s:NaN	s:NaN	0.0
+218	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	21.0	27.0	0.0	21.0	27.0	0.0	21.0	27.0	0.0	1.0	1.0	1.0	219.0	s:NaN	s:NaN	s:NaN	0.0
+219	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	23.0	27.0	0.0	23.0	27.0	0.0	23.0	27.0	0.0	1.0	1.0	1.0	220.0	s:NaN	s:NaN	s:NaN	0.0
+220	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	25.0	27.0	0.0	25.0	27.0	0.0	25.0	27.0	0.0	1.0	1.0	1.0	221.0	s:NaN	s:NaN	s:NaN	0.0
+221	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	27.0	27.0	0.0	27.0	27.0	0.0	27.0	27.0	0.0	1.0	1.0	1.0	222.0	s:NaN	s:NaN	s:NaN	0.0
+222	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	29.0	27.0	0.0	29.0	27.0	0.0	29.0	27.0	0.0	1.0	1.0	1.0	223.0	s:NaN	s:NaN	s:NaN	0.0
+223	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	31.0	27.0	0.0	31.0	27.0	0.0	31.0	27.0	0.0	1.0	1.0	1.0	224.0	s:NaN	s:NaN	s:NaN	0.0
+224	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	1.0	29.0	0.0	1.0	29.0	0.0	1.0	29.0	0.0	1.0	1.0	1.0	225.0	s:NaN	s:NaN	s:NaN	0.0
+225	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	3.0	29.0	0.0	3.0	29.0	0.0	3.0	29.0	0.0	1.0	1.0	1.0	226.0	s:NaN	s:NaN	s:NaN	0.0
+226	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	5.0	29.0	0.0	5.0	29.0	0.0	5.0	29.0	0.0	1.0	1.0	1.0	227.0	s:NaN	s:NaN	s:NaN	0.0
+227	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.0	29.0	0.0	7.0	29.0	0.0	7.0	29.0	0.0	1.0	1.0	1.0	228.0	s:NaN	s:NaN	s:NaN	0.0
+228	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	9.0	29.0	0.0	9.0	29.0	0.0	9.0	29.0	0.0	1.0	1.0	1.0	229.0	s:NaN	s:NaN	s:NaN	0.0
+229	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.0	29.0	0.0	11.0	29.0	0.0	11.0	29.0	0.0	1.0	1.0	1.0	230.0	s:NaN	s:NaN	s:NaN	0.0
+230	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	13.0	29.0	0.0	13.0	29.0	0.0	13.0	29.0	0.0	1.0	1.0	1.0	231.0	s:NaN	s:NaN	s:NaN	0.0
+231	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	15.0	29.0	0.0	15.0	29.0	0.0	15.0	29.0	0.0	1.0	1.0	1.0	232.0	s:NaN	s:NaN	s:NaN	0.0
+232	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	17.0	29.0	0.0	17.0	29.0	0.0	17.0	29.0	0.0	1.0	1.0	1.0	233.0	s:NaN	s:NaN	s:NaN	0.0
+233	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	19.0	29.0	0.0	19.0	29.0	0.0	19.0	29.0	0.0	1.0	1.0	1.0	234.0	s:NaN	s:NaN	s:NaN	0.0
+234	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	21.0	29.0	0.0	21.0	29.0	0.0	21.0	29.0	0.0	1.0	1.0	1.0	235.0	s:NaN	s:NaN	s:NaN	0.0
+235	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	23.0	29.0	0.0	23.0	29.0	0.0	23.0	29.0	0.0	1.0	1.0	1.0	236.0	s:NaN	s:NaN	s:NaN	0.0
+236	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	25.0	29.0	0.0	25.0	29.0	0.0	25.0	29.0	0.0	1.0	1.0	1.0	237.0	s:NaN	s:NaN	s:NaN	0.0
+237	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	27.0	29.0	0.0	27.0	29.0	0.0	27.0	29.0	0.0	1.0	1.0	1.0	238.0	s:NaN	s:NaN	s:NaN	0.0
+238	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	29.0	29.0	0.0	29.0	29.0	0.0	29.0	29.0	0.0	1.0	1.0	1.0	239.0	s:NaN	s:NaN	s:NaN	0.0
+239	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	31.0	29.0	0.0	31.0	29.0	0.0	31.0	29.0	0.0	1.0	1.0	1.0	240.0	s:NaN	s:NaN	s:NaN	0.0
+240	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	1.0	31.0	0.0	1.0	31.0	0.0	1.0	31.0	0.0	1.0	1.0	1.0	241.0	s:NaN	s:NaN	s:NaN	0.0
+241	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	3.0	31.0	0.0	3.0	31.0	0.0	3.0	31.0	0.0	1.0	1.0	1.0	242.0	s:NaN	s:NaN	s:NaN	0.0
+242	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	5.0	31.0	0.0	5.0	31.0	0.0	5.0	31.0	0.0	1.0	1.0	1.0	243.0	s:NaN	s:NaN	s:NaN	0.0
+243	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.0	31.0	0.0	7.0	31.0	0.0	7.0	31.0	0.0	1.0	1.0	1.0	244.0	s:NaN	s:NaN	s:NaN	0.0
+244	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	9.0	31.0	0.0	9.0	31.0	0.0	9.0	31.0	0.0	1.0	1.0	1.0	245.0	s:NaN	s:NaN	s:NaN	0.0
+245	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.0	31.0	0.0	11.0	31.0	0.0	11.0	31.0	0.0	1.0	1.0	1.0	246.0	s:NaN	s:NaN	s:NaN	0.0
+246	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	13.0	31.0	0.0	13.0	31.0	0.0	13.0	31.0	0.0	1.0	1.0	1.0	247.0	s:NaN	s:NaN	s:NaN	0.0
+247	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	15.0	31.0	0.0	15.0	31.0	0.0	15.0	31.0	0.0	1.0	1.0	1.0	248.0	s:NaN	s:NaN	s:NaN	0.0
+248	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	17.0	31.0	0.0	17.0	31.0	0.0	17.0	31.0	0.0	1.0	1.0	1.0	249.0	s:NaN	s:NaN	s:NaN	0.0
+249	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	19.0	31.0	0.0	19.0	31.0	0.0	19.0	31.0	0.0	1.0	1.0	1.0	250.0	s:NaN	s:NaN	s:NaN	0.0
+250	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	21.0	31.0	0.0	21.0	31.0	0.0	21.0	31.0	0.0	1.0	1.0	1.0	251.0	s:NaN	s:NaN	s:NaN	0.0
+251	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	23.0	31.0	0.0	23.0	31.0	0.0	23.0	31.0	0.0	1.0	1.0	1.0	252.0	s:NaN	s:NaN	s:NaN	0.0
+252	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	25.0	31.0	0.0	25.0	31.0	0.0	25.0	31.0	0.0	1.0	1.0	1.0	253.0	s:NaN	s:NaN	s:NaN	0.0
+253	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	27.0	31.0	0.0	27.0	31.0	0.0	27.0	31.0	0.0	1.0	1.0	1.0	254.0	s:NaN	s:NaN	s:NaN	0.0
+254	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	29.0	31.0	0.0	29.0	31.0	0.0	29.0	31.0	0.0	1.0	1.0	1.0	255.0	s:NaN	s:NaN	s:NaN	0.0
+## summary
+rows=4 columns=28
+headings	Statistic	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=1a74792efb024984fd7c40afb9db42739912c821fa1dd18bce6df6821c8287f6
+detail=full
+0	s:Mean	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	15.941176470588236	15.941176470588236	0.0	15.941176470588236	15.941176470588236	0.0	15.941176470588236	15.941176470588236	0.0	1.0	1.0	1.0	128.0	s:NaN	s:NaN	s:NaN	0.0
+1	s:StdDev	0.0	0.0	0.0	0.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	9.189533186432508	9.189533186432508	0.0	9.189533186432508	9.189533186432508	0.0	9.189533186432508	9.189533186432508	0.0	0.0	0.0	0.0	73.6115932898254	s:NaN	s:NaN	s:NaN	0.0
+2	s:Min	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	1.0	1.0	0.0	1.0	1.0	0.0	1.0	1.0	0.0	1.0	1.0	1.0	1.0	s:NaN	s:NaN	s:NaN	0.0
+3	s:Max	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	31.0	31.0	0.0	31.0	31.0	0.0	31.0	31.0	0.0	1.0	1.0	1.0	255.0	s:NaN	s:NaN	s:NaN	0.0
+## labelImage
+dims=33x33x1
+czt=1,1,1
+bitDepth=16
+displayRange=0.0,0.0
+calibration=1.0,1.0,1.0,pixel
+labels=255
+partition_sha256=c5e3152758c67a7b9295ce6a650ce21f2ae11e6665f20489938cbf10b9be395b
+detail=full
+1	1	1,1,0	1,1,1	8f63bc4c4fa1b62c8083c9303c587f29
+2	1	3,1,0	1,1,1	8f63be4c4fa1b992ff5921fd0c587f29
+3	1	5,1,0	1,1,1	8f63b84c4fa1af607e2e7ac9dc587f29
+4	1	7,1,0	1,1,1	8f63ba4c4fa1b2c6fd03d396ac587f29
+5	1	9,1,0	1,1,1	8f63c44c4fa1c3c47bd92c637c587f29
+6	1	11,1,0	1,1,1	8f63c64c4fa1c72afaae85304c587f29
+7	1	13,1,0	1,1,1	8f63c04c4fa1bcf87983ddfd1c587f29
+8	1	15,1,0	1,1,1	8f63c24c4fa1c05ef85936c9ec587f29
+9	1	17,1,0	1,1,1	8f63cc4c4fa1d15c772e8f96bc587f29
+10	1	19,1,0	1,1,1	8f63ce4c4fa1d4c2f603e8638c587f29
+11	1	21,1,0	1,1,1	8f63c84c4fa1ca9074d941305c587f29
+12	1	23,1,0	1,1,1	8f63ca4c4fa1cdf6f3ae99fd2c587f29
+13	1	25,1,0	1,1,1	8f63d44c4fa1def47283f2c9fc587f29
+14	1	27,1,0	1,1,1	8f63d64c4fa1e25af1594b96cc587f29
+15	1	29,1,0	1,1,1	8f63d04c4fa1d828702ea4639c587f29
+16	1	31,1,0	1,1,1	8f63d24c4fa1db8eef03fd306c587f29
+17	1	1,3,0	1,1,1	cf63bc4cbc61b62c9a1dc9303c587f29
+18	1	3,3,0	1,1,1	cf63be4cbc61b99218f321fd0c587f29
+19	1	5,3,0	1,1,1	cf63b84cbc61af6097c87ac9dc587f29
+20	1	7,3,0	1,1,1	cf63ba4cbc61b2c6169dd396ac587f29
+21	1	9,3,0	1,1,1	cf63c44cbc61c3c495732c637c587f29
+22	1	11,3,0	1,1,1	cf63c64cbc61c72a144885304c587f29
+23	1	13,3,0	1,1,1	cf63c04cbc61bcf8931dddfd1c587f29
+24	1	15,3,0	1,1,1	cf63c24cbc61c05e11f336c9ec587f29
+25	1	17,3,0	1,1,1	cf63cc4cbc61d15c90c88f96bc587f29
+26	1	19,3,0	1,1,1	cf63ce4cbc61d4c20f9de8638c587f29
+27	1	21,3,0	1,1,1	cf63c84cbc61ca908e7341305c587f29
+28	1	23,3,0	1,1,1	cf63ca4cbc61cdf60d4899fd2c587f29
+29	1	25,3,0	1,1,1	cf63d44cbc61def48c1df2c9fc587f29
+30	1	27,3,0	1,1,1	cf63d64cbc61e25a0af34b96cc587f29
+31	1	29,3,0	1,1,1	cf63d04cbc61d82889c8a4639c587f29
+32	1	31,3,0	1,1,1	cf63d24cbc61db8e089dfd306c587f29
+33	1	1,5,0	1,1,1	0f63bc4d2921b62cb3b7c9303c587f29
+34	1	3,5,0	1,1,1	0f63be4d2921b992328d21fd0c587f29
+35	1	5,5,0	1,1,1	0f63b84d2921af60b1627ac9dc587f29
+36	1	7,5,0	1,1,1	0f63ba4d2921b2c63037d396ac587f29
+37	1	9,5,0	1,1,1	0f63c44d2921c3c4af0d2c637c587f29
+38	1	11,5,0	1,1,1	0f63c64d2921c72a2de285304c587f29
+39	1	13,5,0	1,1,1	0f63c04d2921bcf8acb7ddfd1c587f29
+40	1	15,5,0	1,1,1	0f63c24d2921c05e2b8d36c9ec587f29
+41	1	17,5,0	1,1,1	0f63cc4d2921d15caa628f96bc587f29
+42	1	19,5,0	1,1,1	0f63ce4d2921d4c22937e8638c587f29
+43	1	21,5,0	1,1,1	0f63c84d2921ca90a80d41305c587f29
+44	1	23,5,0	1,1,1	0f63ca4d2921cdf626e299fd2c587f29
+45	1	25,5,0	1,1,1	0f63d44d2921def4a5b7f2c9fc587f29
+46	1	27,5,0	1,1,1	0f63d64d2921e25a248d4b96cc587f29
+47	1	29,5,0	1,1,1	0f63d04d2921d828a362a4639c587f29
+48	1	31,5,0	1,1,1	0f63d24d2921db8e2237fd306c587f29
+49	1	1,7,0	1,1,1	4f63bc4d95e1b62ccd51c9303c587f29
+50	1	3,7,0	1,1,1	4f63be4d95e1b9924c2721fd0c587f29
+51	1	5,7,0	1,1,1	4f63b84d95e1af60cafc7ac9dc587f29
+52	1	7,7,0	1,1,1	4f63ba4d95e1b2c649d1d396ac587f29
+53	1	9,7,0	1,1,1	4f63c44d95e1c3c4c8a72c637c587f29
+54	1	11,7,0	1,1,1	4f63c64d95e1c72a477c85304c587f29
+55	1	13,7,0	1,1,1	4f63c04d95e1bcf8c651ddfd1c587f29
+56	1	15,7,0	1,1,1	4f63c24d95e1c05e452736c9ec587f29
+57	1	17,7,0	1,1,1	4f63cc4d95e1d15cc3fc8f96bc587f29
+58	1	19,7,0	1,1,1	4f63ce4d95e1d4c242d1e8638c587f29
+59	1	21,7,0	1,1,1	4f63c84d95e1ca90c1a741305c587f29
+60	1	23,7,0	1,1,1	4f63ca4d95e1cdf6407c99fd2c587f29
+61	1	25,7,0	1,1,1	4f63d44d95e1def4bf51f2c9fc587f29
+62	1	27,7,0	1,1,1	4f63d64d95e1e25a3e274b96cc587f29
+63	1	29,7,0	1,1,1	4f63d04d95e1d828bcfca4639c587f29
+64	1	31,7,0	1,1,1	4f63d24d95e1db8e3bd1fd306c587f29
+65	1	1,9,0	1,1,1	8f63bc4e02a1b62ce6ebc9303c587f29
+66	1	3,9,0	1,1,1	8f63be4e02a1b99265c121fd0c587f29
+67	1	5,9,0	1,1,1	8f63b84e02a1af60e4967ac9dc587f29
+68	1	7,9,0	1,1,1	8f63ba4e02a1b2c6636bd396ac587f29
+69	1	9,9,0	1,1,1	8f63c44e02a1c3c4e2412c637c587f29
+70	1	11,9,0	1,1,1	8f63c64e02a1c72a611685304c587f29
+71	1	13,9,0	1,1,1	8f63c04e02a1bcf8dfebddfd1c587f29
+72	1	15,9,0	1,1,1	8f63c24e02a1c05e5ec136c9ec587f29
+73	1	17,9,0	1,1,1	8f63cc4e02a1d15cdd968f96bc587f29
+74	1	19,9,0	1,1,1	8f63ce4e02a1d4c25c6be8638c587f29
+75	1	21,9,0	1,1,1	8f63c84e02a1ca90db4141305c587f29
+76	1	23,9,0	1,1,1	8f63ca4e02a1cdf65a1699fd2c587f29
+77	1	25,9,0	1,1,1	8f63d44e02a1def4d8ebf2c9fc587f29
+78	1	27,9,0	1,1,1	8f63d64e02a1e25a57c14b96cc587f29
+79	1	29,9,0	1,1,1	8f63d04e02a1d828d696a4639c587f29
+80	1	31,9,0	1,1,1	8f63d24e02a1db8e556bfd306c587f29
+81	1	1,11,0	1,1,1	cf63bc4e6f61b62c0085c9303c587f29
+82	1	3,11,0	1,1,1	cf63be4e6f61b9927f5b21fd0c587f29
+83	1	5,11,0	1,1,1	cf63b84e6f61af60fe307ac9dc587f29
+84	1	7,11,0	1,1,1	cf63ba4e6f61b2c67d05d396ac587f29
+85	1	9,11,0	1,1,1	cf63c44e6f61c3c4fbdb2c637c587f29
+86	1	11,11,0	1,1,1	cf63c64e6f61c72a7ab085304c587f29
+87	1	13,11,0	1,1,1	cf63c04e6f61bcf8f985ddfd1c587f29
+88	1	15,11,0	1,1,1	cf63c24e6f61c05e785b36c9ec587f29
+89	1	17,11,0	1,1,1	cf63cc4e6f61d15cf7308f96bc587f29
+90	1	19,11,0	1,1,1	cf63ce4e6f61d4c27605e8638c587f29
+91	1	21,11,0	1,1,1	cf63c84e6f61ca90f4db41305c587f29
+92	1	23,11,0	1,1,1	cf63ca4e6f61cdf673b099fd2c587f29
+93	1	25,11,0	1,1,1	cf63d44e6f61def4f285f2c9fc587f29
+94	1	27,11,0	1,1,1	cf63d64e6f61e25a715b4b96cc587f29
+95	1	29,11,0	1,1,1	cf63d04e6f61d828f030a4639c587f29
+96	1	31,11,0	1,1,1	cf63d24e6f61db8e6f05fd306c587f29
+97	1	1,13,0	1,1,1	0f63bc4edc21b62c1a1fc9303c587f29
+98	1	3,13,0	1,1,1	0f63be4edc21b99298f521fd0c587f29
+99	1	5,13,0	1,1,1	0f63b84edc21af6017ca7ac9dc587f29
+100	1	7,13,0	1,1,1	0f63ba4edc21b2c6969fd396ac587f29
+101	1	9,13,0	1,1,1	0f63c44edc21c3c415752c637c587f29
+102	1	11,13,0	1,1,1	0f63c64edc21c72a944a85304c587f29
+103	1	13,13,0	1,1,1	0f63c04edc21bcf8131fddfd1c587f29
+104	1	15,13,0	1,1,1	0f63c24edc21c05e91f536c9ec587f29
+105	1	17,13,0	1,1,1	0f63cc4edc21d15c10ca8f96bc587f29
+106	1	19,13,0	1,1,1	0f63ce4edc21d4c28f9fe8638c587f29
+107	1	21,13,0	1,1,1	0f63c84edc21ca900e7541305c587f29
+108	1	23,13,0	1,1,1	0f63ca4edc21cdf68d4a99fd2c587f29
+109	1	25,13,0	1,1,1	0f63d44edc21def40c1ff2c9fc587f29
+110	1	27,13,0	1,1,1	0f63d64edc21e25a8af54b96cc587f29
+111	1	29,13,0	1,1,1	0f63d04edc21d82809caa4639c587f29
+112	1	31,13,0	1,1,1	0f63d24edc21db8e889ffd306c587f29
+113	1	1,15,0	1,1,1	4f63bc4f48e1b62c33b9c9303c587f29
+114	1	3,15,0	1,1,1	4f63be4f48e1b992b28f21fd0c587f29
+115	1	5,15,0	1,1,1	4f63b84f48e1af6031647ac9dc587f29
+116	1	7,15,0	1,1,1	4f63ba4f48e1b2c6b039d396ac587f29
+117	1	9,15,0	1,1,1	4f63c44f48e1c3c42f0f2c637c587f29
+118	1	11,15,0	1,1,1	4f63c64f48e1c72aade485304c587f29
+119	1	13,15,0	1,1,1	4f63c04f48e1bcf82cb9ddfd1c587f29
+120	1	15,15,0	1,1,1	4f63c24f48e1c05eab8f36c9ec587f29
+121	1	17,15,0	1,1,1	4f63cc4f48e1d15c2a648f96bc587f29
+122	1	19,15,0	1,1,1	4f63ce4f48e1d4c2a939e8638c587f29
+123	1	21,15,0	1,1,1	4f63c84f48e1ca90280f41305c587f29
+124	1	23,15,0	1,1,1	4f63ca4f48e1cdf6a6e499fd2c587f29
+125	1	25,15,0	1,1,1	4f63d44f48e1def425b9f2c9fc587f29
+126	1	27,15,0	1,1,1	4f63d64f48e1e25aa48f4b96cc587f29
+127	1	29,15,0	1,1,1	4f63d04f48e1d8282364a4639c587f29
+128	1	31,15,0	1,1,1	4f63d24f48e1db8ea239fd306c587f29
+129	1	1,17,0	1,1,1	8f63bc4fb5a1b62c4d53c9303c587f29
+130	1	3,17,0	1,1,1	8f63be4fb5a1b992cc2921fd0c587f29
+131	1	5,17,0	1,1,1	8f63b84fb5a1af604afe7ac9dc587f29
+132	1	7,17,0	1,1,1	8f63ba4fb5a1b2c6c9d3d396ac587f29
+133	1	9,17,0	1,1,1	8f63c44fb5a1c3c448a92c637c587f29
+134	1	11,17,0	1,1,1	8f63c64fb5a1c72ac77e85304c587f29
+135	1	13,17,0	1,1,1	8f63c04fb5a1bcf84653ddfd1c587f29
+136	1	15,17,0	1,1,1	8f63c24fb5a1c05ec52936c9ec587f29
+137	1	17,17,0	1,1,1	8f63cc4fb5a1d15c43fe8f96bc587f29
+138	1	19,17,0	1,1,1	8f63ce4fb5a1d4c2c2d3e8638c587f29
+139	1	21,17,0	1,1,1	8f63c84fb5a1ca9041a941305c587f29
+140	1	23,17,0	1,1,1	8f63ca4fb5a1cdf6c07e99fd2c587f29
+141	1	25,17,0	1,1,1	8f63d44fb5a1def43f53f2c9fc587f29
+142	1	27,17,0	1,1,1	8f63d64fb5a1e25abe294b96cc587f29
+143	1	29,17,0	1,1,1	8f63d04fb5a1d8283cfea4639c587f29
+144	1	31,17,0	1,1,1	8f63d24fb5a1db8ebbd3fd306c587f29
+145	1	1,19,0	1,1,1	cf63bc502261b62c66edc9303c587f29
+146	1	3,19,0	1,1,1	cf63be502261b992e5c321fd0c587f29
+147	1	5,19,0	1,1,1	cf63b8502261af6064987ac9dc587f29
+148	1	7,19,0	1,1,1	cf63ba502261b2c6e36dd396ac587f29
+149	1	9,19,0	1,1,1	cf63c4502261c3c462432c637c587f29
+150	1	11,19,0	1,1,1	cf63c6502261c72ae11885304c587f29
+151	1	13,19,0	1,1,1	cf63c0502261bcf85fedddfd1c587f29
+152	1	15,19,0	1,1,1	cf63c2502261c05edec336c9ec587f29
+153	1	17,19,0	1,1,1	cf63cc502261d15c5d988f96bc587f29
+154	1	19,19,0	1,1,1	cf63ce502261d4c2dc6de8638c587f29
+155	1	21,19,0	1,1,1	cf63c8502261ca905b4341305c587f29
+156	1	23,19,0	1,1,1	cf63ca502261cdf6da1899fd2c587f29
+157	1	25,19,0	1,1,1	cf63d4502261def458edf2c9fc587f29
+158	1	27,19,0	1,1,1	cf63d6502261e25ad7c34b96cc587f29
+159	1	29,19,0	1,1,1	cf63d0502261d8285698a4639c587f29
+160	1	31,19,0	1,1,1	cf63d2502261db8ed56dfd306c587f29
+161	1	1,21,0	1,1,1	0f63bc508f21b62c8087c9303c587f29
+162	1	3,21,0	1,1,1	0f63be508f21b992ff5d21fd0c587f29
+163	1	5,21,0	1,1,1	0f63b8508f21af607e327ac9dc587f29
+164	1	7,21,0	1,1,1	0f63ba508f21b2c6fd07d396ac587f29
+165	1	9,21,0	1,1,1	0f63c4508f21c3c47bdd2c637c587f29
+166	1	11,21,0	1,1,1	0f63c6508f21c72afab285304c587f29
+167	1	13,21,0	1,1,1	0f63c0508f21bcf87987ddfd1c587f29
+168	1	15,21,0	1,1,1	0f63c2508f21c05ef85d36c9ec587f29
+169	1	17,21,0	1,1,1	0f63cc508f21d15c77328f96bc587f29
+170	1	19,21,0	1,1,1	0f63ce508f21d4c2f607e8638c587f29
+171	1	21,21,0	1,1,1	0f63c8508f21ca9074dd41305c587f29
+172	1	23,21,0	1,1,1	0f63ca508f21cdf6f3b299fd2c587f29
+173	1	25,21,0	1,1,1	0f63d4508f21def47287f2c9fc587f29
+174	1	27,21,0	1,1,1	0f63d6508f21e25af15d4b96cc587f29
+175	1	29,21,0	1,1,1	0f63d0508f21d8287032a4639c587f29
+176	1	31,21,0	1,1,1	0f63d2508f21db8eef07fd306c587f29
+177	1	1,23,0	1,1,1	4f63bc50fbe1b62c9a21c9303c587f29
+178	1	3,23,0	1,1,1	4f63be50fbe1b99218f721fd0c587f29
+179	1	5,23,0	1,1,1	4f63b850fbe1af6097cc7ac9dc587f29
+180	1	7,23,0	1,1,1	4f63ba50fbe1b2c616a1d396ac587f29
+181	1	9,23,0	1,1,1	4f63c450fbe1c3c495772c637c587f29
+182	1	11,23,0	1,1,1	4f63c650fbe1c72a144c85304c587f29
+183	1	13,23,0	1,1,1	4f63c050fbe1bcf89321ddfd1c587f29
+184	1	15,23,0	1,1,1	4f63c250fbe1c05e11f736c9ec587f29
+185	1	17,23,0	1,1,1	4f63cc50fbe1d15c90cc8f96bc587f29
+186	1	19,23,0	1,1,1	4f63ce50fbe1d4c20fa1e8638c587f29
+187	1	21,23,0	1,1,1	4f63c850fbe1ca908e7741305c587f29
+188	1	23,23,0	1,1,1	4f63ca50fbe1cdf60d4c99fd2c587f29
+189	1	25,23,0	1,1,1	4f63d450fbe1def48c21f2c9fc587f29
+190	1	27,23,0	1,1,1	4f63d650fbe1e25a0af74b96cc587f29
+191	1	29,23,0	1,1,1	4f63d050fbe1d82889cca4639c587f29
+192	1	31,23,0	1,1,1	4f63d250fbe1db8e08a1fd306c587f29
+193	1	1,25,0	1,1,1	8f63bc5168a1b62cb3bbc9303c587f29
+194	1	3,25,0	1,1,1	8f63be5168a1b992329121fd0c587f29
+195	1	5,25,0	1,1,1	8f63b85168a1af60b1667ac9dc587f29
+196	1	7,25,0	1,1,1	8f63ba5168a1b2c6303bd396ac587f29
+197	1	9,25,0	1,1,1	8f63c45168a1c3c4af112c637c587f29
+198	1	11,25,0	1,1,1	8f63c65168a1c72a2de685304c587f29
+199	1	13,25,0	1,1,1	8f63c05168a1bcf8acbbddfd1c587f29
+200	1	15,25,0	1,1,1	8f63c25168a1c05e2b9136c9ec587f29
+201	1	17,25,0	1,1,1	8f63cc5168a1d15caa668f96bc587f29
+202	1	19,25,0	1,1,1	8f63ce5168a1d4c2293be8638c587f29
+203	1	21,25,0	1,1,1	8f63c85168a1ca90a81141305c587f29
+204	1	23,25,0	1,1,1	8f63ca5168a1cdf626e699fd2c587f29
+205	1	25,25,0	1,1,1	8f63d45168a1def4a5bbf2c9fc587f29
+206	1	27,25,0	1,1,1	8f63d65168a1e25a24914b96cc587f29
+207	1	29,25,0	1,1,1	8f63d05168a1d828a366a4639c587f29
+208	1	31,25,0	1,1,1	8f63d25168a1db8e223bfd306c587f29
+209	1	1,27,0	1,1,1	cf63bc51d561b62ccd55c9303c587f29
+210	1	3,27,0	1,1,1	cf63be51d561b9924c2b21fd0c587f29
+211	1	5,27,0	1,1,1	cf63b851d561af60cb007ac9dc587f29
+212	1	7,27,0	1,1,1	cf63ba51d561b2c649d5d396ac587f29
+213	1	9,27,0	1,1,1	cf63c451d561c3c4c8ab2c637c587f29
+214	1	11,27,0	1,1,1	cf63c651d561c72a478085304c587f29
+215	1	13,27,0	1,1,1	cf63c051d561bcf8c655ddfd1c587f29
+216	1	15,27,0	1,1,1	cf63c251d561c05e452b36c9ec587f29
+217	1	17,27,0	1,1,1	cf63cc51d561d15cc4008f96bc587f29
+218	1	19,27,0	1,1,1	cf63ce51d561d4c242d5e8638c587f29
+219	1	21,27,0	1,1,1	cf63c851d561ca90c1ab41305c587f29
+220	1	23,27,0	1,1,1	cf63ca51d561cdf6408099fd2c587f29
+221	1	25,27,0	1,1,1	cf63d451d561def4bf55f2c9fc587f29
+222	1	27,27,0	1,1,1	cf63d651d561e25a3e2b4b96cc587f29
+223	1	29,27,0	1,1,1	cf63d051d561d828bd00a4639c587f29
+224	1	31,27,0	1,1,1	cf63d251d561db8e3bd5fd306c587f29
+225	1	1,29,0	1,1,1	0f63bc524221b62ce6efc9303c587f29
+226	1	3,29,0	1,1,1	0f63be524221b99265c521fd0c587f29
+227	1	5,29,0	1,1,1	0f63b8524221af60e49a7ac9dc587f29
+228	1	7,29,0	1,1,1	0f63ba524221b2c6636fd396ac587f29
+229	1	9,29,0	1,1,1	0f63c4524221c3c4e2452c637c587f29
+230	1	11,29,0	1,1,1	0f63c6524221c72a611a85304c587f29
+231	1	13,29,0	1,1,1	0f63c0524221bcf8dfefddfd1c587f29
+232	1	15,29,0	1,1,1	0f63c2524221c05e5ec536c9ec587f29
+233	1	17,29,0	1,1,1	0f63cc524221d15cdd9a8f96bc587f29
+234	1	19,29,0	1,1,1	0f63ce524221d4c25c6fe8638c587f29
+235	1	21,29,0	1,1,1	0f63c8524221ca90db4541305c587f29
+236	1	23,29,0	1,1,1	0f63ca524221cdf65a1a99fd2c587f29
+237	1	25,29,0	1,1,1	0f63d4524221def4d8eff2c9fc587f29
+238	1	27,29,0	1,1,1	0f63d6524221e25a57c54b96cc587f29
+239	1	29,29,0	1,1,1	0f63d0524221d828d69aa4639c587f29
+240	1	31,29,0	1,1,1	0f63d2524221db8e556ffd306c587f29
+241	1	1,31,0	1,1,1	4f63bc52aee1b62c0089c9303c587f29
+242	1	3,31,0	1,1,1	4f63be52aee1b9927f5f21fd0c587f29
+243	1	5,31,0	1,1,1	4f63b852aee1af60fe347ac9dc587f29
+244	1	7,31,0	1,1,1	4f63ba52aee1b2c67d09d396ac587f29
+245	1	9,31,0	1,1,1	4f63c452aee1c3c4fbdf2c637c587f29
+246	1	11,31,0	1,1,1	4f63c652aee1c72a7ab485304c587f29
+247	1	13,31,0	1,1,1	4f63c052aee1bcf8f989ddfd1c587f29
+248	1	15,31,0	1,1,1	4f63c252aee1c05e785f36c9ec587f29
+249	1	17,31,0	1,1,1	4f63cc52aee1d15cf7348f96bc587f29
+250	1	19,31,0	1,1,1	4f63ce52aee1d4c27609e8638c587f29
+251	1	21,31,0	1,1,1	4f63c852aee1ca90f4df41305c587f29
+252	1	23,31,0	1,1,1	4f63ca52aee1cdf673b499fd2c587f29
+253	1	25,31,0	1,1,1	4f63d452aee1def4f289f2c9fc587f29
+254	1	27,31,0	1,1,1	4f63d652aee1e25a715f4b96cc587f29
+255	1	29,31,0	1,1,1	4f63d052aee1d828f034a4639c587f29
+## objectMap
+absent
+## surfaceMap
+absent
+## centroidMap
+absent
+## centreOfMassMap
+absent

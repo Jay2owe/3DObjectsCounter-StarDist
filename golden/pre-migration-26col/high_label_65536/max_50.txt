@@ -1,0 +1,72 @@
+# fixture=high_label_65536 config=max_50
+## configuration
+minSize=0
+maxSize=50
+excludeOnEdges=false
+redirect=false
+calibration=NONE
+maps=true,true,true,true
+filters=
+## counts
+objects=0
+droppedByMorphology=2
+droppedByDetectorFilters=0
+droppedShort=0
+singleSlice=0
+## warnings
+count=0
+## statistics
+rows=0 columns=26
+headings	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Min	Max	X	Y	Z	XM	YM	ZM	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um	BX	BY	BZ	B-width	B-height	B-depth	Label
+## summary
+rows=0 columns=0
+headings	
+## labelImage
+dims=16x16x4
+czt=1,4,1
+bitDepth=32
+displayRange=0.0,1.0
+calibration=1.0,1.0,1.0,pixel
+labels=0
+partition_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+detail=full
+## objectMap
+title=Objects map of high_label_65536
+dims=16x16x4
+czt=1,4,1
+bitDepth=32
+displayRange=0.0,1.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=1c7f4798a7dd42c20fb2e7606419fabb3dd117814c490a659d36858912ca9135
+overlaySkipped=no
+overlay=absent
+## surfaceMap
+title=Surfaces map of high_label_65536
+dims=16x16x4
+czt=1,4,1
+bitDepth=8
+displayRange=0.0,1.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=1c7f4798a7dd42c20fb2e7606419fabb3dd117814c490a659d36858912ca9135
+overlaySkipped=no
+overlay=absent
+## centroidMap
+title=Centroids map of high_label_65536
+dims=16x16x4
+czt=1,4,1
+bitDepth=8
+displayRange=0.0,1.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=1c7f4798a7dd42c20fb2e7606419fabb3dd117814c490a659d36858912ca9135
+overlaySkipped=no
+overlay=absent
+## centreOfMassMap
+title=Centers of mass map of high_label_65536
+dims=16x16x4
+czt=1,4,1
+bitDepth=8
+displayRange=0.0,1.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=1c7f4798a7dd42c20fb2e7606419fabb3dd117814c490a659d36858912ca9135
+overlaySkipped=no
+overlay=absent

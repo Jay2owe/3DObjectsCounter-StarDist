@@ -1,0 +1,118 @@
+# fixture=mixed_sizes config=filter_elongation
+## configuration
+minSize=0
+maxSize=Infinity
+excludeOnEdges=false
+redirect=false
+calibration=NONE
+maps=true,true,true,true
+filters=elongation<=3
+## counts
+objects=5
+droppedByMorphology=0
+droppedByDetectorFilters=0
+droppedShort=0
+singleSlice=0
+## warnings
+count=0
+## statistics
+rows=5 columns=27
+headings	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=02341cb14afe38889230b49c0286db5056fcbdbb955bf19ad82f7bc7fcad0b8f
+detail=full
+0	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	2.0	2.0	2.0	2.0	2.0	2.0	2.0	2.0	2.0	1.0	1.0	1.0	1.0	s:NaN	s:NaN	s:NaN	0.0
+1	8.0	24.0	8.0	8.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	6.5	2.5	2.5	6.5	2.5	2.5	6.0	2.0	2.0	2.0	2.0	2.0	2.0	1.522758316660183	3.5309611593184287	1.0	1.7320508075688776
+2	27.0	54.0	27.0	26.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.0	3.0	3.0	11.0	3.0	3.0	10.0	2.0	2.0	3.0	3.0	3.0	3.0	1.2741900216184987	2.0687242205978604	1.0000000000000067	3.464101615137756
+3	64.0	96.0	64.0	56.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	15.5	3.5	3.5	15.5	3.5	3.5	14.0	2.0	2.0	4.0	4.0	4.0	4.0	1.1663352536115121	1.586610077372494	1.0	5.196152422706633
+4	27.0	54.0	27.0	26.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	1.0	13.0	13.0	1.0	13.0	13.0	0.0	12.0	12.0	3.0	3.0	3.0	5.0	1.2741900216184987	2.0687242205978604	1.0000000000000069	3.4641016151377535
+## summary
+rows=4 columns=28
+headings	Statistic	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=8f1e96089b1fa6e446c765175fc541acc89eb4d54a97cb07f758b2becaddcf3c
+detail=full
+0	s:Mean	25.4	46.8	25.4	23.4	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.2	4.8	4.8	7.2	4.8	4.8	6.4	4.0	4.0	2.6	2.6	2.6	3.0	1.3093684033771733	2.313754919471661	1.0000000000000033	2.771281292110204
+1	s:StdDev	21.87784267243916	30.688108446106614	21.87784267243916	19.053608582103287	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	5.4644304369257	4.1303752856126765	4.1303752856126765	5.4644304369257	4.1303752856126765	4.1303752856126765	5.122499389946278	4.0	4.0	1.0198039027185566	1.0198039027185566	1.0198039027185566	1.4142135623730951	0.13083269288401556	0.729796330919541	0.0	1.7663521732655694
+2	s:Min	1.0	6.0	1.0	1.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	1.0	2.0	2.0	1.0	2.0	2.0	0.0	2.0	2.0	1.0	1.0	1.0	1.0	1.1663352536115121	1.586610077372494	1.0	0.0
+3	s:Max	64.0	96.0	64.0	56.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	15.5	13.0	13.0	15.5	13.0	13.0	14.0	12.0	12.0	4.0	4.0	4.0	5.0	1.522758316660183	3.5309611593184287	1.0000000000000069	5.196152422706633
+## labelImage
+dims=20x20x20
+czt=1,20,1
+bitDepth=16
+displayRange=0.0,0.0
+calibration=1.0,1.0,1.0,pixel
+labels=5
+partition_sha256=f92c9ae4a2a59135e9ebdf8f3869a43144d10092365f669d74124cf642a13ddf
+detail=full
+1	1	2,2,2	1,1,1	ef56274cf2c1bb45a1276b91f9bbb269
+2	8	6,2,2	2,2,2	781f5d968d6c0e2df6bdefcdb9f7cf47
+3	27	10,2,2	3,3,3	97dcba5678f3f53279468ed879241541
+4	64	14,2,2	4,4,4	a62a9df7025232a5de45a925d6a7b0d0
+5	27	0,12,12	3,3,3	2269323b5666f6f03c9f765bb059fa7e
+## objectMap
+title=Objects map of mixed_sizes
+dims=20x20x20
+czt=1,20,1
+bitDepth=16
+displayRange=0.0,5.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=2799df397efd15a81ecbe3f282485c2fb2e37d67577e540f1eb4e7b8856eaee7
+overlaySkipped=no
+overlay=5
+overlay_sha256=e7e54b44faa7d60949bfa9ff0ce6a57a01a1f0ebe446cb35cdeb09cbe45ba92c
+detail=full
+1	3	2	2
+2	4	7	3
+3	4	11	3
+4	5	16	4
+5	14	1	13
+## surfaceMap
+title=Surfaces map of mixed_sizes
+dims=20x20x20
+czt=1,20,1
+bitDepth=8
+displayRange=0.0,5.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=5832e4e261a94d12cedc009551be0478d2507a23d22a9ffec2cb94d34f058be1
+overlaySkipped=no
+overlay=5
+overlay_sha256=e7e54b44faa7d60949bfa9ff0ce6a57a01a1f0ebe446cb35cdeb09cbe45ba92c
+detail=full
+1	3	2	2
+2	4	7	3
+3	4	11	3
+4	5	16	4
+5	14	1	13
+## centroidMap
+title=Centroids map of mixed_sizes
+dims=20x20x20
+czt=1,20,1
+bitDepth=8
+displayRange=0.0,5.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=b4bde1371f7c39fa8aca99903ad5e5745b23a497ac7ca0dbc9ffaf094e8f9820
+overlaySkipped=no
+overlay=5
+overlay_sha256=e7e54b44faa7d60949bfa9ff0ce6a57a01a1f0ebe446cb35cdeb09cbe45ba92c
+detail=full
+1	3	2	2
+2	4	7	3
+3	4	11	3
+4	5	16	4
+5	14	1	13
+## centreOfMassMap
+title=Centers of mass map of mixed_sizes
+dims=20x20x20
+czt=1,20,1
+bitDepth=8
+displayRange=0.0,5.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=b4bde1371f7c39fa8aca99903ad5e5745b23a497ac7ca0dbc9ffaf094e8f9820
+overlaySkipped=no
+overlay=5
+overlay_sha256=e7e54b44faa7d60949bfa9ff0ce6a57a01a1f0ebe446cb35cdeb09cbe45ba92c
+detail=full
+1	3	2	2
+2	4	7	3
+3	4	11	3
+4	5	16	4
+5	14	1	13

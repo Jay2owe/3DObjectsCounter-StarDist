@@ -1,0 +1,106 @@
+# fixture=gapped_labels config=filter_max_intensity
+## configuration
+minSize=0
+maxSize=Infinity
+excludeOnEdges=false
+redirect=true
+calibration=NONE
+maps=true,true,true,true
+filters=max_intensity>=200
+## counts
+objects=3
+droppedByMorphology=0
+droppedByDetectorFilters=0
+droppedShort=0
+singleSlice=0
+## warnings
+count=0
+## statistics
+rows=3 columns=27
+headings	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=e3a8bd811c6e15b21c40133b8a00f478e7a70252715823d9b3a0542392da849c
+detail=full
+0	36.0	96.0	36.0	36.0	5690.0	158.05555555555554	59.19785302246307	162.5	13.0	251.0	2.0	6.5	2.5	2.0	6.563444639718805	2.814586994727592	2.0	4.0	0.0	1.0	6.0	6.0	1.0	0.8222774618879523	0.5559748675415127	s:NaN	7.0710678118654755
+1	36.0	96.0	36.0	36.0	4731.0	131.41666666666666	83.8647638231404	158.5	3.0	247.0	7.0	6.5	3.5	7.0	6.284506446839991	2.896850560135278	7.0	4.0	1.0	1.0	6.0	6.0	5.0	0.8222774618879523	0.5559748675415127	s:NaN	7.0710678118654755
+2	36.0	96.0	36.0	36.0	3772.0	104.77777777777777	75.44096702835165	87.5	2.0	250.0	12.0	6.5	4.5	12.0	6.396076352067868	4.176033934252386	12.0	4.0	2.0	1.0	6.0	6.0	9.0	0.8222774618879523	0.5559748675415127	s:NaN	7.071067811865475
+## summary
+rows=4 columns=28
+headings	Statistic	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=cfc924199d1fd17366d1d4b497845912a46b2a979116bcbc069cb8555ca49156
+detail=full
+0	s:Mean	36.0	96.0	36.0	36.0	4731.0	131.41666666666666	72.83452795798503	136.16666666666666	6.0	249.33333333333334	7.0	6.5	3.5	7.0	6.414675812875554	3.2958238297050855	7.0	4.0	1.0	1.0	6.0	6.0	5.0	0.8222774618879521	0.5559748675415127	s:NaN	7.0710678118654755
+1	s:StdDev	0.0	0.0	0.0	0.0	783.02022110969	21.750561697491342	10.237488806108495	34.451253807211295	4.96655480858378	1.69967317119593	4.08248290463863	0.0	0.8164965809277257	4.08248290463863	0.11463299065100353	0.6233079467158923	4.08248290463863	0.0	0.816496580927726	0.0	0.0	0.0	3.2659863237109037	1.8250120749944284E-8	0.0	s:NaN	0.0
+2	s:Min	36.0	96.0	36.0	36.0	3772.0	104.77777777777777	59.19785302246307	87.5	2.0	247.0	2.0	6.5	2.5	2.0	6.284506446839991	2.814586994727592	2.0	4.0	0.0	1.0	6.0	6.0	1.0	0.8222774618879523	0.5559748675415127	s:NaN	7.071067811865475
+3	s:Max	36.0	96.0	36.0	36.0	5690.0	158.05555555555554	83.8647638231404	162.5	13.0	251.0	12.0	6.5	4.5	12.0	6.563444639718805	4.176033934252386	12.0	4.0	2.0	1.0	6.0	6.0	9.0	0.8222774618879523	0.5559748675415127	s:NaN	7.0710678118654755
+## labelImage
+dims=16x16x16
+czt=1,16,1
+bitDepth=16
+displayRange=0.0,0.0
+calibration=1.0,1.0,1.0,pixel
+labels=3
+partition_sha256=792549eab362c9205c248f97eb98497f995164cc18c49c8f41e4e57eb8d7d3dc
+detail=full
+1	36	2,4,0	1,6,6	657ac50235fd1c25c89cc454ed4ea833
+5	36	7,4,1	1,6,6	e8a3e8013095180147a1bbefab5eae42
+9	36	12,4,2	1,6,6	8237f6c349ed93650acbfdb016a53a8b
+## objectMap
+title=Objects map of gapped_labels
+dims=16x16x16
+czt=1,16,1
+bitDepth=16
+displayRange=0.0,9.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=f3974d87e2fcff64482b2b21e5983668947a052f9757cfb260689d5babe5fb5d
+overlaySkipped=no
+overlay=3
+overlay_sha256=9599cb7354eaca1c2cae94eb5b1206943af1b9163593e9eae952835f4f9303ed
+detail=full
+1	4	2	7
+5	5	7	7
+9	6	12	7
+## surfaceMap
+title=Surfaces map of gapped_labels
+dims=16x16x16
+czt=1,16,1
+bitDepth=8
+displayRange=0.0,9.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=f3974d87e2fcff64482b2b21e5983668947a052f9757cfb260689d5babe5fb5d
+overlaySkipped=no
+overlay=3
+overlay_sha256=9599cb7354eaca1c2cae94eb5b1206943af1b9163593e9eae952835f4f9303ed
+detail=full
+1	4	2	7
+5	5	7	7
+9	6	12	7
+## centroidMap
+title=Centroids map of gapped_labels
+dims=16x16x16
+czt=1,16,1
+bitDepth=8
+displayRange=0.0,9.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=6c235841ef6cd53de7c0f7366c1b456c142933fa5404ea8eb883a3b700abb519
+overlaySkipped=no
+overlay=3
+overlay_sha256=9599cb7354eaca1c2cae94eb5b1206943af1b9163593e9eae952835f4f9303ed
+detail=full
+1	4	2	7
+5	5	7	7
+9	6	12	7
+## centreOfMassMap
+title=Centers of mass map of gapped_labels
+dims=16x16x16
+czt=1,16,1
+bitDepth=8
+displayRange=0.0,9.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=0602bc78bbff133d2efae2cdeddb5cc92f072242af36ba830baf9390abc2efe4
+overlaySkipped=no
+overlay=3
+overlay_sha256=6222189595fd8ec8d678b7e6e95a60f0c2a94533a9c9e83deebe662cfa1f1252
+detail=full
+1	4	2	7
+5	4	7	6
+9	5	12	6

@@ -1,0 +1,100 @@
+# fixture=out_of_order_labels config=combined_strict
+## configuration
+minSize=5
+maxSize=500
+excludeOnEdges=true
+redirect=true
+calibration=ANISOTROPIC
+maps=true,true,true,true
+filters=sphericity>=0.3
+## counts
+objects=2
+droppedByMorphology=1
+droppedByDetectorFilters=0
+droppedShort=0
+singleSlice=0
+## warnings
+count=0
+## statistics
+rows=2 columns=26
+headings	Volume (micron^3)	Surface (micron^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Min	Max	X	Y	Z	XM	YM	ZM	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um	BX	BY	BZ	B-width	B-height	B-depth	Label
+body_sha256=384a3179238608dc14ad4370567c8cedc1e3048e571a48732118595d9180154a
+detail=full
+0	1.4400000000000004	17.280000000000005	36.0	36.0	4731.0	131.41666666666666	83.8647638231404	3.0	247.0	7.0	6.5	3.5	7.0	6.284506446839991	2.896850560135278	0.8222774618879523	0.5559748675415127	s:NaN	5.0	7.0	4.0	1.0	1.0	6.0	6.0	1.0
+1	1.4400000000000004	17.280000000000005	36.0	36.0	3772.0	104.77777777777777	75.44096702835165	2.0	250.0	12.0	6.5	4.5	12.0	6.396076352067868	4.176033934252386	0.8222774618879523	0.5559748675415127	s:NaN	5.0	12.0	4.0	2.0	1.0	6.0	6.0	2.0
+## summary
+rows=4 columns=27
+headings	Statistic	Volume (micron^3)	Surface (micron^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Min	Max	X	Y	Z	XM	YM	ZM	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um	BX	BY	BZ	B-width	B-height	B-depth	Label
+body_sha256=4e34f9c1a80070282bcb8a450f7ba9857299f9db570c655e913cd2f84ec9f164
+detail=full
+0	s:Mean	1.4400000000000004	17.280000000000005	36.0	36.0	4251.5	118.09722222222221	79.65286542574603	2.5	248.5	9.5	6.5	4.0	9.5	6.34029139945393	3.5364422471938317	0.8222774618879523	0.5559748675415127	s:NaN	5.0	9.5	4.0	1.5	1.0	6.0	6.0	1.5
+1	s:StdDev	0.0	0.0	0.0	0.0	479.5	13.319444444444413	4.211898397394223	0.5	1.5	2.5	0.0	0.5	2.5	0.055784952613898736	0.6395916870585566	0.0	0.0	s:NaN	0.0	2.5	0.0	0.5	0.0	0.0	0.0	0.5
+2	s:Min	1.4400000000000004	17.280000000000005	36.0	36.0	3772.0	104.77777777777777	75.44096702835165	2.0	247.0	7.0	6.5	3.5	7.0	6.284506446839991	2.896850560135278	0.8222774618879523	0.5559748675415127	s:NaN	5.0	7.0	4.0	1.0	1.0	6.0	6.0	1.0
+3	s:Max	1.4400000000000004	17.280000000000005	36.0	36.0	4731.0	131.41666666666666	83.8647638231404	3.0	250.0	12.0	6.5	4.5	12.0	6.396076352067868	4.176033934252386	0.8222774618879523	0.5559748675415127	s:NaN	5.0	12.0	4.0	2.0	1.0	6.0	6.0	2.0
+## labelImage
+dims=16x16x16
+czt=1,16,1
+bitDepth=16
+displayRange=0.0,2.0
+calibration=0.2,0.2,1.0,micron
+labels=2
+partition_sha256=3956bc68af9c7c5cc704c64d45ed5fcb86e68e686fa96536214e06411ec2d001
+detail=full
+1	36	7,4,1	1,6,6	e8a3e8013095180147a1bbefab5eae42
+2	36	12,4,2	1,6,6	8237f6c349ed93650acbfdb016a53a8b
+## objectMap
+title=Objects map of out_of_order_labels
+dims=16x16x16
+czt=1,16,1
+bitDepth=16
+displayRange=0.0,2.0
+calibration=0.2,0.2,1.0,micron
+pixels_sha256=0a05f6e1d1a5fe2ae0211bed18a9fcc4fa43cda94f22df040146f6430edf86d1
+overlaySkipped=no
+overlay=2
+overlay_sha256=e2652a554c7c1e694f19d08fc6637503ae45ad7bf63da072bd05017828b82cfc
+detail=full
+1	5	7	7
+2	6	12	7
+## surfaceMap
+title=Surfaces map of out_of_order_labels
+dims=16x16x16
+czt=1,16,1
+bitDepth=8
+displayRange=0.0,2.0
+calibration=0.2,0.2,1.0,micron
+pixels_sha256=0a05f6e1d1a5fe2ae0211bed18a9fcc4fa43cda94f22df040146f6430edf86d1
+overlaySkipped=no
+overlay=2
+overlay_sha256=e2652a554c7c1e694f19d08fc6637503ae45ad7bf63da072bd05017828b82cfc
+detail=full
+1	5	7	7
+2	6	12	7
+## centroidMap
+title=Centroids map of out_of_order_labels
+dims=16x16x16
+czt=1,16,1
+bitDepth=8
+displayRange=0.0,2.0
+calibration=0.2,0.2,1.0,micron
+pixels_sha256=f9f4f5be24bc6d8b0e3d0a0b719999ccad7b26587e6294a62fbd3b0c7f27b071
+overlaySkipped=no
+overlay=2
+overlay_sha256=e2652a554c7c1e694f19d08fc6637503ae45ad7bf63da072bd05017828b82cfc
+detail=full
+1	5	7	7
+2	6	12	7
+## centreOfMassMap
+title=Centers of mass map of out_of_order_labels
+dims=16x16x16
+czt=1,16,1
+bitDepth=8
+displayRange=0.0,2.0
+calibration=0.2,0.2,1.0,micron
+pixels_sha256=75c03d34bbd71dbe146835348ef6dc9ae28c106b5dabdbf0d847b526424438c2
+overlaySkipped=no
+overlay=2
+overlay_sha256=f11f94255a22a6a2e040494fdf61e7b34634bbfcd77401e85a65763f2dd95e10
+detail=full
+1	4	7	6
+2	5	12	6

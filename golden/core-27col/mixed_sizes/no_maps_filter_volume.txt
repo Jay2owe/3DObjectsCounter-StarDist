@@ -1,0 +1,56 @@
+# fixture=mixed_sizes config=no_maps_filter_volume
+## configuration
+minSize=0
+maxSize=Infinity
+excludeOnEdges=false
+redirect=false
+calibration=NONE
+maps=false,false,false,false
+filters=volume>=8
+## counts
+objects=4
+droppedByMorphology=1
+droppedByDetectorFilters=0
+droppedShort=0
+singleSlice=0
+## warnings
+count=0
+## statistics
+rows=4 columns=27
+headings	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=df23d5fbaf450ec6c755605a8c21769b02abcecdc59d5d7cf4c3882e894b9ec2
+detail=full
+0	8.0	24.0	8.0	8.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	6.5	2.5	2.5	6.5	2.5	2.5	6.0	2.0	2.0	2.0	2.0	2.0	1.0	1.522758316660183	3.5309611593184287	1.0	1.7320508075688776
+1	27.0	54.0	27.0	26.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.0	3.0	3.0	11.0	3.0	3.0	10.0	2.0	2.0	3.0	3.0	3.0	2.0	1.2741900216184987	2.0687242205978604	1.0000000000000067	3.464101615137756
+2	64.0	96.0	64.0	56.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	15.5	3.5	3.5	15.5	3.5	3.5	14.0	2.0	2.0	4.0	4.0	4.0	3.0	1.1663352536115121	1.586610077372494	1.0	5.196152422706633
+3	27.0	54.0	27.0	26.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	1.0	13.0	13.0	1.0	13.0	13.0	0.0	12.0	12.0	3.0	3.0	3.0	4.0	1.2741900216184987	2.0687242205978604	1.0000000000000069	3.4641016151377535
+## summary
+rows=4 columns=28
+headings	Statistic	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=cb7dfd06e624f8b219591235b182b1bd2a9b3007f3ce552b152059062a00cbf4
+detail=full
+0	s:Mean	31.5	57.0	31.5	29.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	8.5	5.5	5.5	8.5	5.5	5.5	7.5	4.5	4.5	3.0	3.0	3.0	2.5	1.3093684033771733	2.313754919471661	1.0000000000000033	3.4641016151377553
+1	s:StdDev	20.303940504246953	25.632011235952593	20.303940504246953	17.233687939614086	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	5.373546315051169	4.344536799245692	4.344536799245692	5.373546315051169	4.344536799245692	4.344536799245692	5.172040216394301	4.330127018922194	4.330127018922194	0.7071067811865476	0.7071067811865476	0.7071067811865476	1.118033988749895	0.13083269288401556	0.729796330919541	0.0	1.2247448713915883
+2	s:Min	8.0	24.0	8.0	8.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	1.0	2.5	2.5	1.0	2.5	2.5	0.0	2.0	2.0	2.0	2.0	2.0	1.0	1.1663352536115121	1.586610077372494	1.0	1.7320508075688776
+3	s:Max	64.0	96.0	64.0	56.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	15.5	13.0	13.0	15.5	13.0	13.0	14.0	12.0	12.0	4.0	4.0	4.0	4.0	1.522758316660183	3.5309611593184287	1.0000000000000069	5.196152422706633
+## labelImage
+dims=20x20x20
+czt=1,20,1
+bitDepth=16
+displayRange=0.0,4.0
+calibration=1.0,1.0,1.0,pixel
+labels=4
+partition_sha256=8d232fd75951cc590bda12fa759764740298e585d541bde15b6f20fd32a8c0b3
+detail=full
+1	8	6,2,2	2,2,2	781f5d968d6c0e2df6bdefcdb9f7cf47
+2	27	10,2,2	3,3,3	97dcba5678f3f53279468ed879241541
+3	64	14,2,2	4,4,4	a62a9df7025232a5de45a925d6a7b0d0
+4	27	0,12,12	3,3,3	2269323b5666f6f03c9f765bb059fa7e
+## objectMap
+absent
+## surfaceMap
+absent
+## centroidMap
+absent
+## centreOfMassMap
+absent

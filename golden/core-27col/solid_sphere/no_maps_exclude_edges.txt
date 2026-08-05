@@ -1,0 +1,50 @@
+# fixture=solid_sphere config=no_maps_exclude_edges
+## configuration
+minSize=0
+maxSize=Infinity
+excludeOnEdges=true
+redirect=false
+calibration=NONE
+maps=false,false,false,false
+filters=
+## counts
+objects=1
+droppedByMorphology=0
+droppedByDetectorFilters=0
+droppedShort=0
+singleSlice=0
+## warnings
+count=0
+## statistics
+rows=1 columns=27
+headings	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=98a108f9c85ac9ca405b3ff468def22e4fc36ee5fe99f68bdf11b7c042bab26d
+detail=full
+0	2176.0	1248.0	2176.0	632.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.5	11.5	11.5	11.5	11.5	11.5	4.0	4.0	4.0	16.0	16.0	16.0	1.0	1.0269884765112136	1.0831702209357146	1.0	15.5884572681199
+## summary
+rows=4 columns=28
+headings	Statistic	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=3ca783112b1c092470e794bb38af995024969989a3a86974fb3b2370d5abc59e
+detail=full
+0	s:Mean	2176.0	1248.0	2176.0	632.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.5	11.5	11.5	11.5	11.5	11.5	4.0	4.0	4.0	16.0	16.0	16.0	1.0	1.0269884765112136	1.0831702209357146	1.0	15.5884572681199
+1	s:StdDev	0.0	0.0	0.0	0.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0
+2	s:Min	2176.0	1248.0	2176.0	632.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.5	11.5	11.5	11.5	11.5	11.5	4.0	4.0	4.0	16.0	16.0	16.0	1.0	1.0269884765112136	1.0831702209357146	1.0	15.5884572681199
+3	s:Max	2176.0	1248.0	2176.0	632.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.5	11.5	11.5	11.5	11.5	11.5	4.0	4.0	4.0	16.0	16.0	16.0	1.0	1.0269884765112136	1.0831702209357146	1.0	15.5884572681199
+## labelImage
+dims=24x24x24
+czt=1,24,1
+bitDepth=16
+displayRange=0.0,0.0
+calibration=1.0,1.0,1.0,pixel
+labels=1
+partition_sha256=2e4e864b6db66234988e4e879c1b49b7545b281ef3e6282977b46266b0a42ab4
+detail=full
+1	2176	4,4,4	16,16,16	3bbd607a8e31a4b5b3ded971436b9a32
+## objectMap
+absent
+## surfaceMap
+absent
+## centroidMap
+absent
+## centreOfMassMap
+absent

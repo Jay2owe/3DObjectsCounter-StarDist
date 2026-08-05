@@ -1,0 +1,61 @@
+# fixture=clipped_top_bottom config=map_objects
+## configuration
+minSize=0
+maxSize=Infinity
+excludeOnEdges=false
+redirect=false
+calibration=NONE
+maps=true,false,false,false
+filters=
+## counts
+objects=1
+droppedByMorphology=0
+droppedByDetectorFilters=0
+droppedShort=0
+singleSlice=0
+## warnings
+count=0
+## statistics
+rows=1 columns=27
+headings	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=06a05f2a5106110f3274f9eabc3b18de47c931db26ed0209aa1dc65ce5cbafbd
+detail=full
+0	2336.0	1208.0	2336.0	744.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.5	7.5	7.5	7.5	7.5	7.5	0.0	0.0	2.0	16.0	16.0	12.0	1.0	1.0187648834116463	1.0573576202899837	1.4228106844912436	19.798989873223327
+## summary
+rows=4 columns=28
+headings	Statistic	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=dcb2e62e99f17fed42c6129008f213f6d913d2b07e503d0320a6cd2989299496
+detail=full
+0	s:Mean	2336.0	1208.0	2336.0	744.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.5	7.5	7.5	7.5	7.5	7.5	0.0	0.0	2.0	16.0	16.0	12.0	1.0	1.0187648834116463	1.0573576202899837	1.4228106844912436	19.798989873223327
+1	s:StdDev	0.0	0.0	0.0	0.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0
+2	s:Min	2336.0	1208.0	2336.0	744.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.5	7.5	7.5	7.5	7.5	7.5	0.0	0.0	2.0	16.0	16.0	12.0	1.0	1.0187648834116463	1.0573576202899837	1.4228106844912436	19.798989873223327
+3	s:Max	2336.0	1208.0	2336.0	744.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	7.5	7.5	7.5	7.5	7.5	7.5	0.0	0.0	2.0	16.0	16.0	12.0	1.0	1.0187648834116463	1.0573576202899837	1.4228106844912436	19.798989873223327
+## labelImage
+dims=16x16x16
+czt=1,16,1
+bitDepth=16
+displayRange=0.0,0.0
+calibration=1.0,1.0,1.0,pixel
+labels=1
+partition_sha256=628dc37b325d6c180bbe8bc17fd7178fdc579b25b2be78f7ab3c0f81ee2cc8de
+detail=full
+1	2336	0,0,2	16,16,12	5909526cddb12d65ce5b159ac24a4c0f
+## objectMap
+title=Objects map of clipped_top_bottom
+dims=16x16x16
+czt=1,16,1
+bitDepth=16
+displayRange=0.0,1.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=e99b10600ac8f6501740b7646ef4d4cadad9dcae289ef75a5d72a1c2973744ac
+overlaySkipped=no
+overlay=1
+overlay_sha256=54082a0e37ed6d21ce5ed64d5c401926869d31bf61029f0dc60eef931d8ae8b3
+detail=full
+1	9	8	8
+## surfaceMap
+absent
+## centroidMap
+absent
+## centreOfMassMap
+absent

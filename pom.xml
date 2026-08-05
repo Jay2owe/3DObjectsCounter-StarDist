@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+		http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.scijava</groupId>
+		<artifactId>pom-scijava</artifactId>
+		<version>43.0.0</version>
+		<relativePath/>
+	</parent>
+
+	<groupId>io.github.jay2owe</groupId>
+	<artifactId>3D_Objects_Counter_StarDist</artifactId>
+	<!--
+	  Versioning policy: see VERSIONING.md.
+	  First digit = new feature set.
+	  Second digit = major rework or large optimization.
+	  Third digit = bug fix or small tweak/optimization.
+	-->
+	<version>0.1.0-SNAPSHOT</version>
+
+	<name>3D Objects Counter - StarDist</name>
+	<description>Fiji/ImageJ plugin that counts and measures 3D objects in a Z-stack by running StarDist on each slice and linking the per-slice detections through Z with TrackMate, with per-object 3D measurements, morphology filters, object maps and folder batch processing.</description>
+	<url>https://github.com/Jay2owe/3DObjectsCounter-StarDist</url>
+	<inceptionYear>2026</inceptionYear>
+	<organization>
+		<name>UK Dementia Research Institute at Imperial College London</name>
+		<url>https://ukdri.ac.uk/centres/imperial</url>
+	</organization>
+	<!--
+	  The licence of the combined distributed work, which is what this element
+	  declares. Jamie Malcolm's own source in this repository is BSD-3-Clause
+	  (see LICENSE.BSD-3-Clause), but the plugin links GPLv3+ libraries -
+	  sc.fiji:TrackMate and sc.fiji:TrackMate-StarDist - and cannot run without
+	  them, so the artifact that is distributed and run is GPL-3.0-or-later.
+	  `provided` scope is a build-time concern and does not change that.
+	  See LICENSING.md.
+	-->
+	<licenses>
+		<license>
+			<name>GNU General Public License v3.0 or later</name>
+			<url>https://www.gnu.org/licenses/gpl-3.0.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>Jay2owe</id>
+			<name>Jamie Malcolm</name>
+			<email>jamiemalcolm12@gmail.com</email>
+			<url>https://github.com/Jay2owe</url>
+			<organization>UK Dementia Research Institute at Imperial College London</organization>
+			<organizationUrl>https://www.ukdri.ac.uk/labs/brancaccio-lab</organizationUrl>
+			<properties>
+				<orcid>0009-0008-3862-2776</orcid>
+			</properties>
+			<roles>
+				<role>founder</role>
+				<role>lead</role>
+				<role>developer</role>
+				<role>maintainer</role>
+			</roles>
+		</developer>
+	</developers>
+	<contributors>
+		<contributor>
+			<name>Jamie Malcolm</name>
+			<url>https://github.com/Jay2owe</url>
+			<roles>
+				<role>founder</role>
+				<role>developer</role>
+				<role>maintainer</role>
+			</roles>
+		</contributor>
+	</contributors>
+
+	<mailingLists>
+		<mailingList>
+			<name>Image.sc Forum</name>
+			<archive>https://forum.image.sc/tag/imagej</archive>
+		</mailingList>
+	</mailingLists>
+
+	<scm>
+		<connection>scm:git:https://github.com/Jay2owe/3DObjectsCounter-StarDist</connection>
+		<developerConnection>scm:git:git@github.com:Jay2owe/3DObjectsCounter-StarDist</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://github.com/Jay2owe/3DObjectsCounter-StarDist</url>
+	</scm>
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/Jay2owe/3DObjectsCounter-StarDist/issues</url>
+	</issueManagement>
+	<ciManagement>
+		<system>None</system>
+	</ciManagement>
+
+	<properties>
+		<main-class>sc.fiji.oc3dsd.ObjectsCounter3DStarDist</main-class>
+		<!--
+		  Deliberately still bsd_3: this drives the per-file headers that
+		  license-maven-plugin would stamp on *this repository's own source*,
+		  which is BSD-3-Clause. It is not the licence of the combined
+		  distributed work - that is declared in <licenses> above as
+		  GPL-3.0-or-later. Changing this to gpl_v3 would relicense Jamie's own
+		  code, which is a separate decision. See LICENSING.md.
+		-->
+		<license.licenseName>bsd_3</license.licenseName>
+		<license.copyrightOwners>Jamie Malcolm</license.copyrightOwners>
+
+		<!--
+		  Declared once and used twice: by the dependency below and by the
+		  Bundled-Dependency manifest entry, so the jar records which core it
+		  actually carries and the two cannot drift apart.
+
+		  A FIXED version, not a SNAPSHOT, and that distinction is the whole
+		  point. Shading puts core's bytecode inside the artifact users run, so
+		  "whatever was installed when this was built" would be part of a
+		  released plugin rather than a build detail. On a SNAPSHOT it moved
+		  three times during this migration - once mid-compile - and two builds
+		  twenty minutes apart bundled different classes. The harness stayed
+		  green, but only because it was re-run; nothing about the dependency
+		  announced that it had changed.
+
+		  0.1.0 is immutable in the local repository, so every build of this
+		  plugin bundles the same bytes. Upgrading is now a deliberate edit
+		  here, followed by a full harness run.
+		-->
+		<oc3d-core.version>0.1.0</oc3d-core.version>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>scijava.public</id>
+			<url>https://maven.scijava.org/content/groups/public</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<!--
+		  ImageJ 1.x, version managed by pom-scijava. The parent bump to 43.0.0
+		  moved it from 1.53f to 1.54p, which is not a cosmetic change here: ij
+		  is the measurement substrate, and ResultsTable's own formatting writes
+		  every batch CSV. The equivalence and batch goldens were run against it
+		  and every value and every byte matched, which is the only reason that
+		  move is recorded as safe rather than assumed to be.
+		-->
+		<dependency>
+			<groupId>net.imagej</groupId>
+			<artifactId>ij</artifactId>
+		</dependency>
+
+		<!--
+		  The shared shell this plugin used to carry its own copy of: the dialog
+		  widgets, the macro grammar, the measurement pass and the maps.
+
+		  The group id is io.github.jay2owe, not sc.fiji, and that is deliberate -
+		  it is the group id across this whole plugin family, while sc.fiji is the
+		  SciJava org's own namespace on maven.scijava.org. The Java *package* is
+		  sc.fiji.oc3d.core, which is a different string; the shade configuration
+		  in stage 05 needs both and they are not interchangeable.
+
+		  Compile scope, and shaded into the jar at stage 05, so a user never has
+		  to install it. It depends on ij alone, so bundling it adds nothing to
+		  the prerequisites.
+		-->
+		<dependency>
+			<groupId>io.github.jay2owe</groupId>
+			<artifactId>oc3d-core</artifactId>
+			<version>${oc3d-core.version}</version>
+		</dependency>
+
+		<!--
+		  TrackMate is part of the Fiji core distribution. It supplies the LAP
+		  tracker that links per-slice StarDist detections through Z, and the
+		  LabelImgExporter that turns the resulting tracks into a 3D label image.
+		-->
+		<dependency>
+			<groupId>sc.fiji</groupId>
+			<artifactId>TrackMate</artifactId>
+			<version>7.14.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!--
+		  TrackMate-StarDist supplies the StarDist detector factories and pulls in
+		  de.csbdresden:StarDist_ and de.csbdresden:csbdeep transitively. Requires
+		  the StarDist, CSBDeep and TrackMate-StarDist update sites at runtime.
+		-->
+		<dependency>
+			<groupId>sc.fiji</groupId>
+			<artifactId>TrackMate-StarDist</artifactId>
+			<version>1.2.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!--
+		  Neither org.framagit.mcib3d:mcib3d-core nor sc.fiji:3D_Objects_Counter
+		  is a compile or runtime dependency, deliberately.
+
+		  This plugin never thresholds and never runs connected components: it
+		  holds a label image before measurement begins, so the native counter has
+		  nothing to contribute. Measurement is implemented in `ij` alone -
+		  oc3d-core's LabelFeatureAccumulator computes the Lindblad (2005)
+		  weighted-configuration corrected surface directly, which is the same
+		  definition mcib3d's Object3DVoxels uses, so Morph_Sphericity and the
+		  rest carry the same meaning as in 3D Objects Counter+ without linking
+		  the library.
+
+		  That "same meaning" was an unverified claim until Stage 03 of the
+		  oc3d-core migration. It is now checked against mcib3d itself - see the
+		  test-scoped dependency below.
+
+		  That keeps measurement dependency-free and removes one GPL library from
+		  the linked set. TrackMate is still GPL, so the combined distributed work
+		  remains GPL-3.0-or-later - see LICENSING.md.
+		-->
+
+		<!-- Test dependencies -->
+
+		<!--
+		  TEST SCOPE ONLY. Never distributed, never on the runtime classpath, and
+		  not a dependency of the plugin - the paragraph above still holds.
+
+		  It exists for one test: CorrectedSurfaceAgainstMcib3dTest, which proves
+		  that the corrected surface this plugin reimplements in `ij` returns the
+		  same sphericity and compactness as mcib3d's MeasureCompactness on the
+		  same object. 3D Objects Counter+ fills those two columns from mcib3d;
+		  this plugin computes them. Without this test, "the columns mean the same
+		  thing in both plugins" is an assertion in a comment rather than a fact,
+		  and a divergence would surface as two shipped plugins quietly disagreeing
+		  about the shape of the same object.
+
+		  Test scope adds no licence obligation beyond the existing one: the
+		  distributed work is already GPL-3.0-or-later because of TrackMate.
+		-->
+		<dependency>
+			<groupId>org.framagit.mcib3d</groupId>
+			<artifactId>mcib3d-core</artifactId>
+			<version>4.1.7b</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>4.11.0</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>3D_Objects_Counter_StarDist-${project.version}</finalName>
+		<plugins>
+			<!--
+			  The equivalence harness measures fixtures with 65,536 objects: one
+			  accumulator per object, a results table of the same height, and the
+			  harness's own partition record. That does not fit in the default
+			  fork heap.
+
+			  @{argLine} is late evaluation of the property jacoco:prepare-agent
+			  sets. Writing a bare -Xmx here instead would replace that value and
+			  silently switch coverage off.
+			-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<argLine>@{argLine} -Xmx2g</argLine>
+				</configuration>
+			</plugin>
+
+			<!-- Suppress the inherited Class-Path manifest entry, and set an
+			     explicit Automatic-Module-Name (the artifactId starts with a
+			     digit, so Maven cannot derive a valid module name). -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>false</addClasspath>
+						</manifest>
+						<manifestEntries>
+							<Automatic-Module-Name>io.github.jay2owe.oc3dsd</Automatic-Module-Name>
+							<!--
+							  Which oc3d-core is baked into this jar. The shade step
+							  below writes a dependency-reduced pom, which correctly
+							  stops declaring oc3d-core as something to resolve - but
+							  that also erases the only record of what was bundled.
+							  This is that record, and it reads the same property the
+							  dependency does, so it cannot name a version other than
+							  the one actually shaded in.
+							-->
+							<Bundled-Dependency>io.github.jay2owe:oc3d-core:${oc3d-core.version}</Bundled-Dependency>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+
+			<!--
+			  TrackMate must resolve to exactly 7.14.0, and this fails the build
+			  if it ever does not.
+
+			  The version is pinned in <dependencies> above, but a pin is only a
+			  preference: pom-scijava manages TrackMate, so a future parent bump
+			  that removes or overrides the pin moves it silently, and the first
+			  symptom would be TrackMate 8 - which dropped Java 8, has already
+			  been rolled back once on this machine, and is its own project with
+			  its own equivalence run. The 31.1.0 -> 43.0.0 bump was checked by
+			  hand and held; nothing made that a property of the build until now.
+
+			  Checked against the RESOLVED dependency tree rather than the pom
+			  text, which is the claim that actually matters.
+			-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>pin-trackmate</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<bannedDependencies>
+									<excludes>
+										<exclude>sc.fiji:TrackMate</exclude>
+									</excludes>
+									<includes>
+										<include>sc.fiji:TrackMate:[7.14.0]</include>
+									</includes>
+									<message>TrackMate must stay at exactly 7.14.0. The TrackMate 7 -&gt; 8 upgrade is out of scope for the oc3d-core migration: v8 drops Java 8 and restructures the Python integration, and it needs its own equivalence run against the goldens. If a parent bump moved it, put the pin back rather than accepting the move here.</message>
+									<searchTransitive>true</searchTransitive>
+								</bannedDependencies>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!--
+			  Bundle oc3d-core into the jar under a private package, so installing
+			  this plugin is still one file and two plugins in the same Fiji can
+			  carry different core versions without one winning.
+
+			  Everything here is checked against the built artifact by
+			  ShadedJarIT rather than trusted, because every failure mode in this
+			  configuration is silent at build time and only shows up in Fiji.
+			-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>bundle-oc3d-core</id>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<!--
+							  A Maven COORDINATE (groupId:artifactId), not a Java
+							  package - the relocation below takes the package, and
+							  the two are different strings. A wrong coordinate here
+							  does not error: it matches nothing, the build succeeds,
+							  and the jar ships without the core classes.
+							  ShadedJarIT.coreIsActuallyBundled is what catches that.
+
+							  Only oc3d-core. TrackMate, TrackMate-StarDist, StarDist
+							  and CSBDeep are genuine prerequisites from update sites;
+							  bundling them would collide with the user's own copies.
+							-->
+							<artifactSet>
+								<includes>
+									<include>io.github.jay2owe:oc3d-core</include>
+								</includes>
+							</artifactSet>
+							<relocations>
+								<relocation>
+									<pattern>sc.fiji.oc3d.core</pattern>
+									<shadedPattern>sc.fiji.oc3dsd.internal.core</shadedPattern>
+									<!--
+									  Keeps the core's five property KEYS spelled the
+									  way core declares them.
+
+									  This is not a precaution against something that
+									  might happen. maven-shade-plugin rewrites string
+									  constants that parse as class names, not only
+									  bytecode references, and without this exclusion
+									  it demonstrably renames all five - so
+									  -Dsc.fiji.oc3d.core.optionalMapMemoryReserveBytes
+									  becomes a silent no-op and a macro reading the
+									  overlaySkipped property off a map image gets
+									  null. Core documents the opposite intent: one
+									  key, identical in every shaded copy, because a
+									  heap knob is a property of the JVM rather than
+									  of whichever plugin got shaded first.
+
+									  Listed one by one, and NOT as sc.fiji.oc3d.core.*
+									  even though that reads like the shape of the
+									  thing. Shade matches these with Ant path
+									  semantics against File.separator, so on Windows
+									  the whole path is a single token and the `*`
+									  spans slashes: that pattern excluded all 71 core
+									  classes from relocation, on this platform only,
+									  while the build reported success.
+									  ShadedJarIT.theOriginalPackageIsAbsentFromTheJarLayout
+									  is what caught it. Exact names have no wildcard
+									  to interpret and mean the same on every platform.
+
+									  A key core adds later will not be listed here,
+									  and the guard for that is not vigilance:
+									  ShadedJarIT.nothingInTheRelocatedNamespaceIsAStringRatherThanAClass
+									  fails on any string in the relocated namespace
+									  that names no class in the jar, which is what a
+									  rewritten key looks like.
+									-->
+									<excludes>
+										<exclude>sc.fiji.oc3d.core.maxDenseLabel</exclude>
+										<exclude>sc.fiji.oc3d.core.maxOverlayLabels</exclude>
+										<exclude>sc.fiji.oc3d.core.overlaySkipped</exclude>
+										<exclude>sc.fiji.oc3d.core.overlaySkippedReason</exclude>
+										<exclude>sc.fiji.oc3d.core.optionalMapMemoryReserveBytes</exclude>
+									</excludes>
+								</relocation>
+							</relocations>
+							<!--
+							  oc3d-core is bundled, so a consumer of this artifact
+							  must not be told to resolve it - it is published
+							  nowhere. Written under target/ to keep it out of the
+							  working tree, where it is generated build output that
+							  looks like a source file.
+							-->
+							<createDependencyReducedPom>true</createDependencyReducedPom>
+							<dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml</dependencyReducedPomLocation>
+							<filters>
+								<filter>
+									<artifact>io.github.jay2owe:oc3d-core</artifact>
+									<excludes>
+										<!-- Provenance belongs in one place: the
+										     Bundled-Dependency manifest entry. Two
+										     poms under META-INF/maven invite reading
+										     the wrong one. -->
+										<exclude>META-INF/maven/**</exclude>
+									</excludes>
+								</filter>
+							</filters>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!--
+			  ShadedJarIT inspects the packaged jar, so it cannot run in the test
+			  phase - at that point the jar does not exist yet. Failsafe runs it
+			  after package, and `mvn verify` is therefore the command that checks
+			  packaging; `mvn test` still checks behaviour.
+			-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>verify-packaging</id>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!--
+					  Handed the exact path rather than letting the test guess at
+					  target/*.jar - a guess would quietly pass against the wrong
+					  jar the day a second one appears there.
+					-->
+					<systemPropertyVariables>
+						<oc3dsd.shadedJar>${project.build.directory}/${project.build.finalName}.jar</oc3dsd.shadedJar>
+						<oc3dsd.coreVersion>${oc3d-core.version}</oc3dsd.coreVersion>
+						<!-- Not user.dir: failsafe does not run from the project
+						     root, and a test that reads the wrong directory
+						     reports on the wrong file. -->
+						<oc3dsd.basedir>${project.basedir}</oc3dsd.basedir>
+					</systemPropertyVariables>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

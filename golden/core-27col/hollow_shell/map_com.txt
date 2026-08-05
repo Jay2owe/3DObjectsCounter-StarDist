@@ -1,0 +1,61 @@
+# fixture=hollow_shell config=map_com
+## configuration
+minSize=0
+maxSize=Infinity
+excludeOnEdges=false
+redirect=false
+calibration=NONE
+maps=false,false,false,true
+filters=
+## counts
+objects=1
+droppedByMorphology=0
+droppedByDetectorFilters=0
+droppedShort=0
+singleSlice=0
+## warnings
+count=0
+## statistics
+rows=1 columns=27
+headings	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=6cd2a990212f95f109ee233e8ee4b60c16679ccf0ed8f5b2b1fbba7f4cf60e2e
+detail=full
+0	1088.0	1992.0	1088.0	1064.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.5	11.5	11.5	11.5	11.5	11.5	4.0	4.0	4.0	16.0	16.0	16.0	1.0	0.39291807751775065	0.06066050637568197	1.0	15.5884572681199
+## summary
+rows=4 columns=28
+headings	Statistic	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Median	Min	Max	X	Y	Z	XM	YM	ZM	BX	BY	BZ	B-width	B-height	B-depth	Label	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um
+body_sha256=8e6ddbe9a13ca68169b62a1bfdce5f19b66c61a77127b0e924ebe34ad8a55f09
+detail=full
+0	s:Mean	1088.0	1992.0	1088.0	1064.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.5	11.5	11.5	11.5	11.5	11.5	4.0	4.0	4.0	16.0	16.0	16.0	1.0	0.39291807751775065	0.06066050637568197	1.0	15.5884572681199
+1	s:StdDev	0.0	0.0	0.0	0.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0
+2	s:Min	1088.0	1992.0	1088.0	1064.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.5	11.5	11.5	11.5	11.5	11.5	4.0	4.0	4.0	16.0	16.0	16.0	1.0	0.39291807751775065	0.06066050637568197	1.0	15.5884572681199
+3	s:Max	1088.0	1992.0	1088.0	1064.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.5	11.5	11.5	11.5	11.5	11.5	4.0	4.0	4.0	16.0	16.0	16.0	1.0	0.39291807751775065	0.06066050637568197	1.0	15.5884572681199
+## labelImage
+dims=24x24x24
+czt=1,24,1
+bitDepth=16
+displayRange=0.0,0.0
+calibration=1.0,1.0,1.0,pixel
+labels=1
+partition_sha256=6f9a02d8fd3b2d89b99101722fffe674de3400e8d71e7c897a7d5897cd44ed52
+detail=full
+1	1088	4,4,4	16,16,16	989fe129e178be1579c919c830a09909
+## objectMap
+absent
+## surfaceMap
+absent
+## centroidMap
+absent
+## centreOfMassMap
+title=Centers of mass map of hollow_shell
+dims=24x24x24
+czt=1,24,1
+bitDepth=8
+displayRange=0.0,1.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=f9c60c77b4cbfc7e4ade72786dcfc99e9f77168c828c742fe991fe1ae775ed67
+overlaySkipped=no
+overlay=1
+overlay_sha256=a1e9caa8aea46e82d2f5b6f69f76def87f48cc2362103dc006248478f5bde1a1
+detail=full
+1	13	12	12

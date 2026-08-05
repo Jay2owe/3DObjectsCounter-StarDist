@@ -1,0 +1,94 @@
+# fixture=solid_sphere config=filter_elongation
+## configuration
+minSize=0
+maxSize=Infinity
+excludeOnEdges=false
+redirect=false
+calibration=NONE
+maps=true,true,true,true
+filters=elongation<=3
+## counts
+objects=1
+droppedByMorphology=0
+droppedByDetectorFilters=0
+droppedShort=0
+singleSlice=0
+## warnings
+count=0
+## statistics
+rows=1 columns=26
+headings	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Min	Max	X	Y	Z	XM	YM	ZM	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um	BX	BY	BZ	B-width	B-height	B-depth	Label
+body_sha256=0684115ef24c47c7baed0923d1cdd4dba11fb3a5fca8a27a021e52b6475d19a8
+detail=full
+0	2176.0	1248.0	2176.0	632.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.5	11.5	11.5	11.5	11.5	11.5	1.0269884765112136	1.0831702209357146	1.0	15.5884572681199	4.0	4.0	4.0	16.0	16.0	16.0	1.0
+## summary
+rows=4 columns=27
+headings	Statistic	Volume (pixel^3)	Surface (pixel^2)	Nb of obj. voxels	Nb of surf. voxels	IntDen	Mean	StdDev	Min	Max	X	Y	Z	XM	YM	ZM	Morph_Sphericity	Morph_Compactness	Morph_Elongation	Morph_Feret3D_um	BX	BY	BZ	B-width	B-height	B-depth	Label
+body_sha256=8acc6aed28a2337e34d1ea4618301b9330464dda437a094147c3c81447dc01b8
+detail=full
+0	s:Mean	2176.0	1248.0	2176.0	632.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.5	11.5	11.5	11.5	11.5	11.5	1.0269884765112136	1.0831702209357146	1.0	15.5884572681199	4.0	4.0	4.0	16.0	16.0	16.0	1.0
+1	s:StdDev	0.0	0.0	0.0	0.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0
+2	s:Min	2176.0	1248.0	2176.0	632.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.5	11.5	11.5	11.5	11.5	11.5	1.0269884765112136	1.0831702209357146	1.0	15.5884572681199	4.0	4.0	4.0	16.0	16.0	16.0	1.0
+3	s:Max	2176.0	1248.0	2176.0	632.0	s:NaN	s:NaN	s:NaN	s:NaN	s:NaN	11.5	11.5	11.5	11.5	11.5	11.5	1.0269884765112136	1.0831702209357146	1.0	15.5884572681199	4.0	4.0	4.0	16.0	16.0	16.0	1.0
+## labelImage
+dims=24x24x24
+czt=1,24,1
+bitDepth=16
+displayRange=0.0,0.0
+calibration=1.0,1.0,1.0,pixel
+labels=1
+partition_sha256=2e4e864b6db66234988e4e879c1b49b7545b281ef3e6282977b46266b0a42ab4
+detail=full
+1	2176	4,4,4	16,16,16	3bbd607a8e31a4b5b3ded971436b9a32
+## objectMap
+title=Objects map of solid_sphere
+dims=24x24x24
+czt=1,24,1
+bitDepth=16
+displayRange=0.0,1.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=e63f3de049605d234e74f42ba937b11b0c487657b9ed658d784c77cd48340b87
+overlaySkipped=no
+overlay=1
+overlay_sha256=a1e9caa8aea46e82d2f5b6f69f76def87f48cc2362103dc006248478f5bde1a1
+detail=full
+1	13	12	12
+## surfaceMap
+title=Surfaces map of solid_sphere
+dims=24x24x24
+czt=1,24,1
+bitDepth=8
+displayRange=0.0,1.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=387fbff56c7a5ecaf54e6f7a3e25b309e029623550f25ae54c99d58110726f8b
+overlaySkipped=no
+overlay=1
+overlay_sha256=a1e9caa8aea46e82d2f5b6f69f76def87f48cc2362103dc006248478f5bde1a1
+detail=full
+1	13	12	12
+## centroidMap
+title=Centroids map of solid_sphere
+dims=24x24x24
+czt=1,24,1
+bitDepth=8
+displayRange=0.0,1.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=f9c60c77b4cbfc7e4ade72786dcfc99e9f77168c828c742fe991fe1ae775ed67
+overlaySkipped=no
+overlay=1
+overlay_sha256=a1e9caa8aea46e82d2f5b6f69f76def87f48cc2362103dc006248478f5bde1a1
+detail=full
+1	13	12	12
+## centreOfMassMap
+title=Centers of mass map of solid_sphere
+dims=24x24x24
+czt=1,24,1
+bitDepth=8
+displayRange=0.0,1.0
+calibration=1.0,1.0,1.0,pixel
+pixels_sha256=f9c60c77b4cbfc7e4ade72786dcfc99e9f77168c828c742fe991fe1ae775ed67
+overlaySkipped=no
+overlay=1
+overlay_sha256=a1e9caa8aea46e82d2f5b6f69f76def87f48cc2362103dc006248478f5bde1a1
+detail=full
+1	13	12	12
