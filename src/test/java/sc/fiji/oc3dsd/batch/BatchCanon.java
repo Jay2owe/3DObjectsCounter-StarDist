@@ -38,10 +38,10 @@ import java.util.List;
  *   <li><b>{@code elapsed_ms}</b> becomes {@code <ELAPSED>}. It is a duration.</li>
  * </ul>
  *
- * Nothing else is normalised. Line endings are recorded as they are written,
- * as {@code <CRLF>} or {@code <LF>} markers per file, because a change from one
- * to the other is exactly the kind of silent CSV regression this exists to
- * catch — normalising them away would hide it.
+ * Nothing else is normalised. A file that consistently uses the host platform's
+ * line separator is recorded as {@code NATIVE}; mixed or non-native endings are
+ * called out explicitly. This preserves the contract without making Windows
+ * CRLF goldens fail on Linux, where the same writer correctly emits LF.
  *
  * <p>TIFF outputs are recorded as dimensions plus a digest over pixel bits
  * rather than as file bytes, because TIFF headers carry writer metadata that is
@@ -113,12 +113,7 @@ final class BatchCanon {
         return sb.toString();
     }
 
-    /**
-     * Reports the line-ending style rather than hiding it. A file that is
-     * consistently one or the other says so; a file that mixes them is called
-     * out, because mixed endings inside one CSV break naive readers and are
-     * never intentional.
-     */
+    /** Reports whether line endings are native and consistent on this host. */
     private static String lineEndings(String raw) {
         int crlf = 0;
         int bareLf = 0;
@@ -128,8 +123,10 @@ final class BatchCanon {
             else bareLf++;
         }
         if (crlf > 0 && bareLf > 0) return "MIXED crlf=" + crlf + " lf=" + bareLf;
-        if (crlf > 0) return "CRLF";
-        if (bareLf > 0) return "LF";
+        if (crlf > 0) return "\r\n".equals(System.lineSeparator())
+                ? "NATIVE" : "NON_NATIVE_CRLF";
+        if (bareLf > 0) return "\n".equals(System.lineSeparator())
+                ? "NATIVE" : "NON_NATIVE_LF";
         return "none";
     }
 

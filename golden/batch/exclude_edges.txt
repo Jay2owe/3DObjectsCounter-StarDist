@@ -20,7 +20,7 @@ files=17
   Summary/summary.csv
 
 ## Groups/_ungrouped__objects.csv
-lineEndings=CRLF
+lineEndings=NATIVE
 lines=4 trailingNewline=true
 File,Group,Folder,Volume (pixel^3),Surface (pixel^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,Mean,StdDev,Median,Min,Max,X,Y,Z,XM,YM,ZM,BX,BY,BZ,B-width,B-height,B-depth,Label,Morph_Sphericity,Morph_Compactness,Morph_Elongation,Morph_Feret3D_um
 ungrouped.tif,<ungrouped>,nested,75,110,75,66,NaN,NaN,NaN,NaN,NaN,NaN,4.000,4,2.000,4.000,4,2.000,2,2,1,5,5,3,1,1.116,1.390,1.732,5.774
@@ -28,7 +28,7 @@ ungrouped.tif,<ungrouped>,nested,120,148,120,96,NaN,NaN,NaN,NaN,NaN,NaN,12.500,1
 ungrouped.tif,<ungrouped>,nested,75,110,75,66,NaN,NaN,NaN,NaN,NaN,NaN,19.000,18,3.000,19.000,18,3.000,17,16,2,5,5,3,3,1.116,1.390,1.732,5.774
 
 ## Groups/_ungrouped__summary.csv
-lineEndings=CRLF
+lineEndings=NATIVE
 lines=5 trailingNewline=true
 Statistic,File,Group,Folder,Volume (pixel^3),Surface (pixel^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,Mean,StdDev,Median,Min,Max,X,Y,Z,XM,YM,ZM,BX,BY,BZ,B-width,B-height,B-depth,Label,Morph_Sphericity,Morph_Compactness,Morph_Elongation,Morph_Feret3D_um
 Mean,NaN,NaN,NaN,90.000,122.667,90.000,76.000,NaN,NaN,NaN,NaN,NaN,NaN,11.833,11.333,2.500,11.833,11.333,2.500,9.667,9.333,1.333,5.333,5,3.333,2.000,1.109,1.364,1.664,6.158
@@ -37,7 +37,7 @@ Min,NaN,NaN,NaN,75.000,110.000,75.000,66.000,NaN,NaN,NaN,NaN,NaN,NaN,4.000,4.000
 Max,NaN,NaN,NaN,120.000,148.000,120.000,96.000,NaN,NaN,NaN,NaN,NaN,NaN,19.000,18.000,3.000,19.000,18.000,3.000,17.000,16.000,2.000,6.000,5,4.000,3.000,1.116,1.390,1.732,6.928
 
 ## Groups/ko_objects.csv
-lineEndings=CRLF
+lineEndings=NATIVE
 lines=4 trailingNewline=true
 File,Group,Folder,Volume (micron^3),Surface (micron^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,Mean,StdDev,Median,Min,Max,X,Y,Z,XM,YM,ZM,BX,BY,BZ,B-width,B-height,B-depth,Label,Morph_Sphericity,Morph_Compactness,Morph_Elongation,Morph_Feret3D_um,Volume (pixel^3),Surface (pixel^2)
 a_ko_02.tif,ko,.,54,90,108,92,NaN,NaN,NaN,NaN,NaN,NaN,5.500,5.500,2.000,5.500,5.500,2.000,3,3,1,6,6,3,1,1.056,1.177,1.912,5.196,0,0
@@ -45,7 +45,7 @@ b_ko_04.tif,ko,nested,0,0,1,1,NaN,NaN,NaN,NaN,NaN,NaN,1.000,1.000,1.000,1.000,1.
 b_ko_04.tif,ko,nested,0,0,18,18,NaN,NaN,NaN,NaN,NaN,NaN,5.000,5.000,1.500,5.000,5.000,1.500,4,4,1,3,3,2,2,1.317,2.285,1.633,2.887,18,42
 
 ## Groups/ko_summary.csv
-lineEndings=CRLF
+lineEndings=NATIVE
 lines=5 trailingNewline=true
 Statistic,File,Group,Folder,Volume (micron^3),Surface (micron^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,Mean,StdDev,Median,Min,Max,X,Y,Z,XM,YM,ZM,BX,BY,BZ,B-width,B-height,B-depth,Label,Morph_Sphericity,Morph_Compactness,Morph_Elongation,Morph_Feret3D_um,Volume (pixel^3),Surface (pixel^2)
 Mean,NaN,NaN,NaN,18.000,30.000,42.333,37.000,NaN,NaN,NaN,NaN,NaN,NaN,3.833,3.833,1.500,3.833,3.833,1.500,2.667,2.667,1,3.333,3.333,2.000,1.333,1.186,1.731,1.773,2.694,6.333,16.000
@@ -54,7 +54,7 @@ Min,NaN,NaN,NaN,0.000,0.000,1.000,1.000,NaN,NaN,NaN,NaN,NaN,NaN,1.000,1.000,1.00
 Max,NaN,NaN,NaN,54.000,90.000,108.000,92.000,NaN,NaN,NaN,NaN,NaN,NaN,5.500,5.500,2.000,5.500,5.500,2.000,4.000,4.000,1,6.000,6.000,3.000,2.000,1.317,2.285,1.912,5.196,18.000,42.000
 
 ## Groups/wt_objects.csv
-lineEndings=CRLF
+lineEndings=NATIVE
 lines=6 trailingNewline=true
 File,Group,Folder,Volume (pixel^3),Surface (pixel^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,Mean,StdDev,Median,Min,Max,X,Y,Z,XM,YM,ZM,BX,BY,BZ,B-width,B-height,B-depth,Label,Morph_Sphericity,Morph_Compactness,Morph_Elongation,Morph_Feret3D_um
 a_wt_01.tif,wt,.,75,110,75,66,NaN,NaN,NaN,NaN,NaN,NaN,4.000,4.000,2.000,4.000,4.000,2.000,2,2,1,5,5,3,1,1.116,1.390,1.732,5.774
@@ -64,7 +64,7 @@ b_wt_03.tif,wt,nested,50,90,50,50,NaN,NaN,NaN,NaN,NaN,NaN,10.000,10.000,1.500,10
 "odd,name_wt_05.tif",wt,nested,108,144,108,92,NaN,NaN,NaN,NaN,NaN,NaN,5.500,5.500,2.000,5.500,5.500,2.000,3,3,1,6,6,3,1,1.056,1.177,2.092,7.071
 
 ## Groups/wt_summary.csv
-lineEndings=CRLF
+lineEndings=NATIVE
 lines=5 trailingNewline=true
 Statistic,File,Group,Folder,Volume (pixel^3),Surface (pixel^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,Mean,StdDev,Median,Min,Max,X,Y,Z,XM,YM,ZM,BX,BY,BZ,B-width,B-height,B-depth,Label,Morph_Sphericity,Morph_Compactness,Morph_Elongation,Morph_Feret3D_um
 Mean,NaN,NaN,NaN,85.600,120.400,85.600,74.000,NaN,NaN,NaN,NaN,NaN,NaN,10.200,9.900,2.200,10.200,9.900,2.200,8.000,7.800,1.200,5.400,5.200,3.000,1.600,1.092,1.303,1.982,6.241
@@ -73,13 +73,13 @@ Min,NaN,NaN,NaN,50.000,90.000,50.000,50.000,NaN,NaN,NaN,NaN,NaN,NaN,4.000,4.000,
 Max,NaN,NaN,NaN,120.000,148.000,120.000,96.000,NaN,NaN,NaN,NaN,NaN,NaN,19.000,18.000,3.000,19.000,18.000,3.000,17.000,16.000,2.000,6.000,6.000,4.000,3.000,1.116,1.390,2.828,7.071
 
 ## Objects/a_ko_02_objects.csv
-lineEndings=CRLF
+lineEndings=NATIVE
 lines=2 trailingNewline=true
 Volume (micron^3),Surface (micron^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,Mean,StdDev,Median,Min,Max,X,Y,Z,XM,YM,ZM,BX,BY,BZ,B-width,B-height,B-depth,Label,Morph_Sphericity,Morph_Compactness,Morph_Elongation,Morph_Feret3D_um
 54,90,108,92,NaN,NaN,NaN,NaN,NaN,NaN,5.500,5.500,2,5.500,5.500,2,3,3,1,6,6,3,1,1.056,1.177,1.912,5.196
 
 ## Objects/a_wt_01_objects.csv
-lineEndings=CRLF
+lineEndings=NATIVE
 lines=4 trailingNewline=true
 Volume (pixel^3),Surface (pixel^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,Mean,StdDev,Median,Min,Max,X,Y,Z,XM,YM,ZM,BX,BY,BZ,B-width,B-height,B-depth,Label,Morph_Sphericity,Morph_Compactness,Morph_Elongation,Morph_Feret3D_um
 75,110,75,66,NaN,NaN,NaN,NaN,NaN,NaN,4.000,4,2.000,4.000,4,2.000,2,2,1,5,5,3,1,1.116,1.390,1.732,5.774
@@ -87,26 +87,26 @@ Volume (pixel^3),Surface (pixel^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,M
 75,110,75,66,NaN,NaN,NaN,NaN,NaN,NaN,19.000,18,3.000,19.000,18,3.000,17,16,2,5,5,3,3,1.116,1.390,1.732,5.774
 
 ## Objects/b_ko_04_objects.csv
-lineEndings=CRLF
+lineEndings=NATIVE
 lines=3 trailingNewline=true
 Volume (pixel^3),Surface (pixel^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,Mean,StdDev,Median,Min,Max,X,Y,Z,XM,YM,ZM,BX,BY,BZ,B-width,B-height,B-depth,Label,Morph_Sphericity,Morph_Compactness,Morph_Elongation,Morph_Feret3D_um
 1,6,1,1,NaN,NaN,NaN,NaN,NaN,NaN,1,1,1.000,1,1,1.000,1,1,1,1,1,1,1,NaN,NaN,NaN,0.000
 18,42,18,18,NaN,NaN,NaN,NaN,NaN,NaN,5,5,1.500,5,5,1.500,4,4,1,3,3,2,2,1.317,2.285,1.633,2.887
 
 ## Objects/b_wt_03_objects.csv
-lineEndings=CRLF
+lineEndings=NATIVE
 lines=2 trailingNewline=true
 Volume (pixel^3),Surface (pixel^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,Mean,StdDev,Median,Min,Max,X,Y,Z,XM,YM,ZM,BX,BY,BZ,B-width,B-height,B-depth,Label,Morph_Sphericity,Morph_Compactness,Morph_Elongation,Morph_Feret3D_um
 50,90,50,50,NaN,NaN,NaN,NaN,NaN,NaN,10,10,1.500,10,10,1.500,8,8,1,5,5,2,1,1.076,1.247,2.828,5.657
 
 ## Objects/odd,name_wt_05_objects.csv
-lineEndings=CRLF
+lineEndings=NATIVE
 lines=2 trailingNewline=true
 Volume (pixel^3),Surface (pixel^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,Mean,StdDev,Median,Min,Max,X,Y,Z,XM,YM,ZM,BX,BY,BZ,B-width,B-height,B-depth,Label,Morph_Sphericity,Morph_Compactness,Morph_Elongation,Morph_Feret3D_um
 108,144,108,92,NaN,NaN,NaN,NaN,NaN,NaN,5.500,5.500,2,5.500,5.500,2,3,3,1,6,6,3,1,1.056,1.177,2.092,7.071
 
 ## Objects/ungrouped_objects.csv
-lineEndings=CRLF
+lineEndings=NATIVE
 lines=4 trailingNewline=true
 Volume (pixel^3),Surface (pixel^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,Mean,StdDev,Median,Min,Max,X,Y,Z,XM,YM,ZM,BX,BY,BZ,B-width,B-height,B-depth,Label,Morph_Sphericity,Morph_Compactness,Morph_Elongation,Morph_Feret3D_um
 75,110,75,66,NaN,NaN,NaN,NaN,NaN,NaN,4.000,4,2.000,4.000,4,2.000,2,2,1,5,5,3,1,1.116,1.390,1.732,5.774
@@ -114,7 +114,7 @@ Volume (pixel^3),Surface (pixel^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,M
 75,110,75,66,NaN,NaN,NaN,NaN,NaN,NaN,19.000,18,3.000,19.000,18,3.000,17,16,2,5,5,3,3,1.116,1.390,1.732,5.774
 
 ## README.txt
-lineEndings=CRLF
+lineEndings=NATIVE
 lines=16 trailingNewline=true
 3D Objects Counter - StarDist — batch output
 
@@ -134,7 +134,7 @@ Slices column reports how many slices each object spans; objects
 spanning a single slice deserve a look before they are trusted.
 
 ## Summary/groups.csv
-lineEndings=CRLF
+lineEndings=NATIVE
 lines=4 trailingNewline=true
 Group,Objects
 ko,3
@@ -142,7 +142,7 @@ wt,5
 <ungrouped>,3
 
 ## Summary/manifest.csv
-lineEndings=CRLF
+lineEndings=NATIVE
 lines=8 trailingNewline=true
 file,folder,group,unit,pixel_width,pixel_depth,model,probability,overlap,linking_distance,linking_distance_px,gap_distance,slice_gap,min_slices,min_size,max_size,exclude_edges,objects,single_slice_objects,dropped_short,dropped_detector_filters,dropped_object_filters,elapsed_ms,status
 <IN>\a_ko_02.tif,.,ko,micron,0.5,2.0,versatile fluorescence (bundled),0.5,0.4,5.0,10.0,5.0,1,1,1,Infinity,true,1,0,0,0,1,<ELAPSED>,ok
@@ -154,14 +154,14 @@ file,folder,group,unit,pixel_width,pixel_depth,model,probability,overlap,linking
 <IN>\nested\ungrouped.tif,nested,<ungrouped>,pixel,1.0,1.0,versatile fluorescence (bundled),0.5,0.4,5.0,5.0,5.0,1,1,1,Infinity,true,3,0,0,0,0,<ELAPSED>,ok
 
 ## Summary/per_folder_summary.csv
-lineEndings=CRLF
+lineEndings=NATIVE
 lines=3 trailingNewline=true
 Folder,Objects
 .,4
 nested,7
 
 ## Summary/summary.csv
-lineEndings=CRLF
+lineEndings=NATIVE
 lines=5 trailingNewline=true
 Statistic,File,Group,Folder,Volume (micron^3),Surface (micron^2),Nb of obj. voxels,Nb of surf. voxels,IntDen,Mean,StdDev,Median,Min,Max,X,Y,Z,XM,YM,ZM,BX,BY,BZ,B-width,B-height,B-depth,Label,Morph_Sphericity,Morph_Compactness,Morph_Elongation,Morph_Feret3D_um,Volume (pixel^3),Surface (pixel^2)
 Mean,NaN,NaN,NaN,4.909,8.182,75.000,64.455,NaN,NaN,NaN,NaN,NaN,NaN,8.909,8.636,2.091,8.909,8.636,2.091,7.000,6.818,1.182,4.818,4.636,2.818,1.636,1.116,1.407,1.845,5.251,65.182,92.545
