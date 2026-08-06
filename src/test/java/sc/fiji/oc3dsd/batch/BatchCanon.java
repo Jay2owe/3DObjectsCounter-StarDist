@@ -33,8 +33,8 @@ import java.util.List;
  *   <li><b>The input and output roots</b> become {@code <IN>} and {@code <OUT>}.
  *       They are temporary directories with a random component, so recording
  *       them would make the golden unreproducible. Path <em>structure</em>
- *       below the root is kept exactly, including separators, because that is
- *       what the folder-key logic produces.</li>
+ *       below the root is kept exactly, with path separators canonicalised to
+ *       forward slashes so the same golden is valid on every host.</li>
  *   <li><b>{@code elapsed_ms}</b> becomes {@code <ELAPSED>}. It is a duration.</li>
  * </ul>
  *
@@ -136,7 +136,29 @@ final class BatchCanon {
         String out = text.replace(absolute, token);
         // The manifest holds native separators; a CSV consumer may also see the
         // forward-slash form on some platforms, so both are covered.
-        return out.replace(absolute.replace('\\', '/'), token);
+        out = out.replace(absolute.replace('\\', '/'), token);
+        return normaliseTokenPathSeparators(out, token);
+    }
+
+    /** Canonicalises separators only inside a path whose root was replaced. */
+    private static String normaliseTokenPathSeparators(String text, String token) {
+        StringBuilder out = new StringBuilder(text.length());
+        int from = 0;
+        int at;
+        while ((at = text.indexOf(token, from)) >= 0) {
+            out.append(text, from, at).append(token);
+            int pathStart = at + token.length();
+            boolean quoted = at > 0 && text.charAt(at - 1) == '"';
+            int pathEnd = pathStart;
+            while (pathEnd < text.length()) {
+                char c = text.charAt(pathEnd);
+                if (c == '\n' || c == '\r' || (quoted ? c == '"' : c == ',')) break;
+                pathEnd++;
+            }
+            out.append(text.substring(pathStart, pathEnd).replace('\\', '/'));
+            from = pathEnd;
+        }
+        return out.append(text, from, text.length()).toString();
     }
 
     /**
