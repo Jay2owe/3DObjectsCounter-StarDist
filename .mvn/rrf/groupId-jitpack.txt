@@ -1,0 +1,3 @@
+# JitPack is used only for tagged oc3d-core releases. Reject every unrelated
+# group so it can never act as a fallback for Central or SciJava artifacts.
+com.github.Jay2owe
