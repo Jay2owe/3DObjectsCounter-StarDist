@@ -29,6 +29,11 @@ public class ObjectsCounter3DStarDist implements PlugIn {
         boolean interactive = options == null;
         boolean hidden = !interactive && MacroOptionsParser.isHidden(options);
 
+        // Keep first-run setup in front of image validation: someone installing
+        // the runtime should not also need to find and open a stack just to get
+        // the one-click installer.
+        if (!DependencyDoctor.verify(interactive)) return;
+
         ImagePlus image = WindowManager.getCurrentImage();
         if (image == null) {
             fail(interactive, "Open a Z-stack first.");
@@ -39,10 +44,6 @@ public class ObjectsCounter3DStarDist implements PlugIn {
                     + "' has a single slice.");
             return;
         }
-
-        // The detector chain is four update sites and a large native library.
-        // Check before the user waits, and name what is missing.
-        if (!DependencyDoctor.verify(interactive)) return;
 
         OC3DSDDialogModel model;
         if (interactive) {

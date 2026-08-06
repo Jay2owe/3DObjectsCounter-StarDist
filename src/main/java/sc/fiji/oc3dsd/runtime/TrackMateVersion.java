@@ -107,8 +107,8 @@ public final class TrackMateVersion {
         }
         sb.append("Tested against TrackMate ").append(TESTED_AGAINST)
           .append(" with TrackMate-StarDist 1.2.1.\n")
-          .append("Install a TrackMate ").append(SUPPORTED_MAJOR)
-          .append(".x release, or run this plugin in a Fiji that has one.");
+          .append("Run this plugin interactively and choose Install Runtime to repair ")
+          .append("the pinned versions, then restart Fiji.");
         return sb.toString();
     }
 

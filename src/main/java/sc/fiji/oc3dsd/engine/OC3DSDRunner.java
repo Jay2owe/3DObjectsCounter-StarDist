@@ -44,6 +44,22 @@ public final class OC3DSDRunner {
     private OC3DSDRunner() {
     }
 
+    /**
+     * The image the intensity columns are measured from.
+     * <p>
+     * A named redirect wins. With none — the default, and what most runs use —
+     * the source is the analysed channel of the input itself, which is what
+     * "no redirect" has always meant in 3D Objects Counter and in ImageJ's own
+     * {@code Set Measurements}. Returning {@code null} here instead would leave
+     * {@code IntDen}, {@code Mean}, {@code StdDev}, {@code Median}, {@code Min}
+     * and {@code Max} as {@code NaN} in every row, and silently collapse the
+     * centre of mass onto the centroid, for the majority of runs.
+     */
+    static ImagePlus resolveIntensitySource(OC3DSDParameters params) {
+        if (params.intensityImage != null) return params.intensityImage;
+        return StarDistTrackMateRunner.analysedChannelStack(params.input, params.channel);
+    }
+
     public static OC3DSDResult run(OC3DSDParameters params) {
         if (params == null) {
             throw new IllegalArgumentException("params must not be null");
@@ -72,6 +88,7 @@ public final class OC3DSDRunner {
                     detection.getLabelImage(),
                     detection.getDetectorStats(),
                     params,
+                    resolveIntensitySource(params),
                     progress,
                     start,
                     detection.getSingleSliceObjects(),
@@ -99,6 +116,14 @@ public final class OC3DSDRunner {
      * The detection-derived counts on the returned result are zero here, because
      * no detection ran. {@code params.input} is used only for its title and
      * calibration; the labels come from {@code labels}, not from it.
+     * <p>
+     * For the same reason this seam does <strong>not</strong> apply {@link
+     * #resolveIntensitySource}'s default: {@code params.input} is not the image
+     * {@code labels} was detected in and generally does not even share its
+     * geometry, so measuring intensities from it would be measuring the wrong
+     * picture. Here {@code params.intensityImage} means exactly what it says,
+     * and {@code null} leaves the intensity columns {@code NaN}. Callers driving
+     * this directly with a label image of their own supply their own source.
      *
      * @param labels         label image, <strong>modified in place</strong> when
      *                       filtering drops objects
@@ -111,13 +136,14 @@ public final class OC3DSDRunner {
             throw new IllegalArgumentException("params must not be null");
         }
         StatusBarProgress progress = StatusBarProgress.none();
-        return measureFilterAndMap(labels, detectorStats, params, progress,
-                System.currentTimeMillis(), 0, 0, 0);
+        return measureFilterAndMap(labels, detectorStats, params, params.intensityImage,
+                progress, System.currentTimeMillis(), 0, 0, 0);
     }
 
     private static OC3DSDResult measureFilterAndMap(ImagePlus labels,
                                                     ResultsTable detectorStats,
                                                     OC3DSDParameters params,
+                                                    ImagePlus intensitySource,
                                                     StatusBarProgress progress,
                                                     long start,
                                                     int singleSliceObjects,
@@ -126,12 +152,13 @@ public final class OC3DSDRunner {
         Calibration cal = params.input.getCalibration() == null
                 ? null : params.input.getCalibration().copy();
 
-        // 2. Measure from the labels. Not from the detector's spot features:
-        //    those are diagnostics, and presenting them as morphometry would
-        //    be wrong (see StarDistTrackMateRunner's class documentation).
+        // 2. Measure geometry from the labels, intensities from the source
+        //    resolved above. Not from the detector's spot features: those are
+        //    diagnostics, and presenting them as morphometry would be wrong
+        //    (see StarDistTrackMateRunner's class documentation).
         progress.step("Measuring objects");
         LabelFeatureAccumulator.Result measured = LabelFeatureAccumulator.scan(
-                labels, params.intensityImage, cal);
+                labels, intensitySource, cal);
 
         // 3. Filter on what was measured, then renumber so the survivors are
         //    contiguous and the maps and tables still join on the label.
@@ -142,7 +169,7 @@ public final class OC3DSDRunner {
 
         if (droppedByObjectFilters > 0) {
             LabelRenumberer.Result renumbered = LabelRenumberer.renumber(labels, keep);
-            measured = LabelFeatureAccumulator.scan(labels, params.intensityImage, cal);
+            measured = LabelFeatureAccumulator.scan(labels, intensitySource, cal);
             objects = measured.toStatisticsTable(null);
             remapDetectorStats(detectorStats, renumbered);
         }

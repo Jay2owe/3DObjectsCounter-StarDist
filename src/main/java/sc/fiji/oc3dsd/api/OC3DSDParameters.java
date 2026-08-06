@@ -49,7 +49,14 @@ public final class OC3DSDParameters {
     public final int maxSize;
     /** Whether to exclude objects touching the image edges. */
     public final boolean excludeOnEdges;
-    /** Optional intensity-measurement source (the "redirect" image). May be null. */
+    /**
+     * Intensity-measurement source (the "redirect" image). May be null, and
+     * usually is: {@code null} measures intensities on {@link #channel} of
+     * {@link #input}, the image being analysed, exactly as an unset redirect
+     * does in 3D Objects Counter. Set it only to measure a <em>different</em>
+     * image, which must then match the label image in width, height and slice
+     * count.
+     */
     public final ImagePlus intensityImage;
 
     /** Which maps to build. Building none is the cheap path for scripted use. */

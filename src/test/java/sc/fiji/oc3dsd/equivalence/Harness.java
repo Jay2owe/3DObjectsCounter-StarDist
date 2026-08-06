@@ -28,7 +28,7 @@ import java.util.TreeSet;
  * because a harness is only as useful as its known boundary.
  * <p>
  * <strong>Certified</strong>, across every run in the sweep: every column of the
- * statistics table; the size, edge-exclusion and morphology filters; label
+ * statistics table; the size and edge-exclusion filters; label
  * renumbering including the renumber-and-rescan branch; all four maps, their
  * pixels and their number overlays; the summary; and the macro round-trip over
  * every option the grammar accepts.

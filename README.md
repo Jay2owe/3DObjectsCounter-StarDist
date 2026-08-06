@@ -1,6 +1,7 @@
 # 3D Objects Counter - StarDist
 
-<!-- badges: GitHub Actions build, JitPack, DOI, licence -->
+[![CI](https://github.com/Jay2owe/3DObjectsCounter-StarDist/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Jay2owe/3DObjectsCounter-StarDist/actions/workflows/ci.yml)
+[![License: GPL v3+](https://img.shields.io/badge/license-GPL--3.0--or--later-blue.svg)](LICENSE)
 
 A Fiji/ImageJ plugin that counts and measures 3D objects in a Z-stack using StarDist detection
 linked through Z with TrackMate.
@@ -33,42 +34,64 @@ hidden inside it.
 - StarDist detection per Z-slice with a bundled model or your own `.zip`.
 - TrackMate LAP linking across Z, with linking distance, gap-closing distance and slice gap exposed.
 - Per-object 3D measurements, in the same columns and to the same definitions as
-  [3D Objects Counter+](https://github.com/Jay2owe/3DObjectsCounterPlus).
+  [3D Objects Counter+](https://github.com/Jay2owe/3DObjectsCounterPlus). Intensity statistics are
+  read from the analysed channel unless you redirect them to another image.
 - Minimum and maximum object size, and exclusion of objects touching the image edges. Shape is
   measured and reported, not filtered on — see [Filtering](#filtering).
-- Object, surface, centroid and centre-of-mass maps with numbered labels, plus the 3D label image.
+- Object maps show complete linked shapes on every occupied Z slice, with contrasting numbered
+  labels; raw map pixels retain their numeric object IDs. Surface, centroid and centre-of-mass maps
+  and the 3D label image are also available.
 - Live preview of detection on the displayed slice before running the whole stack.
 - Folder batch with recursive search **and** regex grouping: recursion decides which files are
   analysed, the capture group decides which results are aggregated together. Both a per-folder and a
   per-group summary are written, alongside a manifest recording every parameter.
 - Macro-recordable, with `hide_display` for headless and scripted use.
 - A public Java API that opens no dialogs, shows no windows and writes no files.
-- A first-run dependency check that names any missing update site in plain language, and validates a
-  custom model `.zip` before TensorFlow sees it.
+- A one-click first-run installer for the exact StarDist, TrackMate and TensorFlow versions tested
+  with the plugin, plus custom model `.zip` validation before TensorFlow sees it.
 
 ## Installation
 
-**Update site.** In Fiji, `Help > Update... > Manage update sites`, then enable four sites:
+**GitHub release.** Download `3D_Objects_Counter_StarDist-0.1.0.jar` from the
+[latest release](https://github.com/Jay2owe/3DObjectsCounter-StarDist/releases/latest), copy it into
+Fiji's `plugins/` folder, and restart Fiji. Run `Analyze > 3D Objects Counter - StarDist`. If the
+detector runtime is absent, press
+**Install Runtime**. The plugin downloads the exact known-working StarDist, TrackMate and
+TensorFlow JARs directly (up to about 159 MB), verifies every download, and preserves conflicting
+versions under a dated `.disabled-*` name. When it reports success, restart Fiji yourself; the
+plugin does not restart Fiji automatically. You do not need to configure the StarDist, CSBDeep,
+TrackMate-StarDist or TensorFlow update sites.
 
-| Site | Why |
-|---|---|
-| `3DObjectsCounter-StarDist` | this plugin — `https://sites.imagej.net/3DObjectsCounter-StarDist/` |
-| `StarDist` | the detector |
-| `CSBDeep` | StarDist's runtime |
-| `TrackMate-StarDist` | the bridge between them |
+**Update site.** In Fiji, choose `Help > Update... > Manage Update Sites`, add
+`https://sites.imagej.net/3DObjectsCounter-StarDist/`, enable it, apply changes, and restart Fiji.
+The GitHub release JAR above remains available for manual installation.
 
-TrackMate itself is part of the Fiji core and needs nothing enabled. The StarDist and CSBDeep sites
-bring TensorFlow, roughly 166 MB. Apply changes, restart, then run
-`Analyze > 3D Objects Counter - StarDist`.
+**From source.** Build the plugin as described below, copy
+`target/3D_Objects_Counter_StarDist-0.1.0.jar` into Fiji's `plugins/` folder, and restart Fiji.
 
-**Manual.** Build or download `3D_Objects_Counter_StarDist-0.1.0.jar`, copy it into Fiji's
-`plugins/` folder and restart. The four update sites are still required for the detector chain.
+## Building
+
+The project requires JDK 8 or newer. A fresh clone includes platform launchers that bootstrap the
+pinned Maven version, resolve the released `oc3d-core` module, run the behavioural and packaging
+checks, and shade a private copy of core into the plugin JAR:
+
+```bash
+./mvnw -B clean verify
+```
+
+On Windows use `mvnw.cmd -B clean verify`. The deployable artifact is
+`target/3D_Objects_Counter_StarDist-0.1.0.jar`; `-sources`, `-tests` and `original-*` JARs are not
+Fiji plugins.
 
 ## Use
 
 Open a Z-stack and run `Analyze > 3D Objects Counter - StarDist`.
 
-Set the channel to detect on, choose a model, and set **Probability** and **Overlap**. Press
+Set the channel to detect on, choose a model, and set **Probability** and **Overlap**. Leave
+**Redirect intensities from** on `None` to measure `IntDen`, `Mean`, `StdDev`, `Median`, `Min` and
+`Max` on the channel you are detecting in; choose another open image only when the intensities you
+want live somewhere else, in which case it must match the stack in width, height and slice count.
+Press
 **Run Preview** to see detections on the current slice. Under **Linking**, set **Linking max
 distance** — how far an object may move between consecutive slices and still be the same object, in
 calibrated units — plus the gap-closing distance, maximum slice gap and minimum slices per object.
@@ -104,8 +127,9 @@ run("3D Objects Counter - StarDist",
     "exclude_edges save_labels hide_summary");
 ```
 
-The full option table is in the wiki page. Option names follow 3D Objects Counter+ wherever the
-option means the same thing.
+Option names follow 3D Objects Counter+ wherever the option means the same thing. Omitting
+`redirect=[title]`, as above, measures intensities on the analysed channel; it does not switch
+intensity measurement off.
 
 ## Java API
 
@@ -147,7 +171,7 @@ Please cite this plugin and the methods it builds on:
 - Bolte & Cordelières (2006) *A guided tour into subcellular colocalization analysis in light
   microscopy*. Journal of Microscopy — for the object measurement definitions.
 
-`CITATION.cff` in this repository carries the plugin's own DOI.
+`CITATION.cff` in this repository carries machine-readable citation metadata.
 
 ## Licence
 

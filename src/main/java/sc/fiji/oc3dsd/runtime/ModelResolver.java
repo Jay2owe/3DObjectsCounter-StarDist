@@ -91,8 +91,8 @@ public final class ModelResolver {
         if (in == null) {
             throw new IllegalStateException(
                     "The bundled StarDist model could not be found inside the StarDist jar ("
-                            + BUNDLED_MODEL_RESOURCE + "). Enable the StarDist update site, "
-                            + "or choose your own model .zip.");
+                            + BUNDLED_MODEL_RESOURCE + "). Run Install Runtime from the plugin's "
+                            + "dependency prompt, or choose your own model .zip.");
         }
         try {
             Path temp = Files.createTempFile("oc3dsd_model_", ".zip");

@@ -1,0 +1,11 @@
+* text=auto
+
+# Shell launchers must work from a fresh clone on their native platforms.
+mvnw text eol=lf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.sh text eol=lf
+
+# These are byte-for-byte reference artifacts. The harness handles either line
+# ending, but Git must never rewrite the captured bytes.
+/golden/** -text

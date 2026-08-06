@@ -7,7 +7,8 @@ abstract: >-
   with TrackMate's LAP tracker. Reports per-object volume, surface area,
   sphericity, compactness, elongation, Feret diameter, intensity statistics and
   position, produces object, surface, centroid and centre-of-mass maps and a 3D
-  label image, applies minimum and maximum morphology filters, and processes
+  label image, applies minimum and maximum size filters and optional edge
+  exclusion, and processes
   folders in batch with recursive search and regex grouping.
 type: software
 # The distributed plugin links GPLv3+ libraries (TrackMate, TrackMate-StarDist)
@@ -15,9 +16,9 @@ type: software
 # original source in this repository is BSD-3-Clause. See LICENSING.md.
 license: GPL-3.0-or-later
 repository-code: "https://github.com/Jay2owe/3DObjectsCounter-StarDist"
-url: "https://imagej.net/plugins/3d-objects-counter-stardist"
+url: "https://github.com/Jay2owe/3DObjectsCounter-StarDist"
 version: 0.1.0
-date-released: "2026-08-03"
+date-released: "2026-08-06"
 keywords:
   - ImageJ
   - Fiji

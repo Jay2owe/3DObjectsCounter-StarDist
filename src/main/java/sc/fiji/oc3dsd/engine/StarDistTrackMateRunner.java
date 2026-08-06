@@ -430,8 +430,8 @@ public final class StarDistTrackMateRunner {
             throw new DetectionRunFailureException("StarDist detection failed: " + summarise(e), e);
         } catch (LinkageError e) {
             throw new DetectionRunFailureException(
-                    "StarDist failed due to an incompatible runtime. Check that the StarDist, "
-                            + "CSBDeep and TrackMate-StarDist update sites are enabled: " + summarise(e), e);
+                    "StarDist failed due to an incompatible runtime. Run the plugin's Install "
+                            + "Runtime repair, restart Fiji, and try again: " + summarise(e), e);
         } finally {
             padded.changes = false;
             padded.flush();
@@ -522,6 +522,50 @@ public final class StarDistTrackMateRunner {
             out.addSlice(src.getSliceLabel(index), ip.duplicate());
         }
         ImagePlus imp = new ImagePlus("stardist_input", out);
+        if (input.getCalibration() != null) imp.setCalibration(input.getCalibration().copy());
+        return imp;
+    }
+
+    /**
+     * The analysed channel of the input, laid out to match the label image
+     * {@link #run} returns: one channel, frames outermost, Z innermost — the
+     * same order {@link #assemble} writes.
+     * <p>
+     * This is the intensity source a run measures from when the user names no
+     * redirect image, which is what 3D Objects Counter has always done: with no
+     * redirect, intensities come from the image being analysed. The channel is
+     * the one the detector ran on, so the numbers describe the signal the
+     * objects were found in.
+     * <p>
+     * The slices are <strong>shared, not duplicated</strong>, unlike
+     * {@link #extractChannelStack}: measurement only ever reads pixels, so a
+     * copy of an entire channel would be paid for nothing. The dimensions are
+     * therefore guaranteed to match the label image by construction rather than
+     * by a check — {@code nSlices * nFrames} slices, built from the same three
+     * counts the detection loop uses.
+     *
+     * @return the intensity source, or {@code null} when {@code input} has no
+     *         stack to read
+     */
+    static ImagePlus analysedChannelStack(ImagePlus input, int channel) {
+        if (input == null) return null;
+        ImageStack src = input.getStack();
+        if (src == null || src.getSize() == 0) return null;
+
+        int nChannels = Math.max(1, input.getNChannels());
+        int nSlices = Math.max(1, input.getNSlices());
+        int nFrames = Math.max(1, input.getNFrames());
+        int c = Math.min(Math.max(1, channel), nChannels);
+
+        ImageStack out = new ImageStack(input.getWidth(), input.getHeight());
+        for (int t = 1; t <= nFrames; t++) {
+            for (int z = 1; z <= nSlices; z++) {
+                int index = input.getStackIndex(c, z, t);
+                out.addSlice(src.getSliceLabel(index), src.getProcessor(index));
+            }
+        }
+        ImagePlus imp = new ImagePlus("intensity_source", out);
+        imp.setDimensions(1, nSlices, nFrames);
         if (input.getCalibration() != null) imp.setCalibration(input.getCalibration().copy());
         return imp;
     }

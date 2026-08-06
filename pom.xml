@@ -20,10 +20,10 @@
 	  Second digit = major rework or large optimization.
 	  Third digit = bug fix or small tweak/optimization.
 	-->
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.1.0</version>
 
 	<name>3D Objects Counter - StarDist</name>
-	<description>Fiji/ImageJ plugin that counts and measures 3D objects in a Z-stack by running StarDist on each slice and linking the per-slice detections through Z with TrackMate, with per-object 3D measurements, morphology filters, object maps and folder batch processing.</description>
+	<description>Fiji/ImageJ plugin that counts and measures 3D objects in a Z-stack by running StarDist on each slice and linking the per-slice detections through Z with TrackMate, with per-object 3D measurements, size and edge filters, object maps and folder batch processing.</description>
 	<url>https://github.com/Jay2owe/3DObjectsCounter-StarDist</url>
 	<inceptionYear>2026</inceptionYear>
 	<organization>
@@ -96,7 +96,8 @@
 		<url>https://github.com/Jay2owe/3DObjectsCounter-StarDist/issues</url>
 	</issueManagement>
 	<ciManagement>
-		<system>None</system>
+		<system>GitHub Actions</system>
+		<url>https://github.com/Jay2owe/3DObjectsCounter-StarDist/actions</url>
 	</ciManagement>
 
 	<properties>
@@ -126,17 +127,27 @@
 		  green, but only because it was re-run; nothing about the dependency
 		  announced that it had changed.
 
-		  0.1.0 is immutable in the local repository, so every build of this
-		  plugin bundles the same bytes. Upgrading is now a deliberate edit
-		  here, followed by a full harness run.
+		  v0.1.1 is backed by the public annotated maintenance tag and JitPack artifact,
+		  so a fresh clone resolves the same released bytes. Upgrading is a
+		  deliberate edit here, followed by a full harness run.
 		-->
-		<oc3d-core.version>0.1.0</oc3d-core.version>
+		<oc3d-core.version>v0.1.1</oc3d-core.version>
 	</properties>
 
 	<repositories>
 		<repository>
 			<id>scijava.public</id>
 			<url>https://maven.scijava.org/content/groups/public</url>
+		</repository>
+		<repository>
+			<id>jitpack</id>
+			<url>https://jitpack.io</url>
+			<releases>
+				<checksumPolicy>fail</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
 		</repository>
 	</repositories>
 
@@ -158,26 +169,25 @@
 		  The shared shell this plugin used to carry its own copy of: the dialog
 		  widgets, the macro grammar, the measurement pass and the maps.
 
-		  The group id is io.github.jay2owe, not sc.fiji, and that is deliberate -
-		  it is the group id across this whole plugin family, while sc.fiji is the
-		  SciJava org's own namespace on maven.scijava.org. The Java *package* is
+		  The group id is com.github.Jay2owe because this released dependency is
+		  resolved by JitPack from the public v0.1.1 tag. The Java *package* is
 		  sc.fiji.oc3d.core, which is a different string; the shade configuration
-		  in stage 05 needs both and they are not interchangeable.
+		  needs both and they are not interchangeable.
 
 		  Compile scope, and shaded into the jar at stage 05, so a user never has
 		  to install it. It depends on ij alone, so bundling it adds nothing to
 		  the prerequisites.
 		-->
 		<dependency>
-			<groupId>io.github.jay2owe</groupId>
+			<groupId>com.github.Jay2owe</groupId>
 			<artifactId>oc3d-core</artifactId>
 			<version>${oc3d-core.version}</version>
 		</dependency>
 
 		<!--
-		  TrackMate is part of the Fiji core distribution. It supplies the LAP
-		  tracker that links per-slice StarDist detections through Z, and the
-		  LabelImgExporter that turns the resulting tracks into a 3D label image.
+		  TrackMate supplies the LAP tracker that links per-slice StarDist
+		  detections through Z, and the LabelImgExporter that turns the resulting
+		  tracks into a 3D label image. Runtime installation pins this same version.
 		-->
 		<dependency>
 			<groupId>sc.fiji</groupId>
@@ -188,8 +198,8 @@
 
 		<!--
 		  TrackMate-StarDist supplies the StarDist detector factories and pulls in
-		  de.csbdresden:StarDist_ and de.csbdresden:csbdeep transitively. Requires
-		  the StarDist, CSBDeep and TrackMate-StarDist update sites at runtime.
+		  de.csbdresden:StarDist_ and de.csbdresden:csbdeep transitively for builds.
+		  The first-run installer places the tested runtime JAR set into Fiji.
 		-->
 		<dependency>
 			<groupId>sc.fiji</groupId>
@@ -221,29 +231,6 @@
 		-->
 
 		<!-- Test dependencies -->
-
-		<!--
-		  TEST SCOPE ONLY. Never distributed, never on the runtime classpath, and
-		  not a dependency of the plugin - the paragraph above still holds.
-
-		  It exists for one test: CorrectedSurfaceAgainstMcib3dTest, which proves
-		  that the corrected surface this plugin reimplements in `ij` returns the
-		  same sphericity and compactness as mcib3d's MeasureCompactness on the
-		  same object. 3D Objects Counter+ fills those two columns from mcib3d;
-		  this plugin computes them. Without this test, "the columns mean the same
-		  thing in both plugins" is an assertion in a comment rather than a fact,
-		  and a divergence would surface as two shipped plugins quietly disagreeing
-		  about the shape of the same object.
-
-		  Test scope adds no licence obligation beyond the existing one: the
-		  distributed work is already GPL-3.0-or-later because of TrackMate.
-		-->
-		<dependency>
-			<groupId>org.framagit.mcib3d</groupId>
-			<artifactId>mcib3d-core</artifactId>
-			<version>4.1.7b</version>
-			<scope>test</scope>
-		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -302,7 +289,7 @@
 							  dependency does, so it cannot name a version other than
 							  the one actually shaded in.
 							-->
-							<Bundled-Dependency>io.github.jay2owe:oc3d-core:${oc3d-core.version}</Bundled-Dependency>
+							<Bundled-Dependency>com.github.Jay2owe:oc3d-core:${oc3d-core.version}</Bundled-Dependency>
 						</manifestEntries>
 					</archive>
 				</configuration>
@@ -380,12 +367,12 @@
 							  ShadedJarIT.coreIsActuallyBundled is what catches that.
 
 							  Only oc3d-core. TrackMate, TrackMate-StarDist, StarDist
-							  and CSBDeep are genuine prerequisites from update sites;
+							  and CSBDeep are separately installed runtime JARs;
 							  bundling them would collide with the user's own copies.
 							-->
 							<artifactSet>
 								<includes>
-									<include>io.github.jay2owe:oc3d-core</include>
+									<include>com.github.Jay2owe:oc3d-core</include>
 								</includes>
 							</artifactSet>
 							<relocations>
@@ -439,8 +426,8 @@
 							</relocations>
 							<!--
 							  oc3d-core is bundled, so a consumer of this artifact
-							  must not be told to resolve it - it is published
-							  nowhere. Written under target/ to keep it out of the
+							  must not be told to resolve it separately. Written under target/
+							  to keep it out of the
 							  working tree, where it is generated build output that
 							  looks like a source file.
 							-->
@@ -448,7 +435,7 @@
 							<dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml</dependencyReducedPomLocation>
 							<filters>
 								<filter>
-									<artifact>io.github.jay2owe:oc3d-core</artifact>
+									<artifact>com.github.Jay2owe:oc3d-core</artifact>
 									<excludes>
 										<!-- Provenance belongs in one place: the
 										     Bundled-Dependency manifest entry. Two

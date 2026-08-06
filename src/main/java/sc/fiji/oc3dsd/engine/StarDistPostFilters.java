@@ -4,11 +4,11 @@ package sc.fiji.oc3dsd.engine;
  * Filters applied to detections immediately after linking, using the detector's
  * own per-spot features rather than 3D morphometry.
  * <p>
- * These are deliberately separate from the morphology filters in the dialog.
+ * These are deliberately separate from the size and edge filters in the dialog.
  * They act on what StarDist reports about each 2D detection — its area, its
  * confidence, its mean intensity — averaged over the slices of an object, and
  * exist to discard obvious detector noise before the expensive 3D measurement
- * pass runs. The min/max morphology filters act afterwards, on real measured
+ * pass runs. The min/max object-size filters act afterwards, on real measured
  * volume, sphericity and the rest.
  */
 public final class StarDistPostFilters {

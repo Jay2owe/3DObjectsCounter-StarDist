@@ -109,6 +109,12 @@ public class EquivalenceHarnessTest {
         for (int i = 0; i < report.accepted.size(); i++) {
             System.out.println("ACCEPTED DIFFERENCE  " + report.accepted.get(i));
         }
+        if (report.acceptedMapDisplayRangeChanges == 0) {
+            fail("The visible-mask display-range acceptance matched nothing. The behaviour "
+                    + "changed again or the acceptance is stale; remove or correct it.");
+        }
+        System.out.println("ACCEPTED DIFFERENCE  " + report.acceptedMapDisplayRangeChanges
+                + " map display range(s) normalized to 0..1 so positive labels stay visible");
 
         // A registered entry that no longer fires is stale, and stale entries are
         // how a narrow exemption widens into a blanket one. Fail rather than let
@@ -197,6 +203,21 @@ public class EquivalenceHarnessTest {
         Differ.Report same = new Differ.Report();
         Differ.compare("r", golden, golden, same);
         assertTrue(same.differences.isEmpty());
+    }
+
+    @Test
+    public void visibleMaskDisplayAcceptanceIsNarrow() {
+        assertTrue(MapDisplayRangeChange.accepts(
+                "objectMap", "displayRange=0.0,1000.0", "displayRange=0.0,1.0"));
+        assertFalse("statistics are never map-display metadata",
+                MapDisplayRangeChange.accepts(
+                        "statistics", "displayRange=0.0,1000.0", "displayRange=0.0,1.0"));
+        assertFalse("no range other than the fixed 0..1 mask is accepted",
+                MapDisplayRangeChange.accepts(
+                        "objectMap", "displayRange=0.0,1000.0", "displayRange=0.0,2.0"));
+        assertFalse("an already visible one-label range is not recorded as a change",
+                MapDisplayRangeChange.accepts(
+                        "objectMap", "displayRange=0.0,1.0", "displayRange=0.0,1.0"));
     }
 
     /** Tier 1 means no tolerance. Not a small tolerance — none. */

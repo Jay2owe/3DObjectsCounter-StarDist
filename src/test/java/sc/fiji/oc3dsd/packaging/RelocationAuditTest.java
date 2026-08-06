@@ -62,11 +62,6 @@ public class RelocationAuditTest {
                 "the parameter of isPresent(String); every caller passes a"
                         + " Requirement.probeClass, all six of which name TrackMate,"
                         + " StarDist, CSBDeep, imagej-tensorflow or TensorFlow classes");
-        AUDITED.put("DependencyDoctor.java :: getMethod :: \"getUpdateSite\"",
-                "a method on the Fiji updater's UpdateService, reflected on"
-                        + " because imagej-updater is not a dependency");
-        AUDITED.put("DependencyDoctor.java :: getMethod :: \"isActive\"",
-                "a method on the Fiji updater's UpdateSite, same reason");
         AUDITED.put("ModelResolver.java :: getResourceAsStream :: BUNDLED_MODEL_RESOURCE",
                 "models/2D/dsb2018_heavy_augment.zip, a resource inside the"
                         + " StarDist jar, which is never shaded into this one");

@@ -67,6 +67,8 @@ final class Differ {
         final Map<String, Deltas> deltasByColumn = new TreeMap<String, Deltas>();
         /** Differences matched by {@link AcceptedDifferences}, kept so they stay visible. */
         final List<AcceptedDifferences.Entry> accepted = new ArrayList<AcceptedDifferences.Entry>();
+        /** Exact map display-range changes matched by {@link MapDisplayRangeChange}. */
+        int acceptedMapDisplayRangeChanges;
 
         List<Difference> ofTier(Tiers.Tier tier) {
             List<Difference> out = new ArrayList<Difference>();
@@ -164,6 +166,10 @@ final class Differ {
             String a = i < golden.size() ? golden.get(i) : "<absent>";
             String b = i < candidate.size() ? candidate.get(i) : "<absent>";
             if (a.equals(b)) continue;
+            if (MapDisplayRangeChange.accepts(section, a, b)) {
+                report.acceptedMapDisplayRangeChanges++;
+                continue;
+            }
             // Only ever consulted here, on exact text. The numeric table
             // comparison never reaches this, so no measurement column can be
             // accepted away.

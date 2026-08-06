@@ -19,7 +19,9 @@ import sc.fiji.oc3dsd.ui.OC3DSDDialogModel;
  *   <li>{@code min=<int>} — minimum object voxel count, default 10.</li>
  *   <li>{@code max=<int|Infinity>} — maximum object voxel count, default Infinity.</li>
  *   <li>{@code exclude_edges} — flag, exclude objects touching image borders.</li>
- *   <li>{@code redirect=[image title]} — optional intensity-measurement source.</li>
+ *   <li>{@code redirect=[image title]} — measure intensities on another open
+ *       image. Omitted, intensities are measured on {@code channel} of the
+ *       analysed image; the option redirects them, it does not enable them.</li>
  *   <li>{@code hide_labels}, {@code hide_surfaces}, {@code hide_centroids},
  *       {@code hide_centers_of_mass}, {@code hide_stats}, {@code hide_summary} —
  *       flags suppressing an output that is otherwise shown.</li>

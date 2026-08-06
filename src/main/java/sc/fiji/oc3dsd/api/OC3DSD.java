@@ -163,7 +163,14 @@ public final class OC3DSD {
             return this;
         }
 
-        /** Optional intensity-measurement source (the "redirect" image). */
+        /**
+         * Measure intensities on a <em>different</em> image (the "redirect").
+         * <p>
+         * Leaving this unset does not disable intensity measurement: the
+         * default source is the analysed channel of the input image, which is
+         * what an unset redirect means in 3D Objects Counter. The value given
+         * here must match the label image in width, height and slice count.
+         */
         public Builder intensityImage(ImagePlus value) {
             this.intensityImage = value;
             return this;

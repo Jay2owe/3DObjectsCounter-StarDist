@@ -1,7 +1,8 @@
 # Build output
 /target/
 mcib3d-core-*.jar
-/.mvn/
+/.mvn/wrapper/maven-dist/
+/.mvn/wrapper/maven-wrapper.jar
 /.m2/
 
 # Local/private release and planning artefacts

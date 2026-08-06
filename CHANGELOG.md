@@ -4,7 +4,7 @@ All notable changes to 3D Objects Counter - StarDist are recorded here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 versioning follows `VERSIONING.md`.
 
-## [Unreleased] — 0.1.0
+## [0.1.0] — 2026-08-06
 
 First implementation. Carved out of FLASH's `flash.pipeline.stardist` package
 and dressed in 3D Objects Counter+'s dialog and output surface.
@@ -31,10 +31,13 @@ and dressed in 3D Objects Counter+'s dialog and output surface.
   parameter and the calibration in force.
 - **Group preview before a batch run**, because each image costs minutes of
   detection time.
-- **Dependency doctor** — a first-run check naming exactly which of the four
-  required update sites is missing, plus structural validation of a custom model
-  `.zip` before TensorFlow can produce an opaque error, and clearing of a stale
-  TensorFlow crash marker left by an earlier Fiji session.
+- **One-click dependency installer** — the first interactive run can install
+  the exact StarDist, TrackMate and TensorFlow JARs tested by FLASH and this
+  plugin, directly into Fiji. Downloads are staged, size- and checksum-verified;
+  conflicting versions are preserved under dated `.disabled-*` names. The
+  plugin then tells the user to restart Fiji but never restarts it automatically.
+  Headless runs remain non-interactive and report what is missing. Custom model
+  `.zip` validation and stale TensorFlow crash-marker recovery remain in place.
 - **Macro recording** for both commands, with `hide_display` for headless use,
   and a public Java API (`OC3DSD` / `OC3DSDParameters` / `OC3DSDResult`) that
   opens no dialogs, shows no windows and writes no files.
@@ -119,6 +122,39 @@ and dressed in 3D Objects Counter+'s dialog and output surface.
 
 ### Fixed
 
+- **Object maps now show complete shapes across every occupied Z slice.** The
+  full 3D labels were present, but scaling grayscale to the highest object ID
+  could render low-numbered objects black, leaving only their centroid-slice
+  number obvious. Every positive label now displays as a solid mask with a
+  contrasting red number; raw numeric label pixels are unchanged and no
+  per-voxel display pass or stack copy was added.
+
+- **Intensity statistics are measured by default, instead of coming back
+  `NaN`.** With no redirect image chosen — the default, and what almost every
+  run uses — the plugin passed no intensity source to the measurement pass, so
+  `IntDen`, `Mean`, `StdDev`, `Median`, `Min` and `Max` were `NaN` in every row
+  of every table. "None" now means what it means in 3D Objects Counter and in
+  ImageJ's own `Set Measurements`: measure the image being analysed, on the
+  channel the detector ran on. Choosing another image still redirects to it.
+
+  The failure was quiet in both directions. Nothing in the table, the summary or
+  the log said the columns were empty rather than zero, and `Detector_*` columns
+  sat alongside them fully populated, which made the run look like it had read
+  the pixels. `XM`/`YM`/`ZM` made it worse: the centre of mass falls back to the
+  geometric centroid when there are no weights, so those columns held plausible
+  coordinates that silently duplicated `X`/`Y`/`Z`.
+
+  **Tables produced before this fix have no intensity data and their centres of
+  mass are centroids.** Re-run to obtain them; object counts, volumes, surfaces,
+  shape descriptors and bounding boxes are unaffected and need no re-run.
+
+  The substituted source is laid out to match the label image exactly — one
+  channel, frames outermost, Z innermost — so objects in a time series are
+  measured against their own timepoint. `OC3DSDRunner.measureFilterAndMap`, the
+  seam the equivalence harness drives, deliberately keeps the old meaning: it is
+  handed a bare label image that `params.input` did not produce, so there is no
+  analysed image for it to fall back to.
+
 - **A batch re-run no longer consumes its own previous output.** Leaving the
   output folder blank puts the results inside the input folder — the obvious
   thing to do, and what the dialog offers. Discovery is recursive by default and
@@ -181,13 +217,15 @@ not, and each of these produced a plausible-looking wrong number.
   sees. **TrackMate stays pinned at 7.14.0**, checked explicitly after the bump
   rather than left to the parent, and the plugin still compiles for Java 8.
 
-- **`oc3d-core` is pinned to a fixed `0.1.0`** rather than tracking a
+- **`oc3d-core` is pinned to fixed `0.1.1`** rather than tracking a
   snapshot. The module's code is bundled inside this plugin's jar, so what it
   contained at build time is part of what gets released, not a build detail. On
   a snapshot it changed three times during this migration and two builds twenty
   minutes apart carried different code — every result still matched, but only
   because the comparison was re-run each time. A fixed version cannot change
-  underneath a build, and the jar now records which one it carries.
+  underneath a build, and the jar now records which one it carries. Version
+  0.1.1 supplies the shared full-shape map rendering fix directly, so this
+  plugin no longer needs a post-build display compatibility wrapper.
 
 ### Changed relative to the build plan
 
@@ -220,8 +258,9 @@ not, and each of these produced a plausible-looking wrong number.
   exists for Fiji. Objects that are strongly concave in Z, or sampled with a
   large Z-step, will link poorly. The `Slices` column and the single-slice count
   in the summary exist so those cases are visible.
-- Four update sites are required — StarDist, CSBDeep, TensorFlow and
-  TrackMate-StarDist — including roughly 166 MB of native TensorFlow. This
-  cannot be removed; the learned detector is the plugin.
+- The learned detector requires roughly 159 MB of StarDist, TrackMate and native
+  TensorFlow runtime JARs. The first-run installer retrieves and verifies the
+  tested versions, but the download size itself cannot be removed: the learned
+  detector is the plugin.
 - Accuracy against manual 3D ground truth has not been measured. That benchmark
   is planned before any preprint.

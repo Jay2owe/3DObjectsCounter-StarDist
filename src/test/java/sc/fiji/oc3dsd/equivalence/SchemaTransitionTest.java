@@ -45,7 +45,8 @@ import static org.junit.Assert.fail;
  *       same row order;</li>
  *   <li>the only column that appears is {@code Median};</li>
  *   <li>every section that is not a table — the configuration echo, the counts,
- *       the label partition, all four maps and their overlays — is byte-identical.</li>
+ *       the label partition, all four maps and their overlays — is byte-identical,
+ *       apart from the separately guarded visible-mask display-range fix.</li>
  * </ul>
  *
  * With those four established, "the schema changed and no measurement moved" is
@@ -81,7 +82,7 @@ public class SchemaTransitionTest {
             new LinkedHashSet<String>(Arrays.asList("configuration", "counts"));
 
     @Test
-    public void onlyTheColumnSetAndOrderChanged() throws IOException {
+    public void onlyDeclaredSchemaAndMapDisplayChangesOccurred() throws IOException {
         assertTrue("the pre-migration goldens must still be present at "
                 + OLD_GOLDEN_ROOT.getPath() + "; they are the evidence this test rests on",
                 OLD_GOLDEN_ROOT.isDirectory());
@@ -120,9 +121,11 @@ public class SchemaTransitionTest {
                     // unless it is the harness's own bookkeeping rather than a
                     // record of what was measured. See HARNESS_BOOKKEEPING.
                     if (HARNESS_BOOKKEEPING.contains(section)) continue;
-                    if (!oldLines.equals(newLines)) {
+                    if (!oldLines.equals(newLines)
+                            && !MapDisplayRangeChange.differsOnlyByThisChange(
+                                    section, oldLines, newLines)) {
                         problems.add(where + " [" + section + "]: a non-table section "
-                                + "changed, and only the statistics schema was supposed to:\n"
+                                + "changed outside the declared statistics-schema and map-display fixes:\n"
                                 + firstDifferingLine(oldLines, newLines));
                     }
                     continue;
@@ -141,7 +144,7 @@ public class SchemaTransitionTest {
                 valuesChecked > 1000);
 
         if (!problems.isEmpty()) {
-            fail("adopting core's schema moved something other than the schema. "
+            fail("the declared schema and map-display fixes moved something else. "
                     + runsChecked + " runs, " + columnsChecked + " columns, "
                     + valuesChecked + " values compared.\n\n" + join(problems, 40));
         }

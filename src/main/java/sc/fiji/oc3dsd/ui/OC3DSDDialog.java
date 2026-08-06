@@ -51,6 +51,8 @@ public final class OC3DSDDialog {
         gd.addChoice("Redirect intensities from",
                 redirects.toArray(new String[redirects.size()]),
                 redirects.get(0));
+        gd.addMessage("'None' measures intensities on this image, as in 3D Objects Counter.\n"
+                + "Choose another image only to measure a different channel or stack.");
 
         // ---- Detection: this replaces 3D Objects Counter+'s threshold --
         gd.addMessage("Detection  (StarDist runs on each Z-slice)");
@@ -128,7 +130,14 @@ public final class OC3DSDDialog {
         return true;
     }
 
-    /** Titles of open images that could serve as the intensity source. */
+    /**
+     * Titles of open images that could serve as the intensity source.
+     * <p>
+     * The analysed image is deliberately absent: "None" already measures it,
+     * and offering it by title as well would invite picking it raw — a
+     * multi-channel hyperstack has more slices than the label image and would
+     * be rejected on dimensions.
+     */
     private List<String> redirectChoices() {
         List<String> titles = new ArrayList<String>();
         titles.add("None");

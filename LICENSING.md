@@ -23,12 +23,13 @@ are deliberately *not* dependencies of this plugin — measurement is implemente
 directly against `ij` — so they are not part of the linked set here. TrackMate
 alone is enough to make the combined work GPL.
 
-Those dependencies are declared with Maven `provided` scope because Fiji and
-its update sites ship them, so they are not bundled into the jar. That is a
-packaging detail. It does not change the legal position: the compiled plugin
-calls their APIs directly, is useless without them, and is distributed to be
-combined with them. Under the GPL the resulting combined work must be offered
-under GPL-3.0-or-later, so that is what the project declares.
+Those dependencies are declared with Maven `provided` scope, so they are not
+bundled into this plugin's jar. On first use the runtime installer can download
+the tested versions from their public Maven repositories into Fiji. That is a
+packaging and installation detail. It does not change the legal position: the
+compiled plugin calls their APIs directly, is useless without them, and is
+distributed to be combined with them. Under the GPL the resulting combined work
+must be offered under GPL-3.0-or-later, so that is what the project declares.
 
 ## Why the source stays BSD-3-Clause
 
@@ -54,9 +55,10 @@ headers stamped on this repository's own source.
 
 ## Other components
 
-The StarDist and CSBDeep components reached at runtime through the StarDist,
-CSBDeep and TensorFlow update sites carry their own licences; this plugin does
-not redistribute them.
+The separately installed StarDist, CSBDeep, TensorFlow and protobuf components
+carry their own licences. They are not bundled in this repository's release JAR;
+the first-run installer retrieves the pinned artifacts from their public Maven
+repositories and installs them into the user's Fiji.
 
 ## If you would prefer a single licence
 

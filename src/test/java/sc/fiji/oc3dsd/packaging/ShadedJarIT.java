@@ -394,9 +394,9 @@ public class ShadedJarIT {
     /**
      * Only this plugin and core.
      * <p>
-     * TrackMate, TrackMate-StarDist, StarDist and CSBDeep come from update sites
-     * and are the user's own copies; bundling any of them would collide with
-     * what Fiji already loaded. An {@code <artifactSet>} typo in the other
+     * TrackMate, TrackMate-StarDist, StarDist and CSBDeep are separately installed
+     * runtime JARs; bundling any of them would collide with what Fiji already
+     * loaded. An {@code <artifactSet>} typo in the other
      * direction — too broad — is caught here.
      * <p>
      * {@code META-INF/} is named entry by entry rather than waved through as a
@@ -532,7 +532,7 @@ public class ShadedJarIT {
         assertTrue("oc3dsd.coreVersion is not set", coreVersion != null && !coreVersion.isEmpty());
         assertEquals("the jar should record the core it carries, since the"
                 + " dependency-reduced pom no longer does",
-                "io.github.jay2owe:oc3d-core:" + coreVersion,
+                "com.github.Jay2owe:oc3d-core:" + coreVersion,
                 main.getValue("Bundled-Dependency"));
     }
 }

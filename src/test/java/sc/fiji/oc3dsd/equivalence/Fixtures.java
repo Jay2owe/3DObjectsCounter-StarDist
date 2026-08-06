@@ -292,7 +292,7 @@ final class Fixtures {
      * interior, plus a 27-voxel cube against the {@code x = 0} face.
      * <p>
      * Every other fixture holds objects that are all the same size, so a size
-     * bound or a morphology filter either keeps all of them or drops all of
+     * bound or a size filter either keeps all of them or drops all of
      * them. Neither case reaches the interesting path: dropping <em>some</em>
      * objects is what triggers the renumber-and-rescan branch, after which the
      * survivors must come out numbered 1..N and the maps, the overlay and the
