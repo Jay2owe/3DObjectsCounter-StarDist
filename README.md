@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/Jay2owe/3DObjectsCounter-StarDist/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Jay2owe/3DObjectsCounter-StarDist/actions/workflows/ci.yml)
 [![License: GPL v3+](https://img.shields.io/badge/license-GPL--3.0--or--later-blue.svg)](LICENSE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21933250.svg)](https://doi.org/10.5281/zenodo.21933250)
 
 A Fiji/ImageJ plugin that counts and measures 3D objects in a Z-stack using StarDist detection
 linked through Z with TrackMate.
@@ -163,6 +164,8 @@ are not expected to agree — use whichever matches the data, not both as a cros
 
 Please cite this plugin and the methods it builds on:
 
+- Malcolm, J. (2026). *3D Objects Counter - StarDist* (Version 0.1.0)
+  [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.21933251
 - Schmidt, Weigert, Broaddus & Myers (2018) *Cell Detection with Star-convex Polygons*. MICCAI.
 - Tinevez et al. (2017) *TrackMate: An open and extensible platform for single-particle tracking*.
   Methods.
