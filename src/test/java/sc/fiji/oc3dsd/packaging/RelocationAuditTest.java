@@ -64,8 +64,8 @@ public class RelocationAuditTest {
                 "the parameter of isPresent(String); every caller passes a"
                         + " Requirement.probeClass, all six of which name TrackMate,"
                         + " StarDist, CSBDeep, imagej-tensorflow or TensorFlow classes");
-        AUDITED.put("ModelResolver.java :: getResourceAsStream :: BUNDLED_MODEL_RESOURCE",
-                "models/2D/dsb2018_heavy_augment.zip, a resource inside the"
+        AUDITED.put("ModelResolver.java :: getResourceAsStream :: resource",
+                "Both fluorescence model resources live inside the provided"
                         + " StarDist jar, which is never shaded into this one");
         AUDITED.put("TrackMateVersion.java :: Class.forName :: TRACKMATE_CLASS",
                 "fiji.plugin.trackmate.TrackMate, external");
