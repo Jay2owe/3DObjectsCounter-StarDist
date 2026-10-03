@@ -29,7 +29,8 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: read
+  # GitHub exposes unpublished release assets only to tokens with push access.
+  contents: write
 
 jobs:
   upload:
@@ -57,6 +58,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v5
         with:
+          ref: ${{ inputs.release_tag || github.ref }}
           fetch-depth: 0
 
       - name: Set default upload user
