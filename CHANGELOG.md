@@ -16,6 +16,7 @@ versioning follows `VERSIONING.md`.
 
 ### Fixed
 
+- Detect incompatible protobuf libraries before StarDist2D detection and offer the existing pinned-runtime repair.
 - Background Windows Java and Python workers use windowless launchers; progress and errors stay in Fiji.
 - ImageJ's escaped micrometre calibration is accepted by the Python TIFF bridge.
 - Fresh source builds include the shared worker launcher and Python worker modules.

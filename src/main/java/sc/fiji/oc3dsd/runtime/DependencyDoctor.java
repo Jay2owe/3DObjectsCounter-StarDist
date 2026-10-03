@@ -60,6 +60,9 @@ public final class DependencyDoctor {
     public static String diagnosis() {
         List<Requirement> absent = missing();
         String versionProblem = TrackMateVersion.problem();
+        String protobufProblem = protobufProblem();
+        if (protobufProblem != null)
+            versionProblem = versionProblem == null ? protobufProblem : versionProblem + "\n\n" + protobufProblem;
         if (absent.isEmpty()) return versionProblem;
 
         StringBuilder message = new StringBuilder();
@@ -193,5 +196,25 @@ public final class DependencyDoctor {
         } catch (SecurityException denied) {
             return false;
         }
+    }
+
+    /** TensorFlow 1.x messages need an API removed by protobuf 4.x. Probe without loading native code. */
+    static String protobufProblem() {
+        try {
+            Class<?> type = Class.forName("com.google.protobuf.GeneratedMessageV3", false,
+                    DependencyDoctor.class.getClassLoader());
+            while (type != null) {
+                try {
+                    type.getDeclaredMethod("makeExtensionsImmutable");
+                    return null;
+                } catch (NoSuchMethodException missing) { type = type.getSuperclass(); }
+            }
+        } catch (ClassNotFoundException missing) {
+            return null;
+        } catch (LinkageError broken) {
+            // Report an unloadable implementation through the same repair action.
+        }
+        return "The installed protobuf library is incompatible with StarDist2D's TensorFlow runtime.\n"
+                + "Run the plugin interactively and choose Install Runtime, then restart Fiji.";
     }
 }
