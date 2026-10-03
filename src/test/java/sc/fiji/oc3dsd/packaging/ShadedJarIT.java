@@ -415,7 +415,21 @@ public class ShadedJarIT {
         for (String name : entries) {
             if (name.endsWith("/")) continue;
             if (name.startsWith(OWN_PATH)) continue;
+            if (name.startsWith("python/oc3d_stardist3d/")) continue;
+            if (name.startsWith("groovy/") || name.startsWith("org/codehaus/groovy/") || name.startsWith("org/apache/groovy/")
+                    || name.startsWith("groovyjarjar") || name.startsWith("org/apache/ivy/")
+                    || name.startsWith("com/sun/jna/") || name.startsWith("META-INF/native-image/")
+                    || name.startsWith("META-INF/versions/") || name.startsWith("META-INF/groovy/")) continue;
+            if (name.startsWith("META-INF/maven/org.apposed/") || name.startsWith("META-INF/maven/org.apache.")
+                    || name.startsWith("META-INF/maven/io.github.jay2owe/oc3dsd-python-worker/")
+                    || name.startsWith("META-INF/maven/io.github.jay2owe/neural-counter-runtime-core/")
+                    || name.startsWith("META-INF/maven/com.google.code.gson/")
+                    || name.startsWith("META-INF/maven/commons-")) continue;
+            if (name.startsWith("META-INF/LICENSE") || name.startsWith("META-INF/NOTICE") || name.startsWith("META-INF/licenses/")
+                    || name.startsWith("META-INF/services/") || name.equals("module-info.class") || name.equals("META-INF/INDEX.LIST")) continue;
             if ("plugins.config".equals(name)) continue;
+            if (Arrays.asList("META-INF/AL2.0", "META-INF/LGPL2.1", "META-INF/dgminfo",
+                    "META-INF/groovy-release-info.properties", "META-INF/proguard/gson.pro", "module.properties").contains(name)) continue;
             if ("META-INF/MANIFEST.MF".equals(name)) continue;
             if (name.startsWith(ownMavenMetadata)) continue;
             strangers.add(name);
@@ -441,6 +455,9 @@ public class ShadedJarIT {
         int javaEight = 52;
         Map<String, Integer> tooNew = new LinkedHashMap<String, Integer>();
         for (Map.Entry<String, String> entry : classText.entrySet()) {
+            // Only the isolated subprocess worker and shared Java 11 launcher exceed Java 8.
+            if(entry.getKey().startsWith(OWN_PATH+"python/") || entry.getKey().startsWith(OWN_PATH+"internal/runtime/")
+                    || entry.getKey().startsWith("META-INF/versions/") || entry.getKey().equals("module-info.class")) continue;
             String body = entry.getValue();
             if (body.length() < 8) continue;
             int major = (body.charAt(6) << 8) | body.charAt(7);
@@ -510,7 +527,7 @@ public class ShadedJarIT {
             if (!entries.contains(className.replace('.', '/') + ".class")) missing.add(className);
         }
         assertTrue("plugins.config names classes not in the jar: " + missing, missing.isEmpty());
-        assertEquals("expected both commands to be declared", 2, declared);
+        assertEquals("expected counter, batch and separate advanced-options commands", 3, declared);
     }
 
     /**

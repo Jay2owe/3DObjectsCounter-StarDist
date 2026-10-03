@@ -3,6 +3,11 @@ name: Upload To Fiji Update Site
 on:
   workflow_dispatch:
     inputs:
+      release_tag:
+        description: "Use the tested JAR and checksums from this GitHub release tag (draft supported)"
+        required: false
+        type: string
+        default: ""
       dry_run:
         description: "Simulate the updater upload without changing the update site"
         required: true
@@ -51,6 +56,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - name: Set default upload user
         shell: bash
@@ -63,7 +70,7 @@ jobs:
         uses: actions/setup-java@v5
         with:
           distribution: "temurin"
-          java-version: "8"
+          java-version: "21"
           cache: maven
 
       - name: Validate secrets
@@ -91,9 +98,9 @@ jobs:
         run: |
           if [ -f ./mvnw ]; then
             chmod +x ./mvnw
-            ./mvnw -B clean test
+            ./mvnw -B -f build/pom.xml clean verify
           else
-            mvn -B clean test
+            mvn -B -f build/pom.xml clean verify
           fi
 
       - name: Build plugin artifact
@@ -101,10 +108,28 @@ jobs:
         run: |
           if [ -f ./mvnw ]; then
             chmod +x ./mvnw
-            ./mvnw -B clean -DskipTests package
+            ./mvnw -B -f build/pom.xml -DskipTests package
           else
-            mvn -B clean -DskipTests package
+            mvn -B -f build/pom.xml -DskipTests package
           fi
+
+      - name: Use the tested release artifact
+        if: inputs.release_tag != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        shell: bash
+        run: |
+          tag_commit="$(git rev-list -n 1 "$RELEASE_TAG")"
+          test "$tag_commit" = "$(git rev-parse HEAD)" || {
+            echo "Release tag must identify the checked-out source commit."
+            exit 1
+          }
+          mkdir -p tested-release
+          gh release download "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --dir tested-release --pattern '3D_Objects_Counter_StarDist-*.jar' --pattern SHA256SUMS
+          (cd tested-release && sha256sum --check SHA256SUMS)
+          rm -f target/3D_Objects_Counter_StarDist-*.jar
+          cp tested-release/3D_Objects_Counter_StarDist-*.jar target/
 
       - name: Download Fiji
         shell: bash

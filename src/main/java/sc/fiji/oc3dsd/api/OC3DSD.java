@@ -12,12 +12,14 @@ import java.util.List;
 /**
  * Headless facade for 3D Objects Counter - StarDist.
  * <p>
- * {@link #run(OC3DSDParameters)} opens no dialogs, shows no windows, writes no
- * files, and does not require an active ImageJ window. It is safe to call from
+ * {@link #run(OC3DSDParameters)} opens no dialogs, shows no windows, and does
+ * not require an active ImageJ window. The default mode writes no files.
+ * Optional StarDist3D uses a managed Python cache and temporary exchange files.
+ * It is safe to call from
  * a script, another plugin, or a headless Fiji.
  * <p>
  * <strong>One caveat that cannot be engineered away.</strong> TensorFlow
- * inference is process-global. Concurrent calls are serialised internally, so
+ * inference in the default mode is process-global. Concurrent calls are serialised internally, so
  * parallelising this call across images gains nothing and risks exhausting
  * memory — each in-flight run holds roughly twice its stack while the model is
  * also resident. Process images one at a time.
@@ -54,6 +56,8 @@ public final class OC3DSD {
         private final ImagePlus input;
         private int channel = 1;
         private File modelFile;
+        private String segmentation = "stardist2d";
+        private File model3d, pythonConfig;
         private double probability = 0.5;
         private double overlap = 0.4;
         private double linkingDistance = 5.0;
@@ -92,6 +96,10 @@ public final class OC3DSD {
             this.modelFile = value;
             return this;
         }
+
+        public Builder segmentation(String value) { this.segmentation = value; return this; }
+        public Builder model3d(File value) { this.model3d = value; return this; }
+        public Builder pythonConfig(File value) { this.pythonConfig = value; return this; }
 
         public Builder probability(double value) {
             this.probability = value;
@@ -225,7 +233,7 @@ public final class OC3DSD {
                     buildSurfaceMap,
                     buildCentroidMap,
                     buildCentreOfMassMap,
-                    warningSink);
+                    warningSink, segmentation, model3d, pythonConfig);
         }
     }
 }

@@ -108,7 +108,7 @@ public final class BatchRunner {
                 files, settings.pattern, settings.groupIndex);
 
         BatchWriter writer = new BatchWriter(outputRoot);
-        writer.prepare();
+        writer.prepare(model.is3d());
 
         // Two aggregations on different axes, both written. A folder tree and an
         // experimental design are rarely the same partition, and making the user
@@ -146,6 +146,16 @@ public final class BatchRunner {
 
                 String base = baseName(item.file);
                 writer.writeObjects(base, result.getObjects());
+                if(model.is3d()) {
+                    Object receipt=result.getLabelImage().getProperty("stardist3d_provenance");
+                    java.nio.file.Path directory=new File(writer.root(),"Provenance").toPath();
+                    java.nio.file.Files.createDirectories(directory);
+                    com.google.gson.JsonObject provenance=com.google.gson.JsonParser.parseString(receipt.toString()).getAsJsonObject();
+                    provenance.addProperty("counter_macro_options",model.toMacroOptions());
+                    provenance.addProperty("objects_after_size_and_edge_filters",result.getObjectCount());
+                    provenance.addProperty("original_input",item.file.getAbsolutePath());
+                    java.nio.file.Files.write(directory.resolve(base+".json"),sc.fiji.oc3dsd.runtime.StarDist3D.JSON.toJson(provenance).getBytes(java.nio.charset.StandardCharsets.UTF_8));
+                }
                 if (settings.saveLabels) writer.writeLabels(base, result.getLabelImage());
                 if (settings.saveMaps) {
                     writer.writeMap(base, "_objects_map", result.getObjectMap());
@@ -164,7 +174,7 @@ public final class BatchRunner {
                 manifest.add(manifestRow(item, folderKey, model, image, result, "ok"));
                 totalObjects += result.getObjectCount();
                 processed++;
-            } catch (RuntimeException failure) {
+            } catch (Exception failure) {
                 failed++;
                 String reason = failure.getMessage() == null
                         ? failure.getClass().getSimpleName() : failure.getMessage();
@@ -261,14 +271,14 @@ public final class BatchRunner {
                 unit,
                 Double.toString(pw),
                 Double.toString(pd),
-                sc.fiji.oc3dsd.runtime.ModelResolver.displayName(model.modelRef),
+                model.is3d() ? "stardist3d:"+model.model3d : sc.fiji.oc3dsd.runtime.ModelResolver.displayName(model.modelRef),
                 Double.toString(model.probability),
                 Double.toString(model.overlap),
-                Double.toString(model.linkingDistance),
-                Double.toString(model.linkingDistanceInPixels(image)),
-                Double.toString(model.gapDistance),
-                Integer.toString(model.sliceGap),
-                Integer.toString(model.minSlices),
+                model.is3d() ? "" : Double.toString(model.linkingDistance),
+                model.is3d() ? "" : Double.toString(model.linkingDistanceInPixels(image)),
+                model.is3d() ? "" : Double.toString(model.gapDistance),
+                model.is3d() ? "" : Integer.toString(model.sliceGap),
+                model.is3d() ? "" : Integer.toString(model.minSlices),
                 Integer.toString(model.minSize),
                 model.maxSize == Integer.MAX_VALUE ? "Infinity" : Integer.toString(model.maxSize),
                 Boolean.toString(model.excludeOnEdges),
@@ -289,7 +299,7 @@ public final class BatchRunner {
         row[0] = item.file.getAbsolutePath();
         row[1] = folderKey(inputRoot, item.file);
         row[2] = item.groupKey;
-        row[6] = sc.fiji.oc3dsd.runtime.ModelResolver.displayName(model.modelRef);
+        row[6] = model.is3d() ? "stardist3d:"+model.model3d : sc.fiji.oc3dsd.runtime.ModelResolver.displayName(model.modelRef);
         row[row.length - 1] = "failed: " + reason;
         return row;
     }

@@ -58,6 +58,8 @@ public class RelocationAuditTest {
     private static final Map<String, String> AUDITED = new LinkedHashMap<String, String>();
 
     static {
+        AUDITED.put("StarDist3D.java :: getResourceAsStream :: \"/python/oc3d_stardist3d/registry.json\"",
+                "packaged Python configuration registry, outside every relocated Java namespace; verified in the shaded artifact");
         AUDITED.put("DependencyDoctor.java :: Class.forName :: className",
                 "the parameter of isPresent(String); every caller passes a"
                         + " Requirement.probeClass, all six of which name TrackMate,"

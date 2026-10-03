@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "actions": {
+    "describe": [],
+    "example": [
+      "output"
+    ],
+    "validate": [
+      "config"
+    ],
+    "train": [
+      "config",
+      "output",
+      "resume",
+      "fine_tune"
+    ],
+    "predict": [
+      "model",
+      "image",
+      "output",
+      "spacing_zyx",
+      "probability",
+      "overlap",
+      "config",
+      "unit"
+    ],
+    "evaluate": [
+      "model",
+      "config",
+      "output",
+      "split"
+    ],
+    "demo_model": [
+      "output"
+    ]
+  },
+  "options": [
+    {
+      "key": "data.manifest",
+      "label": "Annotated pairs CSV",
+      "kind": "text",
+      "default": "",
+      "help": "CSV columns: image, labels, specimen_id, split; split is train, validation or test."
+    },
+    {
+      "key": "data.spacing_zyx",
+      "label": "Voxel spacing Z,Y,X",
+      "kind": "array",
+      "default": [
+        2,
+        1,
+        1
+      ],
+      "help": "Use one physical unit consistently in training TIFFs and counting images."
+    },
+    {
+      "key": "data.unit",
+      "label": "Voxel spacing unit",
+      "kind": "text",
+      "default": "um",
+      "help": "Use the same unit as calibrated input stacks (um, nm, mm or pixel). No automatic resampling."
+    },
+    {
+      "key": "data.lower_percentile",
+      "label": "Normalization lower percentile",
+      "kind": "number",
+      "default": 1,
+      "help": "Per-volume normalization used consistently during training and inference."
+    },
+    {
+      "key": "data.upper_percentile",
+      "label": "Normalization upper percentile",
+      "kind": "number",
+      "default": 99.8,
+      "help": "Normalization changes model input only; measurements use original pixels."
+    },
+    {
+      "key": "network.patch_zyx",
+      "label": "Training patch Z,Y,X",
+      "kind": "array",
+      "default": [
+        16,
+        64,
+        64
+      ],
+      "help": "Patch dimensions must fit every training/validation image and be divisible by grid times 2^depth."
+    },
+    {
+      "key": "network.grid_zyx",
+      "label": "Prediction grid Z,Y,X",
+      "kind": "array",
+      "default": [
+        1,
+        2,
+        2
+      ],
+      "help": "Each entry must be a positive power of two."
+    },
+    {
+      "key": "network.rays",
+      "label": "Boundary rays",
+      "kind": "integer",
+      "default": 96,
+      "help": "Number of directions describing each star-convex 3D object."
+    },
+    {
+      "key": "network.depth",
+      "label": "Network depth",
+      "kind": "integer",
+      "default": 3,
+      "help": "Depth of the upstream StarDist U-Net backbone."
+    },
+    {
+      "key": "network.features",
+      "label": "First-level features",
+      "kind": "integer",
+      "default": 32,
+      "help": "Increasing features increases memory and training time."
+    },
+    {
+      "key": "training.epochs",
+      "label": "Total epochs",
+      "kind": "integer",
+      "default": 100,
+      "help": "Resume may extend this ceiling; other training settings must match."
+    },
+    {
+      "key": "training.steps",
+      "label": "Batches per epoch",
+      "kind": "integer",
+      "default": 100,
+      "help": "Random labelled patches sampled per epoch."
+    },
+    {
+      "key": "training.batch_size",
+      "label": "Patches per batch",
+      "kind": "integer",
+      "default": 1,
+      "help": "Increase only when memory permits."
+    },
+    {
+      "key": "training.learning_rate",
+      "label": "Learning rate",
+      "kind": "number",
+      "default": 0.0003,
+      "help": "Adam optimizer learning rate."
+    },
+    {
+      "key": "training.augment",
+      "label": "Augment training patches",
+      "kind": "boolean",
+      "default": true,
+      "help": "Random axis flips and intensity changes; held-out images are not augmented."
+    },
+    {
+      "key": "training.seed",
+      "label": "Random seed",
+      "kind": "integer",
+      "default": 20261002,
+      "help": "Recorded for repeatable training and generated examples."
+    },
+    {
+      "key": "training.optimize_thresholds",
+      "label": "Fit thresholds on validation data",
+      "kind": "boolean",
+      "default": true,
+      "help": "Choose model thresholds using validation specimens only; untouched test data stay held out."
+    },
+    {
+      "key": "inference.tiles_zyx",
+      "label": "Prediction tiles Z,Y,X",
+      "kind": "array",
+      "default": [
+        1,
+        1,
+        1
+      ],
+      "help": "Increase for volumes that exceed prediction memory."
+    },
+    {
+      "key": "runtime.threads",
+      "label": "CPU threads",
+      "kind": "integer",
+      "default": 4,
+      "help": "Managed CPU TensorFlow environment; no manual Python setup."
+    }
+  ]
+}

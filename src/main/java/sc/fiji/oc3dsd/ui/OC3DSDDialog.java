@@ -55,11 +55,12 @@ public final class OC3DSDDialog {
                 + "Choose another image only to measure a different channel or stack.");
 
         // ---- Detection: this replaces 3D Objects Counter+'s threshold --
-        gd.addMessage("Detection  (StarDist runs on each Z-slice)");
-        gd.addStringField("Model", model.modelRef, 30);
-        gd.addMessage("Leave as '" + ModelResolver.BUNDLED_MODEL_KEY
+        gd.addMessage(model.is3d() ? "Detection  (StarDist3D - whole volume)" : "Detection  (StarDist runs on each Z-slice)");
+        gd.addStringField("Model", model.is3d() ? model.model3d : model.modelRef, 30);
+        if (!model.is3d()) gd.addMessage("Leave as '" + ModelResolver.BUNDLED_MODEL_KEY
                 + "' for the bundled versatile fluorescence model,\n"
                 + "or give the full path to your own StarDist .zip.");
+        if(model.is3d()) gd.addMessage("Choose a compatible trained 3D model folder.\nPython setup, training and mode selection: StarDist Options...");
         gd.addNumericField("Probability", model.probability, 2);
         gd.addNumericField("Overlap (NMS)", model.overlap, 2);
 
@@ -97,6 +98,7 @@ public final class OC3DSDDialog {
         gd.addCheckbox("Summary", model.showSummary);
         gd.addCheckbox("Keep 3D label image", model.saveLabels);
 
+        StarDistOptionsSession.disableUnusedLinking(gd,model);
         gd.showDialog();
         if (gd.wasCanceled()) return false;
 
@@ -107,7 +109,7 @@ public final class OC3DSDDialog {
         String redirect = gd.getNextChoice();
         model.redirectTitle = "None".equals(redirect) ? "" : redirect;
 
-        model.modelRef = gd.getNextString();
+        if(model.is3d()) model.model3d=gd.getNextString(); else model.modelRef = gd.getNextString();
         model.probability = gd.getNextNumber();
         model.overlap = gd.getNextNumber();
         model.linkingDistance = gd.getNextNumber();

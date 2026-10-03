@@ -1,0 +1,78 @@
+[
+  [
+    "NumericField",
+    "Channel"
+  ],
+  [
+    "Choice",
+    "Redirect intensities from"
+  ],
+  [
+    "StringField",
+    "Model"
+  ],
+  [
+    "NumericField",
+    "Probability"
+  ],
+  [
+    "NumericField",
+    "Overlap (NMS)"
+  ],
+  [
+    "NumericField",
+    "Linking max distance"
+  ],
+  [
+    "NumericField",
+    "Gap closing max distance"
+  ],
+  [
+    "NumericField",
+    "Max slice gap"
+  ],
+  [
+    "NumericField",
+    "Min. slices per object"
+  ],
+  [
+    "NumericField",
+    "Min size (voxels)"
+  ],
+  [
+    "StringField",
+    "Max size (voxels)"
+  ],
+  [
+    "Checkbox",
+    "Exclude objects on edges"
+  ],
+  [
+    "Checkbox",
+    "Objects map"
+  ],
+  [
+    "Checkbox",
+    "Surfaces map"
+  ],
+  [
+    "Checkbox",
+    "Centroids map"
+  ],
+  [
+    "Checkbox",
+    "Centres of mass map"
+  ],
+  [
+    "Checkbox",
+    "Statistics table"
+  ],
+  [
+    "Checkbox",
+    "Summary"
+  ],
+  [
+    "Checkbox",
+    "Keep 3D label image"
+  ]
+]

@@ -7,6 +7,12 @@
 A Fiji/ImageJ plugin that counts and measures 3D objects in a Z-stack using StarDist detection
 linked through Z with TrackMate.
 
+The existing slice-based mode remains the default. An optional **StarDist3D -
+whole volume** mode now predicts 3D objects using automatically managed Python,
+with controls to train, resume, evaluate and load models for your own annotated
+stacks. Switching displays a model-compatibility and validation warning.
+See [the StarDist3D guide](STARDIST3D.md) for setup, annotation format and training.
+
 StarDist runs on each slice of the stack; TrackMate's LAP tracker links the per-slice detections
 through Z so that each linked chain becomes one 3D object; every object is then measured — volume,
 surface area, sphericity, compactness, elongation, maximum Feret diameter, intensity statistics,
@@ -18,9 +24,7 @@ that consumes label images, so segmentation and downstream analysis stay decoupl
 
 ## How the 3D objects are built
 
-StarDist is a 2D detector. This plugin does **not** use a 3D StarDist model — none exists for Fiji,
-and the [StarDist plugin documentation](https://imagej.net/plugins/stardist) says so directly — and
-it does not perform 3D segmentation. It detects in 2D on every slice and links across Z, the
+The default mode uses the standard Fiji StarDist 2D detector. It detects in 2D on every slice and links across Z, the
 approach documented on TrackMate's
 [StarDist detector page](https://imagej.net/plugins/trackmate/detectors/trackmate-stardist).
 
@@ -47,13 +51,13 @@ hidden inside it.
   analysed, the capture group decides which results are aggregated together. Both a per-folder and a
   per-group summary are written, alongside a manifest recording every parameter.
 - Macro-recordable, with `hide_display` for headless and scripted use.
-- A public Java API that opens no dialogs, shows no windows and writes no files.
+- A public Java API that opens no dialogs and shows no windows. The default mode writes no files; optional 3D mode uses temporary exchange files and a managed environment cache.
 - A one-click first-run installer for the exact StarDist, TrackMate and TensorFlow versions tested
   with the plugin, plus custom model `.zip` validation before TensorFlow sees it.
 
 ## Installation
 
-**GitHub release.** Download `3D_Objects_Counter_StarDist-0.1.0.jar` from the
+**GitHub release.** Download `3D_Objects_Counter_StarDist-1.0.0.jar` from the
 [latest release](https://github.com/Jay2owe/3DObjectsCounter-StarDist/releases/latest), copy it into
 Fiji's `plugins/` folder, and restart Fiji. Run `Analyze > 3D Objects Counter - StarDist`. If the
 detector runtime is absent, press
@@ -68,20 +72,20 @@ TrackMate-StarDist or TensorFlow update sites.
 The GitHub release JAR above remains available for manual installation.
 
 **From source.** Build the plugin as described below, copy
-`target/3D_Objects_Counter_StarDist-0.1.0.jar` into Fiji's `plugins/` folder, and restart Fiji.
+`target/3D_Objects_Counter_StarDist-1.0.0.jar` into Fiji's `plugins/` folder, and restart Fiji.
 
 ## Building
 
-The project requires JDK 8 or newer. A fresh clone includes platform launchers that bootstrap the
+The build requires JDK 21. The default counting mode retains its Java 8 compatibility; optional 3D mode requires Fiji on Java 11 or newer and a Java 21 background worker. A fresh clone includes platform launchers that bootstrap the
 pinned Maven version, resolve the released `oc3d-core` module, run the behavioural and packaging
 checks, and shade a private copy of core into the plugin JAR:
 
 ```bash
-./mvnw -B clean verify
+./mvnw -B -f build/pom.xml clean verify
 ```
 
-On Windows use `mvnw.cmd -B clean verify`. The deployable artifact is
-`target/3D_Objects_Counter_StarDist-0.1.0.jar`; `-sources`, `-tests` and `original-*` JARs are not
+On Windows use `mvnw.cmd -B -f build/pom.xml clean verify`. The deployable artifact is
+`target/3D_Objects_Counter_StarDist-1.0.0.jar`; `-sources`, `-tests` and `original-*` JARs are not
 Fiji plugins.
 
 ## Use
@@ -148,7 +152,7 @@ ResultsTable objects = result.getObjects();
 ImagePlus labels = result.getLabelImage();
 ```
 
-`OC3DSD.run` opens no dialogs, shows no windows, writes no files and needs no active ImageJ window.
+`OC3DSD.run` opens no dialogs, shows no windows and needs no active ImageJ window. The default mode writes no files; optional 3D mode uses temporary exchange files and a managed environment cache.
 TensorFlow inference is process-global, so concurrent calls are serialised internally; parallelising
 across images gains nothing.
 
@@ -164,9 +168,12 @@ are not expected to agree — use whichever matches the data, not both as a cros
 
 Please cite this plugin and the methods it builds on:
 
-- Malcolm, J. (2026). *3D Objects Counter - StarDist* (Version 0.1.0)
-  [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.21933251
+- Malcolm, J. (2026). *3D Objects Counter - StarDist* (Version 1.0.0)
+  [Computer software]. [Release](https://github.com/Jay2owe/3DObjectsCounter-StarDist/releases/tag/v1.0.0).
 - Schmidt, Weigert, Broaddus & Myers (2018) *Cell Detection with Star-convex Polygons*. MICCAI.
+- Weigert, Schmidt, Haase, Sugawara & Myers (2020) *Star-convex Polyhedra for 3D
+  Object Detection and Segmentation in Microscopy*. WACV.
+  https://doi.org/10.1109/WACV45572.2020.9093435
 - Tinevez et al. (2017) *TrackMate: An open and extensible platform for single-particle tracking*.
   Methods.
 - Ershov et al. (2022) *TrackMate 7: integrating state-of-the-art segmentation algorithms into

@@ -60,6 +60,9 @@ public final class MacroOptionsParser {
         OC3DSDDialogModel model = new OC3DSDDialogModel();
 
         // Detection.
+        model.segmentation = MacroOptions.value(opts, "segmentation", "stardist2d");
+        model.model3d = MacroOptions.bracketedOrValue(opts, "model_3d", "");
+        model.pythonConfig = MacroOptions.bracketedOrValue(opts, "python_config", "");
         model.channel = MacroOptions.parseIntOption(
                 MacroOptions.value(opts, "channel", null), 1, "channel");
         String modelRef = MacroOptions.bracketedOrValue(opts, "model", null);

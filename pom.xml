@@ -20,7 +20,7 @@
 	  Second digit = major rework or large optimization.
 	  Third digit = bug fix or small tweak/optimization.
 	-->
-	<version>0.1.0</version>
+	<version>1.0.0</version>
 
 	<name>3D Objects Counter - StarDist</name>
 	<description>Fiji/ImageJ plugin that counts and measures 3D objects in a Z-stack by running StarDist on each slice and linking the per-slice detections through Z with TrackMate, with per-object 3D measurements, size and edge filters, object maps and folder batch processing.</description>
@@ -132,6 +132,7 @@
 		  deliberate edit here, followed by a full harness run.
 		-->
 		<oc3d-core.version>v0.1.1</oc3d-core.version>
+        <oc3dsd.sourceCommit>development</oc3dsd.sourceCommit>
 	</properties>
 
 	<repositories>
@@ -152,6 +153,8 @@
 	</repositories>
 
 	<dependencies>
+        <dependency><groupId>io.github.jay2owe</groupId><artifactId>oc3dsd-python-worker</artifactId><version>0.1.0</version></dependency>
+        <dependency><groupId>com.google.code.gson</groupId><artifactId>gson</artifactId><version>2.13.2</version></dependency>
 		<!--
 		  ImageJ 1.x, version managed by pom-scijava. The parent bump to 43.0.0
 		  moved it from 1.53f to 1.54p, which is not a cosmetic change here: ij
@@ -274,12 +277,15 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
-					<archive>
+					<forceCreation>true</forceCreation>
+                    <archive>
 						<manifest>
 							<addClasspath>false</addClasspath>
 						</manifest>
 						<manifestEntries>
 							<Automatic-Module-Name>io.github.jay2owe.oc3dsd</Automatic-Module-Name>
+                            <Source-Commit>${oc3dsd.sourceCommit}</Source-Commit>
+                            <Bundled-Worker-Runtime>io.github.jay2owe:neural-counter-runtime-core:0.1.1</Bundled-Worker-Runtime>
 							<!--
 							  Which oc3d-core is baked into this jar. The shade step
 							  below writes a dependency-reduced pom, which correctly
@@ -299,7 +305,7 @@
 			  TrackMate must resolve to exactly 7.14.0, and this fails the build
 			  if it ever does not.
 
-			  The version is pinned in <dependencies> above, but a pin is only a
+			  The version is pinned in the dependencies above, but a pin is only a
 			  preference: pom-scijava manages TrackMate, so a future parent bump
 			  that removes or overrides the pin moves it silently, and the first
 			  symptom would be TrackMate 8 - which dropped Java 8, has already
@@ -314,6 +320,10 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
 				<executions>
+					<execution><id>enforce-rules</id><configuration><rules><enforceBytecodeVersion><excludes>
+                        <exclude>io.github.jay2owe:oc3dsd-python-worker</exclude>
+                        <exclude>io.github.jay2owe:neural-counter-runtime-core</exclude>
+                    </excludes></enforceBytecodeVersion></rules></configuration></execution>
 					<execution>
 						<id>pin-trackmate</id>
 						<phase>validate</phase>
@@ -373,9 +383,25 @@
 							<artifactSet>
 								<includes>
 									<include>com.github.Jay2owe:oc3d-core</include>
+                                    <include>io.github.jay2owe:oc3dsd-python-worker</include>
+                                    <include>io.github.jay2owe:neural-counter-runtime-core</include>
+                                    <include>org.apposed:appose</include>
+                                    <include>com.google.code.gson:gson</include>
+                                    <include>org.apache.groovy:*</include>
+                                    <include>org.apache.ivy:ivy</include>
+                                    <include>org.apache.commons:commons-compress</include>
+                                    <include>org.apache.commons:commons-lang3</include>
+                                    <include>commons-io:commons-io</include>
+                                    <include>commons-codec:commons-codec</include>
+                                    <include>net.java.dev.jna:*</include>
 								</includes>
 							</artifactSet>
 							<relocations>
+                                <relocation><pattern>org.apposed</pattern><shadedPattern>sc.fiji.oc3dsd.internal.appose</shadedPattern></relocation>
+                                <relocation><pattern>com.google.gson</pattern><shadedPattern>sc.fiji.oc3dsd.internal.gson</shadedPattern></relocation>
+                                <relocation><pattern>org.apache.commons</pattern><shadedPattern>sc.fiji.oc3dsd.internal.commons</shadedPattern></relocation>
+                                <relocation><pattern>org.apache.ivy</pattern><shadedPattern>sc.fiji.oc3dsd.internal.ivy</shadedPattern></relocation>
+                                <relocation><pattern>sc.fiji.oc3dn.runtime</pattern><shadedPattern>sc.fiji.oc3dsd.internal.runtime</shadedPattern></relocation>
 								<relocation>
 									<pattern>sc.fiji.oc3d.core</pattern>
 									<shadedPattern>sc.fiji.oc3dsd.internal.core</shadedPattern>
@@ -431,9 +457,17 @@
 							  working tree, where it is generated build output that
 							  looks like a source file.
 							-->
+							<transformers><transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/></transformers>
 							<createDependencyReducedPom>true</createDependencyReducedPom>
 							<dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml</dependencyReducedPomLocation>
 							<filters>
+                                <filter><artifact>io.github.jay2owe:oc3dsd-python-worker</artifact><excludes><exclude>META-INF/maven/**</exclude><exclude>python/tests/**</exclude><exclude>python/**/__pycache__/**</exclude><exclude>python/**/*.pyc</exclude></excludes></filter>
+                                <filter><artifact>io.github.jay2owe:neural-counter-runtime-core</artifact><excludes><exclude>META-INF/maven/**</exclude></excludes></filter>
+                                <filter><artifact>org.apposed:appose</artifact><excludes><exclude>META-INF/maven/**</exclude></excludes></filter>
+                                <filter><artifact>com.google.code.gson:gson</artifact><excludes><exclude>META-INF/maven/**</exclude></excludes></filter>
+                                <filter><artifact>org.apache.commons:*</artifact><excludes><exclude>META-INF/maven/**</exclude></excludes></filter>
+                                <filter><artifact>commons-io:commons-io</artifact><excludes><exclude>META-INF/maven/**</exclude></excludes></filter>
+                                <filter><artifact>commons-codec:commons-codec</artifact><excludes><exclude>META-INF/maven/**</exclude></excludes></filter>
 								<filter>
 									<artifact>com.github.Jay2owe:oc3d-core</artifact>
 									<excludes>

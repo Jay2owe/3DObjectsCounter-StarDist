@@ -37,6 +37,9 @@ public final class OC3DSDDialogModel extends DialogModel {
     // ---- Detection: the section that replaces the threshold -------------
     /** 1-based channel to detect on. */
     public int channel = 1;
+    public String segmentation = "stardist2d";
+    public String model3d = "", pythonConfig = "";
+    public boolean is3d() { return "stardist3d".equals(segmentation); }
     /** {@link ModelResolver#BUNDLED_MODEL_KEY} or a path to a {@code .zip}. */
     public String modelRef = ModelResolver.BUNDLED_MODEL_KEY;
     public double probability = 0.5;
@@ -56,6 +59,11 @@ public final class OC3DSDDialogModel extends DialogModel {
     @Override
     protected void appendEngineMacroOptions(StringBuilder options) {
         append(options, "channel=" + channel);
+        if (is3d()) {
+            append(options, "segmentation=stardist3d");
+            append(options, "model_3d=[" + MacroOptionsParser.requireSafeBracketedValue(model3d, "3D model") + "]");
+            if (!pythonConfig.isEmpty()) append(options, "python_config=[" + MacroOptionsParser.requireSafeBracketedValue(pythonConfig, "Python configuration") + "]");
+        }
         if (modelRef == null || modelRef.isEmpty()
                 || ModelResolver.BUNDLED_MODEL_KEY.equalsIgnoreCase(modelRef)) {
             append(options, "model=" + ModelResolver.BUNDLED_MODEL_KEY);
@@ -108,12 +116,18 @@ public final class OC3DSDDialogModel extends DialogModel {
         if (minSlices < 1) {
             errors.add("Min. slices per object must be >= 1 (min_slices=" + minSlices + ").");
         }
-        if (modelRef != null && !modelRef.isEmpty()
+        if (!is3d() && modelRef != null && !modelRef.isEmpty()
                 && !ModelResolver.BUNDLED_MODEL_KEY.equalsIgnoreCase(modelRef)) {
             String problem = ModelResolver.validate(new File(modelRef));
             if (problem != null) {
                 errors.add("Model '" + modelRef + "' cannot be used: " + problem);
             }
+        }
+        if (!"stardist2d".equals(segmentation) && !is3d()) errors.add("Unknown segmentation mode: " + segmentation);
+        if (is3d()) {
+            try { String problem=sc.fiji.oc3dsd.runtime.StarDist3D.validateModel(new File(model3d)); if(problem!=null)errors.add(problem); }
+            catch (RuntimeException e) { errors.add(e.getMessage()); }
+            if (!pythonConfig.isEmpty() && !new File(pythonConfig).isFile()) errors.add("Python configuration file does not exist.");
         }
         return errors;
     }
@@ -123,6 +137,7 @@ public final class OC3DSDDialogModel extends DialogModel {
         if (!(other instanceof OC3DSDDialogModel)) return;
         OC3DSDDialogModel source = (OC3DSDDialogModel) other;
         this.channel = source.channel;
+        this.segmentation = source.segmentation; this.model3d = source.model3d; this.pythonConfig = source.pythonConfig;
         this.modelRef = source.modelRef;
         this.probability = source.probability;
         this.overlap = source.overlap;
@@ -152,7 +167,10 @@ public final class OC3DSDDialogModel extends DialogModel {
                                          OC3DSDParameters.WarningSink warningSink) {
         OC3DSD.Builder builder = OC3DSD.builder(input)
                 .channel(channel)
-                .modelFile(ModelResolver.resolve(modelRef))
+                .segmentation(segmentation)
+                .model3d(is3d() ? new File(model3d) : null)
+                .pythonConfig(pythonConfig.isEmpty() ? null : new File(pythonConfig))
+                .modelFile(is3d() ? null : ModelResolver.resolve(modelRef))
                 .probability(probability)
                 .overlap(overlap)
                 .linkingDistance(linkingDistance)

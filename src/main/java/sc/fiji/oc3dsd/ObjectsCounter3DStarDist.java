@@ -32,7 +32,7 @@ public class ObjectsCounter3DStarDist implements PlugIn {
         // Keep first-run setup in front of image validation: someone installing
         // the runtime should not also need to find and open a stack just to get
         // the one-click installer.
-        if (!DependencyDoctor.verify(interactive)) return;
+        if (!interactive && !MacroOptionsParser.parse(options).is3d() && !DependencyDoctor.verify(false)) return;
 
         ImagePlus image = WindowManager.getCurrentImage();
         if (image == null) {
@@ -48,11 +48,13 @@ public class ObjectsCounter3DStarDist implements PlugIn {
         OC3DSDDialogModel model;
         if (interactive) {
             model = new OC3DSDDialogModel();
+            sc.fiji.oc3dsd.ui.StarDistOptionsSession.apply(model);
             if (!new OC3DSDDialog(model, image).show()) return;
         } else {
             model = MacroOptionsParser.parse(options);
         }
 
+        if (interactive && !model.is3d() && !DependencyDoctor.verify(true)) return;
         List<String> errors = model.validate();
         if (!errors.isEmpty()) {
             fail(interactive, join(errors));
@@ -95,6 +97,12 @@ public class ObjectsCounter3DStarDist implements PlugIn {
         if (!model.showSummary) return;
         IJ.log("3D Objects Counter - StarDist: " + image.getTitle());
         IJ.log("  Objects: " + result.getObjectCount());
+        if (model.is3d()) {
+            IJ.log("  StarDist3D model: " + model.model3d + ", probability " + model.probability + ", overlap " + model.overlap);
+            IJ.log("  Whole-volume segmentation; slice linking is not used.");
+            IJ.log("  Elapsed: " + result.getElapsedMs() + " ms");
+            return;
+        }
         IJ.log("  Model: " + sc.fiji.oc3dsd.runtime.ModelResolver.displayName(model.modelRef)
                 + ", probability " + model.probability + ", overlap " + model.overlap);
         String unit = OC3DSDDialogModel.linkingUnit(image);

@@ -34,6 +34,8 @@ public final class OC3DSDParameters {
     public final int channel;
     /** StarDist model {@code .zip}. Never null by the time the engine sees it. */
     public final File modelFile;
+    public final String segmentation;
+    public final File model3d, pythonConfig;
     /** Detection probability threshold, 0..1. */
     public final double probability;
     /** Non-maximum-suppression overlap threshold, 0..1. */
@@ -83,13 +85,18 @@ public final class OC3DSDParameters {
                      boolean buildSurfaceMap,
                      boolean buildCentroidMap,
                      boolean buildCentreOfMassMap,
-                     WarningSink warningSink) {
+                     WarningSink warningSink, String segmentation, File model3d, File pythonConfig) {
         if (input == null) {
             throw new IllegalArgumentException("input must not be null");
         }
         this.input = input;
         this.channel = Math.max(1, channel);
         this.modelFile = modelFile;
+        if (!"stardist2d".equals(segmentation) && !"stardist3d".equals(segmentation))
+            throw new IllegalArgumentException("Segmentation must be stardist2d or stardist3d.");
+        this.segmentation = segmentation; this.model3d = model3d; this.pythonConfig = pythonConfig;
+        if ("stardist3d".equals(segmentation) && model3d == null)
+            throw new IllegalArgumentException("Choose a trained StarDist3D model folder.");
         this.probability = probability;
         this.overlap = overlap;
         this.linking = linking == null ? StarDistLinkingParams.defaults() : linking;

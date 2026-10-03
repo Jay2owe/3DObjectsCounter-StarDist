@@ -1,0 +1,4 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"><modelVersion>4.0.0</modelVersion>
+<groupId>io.github.jay2owe</groupId><artifactId>oc3dsd-release-build</artifactId><version>1.0.0</version><packaging>pom</packaging>
+<modules><module>../runtime-core</module><module>../stardist3d-worker</module><module>..</module></modules>
+</project>

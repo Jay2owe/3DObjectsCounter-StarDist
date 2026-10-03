@@ -69,6 +69,14 @@ public final class OC3DSDRunner {
         StatusBarProgress progress = StatusBarProgress.steps(5);
 
         try {
+            if ("stardist3d".equals(params.segmentation)) {
+                progress.step("StarDist3D: preparing managed Python and detecting whole volume");
+                ImagePlus source = StarDistTrackMateRunner.analysedChannelStack(params.input, params.channel);
+                ImagePlus labels = sc.fiji.oc3dsd.runtime.StarDist3D.predict(source, params.model3d,
+                        params.pythonConfig, params.probability, params.overlap, ij.IJ::log);
+                return measureFilterAndMap(labels, null, params, resolveIntensitySource(params),
+                        progress, start, 0, 0, 0);
+            }
             File modelFile = params.modelFile == null
                     ? ModelResolver.bundledModel()
                     : params.modelFile;

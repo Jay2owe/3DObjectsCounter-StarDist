@@ -40,12 +40,16 @@ public final class BatchWriter {
     }
 
     public void prepare() {
+        prepare(false);
+    }
+
+    public void prepare(boolean wholeVolume) {
         mkdirs(new File(root, "Labels"));
         mkdirs(new File(root, "Objects"));
         mkdirs(new File(root, "Maps"));
         mkdirs(new File(root, "Groups"));
         mkdirs(new File(root, "Summary"));
-        writeReadme();
+        writeReadme(wholeVolume);
     }
 
     public void writeObjects(String baseName, ResultsTable objects) {
@@ -100,7 +104,7 @@ public final class BatchWriter {
         }
     }
 
-    private void writeReadme() {
+    private void writeReadme(boolean wholeVolume) {
         File readme = new File(root, "README.txt");
         PrintWriter writer = null;
         try {
@@ -118,10 +122,16 @@ public final class BatchWriter {
             writer.println("manifest.csv records the parameters, calibration and counts for every");
             writer.println("image. Keep it: it is what makes these numbers reproducible.");
             writer.println();
+            if (wholeVolume) {
+                writer.println("Note on method: StarDist3D predicts whole volumes with a trained 3D model.");
+                writer.println("Slice linking is unused. Provenance/ records model, input and settings");
+                writer.println("checksums, Python package versions and prediction thresholds per input.");
+            } else {
             writer.println("Note on method: StarDist runs on each Z-slice and the detections are");
             writer.println("linked through Z by TrackMate. This is not a 3D StarDist model. The");
             writer.println("Slices column reports how many slices each object spans; objects");
             writer.println("spanning a single slice deserve a look before they are trusted.");
+            }
         } catch (IOException e) {
             IJ.log("WARNING: could not write " + readme.getAbsolutePath() + ": " + e.getMessage());
         } catch (RuntimeException e) {

@@ -24,10 +24,21 @@ jobs:
         uses: actions/setup-java@v5
         with:
           distribution: temurin
-          java-version: "8"
+          java-version: "21"
           cache: maven
 
       - name: Build and verify
         run: |
           chmod +x ./mvnw
-          ./mvnw -B clean verify
+          ./mvnw -B -f build/pom.xml clean verify
+
+      - name: Set up Python workflow checks
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Check training inputs and the familiar dialog
+        run: |
+          python -m pip install numpy==1.26.4 tifffile==2025.5.10 psutil==7.0.0 pytest==8.4.2
+          python -m pytest python/tests -q
+          python scripts/check-main-dialog.py

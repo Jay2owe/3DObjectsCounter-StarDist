@@ -62,6 +62,14 @@ repositories and installs them into the user's Fiji.
 
 ## If you would prefer a single licence
 
+The optional mode additionally bundles the shared counter-family worker launcher
+(BSD-3-Clause), Appose, Gson, Groovy, Apache Ivy and Apache Commons components
+(Apache-2.0), and JNA (Apache-2.0 or LGPL-2.1). Upstream licence and notice resources
+are retained. The shared launcher source and licence are supplied in `runtime-core`.
+Python, StarDist, CSBDeep, TensorFlow and NumPy are installed separately into the
+managed environment from their upstream distributions, rather than bundled in
+the plugin JAR. Cite StarDist's 3D method for whole-volume segmentation or training.
+
 Relicensing the original source to GPL-3.0-or-later as well is a one-line
 change and would make the whole thing uniform. That is a deliberate choice
 rather than a default, so it has not been made here. Nothing above prevents it

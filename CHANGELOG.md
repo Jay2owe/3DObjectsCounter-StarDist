@@ -4,6 +4,23 @@ All notable changes to 3D Objects Counter - StarDist are recorded here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 versioning follows `VERSIONING.md`.
 
+## [1.0.0] - 2026-10-03
+
+### Added
+
+- Optional whole-volume StarDist3D, using an automatically installed and reused Python environment.
+- A separate StarDist Options command for 3D mode selection, a switch warning, and model training/configuration/import.
+- Training on annotated 3D stacks, checkpoint resume, compatible fine-tuning, validation review and held-out evaluation.
+- Explicit 3D macro/API options and per-image batch provenance, using the existing measurement and map cores.
+
+### Fixed
+
+- Background Windows Java and Python workers use windowless launchers; progress and errors stay in Fiji.
+- ImageJ's escaped micrometre calibration is accepted by the Python TIFF bridge.
+- Fresh source builds include the shared worker launcher and Python worker modules.
+
+The existing slice-by-slice StarDist plus Z linking remains the default. Main and batch counting layouts remain familiar. There are no morphological filtering controls.
+
 ## [0.1.0] — 2026-08-06
 
 First implementation. Carved out of FLASH's `flash.pipeline.stardist` package

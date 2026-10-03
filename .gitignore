@@ -1,4 +1,7 @@
 # Build output
+/.work/
+/.pytest_cache/
+/stardist3d-worker/target/
 /target/
 mcib3d-core-*.jar
 /.mvn/wrapper/maven-dist/
@@ -9,6 +12,7 @@ mcib3d-core-*.jar
 /PUBLISHING_AUDIT.md
 /release-staging/
 /docs/
+/research/
 /.planning/
 /graphify-out/
 /obsidian/
@@ -63,3 +67,12 @@ desktop.ini
 __pycache__/
 *.pyc
 *conflicted copy*
+
+/runtime-core/target/
+/build/target/
+
+# Local development instrumentation
+/scripts/live-fiji.ps1
+/scripts/FijiStarDistAgent.java
+/.codex/
+/src/main/java/sc/fiji/graphify-out/

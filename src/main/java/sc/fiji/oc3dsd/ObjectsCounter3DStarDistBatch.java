@@ -29,13 +29,14 @@ public class ObjectsCounter3DStarDistBatch implements PlugIn {
         String options = Macro.getOptions();
         boolean interactive = options == null;
 
-        if (!DependencyDoctor.verify(interactive)) return;
+        if (!interactive && !MacroOptionsParser.parse(options).is3d() && !DependencyDoctor.verify(false)) return;
 
         BatchRunner.Settings settings = new BatchRunner.Settings();
         OC3DSDDialogModel model;
 
         if (interactive) {
             model = new OC3DSDDialogModel();
+            sc.fiji.oc3dsd.ui.StarDistOptionsSession.apply(model);
             if (!askSettings(settings, model)) return;
             if (!confirmGroups(settings)) return;
         } else {
@@ -62,6 +63,7 @@ public class ObjectsCounter3DStarDistBatch implements PlugIn {
             settings.saveMaps = MacroOptionsParser.hasFlag(options, "save_maps");
         }
 
+        if (interactive && !model.is3d() && !DependencyDoctor.verify(true)) return;
         List<String> errors = model.validate();
         if (!errors.isEmpty()) {
             report(interactive, join(errors));
@@ -110,7 +112,7 @@ public class ObjectsCounter3DStarDistBatch implements PlugIn {
                 + "Files matching nothing are still analysed, under <ungrouped>.");
 
         gd.addMessage("Detection");
-        gd.addStringField("Model", model.modelRef, 30);
+        gd.addStringField("Model", model.is3d() ? model.model3d : model.modelRef, 30);
         gd.addNumericField("Probability", model.probability, 2);
         gd.addNumericField("Overlap (NMS)", model.overlap, 2);
         gd.addNumericField("Linking max distance", model.linkingDistance, 2);
@@ -124,6 +126,7 @@ public class ObjectsCounter3DStarDistBatch implements PlugIn {
         gd.addCheckbox("Save 3D label images", true);
         gd.addCheckbox("Save maps", false);
 
+        sc.fiji.oc3dsd.ui.StarDistOptionsSession.disableUnusedLinking(gd,model);
         gd.showDialog();
         if (gd.wasCanceled()) return false;
 
@@ -139,7 +142,7 @@ public class ObjectsCounter3DStarDistBatch implements PlugIn {
         settings.groupIndex = (int) gd.getNextNumber();
         settings.skipUnmatched = gd.getNextBoolean();
 
-        model.modelRef = gd.getNextString();
+        if(model.is3d())model.model3d=gd.getNextString();else model.modelRef = gd.getNextString();
         model.probability = gd.getNextNumber();
         model.overlap = gd.getNextNumber();
         model.linkingDistance = gd.getNextNumber();
