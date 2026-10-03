@@ -6,8 +6,9 @@ whole volume** choice predicts 3D objects directly, then uses the same object
 measurement, size/edge filtering and maps as the current counter. Slice linking
 settings do not apply to this mode. It adds no morphological filtering.
 
-The original main and batch counting dialogs keep their established fields and
-layout. Open **Analyze > 3D Objects Counter - StarDist Options...** to select the
+The main and batch counting dialogs keep their established layout; the 2D Model
+row now uses named choices and **Import model...** instead of a typed reference.
+Open **Analyze > 3D Objects Counter - StarDist Options...** to select the
 optional mode or access model training. The selection applies to interactive
 counts and batches in this Fiji session; restarting Fiji restores the current
 mode. Recorded macros always identify 3D mode explicitly.

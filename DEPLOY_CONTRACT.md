@@ -10,7 +10,7 @@ GitHub source release archived by the existing Zenodo integration.
 ## Source and artifact identity
 
 - Read the next version from `pom.xml` and follow `VERSIONING.md`; optional
-  whole-volume StarDist3D introduces a new engine and is version `1.0.0`.
+  whole-volume StarDist3D introduces a new engine; the 2D model selector update is version `1.0.1`.
 - Read the version from `pom.xml` at every deployment and record the exact
   source commit and SHA-256 of the selected jar.
 - Select exactly one `target/3D_Objects_Counter_StarDist-*.jar`, excluding

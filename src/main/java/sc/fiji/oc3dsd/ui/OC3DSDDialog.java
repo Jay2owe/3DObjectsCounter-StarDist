@@ -3,7 +3,6 @@ package sc.fiji.oc3dsd.ui;
 import ij.ImagePlus;
 import ij.WindowManager;
 import ij.gui.GenericDialog;
-import sc.fiji.oc3dsd.runtime.ModelResolver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,10 +55,9 @@ public final class OC3DSDDialog {
 
         // ---- Detection: this replaces 3D Objects Counter+'s threshold --
         gd.addMessage(model.is3d() ? "Detection  (StarDist3D - whole volume)" : "Detection  (StarDist runs on each Z-slice)");
-        gd.addStringField("Model", model.is3d() ? model.model3d : model.modelRef, 30);
-        if (!model.is3d()) gd.addMessage("Leave as '" + ModelResolver.BUNDLED_MODEL_KEY
-                + "' for the bundled versatile fluorescence model,\n"
-                + "or give the full path to your own StarDist .zip.");
+        StarDistModelSelector modelSelector = new StarDistModelSelector(gd, model);
+        if (!model.is3d()) gd.addMessage("Default: versatile fluorescence nuclei model.\n"
+                + "DSB 2018: Data Science Bowl nuclei benchmark.");
         if(model.is3d()) gd.addMessage("Choose a compatible trained 3D model folder.\nPython setup, training and mode selection: StarDist Options...");
         gd.addNumericField("Probability", model.probability, 2);
         gd.addNumericField("Overlap (NMS)", model.overlap, 2);
@@ -109,7 +107,7 @@ public final class OC3DSDDialog {
         String redirect = gd.getNextChoice();
         model.redirectTitle = "None".equals(redirect) ? "" : redirect;
 
-        if(model.is3d()) model.model3d=gd.getNextString(); else model.modelRef = gd.getNextString();
+        modelSelector.read(gd, model);
         model.probability = gd.getNextNumber();
         model.overlap = gd.getNextNumber();
         model.linkingDistance = gd.getNextNumber();

@@ -116,8 +116,7 @@ public final class OC3DSDDialogModel extends DialogModel {
         if (minSlices < 1) {
             errors.add("Min. slices per object must be >= 1 (min_slices=" + minSlices + ").");
         }
-        if (!is3d() && modelRef != null && !modelRef.isEmpty()
-                && !ModelResolver.BUNDLED_MODEL_KEY.equalsIgnoreCase(modelRef)) {
+        if (!is3d() && !ModelResolver.isBuiltin(modelRef)) {
             String problem = ModelResolver.validate(new File(modelRef));
             if (problem != null) {
                 errors.add("Model '" + modelRef + "' cannot be used: " + problem);

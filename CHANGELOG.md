@@ -4,10 +4,11 @@ All notable changes to 3D Objects Counter - StarDist are recorded here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 versioning follows `VERSIONING.md`.
 
-## [1.0.0] - 2026-10-03
+## [1.0.1] - 2026-10-03
 
 ### Added
 
+- Named 2D model dropdowns for single-image and batch counting, with the existing fluorescence model as default, the original DSB 2018 model, and a validated import action that remembers model files.
 - Optional whole-volume StarDist3D, using an automatically installed and reused Python environment.
 - A separate StarDist Options command for 3D mode selection, a switch warning, and model training/configuration/import.
 - Training on annotated 3D stacks, checkpoint resume, compatible fine-tuning, validation review and held-out evaluation.

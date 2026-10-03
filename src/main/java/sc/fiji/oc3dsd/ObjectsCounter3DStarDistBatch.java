@@ -112,7 +112,7 @@ public class ObjectsCounter3DStarDistBatch implements PlugIn {
                 + "Files matching nothing are still analysed, under <ungrouped>.");
 
         gd.addMessage("Detection");
-        gd.addStringField("Model", model.is3d() ? model.model3d : model.modelRef, 30);
+        sc.fiji.oc3dsd.ui.StarDistModelSelector modelSelector = new sc.fiji.oc3dsd.ui.StarDistModelSelector(gd, model);
         gd.addNumericField("Probability", model.probability, 2);
         gd.addNumericField("Overlap (NMS)", model.overlap, 2);
         gd.addNumericField("Linking max distance", model.linkingDistance, 2);
@@ -142,7 +142,7 @@ public class ObjectsCounter3DStarDistBatch implements PlugIn {
         settings.groupIndex = (int) gd.getNextNumber();
         settings.skipUnmatched = gd.getNextBoolean();
 
-        if(model.is3d())model.model3d=gd.getNextString();else model.modelRef = gd.getNextString();
+        modelSelector.read(gd, model);
         model.probability = gd.getNextNumber();
         model.overlap = gd.getNextNumber();
         model.linkingDistance = gd.getNextNumber();

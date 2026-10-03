@@ -8,7 +8,7 @@
     "Redirect intensities from"
   ],
   [
-    "StringField",
+    "Choice",
     "Model"
   ],
   [

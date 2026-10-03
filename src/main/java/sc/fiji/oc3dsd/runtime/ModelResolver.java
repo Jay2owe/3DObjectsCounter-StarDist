@@ -8,14 +8,15 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * Finds the StarDist model file to run with.
  * <p>
- * Two sources, and only two: the bundled versatile-fluorescence model that ships
- * inside the StarDist jar, and a {@code .zip} the user points at. There is no
- * model catalogue and no project config file — that coupling is precisely what
- * this plugin was carved out of FLASH to escape.
+ * Uses the fluorescence models shipped inside the StarDist jar or an imported
+ * model archive. Model references remain portable macro keys or file paths.
  * <p>
  * A user-supplied zip is validated structurally before it is handed to
  * TensorFlow, because an invalid one otherwise surfaces as an opaque native
@@ -25,11 +26,11 @@ public final class ModelResolver {
 
     /** Key naming the bundled model in macro options. */
     public static final String BUNDLED_MODEL_KEY = "versatile_fluo";
+    public static final String DSB2018_MODEL_KEY = "dsb2018";
 
     /** Where the model lives inside the StarDist jar. */
     private static final String BUNDLED_MODEL_RESOURCE = "models/2D/dsb2018_heavy_augment.zip";
-
-    private static volatile File cachedBundledModel;
+    private static final Map<String, File> cachedModels = new HashMap<String, File>();
 
     private ModelResolver() {
     }
@@ -42,8 +43,8 @@ public final class ModelResolver {
      */
     public static File resolve(String modelRef) {
         String ref = modelRef == null ? "" : modelRef.trim();
-        if (ref.isEmpty() || BUNDLED_MODEL_KEY.equalsIgnoreCase(ref)) {
-            return bundledModel();
+        if (isBuiltin(ref)) {
+            return bundledModel(ref);
         }
         File file = new File(ref);
         if (!file.isFile()) {
@@ -83,15 +84,28 @@ public final class ModelResolver {
      * file, once per session. The detector takes a file path, not a resource.
      */
     public static synchronized File bundledModel() {
-        File cached = cachedBundledModel;
-        if (cached != null && cached.isFile()) return cached;
+        return bundledModel(BUNDLED_MODEL_KEY);
+    }
 
+    public static boolean isBuiltin(String ref) {
+        return ref == null || ref.trim().isEmpty()
+                || BUNDLED_MODEL_KEY.equalsIgnoreCase(ref.trim())
+                || DSB2018_MODEL_KEY.equalsIgnoreCase(ref.trim());
+    }
+
+    private static synchronized File bundledModel(String modelRef) {
+        String key = modelRef == null || modelRef.trim().isEmpty()
+                ? BUNDLED_MODEL_KEY : modelRef.trim().toLowerCase(Locale.ROOT);
+        File cached = cachedModels.get(key);
+        if (cached != null && cached.isFile()) return cached;
+        String resource = DSB2018_MODEL_KEY.equals(key)
+                ? "models/2D/dsb2018_paper.zip" : BUNDLED_MODEL_RESOURCE;
         ClassLoader loader = ModelResolver.class.getClassLoader();
-        InputStream in = loader.getResourceAsStream(BUNDLED_MODEL_RESOURCE);
+        InputStream in = loader.getResourceAsStream(resource);
         if (in == null) {
             throw new IllegalStateException(
                     "The bundled StarDist model could not be found inside the StarDist jar ("
-                            + BUNDLED_MODEL_RESOURCE + "). Run Install Runtime from the plugin's "
+                            + resource + "). Run Install Runtime from the plugin's "
                             + "dependency prompt, or choose your own model .zip.");
         }
         try {
@@ -99,8 +113,10 @@ public final class ModelResolver {
             temp.toFile().deleteOnExit();
             Files.copy(in, temp, StandardCopyOption.REPLACE_EXISTING);
             File file = temp.toFile();
-            cachedBundledModel = file;
-            IJ.log("    Using the bundled StarDist versatile-fluorescence model.");
+            cachedModels.put(key, file);
+            IJ.log(BUNDLED_MODEL_KEY.equals(key)
+                    ? "    Using the bundled StarDist versatile-fluorescence model."
+                    : "    Using the bundled StarDist DSB 2018 fluorescence model.");
             return file;
         } catch (IOException e) {
             throw new IllegalStateException(
@@ -120,6 +136,7 @@ public final class ModelResolver {
         if (ref.isEmpty() || BUNDLED_MODEL_KEY.equalsIgnoreCase(ref)) {
             return "versatile fluorescence (bundled)";
         }
+        if (DSB2018_MODEL_KEY.equalsIgnoreCase(ref)) return "DSB 2018 fluorescence (bundled)";
         return new File(ref).getName();
     }
 }

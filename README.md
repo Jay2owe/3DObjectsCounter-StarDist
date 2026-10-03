@@ -36,7 +36,7 @@ hidden inside it.
 
 ## Features
 
-- StarDist detection per Z-slice with a bundled model or your own `.zip`.
+- StarDist detection per Z-slice with named fluorescence-model choices and an import option for your own `.zip`.
 - TrackMate LAP linking across Z, with linking distance, gap-closing distance and slice gap exposed.
 - Per-object 3D measurements, in the same columns and to the same definitions as
   [3D Objects Counter+](https://github.com/Jay2owe/3DObjectsCounterPlus). Intensity statistics are
@@ -57,7 +57,7 @@ hidden inside it.
 
 ## Installation
 
-**GitHub release.** Download `3D_Objects_Counter_StarDist-1.0.0.jar` from the
+**GitHub release.** Download `3D_Objects_Counter_StarDist-1.0.1.jar` from the
 [latest release](https://github.com/Jay2owe/3DObjectsCounter-StarDist/releases/latest), copy it into
 Fiji's `plugins/` folder, and restart Fiji. Run `Analyze > 3D Objects Counter - StarDist`. If the
 detector runtime is absent, press
@@ -72,7 +72,7 @@ TrackMate-StarDist or TensorFlow update sites.
 The GitHub release JAR above remains available for manual installation.
 
 **From source.** Build the plugin as described below, copy
-`target/3D_Objects_Counter_StarDist-1.0.0.jar` into Fiji's `plugins/` folder, and restart Fiji.
+`target/3D_Objects_Counter_StarDist-1.0.1.jar` into Fiji's `plugins/` folder, and restart Fiji.
 
 ## Building
 
@@ -85,15 +85,22 @@ checks, and shade a private copy of core into the plugin JAR:
 ```
 
 On Windows use `mvnw.cmd -B -f build/pom.xml clean verify`. The deployable artifact is
-`target/3D_Objects_Counter_StarDist-1.0.0.jar`; `-sources`, `-tests` and `original-*` JARs are not
+`target/3D_Objects_Counter_StarDist-1.0.1.jar`; `-sources`, `-tests` and `original-*` JARs are not
 Fiji plugins.
 
 ## Use
 
 Open a Z-stack and run `Analyze > 3D Objects Counter - StarDist`.
 
-Set the channel to detect on, choose a model, and set **Probability** and **Overlap**. Leave
-**Redirect intensities from** on `None` to measure `IntDen`, `Mean`, `StdDev`, `Median`, `Min` and
+Set the channel to detect on, choose a model, and set **Probability** and **Overlap**.
+The **Model** dropdown defaults to **Fluorescence nuclei (default)**, the existing
+versatile-fluorescence model. **Fluorescence nuclei (DSB 2018)** selects the original
+nuclei benchmark model. Choose **Import model...** to select and validate your own
+StarDist 2D `.zip`; imported filenames remain available in this dropdown and the
+batch dialog. Keep imported files in their original location. Existing macros
+still accept `model=versatile_fluo` or `model=[path/to/model.zip]`.
+
+Leave **Redirect intensities from** on `None` to measure `IntDen`, `Mean`, `StdDev`, `Median`, `Min` and
 `Max` on the channel you are detecting in; choose another open image only when the intensities you
 want live somewhere else, in which case it must match the stack in width, height and slice count.
 Press
@@ -168,8 +175,8 @@ are not expected to agree — use whichever matches the data, not both as a cros
 
 Please cite this plugin and the methods it builds on:
 
-- Malcolm, J. (2026). *3D Objects Counter - StarDist* (Version 1.0.0)
-  [Computer software]. [Release](https://github.com/Jay2owe/3DObjectsCounter-StarDist/releases/tag/v1.0.0).
+- Malcolm, J. (2026). *3D Objects Counter - StarDist* (Version 1.0.1)
+  [Computer software]. [Release](https://github.com/Jay2owe/3DObjectsCounter-StarDist/releases/tag/v1.0.1).
 - Schmidt, Weigert, Broaddus & Myers (2018) *Cell Detection with Star-convex Polygons*. MICCAI.
 - Weigert, Schmidt, Haase, Sugawara & Myers (2020) *Star-convex Polyhedra for 3D
   Object Detection and Segmentation in Microscopy*. WACV.
