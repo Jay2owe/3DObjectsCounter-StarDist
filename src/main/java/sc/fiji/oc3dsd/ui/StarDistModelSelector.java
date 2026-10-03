@@ -57,8 +57,7 @@ public final class StarDistModelSelector {
             String problem = ModelResolver.validate(file);
             if (problem == null) {
                 try {
-                    String path = file.getAbsolutePath();
-                    MacroOptionsParser.requireSafeBracketedValue(path, "Model path");
+                    String path = importReference(file);
                     selectedRef = path;
                     imported.remove(path);
                     imported.add(0, path);
@@ -109,6 +108,12 @@ public final class StarDistModelSelector {
         if (ModelResolver.DSB2018_MODEL_KEY.equalsIgnoreCase(ref.trim()))
             return ModelResolver.DSB2018_MODEL_KEY;
         return ref.trim();
+    }
+
+    /** File pickers return Windows separators; recorded ImageJ macros require forward slashes. */
+    public static String importReference(File file) {
+        String ref = file.getAbsolutePath().replace(File.separatorChar, '/');
+        return MacroOptionsParser.requireSafeBracketedValue(ref, "Model path");
     }
 
     /** Labels are unique even when two imported archives have the same filename. */

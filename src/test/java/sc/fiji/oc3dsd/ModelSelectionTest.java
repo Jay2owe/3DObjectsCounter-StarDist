@@ -46,4 +46,14 @@ public class ModelSelectionTest {
         assertEquals(ModelResolver.BUNDLED_MODEL_KEY, choices.get(StarDistModelSelector.DEFAULT_LABEL));
         assertFalse(choices.containsKey(StarDistModelSelector.IMPORT_LABEL));
     }
+
+    @Test public void filePickerPathsWithSpacesCanBeRecordedAndReplayed() throws Exception {
+        File original = new File("study one", "my nuclei.zip").getAbsoluteFile();
+        String ref = StarDistModelSelector.importReference(original);
+        OC3DSDDialogModel model = new OC3DSDDialogModel();
+        model.modelRef = ref;
+        String replayed = MacroOptionsParser.parse(model.toMacroOptions()).modelRef;
+        assertEquals(original.getCanonicalFile(), new File(replayed).getCanonicalFile());
+        assertFalse(replayed.contains("\\"));
+    }
 }
