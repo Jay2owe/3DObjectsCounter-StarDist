@@ -19,6 +19,7 @@ repository-code: "https://github.com/Jay2owe/3DObjectsCounter-StarDist"
 url: "https://github.com/Jay2owe/3DObjectsCounter-StarDist"
 version: 2.0.0
 date-released: "2026-10-03"
+doi: "10.5281/zenodo.23127168"
 keywords:
   - ImageJ
   - Fiji

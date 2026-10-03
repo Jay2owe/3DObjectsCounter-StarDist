@@ -196,7 +196,7 @@ are not expected to agree — use whichever matches the data, not both as a cros
 Please cite this plugin and the methods it builds on:
 
 - Malcolm, J. (2026). *3D Objects Counter - StarDist* (Version 2.0.0)
-  [Computer software]. [Release](https://github.com/Jay2owe/3DObjectsCounter-StarDist/releases/tag/v2.0.0).
+  [Computer software]. [Version DOI](https://doi.org/10.5281/zenodo.23127168).
 - Schmidt, Weigert, Broaddus & Myers (2018) *Cell Detection with Star-convex Polygons*. MICCAI.
 - Weigert, Schmidt, Haase, Sugawara & Myers (2020) *Star-convex Polyhedra for 3D
   Object Detection and Segmentation in Microscopy*. WACV.
