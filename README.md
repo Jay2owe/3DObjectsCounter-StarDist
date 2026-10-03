@@ -67,6 +67,15 @@ versions under a dated `.disabled-*` name. When it reports success, restart Fiji
 plugin does not restart Fiji automatically. You do not need to configure the StarDist, CSBDeep,
 TrackMate-StarDist or TensorFlow update sites.
 
+**Windows with Java 11.** The older ImageJ TensorFlow loader used by the default
+2D mode can fail even when its runtime JARs are installed. A verified workaround
+is to extract `org/tensorflow/native/windows-x86_64/tensorflow_jni.dll` from the
+pinned `libtensorflow_jni-1.15.0.jar` into Fiji's `lib/win64/`, then start Fiji
+with that folder on `PATH` before Java starts. Changing `java.library.path`
+after startup does not repair the cached native-library search path. This
+workaround is separate from the automatic Python setup for optional 3D mode;
+the plugin installer does not currently apply it automatically.
+
 **Update site.** In Fiji, choose `Help > Update... > Manage Update Sites`, add
 `https://sites.imagej.net/3DObjectsCounter-StarDist/`, enable it, apply changes, and restart Fiji.
 The GitHub release JAR above remains available for manual installation.

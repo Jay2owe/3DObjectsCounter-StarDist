@@ -1,15 +1,17 @@
 # 3D Objects Counter - StarDist deploy contract
 
-This contract controls local Fiji deployment for 3D Objects Counter - StarDist.
-Bare `deploy` means a local candidate install only. An explicit upload request
-publishes the tested artifact to the ImageJ update site and GitHub, with the
-GitHub source release archived by the existing Zenodo integration.
+This contract controls deployment for 3D Objects Counter - StarDist.
+Bare `deploy` means publish the tested artifact to the local Fiji installation,
+the 3DObjectsCounter-StarDist ImageJ update site, and GitHub, with the GitHub
+source release archived by the existing Zenodo integration. This is the user's
+standing deployment instruction for this repository. An explicit `local`,
+`test`, or `candidate` request stops before public upload.
 
 <!-- deploy-required-channels: ["local-fiji", "imagej-update-site", "github-release", "zenodo"] -->
 
 ## Source and artifact identity
 
-- Read the next version from `pom.xml` and follow `VERSIONING.md`; optional
+- Read the next version from `pom.xml` and follow `VERSIONING.md`;
   the parameter-tuning workflow introduces a new feature set, version `2.0.0`.
 - Read the version from `pom.xml` at every deployment and record the exact
   source commit and SHA-256 of the selected jar.
