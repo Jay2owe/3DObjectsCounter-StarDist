@@ -46,7 +46,7 @@ hidden inside it.
 - Object maps show complete linked shapes on every occupied Z slice, with contrasting numbered
   labels; raw map pixels retain their numeric object IDs. Surface, centroid and centre-of-mass maps
   and the 3D label image are also available.
-- Live preview of detection on the displayed slice before running the whole stack.
+- Parameter tuning with ranges or individual values, using FLASH's comparison grid with the original image and linked Z scrolling.
 - Folder batch with recursive search **and** regex grouping: recursion decides which files are
   analysed, the capture group decides which results are aggregated together. Both a per-folder and a
   per-group summary are written, alongside a manifest recording every parameter.
@@ -57,7 +57,7 @@ hidden inside it.
 
 ## Installation
 
-**GitHub release.** Download `3D_Objects_Counter_StarDist-1.0.1.jar` from the
+**GitHub release.** Download `3D_Objects_Counter_StarDist-2.0.0.jar` from the
 [latest release](https://github.com/Jay2owe/3DObjectsCounter-StarDist/releases/latest), copy it into
 Fiji's `plugins/` folder, and restart Fiji. Run `Analyze > 3D Objects Counter - StarDist`. If the
 detector runtime is absent, press
@@ -72,7 +72,7 @@ TrackMate-StarDist or TensorFlow update sites.
 The GitHub release JAR above remains available for manual installation.
 
 **From source.** Build the plugin as described below, copy
-`target/3D_Objects_Counter_StarDist-1.0.1.jar` into Fiji's `plugins/` folder, and restart Fiji.
+`target/3D_Objects_Counter_StarDist-2.0.0.jar` into Fiji's `plugins/` folder, and restart Fiji.
 
 ## Building
 
@@ -85,7 +85,7 @@ checks, and shade a private copy of core into the plugin JAR:
 ```
 
 On Windows use `mvnw.cmd -B -f build/pom.xml clean verify`. The deployable artifact is
-`target/3D_Objects_Counter_StarDist-1.0.1.jar`; `-sources`, `-tests` and `original-*` JARs are not
+`target/3D_Objects_Counter_StarDist-2.0.0.jar`; `-sources`, `-tests` and `original-*` JARs are not
 Fiji plugins.
 
 ## Use
@@ -103,13 +103,24 @@ still accept `model=versatile_fluo` or `model=[path/to/model.zip]`.
 Leave **Redirect intensities from** on `None` to measure `IntDen`, `Mean`, `StdDev`, `Median`, `Min` and
 `Max` on the channel you are detecting in; choose another open image only when the intensities you
 want live somewhere else, in which case it must match the stack in width, height and slice count.
-Press
-**Run Preview** to see detections on the current slice. Under **Linking**, set **Linking max
+Under **Linking**, set **Linking max
 distance** — how far an object may move between consecutive slices and still be the same object, in
 calibrated units — plus the gap-closing distance, maximum slice gap and minimum slices per object.
-Then set the size bounds and choose the outputs. **Preview** runs the count and keeps the dialog
-open;
-**OK** runs it and closes.
+Then set the size bounds and choose the outputs. **OK** runs the count.
+
+**Tune parameters...**, beside **OK**, opens a parameter picker. Tick the settings
+to vary and choose **Range** (start, end, step) or **Individual values** (for example,
+`0.3, 0.5, 0.7`). Every selected value is combined with every other selected
+parameter, with a limit of 64 previews. Unselected settings keep their current values.
+
+The grid places the original image alongside object previews. Its shared Z slider
+scrolls every tile together; overlay, zoom and brightness controls follow FLASH.
+Previews use the chosen channel and current timepoint across all Z slices. Draw a
+rectangular selection first to compare a smaller area. Only successful tiles can
+be picked. Click a tile and **Pick selected**, or its **Pick** pill, to return to the
+main dialog with those parameters. Check them and press **OK** to run the full image.
+Closing the grid keeps your previous settings. Whole-volume 3D mode offers the
+detection and size parameters it uses; slice-linking parameters apply only to 2D mode.
 
 `Analyze > 3D Objects Counter - StarDist Batch` runs a folder. Choose the root, whether to include
 subfolders, and optionally a filename regular expression whose capture group names the group each
@@ -175,8 +186,8 @@ are not expected to agree — use whichever matches the data, not both as a cros
 
 Please cite this plugin and the methods it builds on:
 
-- Malcolm, J. (2026). *3D Objects Counter - StarDist* (Version 1.0.1)
-  [Computer software]. [Release](https://github.com/Jay2owe/3DObjectsCounter-StarDist/releases/tag/v1.0.1).
+- Malcolm, J. (2026). *3D Objects Counter - StarDist* (Version 2.0.0)
+  [Computer software]. [Release](https://github.com/Jay2owe/3DObjectsCounter-StarDist/releases/tag/v2.0.0).
 - Schmidt, Weigert, Broaddus & Myers (2018) *Cell Detection with Star-convex Polygons*. MICCAI.
 - Weigert, Schmidt, Haase, Sugawara & Myers (2020) *Star-convex Polyhedra for 3D
   Object Detection and Segmentation in Microscopy*. WACV.

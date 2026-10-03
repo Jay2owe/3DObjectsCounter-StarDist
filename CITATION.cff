@@ -17,7 +17,7 @@ type: software
 license: GPL-3.0-or-later
 repository-code: "https://github.com/Jay2owe/3DObjectsCounter-StarDist"
 url: "https://github.com/Jay2owe/3DObjectsCounter-StarDist"
-version: 1.0.1
+version: 2.0.0
 date-released: "2026-10-03"
 keywords:
   - ImageJ

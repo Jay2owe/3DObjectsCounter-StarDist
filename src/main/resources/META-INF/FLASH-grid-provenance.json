@@ -1,0 +1,206 @@
+{
+  "origin": "https://github.com/Jay2owe/FLASH",
+  "source_commit": "04eaa8ebe891f6ea9c4062302cc0c6eb063eac45",
+  "source_worktree": "includes local changes; per-file hashes identify the copied source",
+  "transformation": "package/import prefix: flash.pipeline -> sc.fiji.oc3dsd.internal.flash; line endings normalized to LF",
+  "files": [
+    {
+      "source": "flash/pipeline/image/FilterMacroParser.java",
+      "sha256": "3679ccca1dedb66c70a7d7d28320a614af1121204fd84a8a188e173910997cd1",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/image/FilterMacroParser.java",
+      "bundled_sha256": "b3cf56692cd5c2e1a1e102e18ee26503aa823350e84d9726c43f9c91fb52ac6a"
+    },
+    {
+      "source": "flash/pipeline/intelligence/MiniJson.java",
+      "sha256": "6e1e0715974bc34664c96050829f456a5d093c8bf8a4a0e208cf8e938fdc5c93",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/intelligence/MiniJson.java",
+      "bundled_sha256": "44b59f5e4c07bfd9113dd9d6e5927540341d2a1c4add3e1e47acfb215414bc6a"
+    },
+    {
+      "source": "flash/pipeline/ui/FlashTheme.java",
+      "sha256": "4ac576a84b14f0ba28ed571e3f4fe64c824f04c53932aa48cb6e76f126294776",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/FlashTheme.java",
+      "bundled_sha256": "748ab2f930dece220be8a488907604db278eb3e3da2d9e8d3197133f637695bf"
+    },
+    {
+      "source": "flash/pipeline/ui/preview/ImagePreviewPanel.java",
+      "sha256": "f890762e4f58ace10f5beabd4670b57d4e48065fb79539b386ec9180c61158d2",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/preview/ImagePreviewPanel.java",
+      "bundled_sha256": "6819df73df97b9ab905449cfad1cbc66eb364115bc5343a80605a25aca626ed3"
+    },
+    {
+      "source": "flash/pipeline/ui/preview/LabelMapStyler.java",
+      "sha256": "6658d8dfd8cf134990d7f1f75131253fa077771316eecac822560298167af076",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/preview/LabelMapStyler.java",
+      "bundled_sha256": "fb8c1191fa0500359fe4eaad397e4d0b7608d95d2a553f20c9c70f032029d2f1"
+    },
+    {
+      "source": "flash/pipeline/ui/preview/ObjectOverlayRenderer.java",
+      "sha256": "eaa1b3ab4036bb9a862c23ec293216be5982e54e9fa53801a86e09df8438606a",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/preview/ObjectOverlayRenderer.java",
+      "bundled_sha256": "3da5ff3e330496004de0b103c1c0540a2bdd4e41184f130e229cdf416727825b"
+    },
+    {
+      "source": "flash/pipeline/ui/preview/ObjectSizeFilterPreview.java",
+      "sha256": "bb0d60e83cba7b59c6781fceb16f8842c7428e3259801d1ed22ecc86989df8aa",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/preview/ObjectSizeFilterPreview.java",
+      "bundled_sha256": "4478c9637e0b238ab7533633d4ab21a88c650aeb44ae040e2918127362e48a52"
+    },
+    {
+      "source": "flash/pipeline/ui/preview/PreviewDisplaySettings.java",
+      "sha256": "3b13226ecbd5a5afb34d9a09697410b5ad9cfa8c20fca47bbe7951962f35e3e0",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/preview/PreviewDisplaySettings.java",
+      "bundled_sha256": "cf9a44e301f9240352cb190e992c8c958afc841bce5304365a523db464a9c9be"
+    },
+    {
+      "source": "flash/pipeline/ui/preview/ThresholdOverlayRenderer.java",
+      "sha256": "6863468a5bfb5ec3b6875ee294cf98b5faeafcb8b038864da93680b195c48133",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/preview/ThresholdOverlayRenderer.java",
+      "bundled_sha256": "066a09bd53bdcd141e8a9fa62668c3332b8f8730d98a315a4419f54041a0a5e6"
+    },
+    {
+      "source": "flash/pipeline/ui/sandbox/FilterAlternatives.java",
+      "sha256": "e95ccca4e2ba0e8a7e9b05453014521f8aa4d033b05331d6006d2561961adb0f",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/sandbox/FilterAlternatives.java",
+      "bundled_sha256": "120ec4d7364b175cdb24ed07de11297dcdd2cd5b16c34fb7df802af366ee9d58"
+    },
+    {
+      "source": "flash/pipeline/ui/variations/analysis/HistogramShapeStability.java",
+      "sha256": "39d8f4305252a6c4648fc4e8e577d177f56830eddd47d961d17697fbf4e92766",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/variations/analysis/HistogramShapeStability.java",
+      "bundled_sha256": "bc2f6eb34099ecabdabf874358579f94416d7fc7520b1e7831216cbdd8b619ee"
+    },
+    {
+      "source": "flash/pipeline/ui/variations/analysis/KneeDetector.java",
+      "sha256": "32c5fb33d0a5edadda43fbb36557c0ccb60ff1f0c755af729193e3d310cfdfdd",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/variations/analysis/KneeDetector.java",
+      "bundled_sha256": "c35f6b61679f7776a6344d3515ea3784fe49c5fa0643acc9ff104f341f948ad0"
+    },
+    {
+      "source": "flash/pipeline/ui/variations/CanonicalJson.java",
+      "sha256": "245ef8433590fb9c4cd09b4d16d13548322663e154a1fc839536c1e7c2ae14b8",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/variations/CanonicalJson.java",
+      "bundled_sha256": "d379ca93b14ba656e9cc165596514a02b44dc5b0880eeddc1ef99dfe96ba6ef5"
+    },
+    {
+      "source": "flash/pipeline/ui/variations/CanonicalScale.java",
+      "sha256": "6ee5d81d16bbcb6710c959196a2ce35411713988a38ad79dde6761b5d24764fc",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/variations/CanonicalScale.java",
+      "bundled_sha256": "41ea545a5376b1fb1d34a0727cf707733ca90160973851da09c32109c9d5278f"
+    },
+    {
+      "source": "flash/pipeline/ui/variations/FilterParameterId.java",
+      "sha256": "b70b0abaeb0e9ea39f55514e9271b205f67d564a87673e2b404d3685f187cba5",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/variations/FilterParameterId.java",
+      "bundled_sha256": "4e8aeda6fecbcec8e29e374f1b36e7fd677773c6e0815fb2f05ab69daa8d11f3"
+    },
+    {
+      "source": "flash/pipeline/ui/variations/HistogramShapeStrip.java",
+      "sha256": "e2f494761e9c84d8c09ce9d722aec0b3a3403b0e2beb2b19f767ae1248e2cbef",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/variations/HistogramShapeStrip.java",
+      "bundled_sha256": "6f3e998374afe884ef4b4b68c210db7107c3fee4c81e9d7a9761a4e1d4715c8d"
+    },
+    {
+      "source": "flash/pipeline/ui/variations/MacroToken.java",
+      "sha256": "213719fd80731252cfc3da9f92da8df9debb0cdeac36088f0077fbc084f89405",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/variations/MacroToken.java",
+      "bundled_sha256": "5e6cec80ea5d55761a016c2ae5ebfa47ebb2ec3aa9658ef97002b23c8aae5c2b"
+    },
+    {
+      "source": "flash/pipeline/ui/variations/MacroVariation.java",
+      "sha256": "91ebf1cbc3a8b7e8a56c6617de43a469c48e801ec71efc345251d7e76a41912f",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/variations/MacroVariation.java",
+      "bundled_sha256": "9227ed2b1fd7bb60b3fa399006c04849c4b8516f0c4143f3a0efe3e7253be07e"
+    },
+    {
+      "source": "flash/pipeline/ui/variations/ParameterCombo.java",
+      "sha256": "29cde7e37c4af7ceb0dc8a63ff83e1ee6d5a7fb01ed94fa200c1785009f4d37d",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/variations/ParameterCombo.java",
+      "bundled_sha256": "d2cb16cb292bf3fa20c9e00b2882212529ea497ec2ff9a31999664273c20a110"
+    },
+    {
+      "source": "flash/pipeline/ui/variations/ParameterId.java",
+      "sha256": "4fb4e3cf7006e02014710b9902f4d329142955077b7a075b61a4dc09de3410df",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/variations/ParameterId.java",
+      "bundled_sha256": "11fafc4dc69c486027fe49e3b01aec5ff44763892e1356dc9eab464b41c530b5"
+    },
+    {
+      "source": "flash/pipeline/ui/variations/ParameterKey.java",
+      "sha256": "c2286e11b6733df20c59a4fe5040efc2a6b3b8f7b7dc227cbb41bf70961fdc12",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/variations/ParameterKey.java",
+      "bundled_sha256": "ad88cd296c518046a4744db91a6459021dec92282d9a870d9fcffbaa67541043"
+    },
+    {
+      "source": "flash/pipeline/ui/variations/ParameterValueList.java",
+      "sha256": "42110d161d0c7ecf20269c35c66519e732bddeb713ff3726bf26b8ef689bc483",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/variations/ParameterValueList.java",
+      "bundled_sha256": "3632a136e6175ee14cfe4b384b9563179342db4b7bf39d9c4d9cab0813dfa7e5"
+    },
+    {
+      "source": "flash/pipeline/ui/variations/PresetSweepCombo.java",
+      "sha256": "0e257f943004972a7cc376ca35d87698fcbc0b175459befeac3f87245bc4a660",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/variations/PresetSweepCombo.java",
+      "bundled_sha256": "07604a5244bc50459ab76d207c7e80848060769f50977dfc604a8bda6caf9560"
+    },
+    {
+      "source": "flash/pipeline/ui/variations/PresetSweepKey.java",
+      "sha256": "a5624db2584f707275c4b0514928c7ef838ff0651ed3914d40f73bf76418e600",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/variations/PresetSweepKey.java",
+      "bundled_sha256": "23c682bfd64df1ec17c4a09e372fe6136f8241eb3cfc785f69ca9caf562477d9"
+    },
+    {
+      "source": "flash/pipeline/ui/variations/SlotSubstitutionCombo.java",
+      "sha256": "72c68cb03cc65b8db7a3dd4a00f46577ee48beb8ffafb024104f24bb71c8c489",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/variations/SlotSubstitutionCombo.java",
+      "bundled_sha256": "51f635e272c3404097340d1bdcb6718d3239ea291408eb269b331245d7254929"
+    },
+    {
+      "source": "flash/pipeline/ui/variations/SlotSubstitutionKey.java",
+      "sha256": "e669199a6ca4f096a1aca29db277511e5b66a4c215d240243cfb4f553f247eba",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/variations/SlotSubstitutionKey.java",
+      "bundled_sha256": "272e2e58d8b82aff6241f7d2827abb5c88dd0d41a01355f8f391da46d580d319"
+    },
+    {
+      "source": "flash/pipeline/ui/variations/SyncedSliceController.java",
+      "sha256": "7fb87eb3dc88c71a355a017c0955e764fd6d7e04eb0a927696d1696a7f9734ce",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/variations/SyncedSliceController.java",
+      "bundled_sha256": "b9e099a0b68eba2e5015282a411610af3df6ea2311e27e0f8b0583bce1c39299"
+    },
+    {
+      "source": "flash/pipeline/ui/variations/VariationCellPanel.java",
+      "sha256": "e5d0e90b16f0f035cc397307125d161bf8aaf8441ec5e0c042856232c41c8fa5",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/variations/VariationCellPanel.java",
+      "bundled_sha256": "7f782239b5023de310ff092098b3c892888ce599c7e4b767b84fe776a93771ac"
+    },
+    {
+      "source": "flash/pipeline/ui/variations/VariationCleanupCoordinator.java",
+      "sha256": "60fcb590f7e5300d38f0f3c91bf351a932ca4ccf2d405ec00bcd7832f7f80008",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/variations/VariationCleanupCoordinator.java",
+      "bundled_sha256": "71c1f7ef9bd48143b933fc18f921050fb6fd727c1f1440378944e9b7864fc99e"
+    },
+    {
+      "source": "flash/pipeline/ui/variations/VariationCleanupSupport.java",
+      "sha256": "6b1543750db54acae994125abf6ad019422c3b7fd60d5b3de51115f0a86b4a94",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/variations/VariationCleanupSupport.java",
+      "bundled_sha256": "7d0a1e737de2b21c34799dd44a8388ecc3b101a5ec8423d9a2d4c5ccda82ff10"
+    },
+    {
+      "source": "flash/pipeline/ui/variations/VariationGridWindow.java",
+      "sha256": "5d3dc70b5795131230cccfa056ec9534252505b9c37a2c1847a4f5e5d7f22a7d",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/variations/VariationGridWindow.java",
+      "bundled_sha256": "12b619bad7cd994e5e54243a1dcb54319bf2daf5d0633bfe17bea1cb889b1b99"
+    },
+    {
+      "source": "flash/pipeline/ui/variations/VariationResult.java",
+      "sha256": "05c83d689ccc887041ab57a5197f5a97e81cfdb60e1ae22c5d9ee9a43412d7dc",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/variations/VariationResult.java",
+      "bundled_sha256": "a9b659f21b4857eb156068d5a96c524922d40ab528bed69db0608359607509ba"
+    },
+    {
+      "source": "flash/pipeline/ui/wizard/JsonIO.java",
+      "sha256": "2f255e33668721e13d21a2bba1e31417707f060c54ae874b980c8f9111f53feb",
+      "bundled_source": "src/main/java/sc/fiji/oc3dsd/internal/flash/ui/wizard/JsonIO.java",
+      "bundled_sha256": "c135bf57a731d9d0cc7faab7a9196a2594732fa4622aaa44199af331f2dc2f04"
+    }
+  ]
+}

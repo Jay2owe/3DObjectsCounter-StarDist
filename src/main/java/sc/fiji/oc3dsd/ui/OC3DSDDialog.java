@@ -34,6 +34,19 @@ public final class OC3DSDDialog {
      */
     public boolean show() {
         model.configureForImage(image);
+        while (true) {
+            int action=showMain();
+            if(action==0)return false;
+            if(action==1)return true;
+            List<String> errors=model.validate();
+            if(!errors.isEmpty()){ij.IJ.error("StarDist parameter tuning",String.join("\n",errors));continue;}
+            OC3DSDDialogModel chosen=sc.fiji.oc3dsd.ui.tuning.StarDistTuner.show(image,model.snapshot());
+            if(chosen!=null)model.copyFrom(chosen);
+        }
+    }
+
+    /** 0: cancel, 1: run, 2: tune; keeps every existing control in its original order. */
+    private int showMain() {
 
         String unit = OC3DSDDialogModel.linkingUnit(image);
         boolean calibrated = !"pixel".equals(unit);
@@ -49,7 +62,7 @@ public final class OC3DSDDialog {
         List<String> redirects = redirectChoices();
         gd.addChoice("Redirect intensities from",
                 redirects.toArray(new String[redirects.size()]),
-                redirects.get(0));
+                redirects.contains(model.redirectTitle) ? model.redirectTitle : redirects.get(0));
         gd.addMessage("'None' measures intensities on this image, as in 3D Objects Counter.\n"
                 + "Choose another image only to measure a different channel or stack.");
 
@@ -97,8 +110,9 @@ public final class OC3DSDDialog {
         gd.addCheckbox("Keep 3D label image", model.saveLabels);
 
         StarDistOptionsSession.disableUnusedLinking(gd,model);
+        gd.enableYesNoCancel("OK", "Tune parameters...");
         gd.showDialog();
-        if (gd.wasCanceled()) return false;
+        if (gd.wasCanceled()) return 0;
 
         // ---- Read back ----------------------------------------------
         if (channels > 1) {
@@ -127,7 +141,7 @@ public final class OC3DSDDialog {
         model.showSummary = gd.getNextBoolean();
         model.saveLabels = gd.getNextBoolean();
 
-        return true;
+        return gd.wasOKed() ? 1 : 2;
     }
 
     /**

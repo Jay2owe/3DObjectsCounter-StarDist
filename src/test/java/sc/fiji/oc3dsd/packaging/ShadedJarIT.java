@@ -103,6 +103,17 @@ public class ShadedJarIT {
 
     private static File jarFile;
     private static JarFile jar;
+
+    @Test
+    public void comparisonGridIsSelfContainedAndPrivatelyPackaged() throws IOException {
+        String prefix="sc/fiji/oc3dsd/internal/flash/";
+        for(String name:Arrays.asList("ui/variations/VariationGridWindow", "ui/variations/VariationCellPanel",
+                "ui/variations/SyncedSliceController", "ui/preview/ImagePreviewPanel", "ui/preview/ObjectOverlayRenderer"))
+            assertTrue("Missing portable grid class: "+name,jar.getEntry(prefix+name+".class")!=null);
+        assertTrue(jar.getEntry("META-INF/FLASH-grid-provenance.json")!=null);
+        assertTrue(jar.getEntry("META-INF/FLASH-grid-LICENSE.txt")!=null);
+        for(String entry:entries) assertTrue("Original FLASH namespace must not leak: "+entry,!entry.startsWith("flash/"));
+    }
     private static Set<String> entries;
     /** Class entry name -> its bytes decoded byte-for-char, for literal search. */
     private static Map<String, String> classText;

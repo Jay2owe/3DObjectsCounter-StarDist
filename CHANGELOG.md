@@ -4,9 +4,13 @@ All notable changes to 3D Objects Counter - StarDist are recorded here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 versioning follows `VERSIONING.md`.
 
-## [1.0.1] - 2026-10-03
+## [2.0.0] - 2026-10-03
 
 ### Added
+
+- A Tune parameters button beside OK, with selectable numeric parameters, ranges or individual values, a bounded Cartesian sweep, and FLASH's original comparison grid.
+- Original-image comparison, linked Z scrolling, object overlays and selection that returns the chosen values to the main counter dialog before running the full image.
+- Preview snapshots use the chosen channel and current timepoint, optionally limited to a rectangular selection; the original image is preserved and closing the grid keeps previous settings.
 
 - Named 2D model dropdowns for single-image and batch counting, with the existing fluorescence model as default, the original DSB 2018 model, and a validated import action that remembers model files.
 - Optional whole-volume StarDist3D, using an automatically installed and reused Python environment.

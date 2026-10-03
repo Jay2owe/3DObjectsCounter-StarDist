@@ -10,7 +10,7 @@ GitHub source release archived by the existing Zenodo integration.
 ## Source and artifact identity
 
 - Read the next version from `pom.xml` and follow `VERSIONING.md`; optional
-  whole-volume StarDist3D introduces a new engine; the 2D model selector update is version `1.0.1`.
+  the parameter-tuning workflow introduces a new feature set, version `2.0.0`.
 - Read the version from `pom.xml` at every deployment and record the exact
   source commit and SHA-256 of the selected jar.
 - Select exactly one `target/3D_Objects_Counter_StarDist-*.jar`, excluding
@@ -39,6 +39,8 @@ it.
 - Build all release modules with Java 21:
   `.\mvnw.cmd -B -f build/pom.xml clean verify`.
 - Run the unchanged-layout guard and the Python workflow checks.
+- Check the parameter picker, a real detector grid, linked slice scrolling,
+  successful-result selection and return to the main dialog without running it.
 - Verify managed setup and a Python action from a windowless Windows host,
   retaining progress/error pipes and observing no visible console windows.
 - Run one representative Fiji check through `Analyze > 3D Objects Counter -

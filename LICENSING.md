@@ -55,6 +55,12 @@ headers stamped on this repository's own source.
 
 ## Other components
 
+The comparison grid is copied from FLASH under its BSD-3-Clause licence and
+compiled into the plugin's private namespace. Its original licence is retained
+in `META-INF/FLASH-grid-LICENSE.txt`; `META-INF/FLASH-grid-provenance.json`
+identifies the source revision and each copied source file. Using the grid does
+not require FLASH to be installed.
+
 The separately installed StarDist, CSBDeep, TensorFlow and protobuf components
 carry their own licences. They are not bundled in this repository's release JAR;
 the first-run installer retrieves the pinned artifacts from their public Maven
