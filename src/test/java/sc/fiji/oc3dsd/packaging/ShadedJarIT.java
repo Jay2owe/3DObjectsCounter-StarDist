@@ -427,6 +427,7 @@ public class ShadedJarIT {
             if (name.endsWith("/")) continue;
             if (name.startsWith(OWN_PATH)) continue;
             if (name.startsWith("python/oc3d_stardist3d/")) continue;
+            if (name.equals("META-INF/FLASH-grid-LICENSE.txt") || name.equals("META-INF/FLASH-grid-provenance.json")) continue;
             if (name.startsWith("groovy/") || name.startsWith("org/codehaus/groovy/") || name.startsWith("org/apache/groovy/")
                     || name.startsWith("groovyjarjar") || name.startsWith("org/apache/ivy/")
                     || name.startsWith("com/sun/jna/") || name.startsWith("META-INF/native-image/")
