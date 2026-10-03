@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 /** Regression for Fiji installations carrying protobuf 4 with TensorFlow 1.x models. */
 public class DependencyDoctorTest {
     @Test public void incompatibleProtobufIsReportedBeforeNativeInference() {
-        // pom-scijava supplies protobuf 4 on the development classpath; Fiji's repair pins 3.5.1.
+        // The test dependency recreates Fiji's protobuf 4.28.2; the repair pins 3.5.1.
         String problem = DependencyDoctor.protobufProblem();
         assertNotNull(problem);
         assertTrue(problem.contains("protobuf"));

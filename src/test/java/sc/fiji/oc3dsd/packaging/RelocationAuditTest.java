@@ -58,6 +58,10 @@ public class RelocationAuditTest {
     private static final Map<String, String> AUDITED = new LinkedHashMap<String, String>();
 
     static {
+        AUDITED.put("DependencyDoctor.java :: Class.forName :: \"com.google.protobuf.GeneratedMessageV3\"",
+                "external protobuf base class provided by Fiji, never included or relocated in the plugin");
+        AUDITED.put("DependencyDoctor.java :: getDeclaredMethod :: \"makeExtensionsImmutable\"",
+                "legacy API on the external protobuf message superclass, probed without native TensorFlow initialization");
         AUDITED.put("StarDist3D.java :: getResourceAsStream :: \"/python/oc3d_stardist3d/registry.json\"",
                 "packaged Python configuration registry, outside every relocated Java namespace; verified in the shaded artifact");
         AUDITED.put("DependencyDoctor.java :: Class.forName :: className",
